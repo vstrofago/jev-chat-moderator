@@ -32,7 +32,7 @@
  "stats.review": "A revisar",
  "stats.latency": "Latencia media",
  "stats.cost": "Costo estimado",
- "stats.agreement": "Coincide con etiquetas",
+ "stats.agreement": "Coincidencia",
  "stats.errors": "Errores",
  "live.title": "Probar en vivo",
  "live.hint": "Aquí funciona con tu propia key del Vercel AI Gateway (vck_…). Se guarda solo en este navegador y las llamadas van directo del navegador al gateway.",

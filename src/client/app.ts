@@ -324,6 +324,8 @@ function startLive(): void {
   live = { apiKey, provider, controller: new AbortController() };
   setModeUi();
   if (!playing) setPlaying(true);
+  // The live controls sit below the chat; bring the chat back into view.
+  $("chat-card").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function stopLive(): void {
