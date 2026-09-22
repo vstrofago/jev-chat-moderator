@@ -26,6 +26,9 @@ export function setLang(next: Lang): void {
   for (const el of document.querySelectorAll<HTMLElement>("[data-i18n]")) {
     el.textContent = t(el.dataset.i18n as Key);
   }
+  for (const el of document.querySelectorAll<HTMLElement>("[data-i18n-aria]")) {
+    el.setAttribute("aria-label", t(el.dataset.i18nAria as Key));
+  }
   for (const el of document.querySelectorAll<HTMLInputElement>("[data-i18n-placeholder]")) {
     el.placeholder = t(el.dataset.i18nPlaceholder as Key);
   }

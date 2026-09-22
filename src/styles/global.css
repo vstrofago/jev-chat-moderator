@@ -35,7 +35,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --canvas: #0a0a0a;
     --ink: rgb(255 255 255 / 92%);
     --ink-2: rgb(255 255 255 / 56%);
@@ -60,6 +60,32 @@
     --brand-b: #d9836e;
     color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --canvas: #0a0a0a;
+  --ink: rgb(255 255 255 / 92%);
+  --ink-2: rgb(255 255 255 / 56%);
+  --ink-3: rgb(255 255 255 / 46%);
+  --line: rgb(255 255 255 / 12%);
+  --line-strong: rgb(255 255 255 / 20%);
+  --hover: rgb(255 255 255 / 9%);
+  --pressed: rgb(255 255 255 / 14%);
+  --wash: rgb(255 255 255 / 5%);
+  --scrim: rgb(0 0 0 / 60%);
+  --primary: rgb(255 255 255 / 92%);
+  --on-primary: #0a0a0a;
+
+  --remove: #e38c77;
+  --remove-soft: #2a1612;
+  --review: #d9ad5c;
+  --review-ink: #e6bd70;
+  --review-soft: #241c0e;
+  --allow: #8fb597;
+
+  --brand-a: #8ea8c1;
+  --brand-b: #d9836e;
+  color-scheme: dark;
 }
 
 *,
@@ -156,6 +182,38 @@ pre {
   background: linear-gradient(135deg, var(--brand-a) 50%, var(--brand-b) 50%);
   flex: none;
 }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.github-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.icon-btn {
+  width: 36px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+}
+.icon-moon,
+:root[data-theme="dark"] .icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .icon-moon {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-sun {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .icon-moon {
+    display: block;
+  }
+}
 .lang-toggle {
   display: inline-flex;
   gap: 2px;
@@ -168,7 +226,7 @@ pre {
   background: transparent;
   color: var(--ink-2);
   font: 500 13px var(--font);
-  height: 28px;
+  height: 30px;
   padding: 0 10px;
   border-radius: 6px;
   cursor: pointer;
@@ -651,6 +709,12 @@ select option {
     flex: none;
     height: 56vh;
     min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header {
+    flex-wrap: wrap;
   }
 }
 

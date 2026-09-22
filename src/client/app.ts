@@ -49,7 +49,10 @@ const composeInput = $<HTMLInputElement>("compose-input");
 const composeBtn = composeForm.querySelector("button") as HTMLButtonElement;
 const dialog = $<HTMLDialogElement>("detail");
 
-const script = messages as ScriptedMessage[];
+const allMessages = messages as ScriptedMessage[];
+// Each language gets its own chat: Spanish UI streams Spanish messages, English UI English ones.
+const scriptFor = (lang: Lang) => allMessages.filter((m) => m.lang === lang);
+let script = scriptFor(currentLang());
 const recorded = replay as { recordedAt: string; model: string; results: Record<string, ModerationResult> };
 
 const items: Item[] = [];
@@ -426,10 +429,23 @@ dialog.addEventListener("click", (e) => {
 
 for (const b of document.querySelectorAll<HTMLButtonElement>("[data-lang]")) {
   b.addEventListener("click", () => {
-    setLang(b.dataset.lang as Lang);
+    const lang = b.dataset.lang as Lang;
+    if (lang === currentLang()) return;
+    setLang(lang);
+    script = scriptFor(lang);
     renderAll();
+    restart();
   });
 }
+
+const THEME_STORAGE = "jev-chat-moderator.theme";
+$("theme-toggle").addEventListener("click", () => {
+  const root = document.documentElement;
+  const current = root.dataset.theme ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const next = current === "dark" ? "light" : "dark";
+  root.dataset.theme = next;
+  safeSet(THEME_STORAGE, next);
+});
 
 $("recorded-model").textContent = recorded.model;
 $("recorded-at").textContent = recorded.recordedAt ? recorded.recordedAt.slice(0, 10) : "";

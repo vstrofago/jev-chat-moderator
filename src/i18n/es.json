@@ -2,7 +2,7 @@
  "meta.title": "Jev Chat Moderator · playground",
  "meta.description": "Jev, el modelo System One de TypeSafe AI, moderando un chat de stream en tiempo real.",
  "header.tagline": "Un playground de Jev (TypeSafe AI)",
- "intro.text": "Jev no escribe texto: devuelve probabilidades. Aquí lee cada mensaje de un chat simulado y dice qué tan probable es que sea ofensivo y de qué tipo. La decisión de borrar la toma el código, con los umbrales que tú ajustas.",
+ "intro.text": "jev-chat-moderator lee cada mensaje de un chat y dice qué tan probable es que sea ofensivo y de qué tipo. La decisión de borrar la toma el código, con los umbrales que tú ajustas.",
  "chat.title": "Chat simulado",
  "chat.play": "Reproducir",
  "chat.pause": "Pausar",
@@ -54,7 +54,6 @@
  "about.p1": "Jev es un modelo “System One” de TypeSafe AI. En lugar de generar texto, recibe un estado y preguntas tipadas, y devuelve respuestas tipadas con probabilidades, muy rápido y muy barato.",
  "about.p2": "Por cada mensaje le hacemos dos preguntas en una sola llamada: ¿es ofensivo? (sí/no con probabilidad) y ¿de qué tipo es? (normal, insulto, odio, spam o amenaza).",
  "about.p3": "Jev funciona mejor en inglés; en español acierta, pero con menos seguridad. Fíjate en la zona de revisión.",
- "about.source": "Código en GitHub",
  "detail.title": "Lo que respondió Jev",
  "detail.offensive": "Probabilidad de ofensivo",
  "detail.category": "Categoría",
@@ -75,5 +74,7 @@
  "verdict.review": "revisar",
  "verdict.remove": "eliminar",
  "footer.recorded": "Repetición grabada con",
- "live.typesafeLocalOnly": "Las keys de TypeSafe solo funcionan con el playground corriendo en tu máquina, porque su API no acepta llamadas desde otros sitios web. Clona el repo y ejecuta: docker compose up --build (luego abre http://localhost:8080). Aquí puedes usar una key del Vercel AI Gateway."
+ "live.typesafeLocalOnly": "Las keys de TypeSafe solo funcionan con el playground corriendo en tu máquina, porque su API no acepta llamadas desde otros sitios web. Clona el repo y ejecuta: docker compose up --build (luego abre http://localhost:8080). Aquí puedes usar una key del Vercel AI Gateway.",
+ "header.github": "Código en GitHub",
+ "theme.toggle": "Cambiar tema claro/oscuro"
 }

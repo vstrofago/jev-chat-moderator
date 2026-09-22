@@ -2,7 +2,7 @@
  "meta.title": "Jev Chat Moderator · playground",
  "meta.description": "Jev, TypeSafe AI's System One model, moderating a live-stream chat in real time.",
  "header.tagline": "A Jev playground (TypeSafe AI)",
- "intro.text": "Jev doesn't write text: it returns probabilities. Here it reads each message in a simulated chat and says how likely it is to be offensive, and what kind. The decision to delete is made by code, using the thresholds you set.",
+ "intro.text": "jev-chat-moderator reads every message in a chat and says how likely it is to be offensive, and what kind. The decision to delete is made by code, using the thresholds you set.",
  "chat.title": "Simulated chat",
  "chat.play": "Play",
  "chat.pause": "Pause",
@@ -54,7 +54,6 @@
  "about.p1": "Jev is a “System One” model by TypeSafe AI. Instead of generating text, it takes a state plus typed questions and returns typed answers with probabilities, very fast and very cheap.",
  "about.p2": "For each message we ask it two questions in a single call: is it offensive? (yes/no with a probability) and what kind is it? (normal, insult, hate, spam or threat).",
  "about.p3": "Jev works best in English; in Spanish it does well, but with less confidence. Keep an eye on the review zone.",
- "about.source": "Source on GitHub",
  "detail.title": "What Jev answered",
  "detail.offensive": "Offensive probability",
  "detail.category": "Category",
@@ -75,5 +74,7 @@
  "verdict.review": "review",
  "verdict.remove": "remove",
  "footer.recorded": "Replay recorded with",
- "live.typesafeLocalOnly": "TypeSafe keys only work with the playground running on your machine, because their API doesn't accept calls from other websites. Clone the repo and run: docker compose up --build (then open http://localhost:8080). Here you can use a Vercel AI Gateway key."
+ "live.typesafeLocalOnly": "TypeSafe keys only work with the playground running on your machine, because their API doesn't accept calls from other websites. Clone the repo and run: docker compose up --build (then open http://localhost:8080). Here you can use a Vercel AI Gateway key.",
+ "header.github": "Code on GitHub",
+ "theme.toggle": "Toggle light/dark theme"
 }
