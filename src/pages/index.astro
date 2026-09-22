@@ -18,7 +18,7 @@ const repo = "https://github.com/vstrofago/jev-chat-moderator";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -41,7 +41,7 @@ const repo = "https://github.com/vstrofago/jev-chat-moderator";
 
     <main class="layout">
       <div class="panel">
-        <section class="card" aria-labelledby="policy-title">
+        <section class="section" aria-labelledby="policy-title">
           <h2 id="policy-title" data-i18n="policy.title">{t("policy.title")}</h2>
           <p class="muted small" data-i18n="policy.hint">{t("policy.hint")}</p>
           <div class="slider">
@@ -57,7 +57,7 @@ const repo = "https://github.com/vstrofago/jev-chat-moderator";
           </div>
           <p class="muted small" data-i18n="policy.legend">{t("policy.legend")}</p>
         </section>
-        <section class="card" aria-labelledby="stats-title">
+        <section class="section" aria-labelledby="stats-title">
           <h2 id="stats-title" data-i18n="stats.title">{t("stats.title")}</h2>
           <dl class="stats">
             <div><dt data-i18n="stats.processed">{t("stats.processed")}</dt><dd id="s-processed">0</dd></div>
@@ -70,7 +70,7 @@ const repo = "https://github.com/vstrofago/jev-chat-moderator";
           </dl>
         </section>
       </div>
-      <section class="card chat-card" id="chat-card" aria-labelledby="chat-title">
+      <section class="chat-card" id="chat-card" aria-labelledby="chat-title">
         <div class="chat-head">
           <div class="chat-title-row">
             <h2 id="chat-title" data-i18n="chat.title">{t("chat.title")}</h2>
@@ -109,7 +109,7 @@ const repo = "https://github.com/vstrofago/jev-chat-moderator";
     </main>
 
     <div class="lower">
-      <section class="card" aria-labelledby="live-title">
+      <section class="section" aria-labelledby="live-title">
         <h2 id="live-title" data-i18n="live.title">{t("live.title")}</h2>
         <p class="muted small" data-i18n="live.hint">{t("live.hint")}</p>
         <form id="live-form" class="live-form">
@@ -132,7 +132,7 @@ const repo = "https://github.com/vstrofago/jev-chat-moderator";
           <p id="live-notice" class="notice" role="status" hidden></p>
         </form>
       </section>
-      <section class="card about" aria-labelledby="about-title">
+      <section class="section about" aria-labelledby="about-title">
         <h2 id="about-title" data-i18n="about.title">{t("about.title")}</h2>
         <p class="small" data-i18n="about.p1">{t("about.p1")}</p>
         <p class="small" data-i18n="about.p2">{t("about.p2")}</p>

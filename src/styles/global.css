@@ -1,42 +1,63 @@
+/*
+ * Scandinavian system: neutral canvas, one sans family, hierarchy through an alpha ink
+ * ladder and space. The only hues are semantic (remove / review / allow / live) and the logo.
+ */
 :root {
-  --bg: #f6f4f0;
-  --surface: #ffffff;
-  --surface-2: #faf8f5;
-  --ink: #23221f;
-  --muted: #6f6b64;
-  --line: #e5e1d9;
-  --accent: #46637f;
-  --accent-ink: #ffffff;
-  --remove: #b0513c;
-  --remove-soft: #f6e7e2;
+  --canvas: #ffffff;
+  --ink: rgb(0 0 0 / 90%);
+  --ink-2: rgb(0 0 0 / 64%);
+  /* Latency, labels and metadata carry real reading here, so the tertiary rung is lifted. */
+  --ink-3: rgb(0 0 0 / 56%);
+  --line: rgb(0 0 0 / 10%);
+  --line-strong: rgb(0 0 0 / 18%);
+  --hover: rgb(0 0 0 / 5%);
+  --pressed: rgb(0 0 0 / 9%);
+  --wash: rgb(0 0 0 / 4%);
+  --scrim: rgb(0 0 0 / 44%);
+  --primary: #000000;
+  --on-primary: #ffffff;
+
+  --remove: #a8432f;
+  --remove-soft: #fbeeea;
   --review: #b7842a;
-  --review-soft: #f7efdc;
-  --allow: #58795f;
-  --allow-soft: #e7efe8;
-  --radius: 10px;
-  --name-l: 40%;
-  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  --review-ink: #7d5510;
+  --review-soft: #fbf3e2;
+  --allow: #4f7a58;
+
+  --brand-a: #46637f;
+  --brand-b: #b0513c;
+
+  --radius: 8px;
+  --radius-lg: 12px;
+  --font: "Inter", "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", "Menlo", monospace;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #161615;
-    --surface: #1f1e1c;
-    --surface-2: #252421;
-    --ink: #ebe8e2;
-    --muted: #a19c94;
-    --line: #34322e;
-    --accent: #8ea8c1;
-    --accent-ink: #141414;
-    --remove: #d9836e;
-    --remove-soft: #3a2621;
-    --review: #d8ae5e;
-    --review-soft: #372e1c;
+    --canvas: #0a0a0a;
+    --ink: rgb(255 255 255 / 92%);
+    --ink-2: rgb(255 255 255 / 56%);
+    --ink-3: rgb(255 255 255 / 46%);
+    --line: rgb(255 255 255 / 12%);
+    --line-strong: rgb(255 255 255 / 20%);
+    --hover: rgb(255 255 255 / 9%);
+    --pressed: rgb(255 255 255 / 14%);
+    --wash: rgb(255 255 255 / 5%);
+    --scrim: rgb(0 0 0 / 60%);
+    --primary: rgb(255 255 255 / 92%);
+    --on-primary: #0a0a0a;
+
+    --remove: #e38c77;
+    --remove-soft: #2a1612;
+    --review: #d9ad5c;
+    --review-ink: #e6bd70;
+    --review-soft: #241c0e;
     --allow: #8fb597;
-    --allow-soft: #223027;
-    --name-l: 72%;
+
+    --brand-a: #8ea8c1;
+    --brand-b: #d9836e;
     color-scheme: dark;
   }
 }
@@ -53,11 +74,11 @@ html {
 
 body {
   margin: 0 auto;
-  max-width: 1180px;
-  padding: 28px 24px 40px;
-  background: var(--bg);
+  max-width: 1200px;
+  padding: 40px 40px 48px;
+  background: var(--canvas);
   color: var(--ink);
-  font: 15px/1.55 var(--font);
+  font: 16px/1.55 var(--font);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -65,19 +86,25 @@ h1,
 h2 {
   margin: 0;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.011em;
+  line-height: 1.2;
 }
 h1 {
-  font-size: 19px;
+  font-size: 20px;
 }
 h2 {
-  font-size: 15px;
+  font-size: 16px;
 }
 p {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 }
 a {
-  color: var(--accent);
+  color: var(--ink);
+  text-underline-offset: 3px;
+  text-decoration-color: var(--line-strong);
+}
+a:hover {
+  text-decoration-color: currentColor;
 }
 code,
 pre {
@@ -86,10 +113,10 @@ pre {
 }
 
 .muted {
-  color: var(--muted);
+  color: var(--ink-2);
 }
 .small {
-  font-size: 13.5px;
+  font-size: 14px;
 }
 .sr-only {
   position: absolute;
@@ -98,6 +125,11 @@ pre {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 /* Header */
@@ -113,133 +145,147 @@ pre {
   gap: 12px;
 }
 .brand p {
-  margin: 0;
-  font-size: 13.5px;
+  margin: 2px 0 0;
+  font-size: 14px;
 }
+/* The product mark keeps its colour; everything around it stays neutral. */
 .brand-mark {
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
-  background:
-    linear-gradient(135deg, transparent 50%, var(--remove) 50%),
-    var(--accent);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--brand-a) 50%, var(--brand-b) 50%);
   flex: none;
 }
 .lang-toggle {
   display: inline-flex;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 3px;
-  background: var(--surface);
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
 }
 .lang-toggle button {
   border: 0;
   background: transparent;
-  color: var(--muted);
-  font: 500 12.5px var(--font);
-  padding: 5px 12px;
-  border-radius: 999px;
+  color: var(--ink-2);
+  font: 500 13px var(--font);
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 6px;
   cursor: pointer;
 }
 .lang-toggle button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--pressed);
+  color: var(--ink);
 }
 
 .intro {
-  max-width: 96ch;
-  margin: 16px 0 20px;
-  color: var(--muted);
+  max-width: 68ch;
+  margin: 24px 0 40px;
+  color: var(--ink-2);
 }
 
-/* Layout */
-/* Top row: controls on the left, chat on the right, both as tall as the controls. */
+/* Layout: controls left, chat right (same height); secondary chapter below. */
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1fr);
+  gap: 48px;
   align-items: stretch;
 }
 .panel {
   display: grid;
-  gap: 20px;
+  gap: 40px;
   align-content: start;
 }
-/* Secondary content: full width below the fold. */
 .lower {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 20px;
-  margin-top: 20px;
+  gap: 48px;
+  margin-top: 80px;
   align-items: start;
 }
-.card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 20px;
+.section h2 {
+  margin-bottom: 6px;
 }
-.card h2 {
-  margin-bottom: 8px;
+.section > p {
+  max-width: 62ch;
 }
 
-/* Buttons & fields */
+/* Controls: one height, one radius, one border weight. */
+.btn,
+input,
+select {
+  height: 36px;
+  border-radius: var(--radius);
+  font: 500 14px var(--font);
+}
 .btn {
-  border: 1px solid var(--line);
-  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  background: transparent;
   color: var(--ink);
-  font: 500 13.5px var(--font);
-  padding: 7px 14px;
-  border-radius: 8px;
+  padding: 0 14px;
   cursor: pointer;
-}
-.btn:hover:not(:disabled) {
-  border-color: var(--muted);
-}
-.btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+  transition: background-color 0.15s ease;
 }
 .btn-primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-ink);
-}
-.btn-primary:hover:not(:disabled) {
-  border-color: var(--accent);
-  filter: brightness(1.08);
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
 }
 .btn-ghost {
-  background: transparent;
   border-color: transparent;
-  color: var(--muted);
+  color: var(--ink-2);
 }
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover:not(:disabled) {
+    background: var(--hover);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--primary);
+    opacity: 0.86;
+  }
+}
+.btn:active:not(:disabled) {
+  background: var(--pressed);
+}
+.btn:disabled {
+  cursor: not-allowed;
+  color: var(--ink-3);
+  background: transparent;
+  border-color: var(--line);
 }
 input,
 select {
-  font: 14px var(--font);
   color: var(--ink);
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 7px 10px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  padding: 0 10px;
+  font-weight: 400;
   min-width: 0;
+}
+input::placeholder {
+  color: var(--ink-3);
+}
+input:disabled {
+  background: var(--wash);
+  border-color: var(--line);
+}
+select option {
+  background: var(--canvas);
+  color: var(--ink);
 }
 .inline-field {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13.5px;
-  color: var(--muted);
+  font-size: 14px;
+  color: var(--ink-2);
 }
 .field {
   display: grid;
-  gap: 4px;
-  font-size: 13px;
-  color: var(--muted);
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
 }
 .row {
   display: flex;
@@ -247,29 +293,28 @@ select {
   gap: 8px;
 }
 .badge {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 500;
-  padding: 2px 10px;
+  padding: 2px 8px;
   border-radius: 999px;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  color: var(--muted);
+  background: var(--wash);
+  color: var(--ink-2);
 }
 .badge.live {
   background: var(--remove-soft);
-  border-color: transparent;
   color: var(--remove);
 }
 
-/* Chat */
+/* Chat: the one bounded region, because it scrolls. */
 .chat-card {
   display: flex;
   flex-direction: column;
-  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 .chat-head {
-  padding: 16px 20px;
+  padding: 14px 16px 14px 20px;
   border-bottom: 1px solid var(--line);
   display: flex;
   flex-wrap: wrap;
@@ -282,9 +327,6 @@ select {
   align-items: center;
   gap: 10px;
 }
-.chat-title-row h2 {
-  margin: 0;
-}
 .chat-controls {
   display: flex;
   flex-wrap: wrap;
@@ -294,31 +336,30 @@ select {
 .chat {
   list-style: none;
   margin: 0;
-  padding: 10px 8px;
-  /* Grows to fill the row the controls define, never pushes the row taller. */
+  padding: 8px;
+  /* Fills the row the controls define, never pushes it taller. */
   flex: 1 1 0;
-  min-height: 360px;
+  min-height: 420px;
   overflow-y: auto;
   scroll-behavior: smooth;
-  background: var(--surface-2);
+  font-size: 15px;
 }
 .chat-empty {
-  padding: 40px 16px;
-  text-align: center;
+  padding: 40px 12px;
 }
 .msg {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 2px 10px;
+  gap: 2px 12px;
   align-items: baseline;
   padding: 6px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  border-left: 3px solid transparent;
-  transition: background 0.2s;
 }
-.msg:hover {
-  background: var(--surface);
+@media (hover: hover) and (pointer: fine) {
+  .msg:hover {
+    background: var(--hover);
+  }
 }
 .msg-body {
   overflow-wrap: anywhere;
@@ -328,54 +369,57 @@ select {
   margin-right: 6px;
 }
 .msg-meta {
-  font: 11.5px var(--mono);
-  color: var(--muted);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
   white-space: nowrap;
 }
 .msg-note {
   grid-column: 1 / -1;
-  font-size: 12px;
-  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
 }
 .msg.pending .msg-text,
 .msg.queued .msg-text {
-  color: var(--muted);
+  color: var(--ink-3);
+}
+/* State = a 2px bar + a label; colour is never the only carrier. Square left edge so the bar stays straight. */
+.msg.review,
+.msg.remove,
+.msg.error {
+  border-radius: 0 6px 6px 0;
 }
 .msg.review {
-  border-left-color: var(--review);
   background: var(--review-soft);
+  box-shadow: inset 2px 0 0 var(--review);
 }
 .msg.review .msg-note {
-  color: var(--review);
-}
-.msg.remove .msg-text {
-  text-decoration: line-through;
-  color: var(--muted);
-}
-.msg.remove.collapsed .msg-text {
-  text-decoration: none;
-  font-style: italic;
+  color: var(--review-ink);
 }
 .msg.remove {
-  border-left-color: var(--remove);
+  box-shadow: inset 2px 0 0 var(--remove);
 }
-.msg.remove .msg-note {
-  color: var(--remove);
+.msg.remove .msg-text {
+  color: var(--ink-3);
+  font-style: italic;
 }
 .msg.error {
-  border-left-color: var(--muted);
+  box-shadow: inset 2px 0 0 var(--line-strong);
+}
+.msg.error .msg-note {
+  color: var(--ink-2);
 }
 .dot {
   display: inline-block;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--muted);
+  background: var(--ink-3);
   animation: pulse 1s infinite ease-in-out;
 }
 @keyframes pulse {
   50% {
-    opacity: 0.25;
+    opacity: 0.3;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -399,25 +443,28 @@ select {
 
 /* Policy */
 .slider {
-  margin: 14px 0 6px;
+  margin: 20px 0 0;
 }
 .slider label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 13.5px;
+  font-size: 14px;
+  font-weight: 500;
   margin-bottom: 4px;
 }
 .slider input {
   width: 100%;
+  height: 20px;
   padding: 0;
-  accent-color: var(--accent);
-  background: transparent;
   border: 0;
+  accent-color: var(--primary);
 }
 .pill {
-  font: 12px var(--mono);
-  padding: 2px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  padding: 1px 8px;
   border-radius: 999px;
 }
 .pill-remove {
@@ -426,18 +473,18 @@ select {
 }
 .pill-review {
   background: var(--review-soft);
-  color: var(--review);
+  color: var(--review-ink);
 }
 .scale {
   display: flex;
-  height: 6px;
-  border-radius: 999px;
-  overflow: hidden;
-  margin: 12px 0 12px;
+  height: 4px;
+  gap: 2px;
+  margin: 16px 0 12px;
 }
 .scale span {
   display: block;
   height: 100%;
+  border-radius: 2px;
 }
 .scale-allow {
   background: var(--allow);
@@ -456,45 +503,44 @@ select {
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px 16px;
-  margin: 12px 0 0;
+  gap: 16px 24px;
+  margin: 16px 0 0;
 }
 .stats dt {
-  font-size: 12.5px;
-  color: var(--muted);
+  font-size: 13px;
+  color: var(--ink-2);
 }
 .stats dd {
-  margin: 0;
-  font-size: 19px;
-  font-weight: 600;
+  margin: 2px 0 0;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
 }
 
 /* Live */
 .live-form {
   display: grid;
-  gap: 10px;
-  margin-top: 8px;
+  gap: 16px;
+  margin-top: 16px;
+  max-width: 480px;
 }
 .notice {
   margin: 0;
-  font-size: 13px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  background: var(--review-soft);
+  font-size: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--wash);
   color: var(--ink);
 }
 .notice.error {
   background: var(--remove-soft);
 }
 
-.about p:last-of-type {
-  margin-bottom: 8px;
-}
-
 .site-footer {
-  margin-top: 28px;
-  text-align: center;
+  margin-top: 64px;
+  font-size: 13px;
+  color: var(--ink-3);
 }
 
 /* Detail dialog */
@@ -502,94 +548,100 @@ select {
   width: min(560px, calc(100vw - 32px));
   max-height: calc(100vh - 48px);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
+  border-radius: var(--radius-lg);
+  background: var(--canvas);
   color: var(--ink);
-  padding: 20px;
+  padding: 24px;
 }
 .detail::backdrop {
-  background: rgb(20 20 18 / 0.35);
+  background: var(--scrim);
 }
 .detail-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 .detail blockquote {
-  margin: 0 0 16px;
-  padding: 10px 14px;
-  background: var(--surface-2);
-  border-left: 3px solid var(--line);
-  border-radius: 6px;
+  margin: 0 0 20px;
+  padding: 12px 14px;
+  background: var(--wash);
+  border-radius: var(--radius);
   overflow-wrap: anywhere;
 }
 .kv {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 6px 16px;
-  font-size: 13.5px;
-  margin: 0 0 16px;
+  gap: 8px 20px;
+  font-size: 14px;
+  margin: 0 0 20px;
 }
 .kv dt {
-  color: var(--muted);
+  color: var(--ink-2);
 }
 .kv dd {
   margin: 0;
   font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
 .bars {
   display: grid;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 .bar {
   display: grid;
   grid-template-columns: 76px 1fr 44px;
   align-items: center;
-  gap: 10px;
-  font-size: 13px;
+  gap: 12px;
+  font-size: 14px;
 }
 .bar-track {
-  height: 8px;
-  border-radius: 999px;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
+  height: 6px;
+  border-radius: 3px;
+  background: var(--wash);
   overflow: hidden;
 }
 .bar-fill {
   height: 100%;
-  background: var(--accent);
+  background: var(--ink-2);
 }
 .bar-fill.top {
   background: var(--remove);
 }
 .bar-value {
-  font: 12px var(--mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
   text-align: right;
-  color: var(--muted);
+  color: var(--ink-2);
 }
 .detail pre {
   max-height: 260px;
   overflow: auto;
-  background: var(--surface-2);
+  background: var(--wash);
   padding: 12px;
-  border-radius: 8px;
-  border: 1px solid var(--line);
+  border-radius: var(--radius);
 }
 .detail summary {
   cursor: pointer;
-  font-size: 13.5px;
-  color: var(--muted);
+  font-size: 14px;
+  color: var(--ink-2);
 }
 
 @media (max-width: 860px) {
   body {
-    padding: 20px 16px 32px;
+    padding: 24px 20px 40px;
+  }
+  .intro {
+    margin: 16px 0 32px;
   }
   .layout,
   .lower {
     grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+  .lower {
+    margin-top: 56px;
   }
   /* On phones the chat leads; the policy follows right under it. */
   .chat-card {
@@ -598,6 +650,7 @@ select {
   .chat {
     flex: none;
     height: 56vh;
+    min-height: 0;
   }
 }
 

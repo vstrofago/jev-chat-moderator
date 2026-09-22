@@ -93,7 +93,7 @@ function render(item: Item): void {
 
   let note = "";
   if (verdict === "review" && item.result) note = `${t("chat.review")} · ${reason(item.result)}`;
-  if (item.status === "error") note = `⚠ ${t("chat.unmoderated")}`;
+  if (item.status === "error") note = t("chat.unmoderated");
 
   el.replaceChildren();
   const body = document.createElement("div");
@@ -101,7 +101,6 @@ function render(item: Item): void {
   const user = document.createElement("span");
   user.className = "msg-user";
   user.textContent = item.own ? `${item.user} (${t("chat.you")})` : item.user;
-  user.style.color = userColor(item.user);
   const msgText = document.createElement("span");
   msgText.className = "msg-text";
   msgText.textContent = text;
@@ -122,13 +121,6 @@ function render(item: Item): void {
     noteEl.textContent = note;
     el.append(noteEl);
   }
-}
-
-function userColor(name: string): string {
-  // Muted, readable name colours in both themes, stable per user.
-  let h = 0;
-  for (const c of name) h = (h * 31 + c.charCodeAt(0)) % 360;
-  return `hsl(${h} 32% var(--name-l, 42%))`;
 }
 
 function renderAll(): void {
@@ -354,7 +346,7 @@ function renderDetail(item: Item): void {
   body.replaceChildren();
   const r = item.result;
   if (!r) {
-    body.textContent = item.status === "error" ? `⚠ ${t("chat.unmoderated")} — ${item.error ?? ""}` : t("chat.pending");
+    body.textContent = item.status === "error" ? `${t("chat.unmoderated")} — ${item.error ?? ""}` : t("chat.pending");
     raw.textContent = "";
     return;
   }
