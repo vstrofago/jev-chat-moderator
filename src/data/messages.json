@@ -1,0 +1,1290 @@
+[
+ {
+  "id": "m078",
+  "user": "dark_d",
+  "lang": "en",
+  "text": "I know where you live, I'll be waiting outside your house",
+  "expected": "threat"
+ },
+ {
+  "id": "m168",
+  "user": "parca_p",
+  "lang": "es",
+  "text": "sigue hablando y te voy a encontrar y a lastimar de verdad",
+  "expected": "threat"
+ },
+ {
+  "id": "m067",
+  "user": "xul_x",
+  "lang": "en",
+  "text": "people from that country shouldn't be allowed to play online",
+  "expected": "hate"
+ },
+ {
+  "id": "m165",
+  "user": "bot_spam_77",
+  "lang": "es",
+  "text": "JAJAJAJA JAJAJAJA JAJAJAJA JAJAJAJA JAJAJAJA JAJAJAJA",
+  "expected": "spam"
+ },
+ {
+  "id": "m074",
+  "user": "free_skins_now",
+  "lang": "en",
+  "text": "FREE SKINS click here bit.ly/fr33sk1nz",
+  "expected": "spam"
+ },
+ {
+  "id": "m126",
+  "user": "ale_a",
+  "lang": "es",
+  "text": "hola mods, hola streamer",
+  "expected": "ok"
+ },
+ {
+  "id": "m079",
+  "user": "grim_g",
+  "lang": "en",
+  "text": "keep talking and I'll find you and hurt you for real",
+  "expected": "threat"
+ },
+ {
+  "id": "m174",
+  "user": "neto_n",
+  "lang": "es",
+  "text": "qué combo tan sucio",
+  "expected": "ok"
+ },
+ {
+  "id": "m022",
+  "user": "sunny_side",
+  "lang": "en",
+  "text": "good morning from the UK ☕",
+  "expected": "ok"
+ },
+ {
+  "id": "m148",
+  "user": "ximo_x",
+  "lang": "es",
+  "text": "@chuy_gamer cállate idiota, nadie te preguntó",
+  "expected": "insult"
+ },
+ {
+  "id": "m045",
+  "user": "ace_a",
+  "lang": "en",
+  "text": "holy crap that sniper shot",
+  "expected": "ok"
+ },
+ {
+  "id": "m157",
+  "user": "goyo_g",
+  "lang": "es",
+  "text": "las mujeres no saben jugar shooters, váyanse a la cocina",
+  "expected": "hate"
+ },
+ {
+  "id": "m052",
+  "user": "hux_h",
+  "lang": "en",
+  "text": "this game is killing me, 12 deaths in a row",
+  "expected": "ok"
+ },
+ {
+  "id": "m182",
+  "user": "wally_w",
+  "lang": "es",
+  "text": "odio este nivel con toda mi alma",
+  "expected": "ok"
+ },
+ {
+  "id": "m002",
+  "user": "mossy_mike",
+  "lang": "en",
+  "text": "hello from Canada 👋",
+  "expected": "ok"
+ },
+ {
+  "id": "m099",
+  "user": "marisol_m",
+  "lang": "es",
+  "text": "esa jugada estuvo increíble",
+  "expected": "ok"
+ },
+ {
+  "id": "m001",
+  "user": "pixel_pat",
+  "lang": "en",
+  "text": "hi chat! just got here",
+  "expected": "ok"
+ },
+ {
+  "id": "m125",
+  "user": "zule_z",
+  "lang": "es",
+  "text": "gracias por el raid!",
+  "expected": "ok"
+ },
+ {
+  "id": "m087",
+  "user": "tia_t",
+  "lang": "en",
+  "text": "mods can we get a poll?",
+  "expected": "ok"
+ },
+ {
+  "id": "m144",
+  "user": "tavo_t",
+  "lang": "es",
+  "text": "qué jugada tan cabrona",
+  "expected": "ok"
+ },
+ {
+  "id": "m063",
+  "user": "tad_t",
+  "lang": "en",
+  "text": "@luna_bytes go back to your hole, loser",
+  "expected": "insult"
+ },
+ {
+  "id": "m139",
+  "user": "nico_nn",
+  "lang": "es",
+  "text": "el otro equipo está bien manco hoy jaja",
+  "expected": "ok"
+ },
+ {
+  "id": "m033",
+  "user": "nico_n",
+  "lang": "en",
+  "text": "that was the best run so far",
+  "expected": "ok"
+ },
+ {
+  "id": "m162",
+  "user": "promo_chavo",
+  "lang": "es",
+  "text": "chequen MI stream, está mejor que este, twitch.tv/promo_chavo",
+  "expected": "spam"
+ },
+ {
+  "id": "m039",
+  "user": "uma_u",
+  "lang": "en",
+  "text": "that dog in the background is so cute",
+  "expected": "ok"
+ },
+ {
+  "id": "m119",
+  "user": "tere_t",
+  "lang": "es",
+  "text": "cómo consigues esa skin?",
+  "expected": "ok"
+ },
+ {
+  "id": "m049",
+  "user": "echo_e",
+  "lang": "en",
+  "text": "that was so bad it was good",
+  "expected": "ok"
+ },
+ {
+  "id": "m173",
+  "user": "mara_m",
+  "lang": "es",
+  "text": "el lag me está matando, soy solo yo?",
+  "expected": "ok"
+ },
+ {
+  "id": "m092",
+  "user": "abby_a",
+  "lang": "en",
+  "text": "chat stop backseating lol",
+  "expected": "ok"
+ },
+ {
+  "id": "m102",
+  "user": "nacho_n",
+  "lang": "es",
+  "text": "qué sensibilidad usas?",
+  "expected": "ok"
+ },
+ {
+  "id": "m050",
+  "user": "flint_f",
+  "lang": "en",
+  "text": "bro got absolutely destroyed lmao",
+  "expected": "ok"
+ },
+ {
+  "id": "m116",
+  "user": "quique_q",
+  "lang": "es",
+  "text": "me acabo de suscribir, sigue así!",
+  "expected": "ok"
+ },
+ {
+  "id": "m043",
+  "user": "yuki_y",
+  "lang": "en",
+  "text": "love the new overlay",
+  "expected": "ok"
+ },
+ {
+  "id": "m108",
+  "user": "ines_i",
+  "lang": "es",
+  "text": "el nuevo parche vale la pena?",
+  "expected": "ok"
+ },
+ {
+  "id": "m077",
+  "user": "best_followers",
+  "lang": "en",
+  "text": "Best followers, primes and viewers on streamboost .ru",
+  "expected": "spam"
+ },
+ {
+  "id": "m158",
+  "user": "hilda_h",
+  "lang": "es",
+  "text": "todos los de esa religión son el problema, bánnenlos",
+  "expected": "hate"
+ },
+ {
+  "id": "m034",
+  "user": "opal_o",
+  "lang": "en",
+  "text": "do you play with a controller or keyboard?",
+  "expected": "ok"
+ },
+ {
+  "id": "m097",
+  "user": "la_vale",
+  "lang": "es",
+  "text": "saludos desde Monterrey 👋",
+  "expected": "ok"
+ },
+ {
+  "id": "m015",
+  "user": "oat_milk",
+  "lang": "en",
+  "text": "drink some water streamer 💧",
+  "expected": "ok"
+ },
+ {
+  "id": "m138",
+  "user": "mau_m",
+  "lang": "es",
+  "text": "al wey lo destrozaron jajaja",
+  "expected": "ok"
+ },
+ {
+  "id": "m011",
+  "user": "rusty_nail",
+  "lang": "en",
+  "text": "chat is so wholesome today",
+  "expected": "ok"
+ },
+ {
+  "id": "m129",
+  "user": "dani_d",
+  "lang": "es",
+  "text": "uff estuvo cerca",
+  "expected": "ok"
+ },
+ {
+  "id": "m095",
+  "user": "dan_d",
+  "lang": "en",
+  "text": "shut up and take my money, this skin is sick",
+  "expected": "ok"
+ },
+ {
+  "id": "m149",
+  "user": "yeyo_y",
+  "lang": "es",
+  "text": "el peor streamer de la plataforma, un payaso",
+  "expected": "insult"
+ },
+ {
+  "id": "m017",
+  "user": "hana_h",
+  "lang": "en",
+  "text": "happy birthday to the mod!",
+  "expected": "ok"
+ },
+ {
+  "id": "m150",
+  "user": "zaca_z",
+  "lang": "es",
+  "text": "tu voz es insoportable, pareces cabra moribunda",
+  "expected": "insult"
+ },
+ {
+  "id": "m062",
+  "user": "sly_s",
+  "lang": "en",
+  "text": "imagine being this stupid on camera",
+  "expected": "insult"
+ },
+ {
+  "id": "m114",
+  "user": "oscar_o",
+  "lang": "es",
+  "text": "buenos días desde Madrid ☕",
+  "expected": "ok"
+ },
+ {
+  "id": "m019",
+  "user": "pepper_j",
+  "lang": "en",
+  "text": "that was a clutch play",
+  "expected": "ok"
+ },
+ {
+  "id": "m115",
+  "user": "paty_p",
+  "lang": "es",
+  "text": "el siguiente mapa que sea el del desierto",
+  "expected": "ok"
+ },
+ {
+  "id": "m003",
+  "user": "luna_bytes",
+  "lang": "en",
+  "text": "what game is this?",
+  "expected": "ok"
+ },
+ {
+  "id": "m128",
+  "user": "cris_c",
+  "lang": "es",
+  "text": "buenas noches chat, nos vemos mañana",
+  "expected": "ok"
+ },
+ {
+  "id": "m060",
+  "user": "pax_p",
+  "lang": "en",
+  "text": "worst streamer on the platform, absolute clown",
+  "expected": "insult"
+ },
+ {
+  "id": "m142",
+  "user": "rafa_r",
+  "lang": "es",
+  "text": "el streamer dijo \"confíen\" y se murió",
+  "expected": "ok"
+ },
+ {
+  "id": "m025",
+  "user": "cleo_c",
+  "lang": "en",
+  "text": "just subbed, keep it up!",
+  "expected": "ok"
+ },
+ {
+  "id": "m109",
+  "user": "javi_j",
+  "lang": "es",
+  "text": "feliz cumple al mod!",
+  "expected": "ok"
+ },
+ {
+  "id": "m023",
+  "user": "olive_o",
+  "lang": "en",
+  "text": "KEKW",
+  "expected": "ok"
+ },
+ {
+  "id": "m100",
+  "user": "toño_t",
+  "lang": "es",
+  "text": "VAMOOOS",
+  "expected": "ok"
+ },
+ {
+  "id": "m066",
+  "user": "wyn_w",
+  "lang": "en",
+  "text": "mods are useless morons",
+  "expected": "insult"
+ },
+ {
+  "id": "m178",
+  "user": "sara_s",
+  "lang": "es",
+  "text": "jugada de genio",
+  "expected": "ok"
+ },
+ {
+  "id": "m026",
+  "user": "dex_d",
+  "lang": "en",
+  "text": "the music on stream is fire",
+  "expected": "ok"
+ },
+ {
+  "id": "m133",
+  "user": "hector_h",
+  "lang": "es",
+  "text": "no mames qué tiro",
+  "expected": "ok"
+ },
+ {
+  "id": "m072",
+  "user": "cheap_views_4u",
+  "lang": "en",
+  "text": "Want more viewers? Buy followers at cheap-viewers.biz 🚀",
+  "expected": "spam"
+ },
+ {
+  "id": "m163",
+  "user": "skins_gratis",
+  "lang": "es",
+  "text": "SKINS GRATIS da clic aquí bit.ly/sk1nsgr4tis",
+  "expected": "spam"
+ },
+ {
+  "id": "m058",
+  "user": "ned_n",
+  "lang": "en",
+  "text": "nobody watches you because you're boring and ugly",
+  "expected": "insult"
+ },
+ {
+  "id": "m134",
+  "user": "isa_i",
+  "lang": "es",
+  "text": "ez",
+  "expected": "ok"
+ },
+ {
+  "id": "m048",
+  "user": "drew_d",
+  "lang": "en",
+  "text": "I'm gonna kill you in the next round 😂 (1v1 me)",
+  "expected": "ok"
+ },
+ {
+  "id": "m152",
+  "user": "bere_b",
+  "lang": "es",
+  "text": "@la_vale regrésate a tu cueva, perdedora",
+  "expected": "insult"
+ },
+ {
+  "id": "m046",
+  "user": "blaze_b",
+  "lang": "en",
+  "text": "ez clap",
+  "expected": "ok"
+ },
+ {
+  "id": "m096",
+  "user": "pablito",
+  "lang": "es",
+  "text": "hola chat! recién llego",
+  "expected": "ok"
+ },
+ {
+  "id": "m030",
+  "user": "jade_j",
+  "lang": "en",
+  "text": "this soundtrack slaps",
+  "expected": "ok"
+ },
+ {
+  "id": "m160",
+  "user": "joel_j",
+  "lang": "es",
+  "text": "los gays no deberían stremear este juego",
+  "expected": "hate"
+ },
+ {
+  "id": "m021",
+  "user": "river_r",
+  "lang": "en",
+  "text": "i'm learning so much watching you",
+  "expected": "ok"
+ },
+ {
+  "id": "m137",
+  "user": "lalo_l",
+  "lang": "es",
+  "text": "estuvo tan mala que fue buena",
+  "expected": "ok"
+ },
+ {
+  "id": "m083",
+  "user": "orin_o",
+  "lang": "en",
+  "text": "chat, what should we name the new pet?",
+  "expected": "ok"
+ },
+ {
+  "id": "m136",
+  "user": "kike_k",
+  "lang": "es",
+  "text": "te mato en la siguiente partida jaja",
+  "expected": "ok"
+ },
+ {
+  "id": "m061",
+  "user": "rex_r",
+  "lang": "en",
+  "text": "your voice is so annoying, you sound like a dying goat",
+  "expected": "insult"
+ },
+ {
+  "id": "m179",
+  "user": "tino_t",
+  "lang": "es",
+  "text": "diferencia de streamer la neta",
+  "expected": "ok"
+ },
+ {
+  "id": "m032",
+  "user": "lola_l",
+  "lang": "en",
+  "text": "1v3 clutch incoming",
+  "expected": "ok"
+ },
+ {
+  "id": "m184",
+  "user": "yolo_y",
+  "lang": "es",
+  "text": "cállate y toma mi dinero, esa skin está chida",
+  "expected": "ok"
+ },
+ {
+  "id": "m014",
+  "user": "marco_polo",
+  "lang": "en",
+  "text": "lmao the timing on that",
+  "expected": "ok"
+ },
+ {
+  "id": "m105",
+  "user": "fer_f",
+  "lang": "es",
+  "text": "qué limpio ese jefe",
+  "expected": "ok"
+ },
+ {
+  "id": "m040",
+  "user": "vera_v",
+  "lang": "en",
+  "text": "goodnight chat, see you tomorrow",
+  "expected": "ok"
+ },
+ {
+  "id": "m164",
+  "user": "rey_cripto",
+  "lang": "es",
+  "text": "gané $5000 en un día con este bot de cripto, mándame DM",
+  "expected": "spam"
+ },
+ {
+  "id": "m004",
+  "user": "kai_rivers",
+  "lang": "en",
+  "text": "that jump was insane",
+  "expected": "ok"
+ },
+ {
+  "id": "m120",
+  "user": "uri_u",
+  "lang": "es",
+  "text": "ahorita vuelvo, voy a cenar",
+  "expected": "ok"
+ },
+ {
+  "id": "m089",
+  "user": "wren_w",
+  "lang": "en",
+  "text": "big brain play",
+  "expected": "ok"
+ },
+ {
+  "id": "m118",
+  "user": "santi_s",
+  "lang": "es",
+  "text": "se te pasó el cofre de la izquierda",
+  "expected": "ok"
+ },
+ {
+  "id": "m082",
+  "user": "nia_n",
+  "lang": "en",
+  "text": "can you explain that strategy again?",
+  "expected": "ok"
+ },
+ {
+  "id": "m122",
+  "user": "wili_w",
+  "lang": "es",
+  "text": "la mejor partida hasta ahora",
+  "expected": "ok"
+ },
+ {
+  "id": "m057",
+  "user": "mo_m",
+  "lang": "en",
+  "text": "you're so bad at this game, just quit streaming forever",
+  "expected": "insult"
+ },
+ {
+  "id": "m166",
+  "user": "mejores_segs",
+  "lang": "es",
+  "text": "Los mejores seguidores, primes y viewers en streamboost .ru",
+  "expected": "spam"
+ },
+ {
+  "id": "m080",
+  "user": "leak_l",
+  "lang": "en",
+  "text": "posting your home address in chat if you ban me again",
+  "expected": "threat"
+ },
+ {
+  "id": "m146",
+  "user": "vico_v",
+  "lang": "es",
+  "text": "qué malo eres, deja de stremear para siempre",
+  "expected": "insult"
+ },
+ {
+  "id": "m024",
+  "user": "bram_b",
+  "lang": "en",
+  "text": "next map should be the desert one",
+  "expected": "ok"
+ },
+ {
+  "id": "m147",
+  "user": "wendy_w",
+  "lang": "es",
+  "text": "nadie te ve porque eres aburrido y feo",
+  "expected": "insult"
+ },
+ {
+  "id": "m088",
+  "user": "val_v",
+  "lang": "en",
+  "text": "imagine missing that shot lmao",
+  "expected": "ok"
+ },
+ {
+  "id": "m161",
+  "user": "vistas_baratas",
+  "lang": "es",
+  "text": "¿Quieres más viewers? Compra seguidores en vistas-baratas.biz 🚀",
+  "expected": "spam"
+ },
+ {
+  "id": "m041",
+  "user": "wes_w",
+  "lang": "en",
+  "text": "damn that was close",
+  "expected": "ok"
+ },
+ {
+  "id": "m176",
+  "user": "pau_p",
+  "lang": "es",
+  "text": "mods, hacemos una encuesta?",
+  "expected": "ok"
+ },
+ {
+  "id": "m059",
+  "user": "oz_o",
+  "lang": "en",
+  "text": "@kai_rivers shut up you idiot, no one asked",
+  "expected": "insult"
+ },
+ {
+  "id": "m113",
+  "user": "nati_n",
+  "lang": "es",
+  "text": "aprendo un montón viéndote",
+  "expected": "ok"
+ },
+ {
+  "id": "m064",
+  "user": "ugo_u",
+  "lang": "en",
+  "text": "you're a pathetic excuse for a gamer",
+  "expected": "insult"
+ },
+ {
+  "id": "m131",
+  "user": "fabi_f",
+  "lang": "es",
+  "text": "me encanta el nuevo overlay",
+  "expected": "ok"
+ },
+ {
+  "id": "m068",
+  "user": "yan_y",
+  "lang": "en",
+  "text": "girls can't play shooters, go back to the kitchen",
+  "expected": "hate"
+ },
+ {
+  "id": "m167",
+  "user": "sombra_s",
+  "lang": "es",
+  "text": "sé dónde vives, te voy a esperar afuera de tu casa",
+  "expected": "threat"
+ },
+ {
+  "id": "m076",
+  "user": "spam_bot_33",
+  "lang": "en",
+  "text": "WOW WOW WOW WOW WOW WOW WOW WOW WOW WOW",
+  "expected": "spam"
+ },
+ {
+  "id": "m124",
+  "user": "yayo_y",
+  "lang": "es",
+  "text": "no puedo creer que funcionó jaja",
+  "expected": "ok"
+ },
+ {
+  "id": "m044",
+  "user": "zoe_z",
+  "lang": "en",
+  "text": "🔥🔥🔥",
+  "expected": "ok"
+ },
+ {
+  "id": "m106",
+  "user": "gaby_g",
+  "lang": "es",
+  "text": "jajaja el timing",
+  "expected": "ok"
+ },
+ {
+  "id": "m053",
+  "user": "ike_i",
+  "lang": "en",
+  "text": "what the hell was that physics",
+  "expected": "ok"
+ },
+ {
+  "id": "m101",
+  "user": "lupe_l",
+  "lang": "es",
+  "text": "gg",
+  "expected": "ok"
+ },
+ {
+  "id": "m036",
+  "user": "remy_r",
+  "lang": "en",
+  "text": "the chat is flying today",
+  "expected": "ok"
+ },
+ {
+  "id": "m127",
+  "user": "beto_b",
+  "lang": "es",
+  "text": "qué lindo el perrito de atrás",
+  "expected": "ok"
+ },
+ {
+  "id": "m094",
+  "user": "cara_c",
+  "lang": "en",
+  "text": "this game is trash but I love it",
+  "expected": "ok"
+ },
+ {
+  "id": "m151",
+  "user": "aldo_a",
+  "lang": "es",
+  "text": "imagina ser así de estúpido en cámara",
+  "expected": "insult"
+ },
+ {
+  "id": "m037",
+  "user": "sage_s",
+  "lang": "en",
+  "text": "thanks for the raid!",
+  "expected": "ok"
+ },
+ {
+  "id": "m181",
+  "user": "vivi_v",
+  "lang": "es",
+  "text": "chat dejen de dar consejos jaja",
+  "expected": "ok"
+ },
+ {
+  "id": "m070",
+  "user": "abe_a",
+  "lang": "en",
+  "text": "typical immigrant streamer, ruining everything",
+  "expected": "hate"
+ },
+ {
+  "id": "m177",
+  "user": "rich_r",
+  "lang": "es",
+  "text": "imagina fallar ese tiro jajaja",
+  "expected": "ok"
+ },
+ {
+  "id": "m035",
+  "user": "pip_p",
+  "lang": "en",
+  "text": "can't believe that worked lol",
+  "expected": "ok"
+ },
+ {
+  "id": "m121",
+  "user": "vane_v",
+  "lang": "es",
+  "text": "qué rango eres ahorita?",
+  "expected": "ok"
+ },
+ {
+  "id": "m090",
+  "user": "yara_y",
+  "lang": "en",
+  "text": "streamer diff honestly",
+  "expected": "ok"
+ },
+ {
+  "id": "m111",
+  "user": "leo_l",
+  "lang": "es",
+  "text": "clutch total",
+  "expected": "ok"
+ },
+ {
+  "id": "m027",
+  "user": "fern_f",
+  "lang": "en",
+  "text": "you missed the chest on the left",
+  "expected": "ok"
+ },
+ {
+  "id": "m143",
+  "user": "sofi_s",
+  "lang": "es",
+  "text": "qué malo eres para este juego 😂 te quiero",
+  "expected": "ok"
+ },
+ {
+  "id": "m038",
+  "user": "theo_t",
+  "lang": "en",
+  "text": "hi mods, hi streamer",
+  "expected": "ok"
+ },
+ {
+  "id": "m112",
+  "user": "memo_m",
+  "lang": "es",
+  "text": "armemos un hype train",
+  "expected": "ok"
+ },
+ {
+  "id": "m018",
+  "user": "jules_v",
+  "lang": "en",
+  "text": "what headset do you use?",
+  "expected": "ok"
+ },
+ {
+  "id": "m171",
+  "user": "karen_k",
+  "lang": "es",
+  "text": "puedes explicar esa estrategia otra vez?",
+  "expected": "ok"
+ },
+ {
+  "id": "m006",
+  "user": "frost_fox",
+  "lang": "en",
+  "text": "gg",
+  "expected": "ok"
+ },
+ {
+  "id": "m123",
+  "user": "xime_x",
+  "lang": "es",
+  "text": "juegas con control o teclado?",
+  "expected": "ok"
+ },
+ {
+  "id": "m086",
+  "user": "sol_s",
+  "lang": "en",
+  "text": "i died laughing at that fail",
+  "expected": "ok"
+ },
+ {
+  "id": "m175",
+  "user": "oli_o",
+  "lang": "es",
+  "text": "me morí de risa con ese fail",
+  "expected": "ok"
+ },
+ {
+  "id": "m091",
+  "user": "zack_z",
+  "lang": "en",
+  "text": "the other team is getting destroyed",
+  "expected": "ok"
+ },
+ {
+  "id": "m183",
+  "user": "xochi_x",
+  "lang": "es",
+  "text": "este juego es basura pero lo amo",
+  "expected": "ok"
+ },
+ {
+  "id": "m093",
+  "user": "ben_b",
+  "lang": "en",
+  "text": "i hate this level so much",
+  "expected": "ok"
+ },
+ {
+  "id": "m110",
+  "user": "kari_k",
+  "lang": "es",
+  "text": "qué audífonos usas?",
+  "expected": "ok"
+ },
+ {
+  "id": "m073",
+  "user": "promo_kid",
+  "lang": "en",
+  "text": "check out MY stream, way better than this, twitch.tv/promo_kid",
+  "expected": "spam"
+ },
+ {
+  "id": "m117",
+  "user": "rosa_r",
+  "lang": "es",
+  "text": "la música del stream está buenísima",
+  "expected": "ok"
+ },
+ {
+  "id": "m029",
+  "user": "iris_i",
+  "lang": "en",
+  "text": "brb dinner",
+  "expected": "ok"
+ },
+ {
+  "id": "m141",
+  "user": "pepe_p",
+  "lang": "es",
+  "text": "qué demonios fue esa física",
+  "expected": "ok"
+ },
+ {
+  "id": "m016",
+  "user": "zeke_z",
+  "lang": "en",
+  "text": "is the new patch any good?",
+  "expected": "ok"
+ },
+ {
+  "id": "m155",
+  "user": "efra_e",
+  "lang": "es",
+  "text": "los mods son unos inútiles",
+  "expected": "insult"
+ },
+ {
+  "id": "m085",
+  "user": "rio_r",
+  "lang": "en",
+  "text": "that combo was nasty",
+  "expected": "ok"
+ },
+ {
+  "id": "m098",
+  "user": "chuy_gamer",
+  "lang": "es",
+  "text": "qué juego es este?",
+  "expected": "ok"
+ },
+ {
+  "id": "m055",
+  "user": "kip_k",
+  "lang": "en",
+  "text": "rip the teammate who rushed",
+  "expected": "ok"
+ },
+ {
+  "id": "m140",
+  "user": "omar_o",
+  "lang": "es",
+  "text": "este juego me está matando, 12 muertes seguidas",
+  "expected": "ok"
+ },
+ {
+  "id": "m071",
+  "user": "bo_b",
+  "lang": "en",
+  "text": "gay people shouldn't be streaming this game",
+  "expected": "hate"
+ },
+ {
+  "id": "m145",
+  "user": "uli_u",
+  "lang": "es",
+  "text": "puta madre, casi",
+  "expected": "ok"
+ },
+ {
+  "id": "m081",
+  "user": "vex_v",
+  "lang": "en",
+  "text": "someone should really beat you up after stream",
+  "expected": "threat"
+ },
+ {
+  "id": "m132",
+  "user": "gera_g",
+  "lang": "es",
+  "text": "🔥🔥🔥",
+  "expected": "ok"
+ },
+ {
+  "id": "m031",
+  "user": "kobe_k",
+  "lang": "en",
+  "text": "what rank are you right now?",
+  "expected": "ok"
+ },
+ {
+  "id": "m153",
+  "user": "cesar_c",
+  "lang": "es",
+  "text": "eres una vergüenza de gamer, patético",
+  "expected": "insult"
+ },
+ {
+  "id": "m009",
+  "user": "beanpole",
+  "lang": "en",
+  "text": "PogChamp PogChamp",
+  "expected": "ok"
+ },
+ {
+  "id": "m169",
+  "user": "filtra_f",
+  "lang": "es",
+  "text": "voy a publicar tu dirección en el chat si me vuelves a banear",
+  "expected": "threat"
+ },
+ {
+  "id": "m054",
+  "user": "jax_j",
+  "lang": "en",
+  "text": "streamer really said \"trust me\" and then died",
+  "expected": "ok"
+ },
+ {
+  "id": "m135",
+  "user": "juan_j",
+  "lang": "es",
+  "text": "error de noob jaja, a todos nos pasa",
+  "expected": "ok"
+ },
+ {
+  "id": "m056",
+  "user": "lux_l",
+  "lang": "en",
+  "text": "you're so bad at this game 😂 love it",
+  "expected": "ok"
+ },
+ {
+  "id": "m103",
+  "user": "carla_c",
+  "lang": "es",
+  "text": "primera vez que te veo en vivo, me encanta",
+  "expected": "ok"
+ },
+ {
+  "id": "m012",
+  "user": "saltyseal",
+  "lang": "en",
+  "text": "how long have you been streaming today?",
+  "expected": "ok"
+ },
+ {
+  "id": "m180",
+  "user": "ubaldo_u",
+  "lang": "es",
+  "text": "al otro equipo lo están destrozando",
+  "expected": "ok"
+ },
+ {
+  "id": "m005",
+  "user": "daisy_dev",
+  "lang": "en",
+  "text": "LETS GOOO",
+  "expected": "ok"
+ },
+ {
+  "id": "m156",
+  "user": "fito_f",
+  "lang": "es",
+  "text": "la gente de ese país no debería poder jugar en línea",
+  "expected": "hate"
+ },
+ {
+  "id": "m028",
+  "user": "gus_g",
+  "lang": "en",
+  "text": "how do you get that skin?",
+  "expected": "ok"
+ },
+ {
+  "id": "m130",
+  "user": "eli_e",
+  "lang": "es",
+  "text": "deberías probar el modo difícil",
+  "expected": "ok"
+ },
+ {
+  "id": "m065",
+  "user": "vic_v",
+  "lang": "en",
+  "text": "lol you're fat and you play like it",
+  "expected": "insult"
+ },
+ {
+  "id": "m107",
+  "user": "hugo_h",
+  "lang": "es",
+  "text": "toma agüita streamer 💧",
+  "expected": "ok"
+ },
+ {
+  "id": "m008",
+  "user": "tomtom88",
+  "lang": "en",
+  "text": "first time catching the stream live, love it",
+  "expected": "ok"
+ },
+ {
+  "id": "m104",
+  "user": "diego_d",
+  "lang": "es",
+  "text": "cuánto llevas stremeando hoy?",
+  "expected": "ok"
+ },
+ {
+  "id": "m075",
+  "user": "crypto_king",
+  "lang": "en",
+  "text": "I made $5000 in one day with this crypto bot, DM me",
+  "expected": "spam"
+ },
+ {
+  "id": "m154",
+  "user": "dora_d",
+  "lang": "es",
+  "text": "jaja estás gordo y juegas igual",
+  "expected": "insult"
+ },
+ {
+  "id": "m047",
+  "user": "cody_c",
+  "lang": "en",
+  "text": "noob mistake lol, happens to everyone",
+  "expected": "ok"
+ },
+ {
+  "id": "m170",
+  "user": "rudo_r",
+  "lang": "es",
+  "text": "alguien debería partirte la cara después del stream",
+  "expected": "threat"
+ },
+ {
+  "id": "m013",
+  "user": "ivy_leaf",
+  "lang": "en",
+  "text": "that boss fight was so clean",
+  "expected": "ok"
+ },
+ {
+  "id": "m159",
+  "user": "ivan_i",
+  "lang": "es",
+  "text": "típico streamer inmigrante arruinándolo todo",
+  "expected": "hate"
+ },
+ {
+  "id": "m069",
+  "user": "zed_z",
+  "lang": "en",
+  "text": "all [religion] people are the problem, ban them",
+  "expected": "hate"
+ },
+ {
+  "id": "m172",
+  "user": "lucho_l",
+  "lang": "es",
+  "text": "chat, cómo le ponemos a la mascota nueva?",
+  "expected": "ok"
+ },
+ {
+  "id": "m010",
+  "user": "quinn_q",
+  "lang": "en",
+  "text": "can you show your keybinds later?",
+  "expected": "ok"
+ },
+ {
+  "id": "m007",
+  "user": "nora_n",
+  "lang": "en",
+  "text": "what's your sensitivity setting?",
+  "expected": "ok"
+ },
+ {
+  "id": "m084",
+  "user": "pia_p",
+  "lang": "en",
+  "text": "the lag is killing me, is it just me?",
+  "expected": "ok"
+ },
+ {
+  "id": "m051",
+  "user": "gale_g",
+  "lang": "en",
+  "text": "the enemy team is so trash today haha",
+  "expected": "ok"
+ },
+ {
+  "id": "m020",
+  "user": "milo_m",
+  "lang": "en",
+  "text": "can we get a hype train going",
+  "expected": "ok"
+ },
+ {
+  "id": "m042",
+  "user": "xan_x",
+  "lang": "en",
+  "text": "you should try the hard mode next",
+  "expected": "ok"
+ }
+]
