@@ -353,9 +353,6 @@ select {
 .msg.error {
   border-left-color: var(--muted);
 }
-.msg.own .msg-user::after {
-  content: " ·";
-}
 .dot {
   display: inline-block;
   width: 7px;
