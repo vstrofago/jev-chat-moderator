@@ -116,8 +116,33 @@ Defaults: `remove = 0.80`, `review = 0.50`. The UI keeps `review <= remove`.
 
 - **Replay (default, no key):** messages stream from `messages.json`, and each one takes
   its answer from `replay.json`. The latency shown is the recorded latency.
-- **Live (key present):** each message calls Jev from the browser. The "write your own
-  message" box is enabled only in this mode.
+- **Live (visitor's own key):** each message calls Jev from the browser. The "write your
+  own message" box is enabled only in this mode. The author's key is **only** used
+  offline by `pnpm record`; the published site never spends the author's budget.
+
+### Providers (revision 2026-09-22)
+
+Visitors can bring either kind of key:
+
+| Provider | Endpoint | Wire format |
+|---|---|---|
+| Vercel AI Gateway | `https://ai-gateway.vercel.sh/v1/evaluate`, model `typesafe-ai/jev` | `boolean` → `probability`; usage `inputTokens` |
+| TypeSafe direct | `https://api.typesafe.ai/v1/systemone`, model `jev-latest` | `noul` → `noul`; usage `input_tokens` |
+
+`jev-client.ts` takes a provider and a question set written once in a neutral form. It
+converts the questions to each wire format and normalizes the answers back.
+
+The TypeSafe API sends **no CORS headers** (verified 2026-09-22), so browsers cannot call
+it directly. To handle this:
+- `pnpm dev` proxies `/typesafe-api/*` to `api.typesafe.ai` through Vite.
+- The repo ships `proxy/worker.ts`, a ~30-line Cloudflare Worker that forwards requests
+  with the visitor's own key and adds CORS headers. Its URL is set at build time with
+  `PUBLIC_TYPESAFE_PROXY_URL`.
+- If a TypeSafe key is entered and no proxy is configured, the UI explains why and
+  suggests using a gateway key.
+
+The key is auto-detected. Gateway keys start with `vck_`; anything else is treated as a
+TypeSafe key, and the visitor can override the choice with a selector.
 
 ## UI
 
@@ -209,9 +234,6 @@ in the queue.
   Astro `base` is set to the repo name.
 - Creating the GitHub repo and pushing are done only when the user asks.
 
-## Open dependency
+## Gateway access
 
-The user's AI Gateway account currently answers `403 customer_verification_required`
-(no credit card on file). Everything except `pnpm record` and live mode can be built
-before that is fixed. Until then, `replay.json` is a clearly marked placeholder, and it is
-replaced by a real recording before publishing.
+Resolved on 2026-09-22: the author's gateway key now returns 200. `pnpm record` uses it.
