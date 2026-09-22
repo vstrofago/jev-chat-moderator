@@ -1,0 +1,24 @@
+{
+  "name": "jev-chat-moderator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Playground: TypeSafe AI's Jev moderating a simulated live-stream chat.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "record": "tsx scripts/record.ts"
+  },
+  "dependencies": {
+    "astro": "7.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
+  }
+}
