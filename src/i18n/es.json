@@ -35,7 +35,7 @@
  "stats.agreement": "Coincide con etiquetas",
  "stats.errors": "Errores",
  "live.title": "Probar en vivo",
- "live.hint": "Usa tu propia key del Vercel AI Gateway (vck_…) o de TypeSafe. Se guarda solo en este navegador y las llamadas van directo del navegador al proveedor.",
+ "live.hint": "Aquí funciona con tu propia key del Vercel AI Gateway (vck_…). Se guarda solo en este navegador y las llamadas van directo del navegador al gateway.",
  "live.key": "API key",
  "live.provider": "Proveedor",
  "live.provider.auto": "Detectar",
@@ -44,7 +44,6 @@
  "live.start": "Usar en vivo",
  "live.stop": "Volver a la repetición",
  "live.forget": "Olvidar key",
- "live.typesafeNoProxy": "La API de TypeSafe no permite llamadas desde el navegador (no envía cabeceras CORS). Usa una key del Vercel AI Gateway, corre el proyecto en local con pnpm dev, o despliega el proxy incluido en proxy/.",
  "live.authError": "El proveedor rechazó la key. Volvimos a la repetición.",
  "live.rateLimited": "Límite de uso alcanzado; los mensajes esperan en cola.",
  "compose.label": "Escribe tu propio mensaje",
@@ -75,5 +74,6 @@
  "verdict.allow": "permitir",
  "verdict.review": "revisar",
  "verdict.remove": "eliminar",
- "footer.recorded": "Repetición grabada con"
+ "footer.recorded": "Repetición grabada con",
+ "live.typesafeLocalOnly": "Las keys de TypeSafe solo funcionan con el playground corriendo en tu máquina, porque su API no acepta llamadas desde otros sitios web. Clona el repo y ejecuta: docker compose up --build (luego abre http://localhost:8080). Aquí puedes usar una key del Vercel AI Gateway."
 }

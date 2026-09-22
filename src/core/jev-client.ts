@@ -5,7 +5,7 @@ export type Provider = "gateway" | "typesafe";
 export interface ClientOptions {
   apiKey: string;
   provider: Provider;
-  /** Base URL for the TypeSafe API. Browsers need a CORS proxy here; see proxy/worker.ts. */
+  /** Base URL for the TypeSafe API. In a browser this must be a same-origin proxy (no CORS upstream). */
   typesafeBaseUrl?: string;
   fetch?: typeof fetch;
   signal?: AbortSignal;

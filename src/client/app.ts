@@ -62,11 +62,10 @@ let live: { apiKey: string; provider: Provider; controller: AbortController } | 
 let detailItem: Item | undefined;
 const queue = createQueue(4);
 
-// Browsers can't call the TypeSafe API directly (no CORS): dev uses the Vite proxy,
-// production needs PUBLIC_TYPESAFE_PROXY_URL pointing at proxy/worker.ts.
-const typesafeBaseUrl: string | undefined = import.meta.env.DEV
-  ? "/typesafe-api"
-  : import.meta.env.PUBLIC_TYPESAFE_PROXY_URL || undefined;
+// Browsers can't call the TypeSafe API directly (no CORS), so TypeSafe keys only work where a
+// same-origin proxy exists: `pnpm dev` (Vite) or the Docker image (nginx). Never on the public site.
+const typesafeBaseUrl: string | undefined =
+  import.meta.env.DEV || import.meta.env.PUBLIC_TYPESAFE_LOCAL_PROXY === "true" ? "/typesafe-api" : undefined;
 
 const pct = (p: number) => `${Math.round(p * 100)}%`;
 
@@ -316,7 +315,7 @@ function startLive(): void {
   const choice = providerSel.value;
   const provider: Provider = choice === "gateway" || choice === "typesafe" ? choice : detectProvider(apiKey);
   if (provider === "typesafe" && !typesafeBaseUrl) {
-    showNotice(t("live.typesafeNoProxy"), true);
+    showNotice(t("live.typesafeLocalOnly"), true);
     return;
   }
   safeSet(KEY_STORAGE, apiKey);

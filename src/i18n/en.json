@@ -35,7 +35,7 @@
  "stats.agreement": "Matches labels",
  "stats.errors": "Errors",
  "live.title": "Try it live",
- "live.hint": "Use your own Vercel AI Gateway (vck_…) or TypeSafe key. It is stored only in this browser, and calls go straight from your browser to the provider.",
+ "live.hint": "Works here with your own Vercel AI Gateway key (vck_…). It is stored only in this browser, and calls go straight from your browser to the gateway.",
  "live.key": "API key",
  "live.provider": "Provider",
  "live.provider.auto": "Detect",
@@ -44,7 +44,6 @@
  "live.start": "Go live",
  "live.stop": "Back to replay",
  "live.forget": "Forget key",
- "live.typesafeNoProxy": "The TypeSafe API doesn't allow browser calls (it sends no CORS headers). Use a Vercel AI Gateway key, run the project locally with pnpm dev, or deploy the proxy included in proxy/.",
  "live.authError": "The provider rejected the key. Switched back to replay.",
  "live.rateLimited": "Rate limited; messages are waiting in the queue.",
  "compose.label": "Write your own message",
@@ -75,5 +74,6 @@
  "verdict.allow": "allow",
  "verdict.review": "review",
  "verdict.remove": "remove",
- "footer.recorded": "Replay recorded with"
+ "footer.recorded": "Replay recorded with",
+ "live.typesafeLocalOnly": "TypeSafe keys only work with the playground running on your machine, because their API doesn't accept calls from other websites. Clone the repo and run: docker compose up --build (then open http://localhost:8080). Here you can use a Vercel AI Gateway key."
 }

@@ -132,14 +132,17 @@ Visitors can bring either kind of key:
 `jev-client.ts` takes a provider and a question set written once in a neutral form. It
 converts the questions to each wire format and normalizes the answers back.
 
-The TypeSafe API sends **no CORS headers** (verified 2026-09-22), so browsers cannot call
-it directly. To handle this:
-- `pnpm dev` proxies `/typesafe-api/*` to `api.typesafe.ai` through Vite.
-- The repo ships `proxy/worker.ts`, a ~30-line Cloudflare Worker that forwards requests
-  with the visitor's own key and adds CORS headers. Its URL is set at build time with
-  `PUBLIC_TYPESAFE_PROXY_URL`.
-- If a TypeSafe key is entered and no proxy is configured, the UI explains why and
-  suggests using a gateway key.
+The TypeSafe API sends **no CORS headers** (verified 2026-09-22), so browsers cannot call it
+from another origin. Revision 2 (2026-09-22), replacing the earlier plan for a Cloudflare
+proxy:
+- The **public site supports Vercel AI Gateway keys only**. If a visitor picks TypeSafe
+  there, a notice explains how to run the playground locally with Docker.
+- **Local run:** `docker compose up --build` builds the site with
+  `PUBLIC_TYPESAFE_LOCAL_PROXY=true` and serves it with nginx. nginx forwards
+  `/typesafe-api/v1/systemone` (only that endpoint) to `api.typesafe.ai`. `pnpm dev` does
+  the same through Vite.
+- No cloud proxy is shipped: visitor keys should never pass through the author's
+  infrastructure.
 
 The key is auto-detected. Gateway keys start with `vck_`; anything else is treated as a
 TypeSafe key, and the visitor can override the choice with a selector.

@@ -23,16 +23,30 @@ and every message on screen is re-evaluated instantly, without calling Jev again
   (English and Spanish; normal, ambiguous and abusive). Each message is shown with the
   answer Jev actually gave when it was recorded, including its real latency. No key is
   needed, and nobody's budget is spent.
-- **Live mode (bring your own key).** Paste your own Vercel AI Gateway key (`vck_…`) or
-  TypeSafe key. The key is stored only in your browser, and calls go straight from your
-  browser to the provider. In live mode you can also type your own messages.
+- **Live mode (bring your own key).** Paste your own Vercel AI Gateway key (`vck_…`). The
+  key is stored only in your browser, and calls go straight from your browser to the
+  gateway. In live mode you can also type your own messages.
 
-| Key | Works in the browser? |
-|---|---|
-| Vercel AI Gateway (`vck_…`) | Yes, the gateway allows cross-origin calls. |
-| TypeSafe (`api.typesafe.ai`) | Only through a proxy, because the TypeSafe API sends no CORS headers. `pnpm dev` proxies it for you. For a deployed site, see [`proxy/`](proxy/worker.ts). |
+| Key | Public site | Running locally (Docker or `pnpm dev`) |
+|---|---|---|
+| Vercel AI Gateway (`vck_…`) | ✅ | ✅ |
+| TypeSafe (`api.typesafe.ai`) | ❌ the TypeSafe API sends no CORS headers, so browsers can't call it from another site | ✅ a local proxy forwards your calls; your key only ever leaves your machine to reach TypeSafe |
 
-## Run it
+## Run it locally with Docker
+
+No Node needed. Both kinds of key work here, including TypeSafe keys:
+
+```bash
+git clone https://github.com/vstrofago/jev-chat-moderator
+cd jev-chat-moderator
+docker compose up --build
+# open http://localhost:8080
+```
+
+nginx serves the site and forwards `/typesafe-api/v1/systemone` to `api.typesafe.ai`, and
+nothing else. It never sees or stores a key of its own.
+
+## Develop
 
 ```bash
 pnpm install
@@ -63,16 +77,14 @@ src/core/      pure TypeScript, no DOM: reusable outside this site
 src/client/    the page's behaviour (vanilla TS)
 src/data/      scripted messages + recorded replay
 scripts/       record.ts
-proxy/         optional Cloudflare Worker that adds CORS for the TypeSafe API
+Dockerfile, nginx.conf, docker-compose.yml   local run with a same-origin TypeSafe proxy
 ```
 
 ## Deploy
 
 A push to `main` deploys to GitHub Pages through `.github/workflows/deploy.yml`. Enable
-Pages in the repo settings, with source set to *GitHub Actions*. To support TypeSafe keys
-on the deployed site:
-1. Deploy `proxy/` with `npx wrangler deploy`, after setting `ALLOWED_ORIGIN`.
-2. Set the repository variable `PUBLIC_TYPESAFE_PROXY_URL` to the Worker's URL.
+Pages in the repo settings, with source set to *GitHub Actions*. The public site supports
+Vercel AI Gateway keys only; TypeSafe keys are for the local Docker run.
 
 ## Caveats
 
@@ -90,10 +102,12 @@ toma el código con los umbrales que tú ajustas. La interfaz está en español 
 
 - **Repetición grabada:** la versión publicada usa respuestas reales de Jev grabadas una
   vez. No necesita key y no gasta presupuesto de nadie.
-- **En vivo:** pega tu propia key del Vercel AI Gateway o de TypeSafe. Se guarda solo en
-  tu navegador. Las keys de TypeSafe necesitan el proxy de `proxy/`, porque su API no
-  permite llamadas desde el navegador.
-- **Correr en local:** `pnpm install && pnpm dev`.
+- **En vivo:** en la versión publicada, pega tu propia key del Vercel AI Gateway. Se guarda
+  solo en tu navegador.
+- **Con key de TypeSafe:** su API no acepta llamadas desde otros sitios web, así que corre
+  el playground en tu máquina con `docker compose up --build` y abre
+  `http://localhost:8080`. Ahí funcionan ambas keys.
+- **Desarrollo:** `pnpm install && pnpm dev`.
 - **Regrabar:** `AI_GATEWAY_API_KEY=vck_... pnpm record`.
 
 ## License

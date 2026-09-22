@@ -30,8 +30,6 @@ jobs:
         env:
           SITE: https://${{ github.repository_owner }}.github.io
           BASE_PATH: /${{ github.event.repository.name }}
-          # Optional: URL of a deployed proxy/worker.ts so TypeSafe keys work in the browser.
-          PUBLIC_TYPESAFE_PROXY_URL: ${{ vars.PUBLIC_TYPESAFE_PROXY_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
