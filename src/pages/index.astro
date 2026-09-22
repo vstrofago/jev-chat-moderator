@@ -1,3 +1,166 @@
 ---
+import "../styles/global.css";
+import es from "../i18n/es.json";
+
+// Spanish is rendered at build time; the client swaps strings for English on demand.
+const t = (key: keyof typeof es) => es[key];
+const repo = "https://github.com/vstrofago/jev-chat-moderator";
 ---
-<html lang="es"><head><meta charset="utf-8" /><title>Jev Chat Moderator</title></head><body></body></html>
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-i18n="meta.title">{t("meta.title")}</title>
+    <meta name="description" content={t("meta.description")} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <h1>Jev Chat Moderator</h1>
+          <p class="muted" data-i18n="header.tagline">{t("header.tagline")}</p>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+
+    <p class="intro" data-i18n="intro.text">{t("intro.text")}</p>
+
+    <main class="layout">
+      <section class="card chat-card" aria-labelledby="chat-title">
+        <div class="chat-head">
+          <div class="chat-title-row">
+            <h2 id="chat-title" data-i18n="chat.title">{t("chat.title")}</h2>
+            <span id="mode-badge" class="badge" data-i18n="mode.replay">{t("mode.replay")}</span>
+          </div>
+          <div class="chat-controls">
+            <button type="button" id="play" class="btn btn-primary" data-i18n="chat.play">{t("chat.play")}</button>
+            <button type="button" id="restart" class="btn" data-i18n="chat.restart">{t("chat.restart")}</button>
+            <label class="inline-field">
+              <span data-i18n="chat.speed">{t("chat.speed")}</span>
+              <select id="speed">
+                <option value="1800" data-i18n="chat.speed.slow">{t("chat.speed.slow")}</option>
+                <option value="900" selected data-i18n="chat.speed.normal">{t("chat.speed.normal")}</option>
+                <option value="400" data-i18n="chat.speed.fast">{t("chat.speed.fast")}</option>
+                <option value="120" data-i18n="chat.speed.hype">{t("chat.speed.hype")}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <ol id="chat" class="chat" aria-live="polite">
+          <li class="chat-empty muted" data-i18n="chat.empty">{t("chat.empty")}</li>
+        </ol>
+        <form id="compose" class="compose">
+          <label for="compose-input" class="sr-only" data-i18n="compose.label">{t("compose.label")}</label>
+          <input
+            id="compose-input"
+            maxlength="500"
+            autocomplete="off"
+            disabled
+            data-i18n-placeholder="compose.locked"
+            placeholder={t("compose.locked")}
+          />
+          <button type="submit" class="btn btn-primary" disabled data-i18n="compose.send">{t("compose.send")}</button>
+        </form>
+      </section>
+
+      <aside class="side">
+        <section class="card" aria-labelledby="policy-title">
+          <h2 id="policy-title" data-i18n="policy.title">{t("policy.title")}</h2>
+          <p class="muted small" data-i18n="policy.hint">{t("policy.hint")}</p>
+          <div class="slider">
+            <label for="remove-threshold"><span data-i18n="policy.remove">{t("policy.remove")}</span> <output id="remove-value" class="pill pill-remove">0.80</output></label>
+            <input id="remove-threshold" type="range" min="0.05" max="1" step="0.01" value="0.8" />
+          </div>
+          <div class="slider">
+            <label for="review-threshold"><span data-i18n="policy.review">{t("policy.review")}</span> <output id="review-value" class="pill pill-review">0.50</output></label>
+            <input id="review-threshold" type="range" min="0.05" max="1" step="0.01" value="0.5" />
+          </div>
+          <div class="scale" aria-hidden="true">
+            <span class="scale-allow"></span><span class="scale-review"></span><span class="scale-remove"></span>
+          </div>
+          <p class="muted small" data-i18n="policy.legend">{t("policy.legend")}</p>
+        </section>
+
+        <section class="card" aria-labelledby="stats-title">
+          <h2 id="stats-title" data-i18n="stats.title">{t("stats.title")}</h2>
+          <dl class="stats">
+            <div><dt data-i18n="stats.processed">{t("stats.processed")}</dt><dd id="s-processed">0</dd></div>
+            <div><dt data-i18n="stats.removed">{t("stats.removed")}</dt><dd id="s-removed">0</dd></div>
+            <div><dt data-i18n="stats.review">{t("stats.review")}</dt><dd id="s-review">0</dd></div>
+            <div><dt data-i18n="stats.latency">{t("stats.latency")}</dt><dd id="s-latency">–</dd></div>
+            <div><dt data-i18n="stats.cost">{t("stats.cost")}</dt><dd id="s-cost">$0</dd></div>
+            <div><dt data-i18n="stats.agreement">{t("stats.agreement")}</dt><dd id="s-agreement">–</dd></div>
+            <div id="s-errors-row" hidden><dt data-i18n="stats.errors">{t("stats.errors")}</dt><dd id="s-errors">0</dd></div>
+          </dl>
+        </section>
+
+        <section class="card" aria-labelledby="live-title">
+          <h2 id="live-title" data-i18n="live.title">{t("live.title")}</h2>
+          <p class="muted small" data-i18n="live.hint">{t("live.hint")}</p>
+          <form id="live-form" class="live-form">
+            <label class="field">
+              <span data-i18n="live.key">{t("live.key")}</span>
+              <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="vck_…" />
+            </label>
+            <label class="field">
+              <span data-i18n="live.provider">{t("live.provider")}</span>
+              <select id="provider">
+                <option value="auto" data-i18n="live.provider.auto">{t("live.provider.auto")}</option>
+                <option value="gateway" data-i18n="live.provider.gateway">{t("live.provider.gateway")}</option>
+                <option value="typesafe" data-i18n="live.provider.typesafe">{t("live.provider.typesafe")}</option>
+              </select>
+            </label>
+            <div class="row">
+              <button type="submit" id="live-toggle" class="btn btn-primary" data-i18n="live.start">{t("live.start")}</button>
+              <button type="button" id="forget-key" class="btn btn-ghost" data-i18n="live.forget">{t("live.forget")}</button>
+            </div>
+            <p id="live-notice" class="notice" role="status" hidden></p>
+          </form>
+        </section>
+
+        <section class="card about" aria-labelledby="about-title">
+          <h2 id="about-title" data-i18n="about.title">{t("about.title")}</h2>
+          <p class="small" data-i18n="about.p1">{t("about.p1")}</p>
+          <p class="small" data-i18n="about.p2">{t("about.p2")}</p>
+          <p class="small muted" data-i18n="about.p3">{t("about.p3")}</p>
+          <a class="small" href={repo} data-i18n="about.source">{t("about.source")}</a>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="site-footer muted small">
+      <span data-i18n="footer.recorded">{t("footer.recorded")}</span> <code id="recorded-model"></code> · <span id="recorded-at"></span>
+    </footer>
+
+    <dialog id="detail" class="detail" aria-labelledby="detail-title">
+      <div class="detail-head">
+        <h2 id="detail-title" data-i18n="detail.title">{t("detail.title")}</h2>
+        <button type="button" class="btn btn-ghost" id="detail-close" data-i18n="detail.close">{t("detail.close")}</button>
+      </div>
+      <blockquote id="detail-message"></blockquote>
+      <div id="detail-body"></div>
+      <details>
+        <summary data-i18n="detail.raw">{t("detail.raw")}</summary>
+        <pre id="detail-raw"></pre>
+      </details>
+    </dialog>
+
+    <script>
+      import "../client/app";
+    </script>
+  </body>
+</html>

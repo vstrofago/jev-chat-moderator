@@ -9,6 +9,8 @@ export interface ClientOptions {
   typesafeBaseUrl?: string;
   fetch?: typeof fetch;
   signal?: AbortSignal;
+  /** Give up on a request after this long (default 15 s) so nothing waits forever. */
+  timeoutMs?: number;
 }
 
 export type Answer =
@@ -85,20 +87,29 @@ export async function evaluate(
     o.provider === "gateway" ? GATEWAY_URL : `${(o.typesafeBaseUrl ?? TYPESAFE_BASE_URL).replace(/\/$/, "")}/v1/systemone`;
   const model = o.provider === "gateway" ? GATEWAY_MODEL : TYPESAFE_MODEL;
 
+  const timeoutMs = o.timeoutMs ?? 15_000;
+  const timeout = new AbortController();
+  const timer = setTimeout(() => timeout.abort(), timeoutMs);
+  const signal = o.signal ? AbortSignal.any([o.signal, timeout.signal]) : timeout.signal;
+
   let res: Response;
+  let text: string;
   try {
     res = await doFetch(url, {
       method: "POST",
       headers: { Authorization: `Bearer ${o.apiKey.trim()}`, "Content-Type": "application/json" },
       body: JSON.stringify({ model, state, questions: toWire(questions, o.provider) }),
-      signal: o.signal,
+      signal,
     });
+    text = await res.text();
   } catch (e) {
-    if ((e as Error)?.name === "AbortError") throw e;
+    if (o.signal?.aborted) throw e;
+    if (timeout.signal.aborted) throw new GatewayError(`Request timed out after ${timeoutMs} ms`);
     throw new GatewayError(`Network error: ${(e as Error)?.message ?? e}`);
+  } finally {
+    clearTimeout(timer);
   }
 
-  const text = await res.text();
   let body: any;
   try {
     body = text ? JSON.parse(text) : undefined;

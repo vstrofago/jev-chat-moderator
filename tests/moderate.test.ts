@@ -16,6 +16,12 @@ function fakeFetch(status: number, body: unknown, headers: Record<string, string
   return { fn, calls };
 }
 
+/** A fetch that never answers, only rejects when its signal aborts. */
+const hangingFetch = ((_url: string, init: RequestInit) =>
+  new Promise((_resolve, reject) => {
+    init.signal?.addEventListener("abort", () => reject(new DOMException("aborted", "AbortError")));
+  })) as unknown as typeof fetch;
+
 const gatewayBody = {
   model: "typesafe-ai/jev",
   answers: {
@@ -138,6 +144,20 @@ describe("errors", () => {
       throw new TypeError("Failed to fetch");
     }) as unknown as typeof fetch;
     await expect(moderate("x", opts(fn))).rejects.toBeInstanceOf(GatewayError);
+  });
+
+  it("throws GatewayError when the provider does not answer in time", async () => {
+    const err = await moderate("x", { ...opts(hangingFetch), timeoutMs: 20 }).catch((e) => e);
+    expect(err).toBeInstanceOf(GatewayError);
+    expect(err.message).toMatch(/timed out/i);
+  });
+
+  it("still lets the caller abort without turning it into a GatewayError", async () => {
+    const controller = new AbortController();
+    const pending = moderate("x", { ...opts(hangingFetch), signal: controller.signal });
+    controller.abort();
+    const err = await pending.catch((e) => e);
+    expect(err.name).toBe("AbortError");
   });
 
   it("throws GatewayError when an answer is missing", async () => {

@@ -1,0 +1,7 @@
+name = "jev-typesafe-proxy"
+main = "worker.ts"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Change to the origin that serves the playground.
+ALLOWED_ORIGIN = "https://vstrofago.github.io"
