@@ -1,1 +1,8654 @@
-{"recordedAt":"","model":"placeholder","results":{}}
+{
+ "recordedAt": "2026-09-22T23:03:00.779Z",
+ "model": "typesafe-ai/jev",
+ "results": {
+  "m165": {
+   "offensive": 0.02,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0.44,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.56,
+    "threat": 0
+   },
+   "confidence": 0.45,
+   "latencyMs": 666,
+   "inputTokens": 572,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "ok": 0.44,
+       "threat": 0,
+       "spam": 0.56,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 0.45
+     }
+    },
+    "usage": {
+     "inputTokens": 572,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.45
+      }
+     }
+    }
+   }
+  },
+  "m067": {
+   "offensive": 0.94,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 1,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 700,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.94
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "insult": 0,
+       "threat": 0,
+       "spam": 0,
+       "hate": 1,
+       "ok": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m078": {
+   "offensive": 0.96,
+   "category": "threat",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 1
+   },
+   "confidence": 1,
+   "latencyMs": 731,
+   "inputTokens": 561,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.96
+     },
+     "category": {
+      "type": "choice",
+      "choice": "threat",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "ok": 0,
+       "threat": 1,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 561,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m168": {
+   "offensive": 0.95,
+   "category": "threat",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 1
+   },
+   "confidence": 1,
+   "latencyMs": 731,
+   "inputTokens": 562,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.95
+     },
+     "category": {
+      "type": "choice",
+      "choice": "threat",
+      "probabilities": {
+       "insult": 0,
+       "spam": 0,
+       "ok": 0,
+       "threat": 1,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 562,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m074": {
+   "offensive": 0.02,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 1,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 267,
+   "inputTokens": 561,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "hate": 0,
+       "spam": 1,
+       "insult": 0,
+       "threat": 0,
+       "ok": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 561,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m126": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 284,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "hate": 0,
+       "ok": 1,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m174": {
+   "offensive": 0.25,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.66,
+    "insult": 0.34,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.57,
+   "latencyMs": 311,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.25
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "spam": 0,
+       "insult": 0.34,
+       "ok": 0.66,
+       "threat": 0
+      },
+      "confidence": 0.57
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.57
+      }
+     }
+    }
+   }
+  },
+  "m079": {
+   "offensive": 0.96,
+   "category": "threat",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 1
+   },
+   "confidence": 1,
+   "latencyMs": 390,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.96
+     },
+     "category": {
+      "type": "choice",
+      "choice": "threat",
+      "probabilities": {
+       "spam": 0,
+       "threat": 1,
+       "insult": 0,
+       "ok": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m022": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 314,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "hate": 0,
+       "insult": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m157": {
+   "offensive": 0.98,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 1,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 222,
+   "inputTokens": 562,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.98
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "ok": 0,
+       "threat": 0,
+       "spam": 0,
+       "hate": 1,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 562,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m148": {
+   "offensive": 0.97,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 391,
+   "inputTokens": 565,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.97
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "hate": 0,
+       "spam": 0,
+       "ok": 0,
+       "insult": 1,
+       "threat": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 565,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m045": {
+   "offensive": 0.03,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 334,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.03
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "spam": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m052": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 307,
+   "inputTokens": 561,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "threat": 0,
+       "ok": 1,
+       "spam": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 561,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m182": {
+   "offensive": 0.05,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.97,
+    "insult": 0.01,
+    "hate": 0.02,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.97,
+   "latencyMs": 284,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.05
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0.02,
+       "threat": 0,
+       "spam": 0,
+       "ok": 0.97,
+       "insult": 0.01
+      },
+      "confidence": 0.97
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.97
+      }
+     }
+    }
+   }
+  },
+  "m099": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 251,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "spam": 0,
+       "ok": 1,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m002": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 281,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m001": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 282,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "ok": 1,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m125": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 281,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "ok": 1,
+       "hate": 0,
+       "threat": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m144": {
+   "offensive": 0.08,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.97,
+    "insult": 0.03,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.97,
+   "latencyMs": 287,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.08
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0.03,
+       "spam": 0,
+       "ok": 0.97,
+       "hate": 0,
+       "threat": 0
+      },
+      "confidence": 0.97
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.97
+      }
+     }
+    }
+   }
+  },
+  "m087": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 384,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "spam": 0,
+       "ok": 1,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m063": {
+   "offensive": 0.96,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 290,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.96
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "insult": 1,
+       "threat": 0,
+       "ok": 0,
+       "spam": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m139": {
+   "offensive": 0.51,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0.28,
+    "insult": 0.72,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.64,
+   "latencyMs": 275,
+   "inputTokens": 558,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.51
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "hate": 0,
+       "insult": 0.72,
+       "threat": 0,
+       "spam": 0,
+       "ok": 0.28
+      },
+      "confidence": 0.64
+     }
+    },
+    "usage": {
+     "inputTokens": 558,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.64
+      }
+     }
+    }
+   }
+  },
+  "m033": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 285,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "spam": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m162": {
+   "offensive": 0.15,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0.02,
+    "insult": 0.03,
+    "hate": 0,
+    "spam": 0.95,
+    "threat": 0
+   },
+   "confidence": 0.94,
+   "latencyMs": 273,
+   "inputTokens": 564,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.15
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0.95,
+       "hate": 0,
+       "insult": 0.03,
+       "ok": 0.02
+      },
+      "confidence": 0.94
+     }
+    },
+    "usage": {
+     "inputTokens": 564,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.94
+      }
+     }
+    }
+   }
+  },
+  "m119": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 298,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "threat": 0,
+       "ok": 1,
+       "hate": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m049": {
+   "offensive": 0.08,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 234,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.08
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "insult": 0,
+       "ok": 1,
+       "threat": 0,
+       "spam": 0
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m173": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 333,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "insult": 0,
+       "threat": 0,
+       "spam": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m039": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 548,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "threat": 0,
+       "spam": 0,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m102": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.99,
+    "insult": 0.01,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 267,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "hate": 0,
+       "ok": 0.99,
+       "insult": 0.01
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m050": {
+   "offensive": 0.53,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0.1,
+    "insult": 0.9,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.87,
+   "latencyMs": 719,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.53
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "ok": 0.1,
+       "insult": 0.9,
+       "hate": 0
+      },
+      "confidence": 0.87
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.87
+      }
+     }
+    }
+   }
+  },
+  "m092": {
+   "offensive": 0.31,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.53,
+    "insult": 0.47,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.42,
+   "latencyMs": 346,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.31
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "hate": 0,
+       "insult": 0.47,
+       "ok": 0.53
+      },
+      "confidence": 0.42
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.42
+      }
+     }
+    }
+   }
+  },
+  "m077": {
+   "offensive": 0.03,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0.02,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.98,
+    "threat": 0
+   },
+   "confidence": 0.98,
+   "latencyMs": 309,
+   "inputTokens": 561,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.03
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "hate": 0,
+       "insult": 0,
+       "ok": 0.02,
+       "threat": 0,
+       "spam": 0.98
+      },
+      "confidence": 0.98
+     }
+    },
+    "usage": {
+     "inputTokens": 561,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.98
+      }
+     }
+    }
+   }
+  },
+  "m108": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 829,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "spam": 0,
+       "insult": 0,
+       "ok": 1,
+       "threat": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m116": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 324,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m043": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 454,
+   "inputTokens": 552,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "insult": 0,
+       "ok": 1,
+       "hate": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 552,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m034": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 337,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "ok": 1,
+       "threat": 0,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m015": {
+   "offensive": 0.05,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.98,
+    "insult": 0.02,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.97,
+   "latencyMs": 332,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.05
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "ok": 0.98,
+       "hate": 0,
+       "insult": 0.02
+      },
+      "confidence": 0.97
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.97
+      }
+     }
+    }
+   }
+  },
+  "m097": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 507,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "hate": 0,
+       "threat": 0,
+       "spam": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m138": {
+   "offensive": 0.14,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.92,
+    "insult": 0.08,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.89,
+   "latencyMs": 382,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.14
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0.08,
+       "ok": 0.92,
+       "threat": 0,
+       "spam": 0,
+       "hate": 0
+      },
+      "confidence": 0.89
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.89
+      }
+     }
+    }
+   }
+  },
+  "m011": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 271,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m129": {
+   "offensive": 0.03,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 490,
+   "inputTokens": 551,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.03
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "threat": 0,
+       "spam": 0,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 551,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m095": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 367,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "threat": 0,
+       "hate": 0,
+       "spam": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m150": {
+   "offensive": 0.96,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 387,
+   "inputTokens": 562,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.96
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "hate": 0,
+       "threat": 0,
+       "ok": 0,
+       "spam": 0,
+       "insult": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 562,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m149": {
+   "offensive": 0.93,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 1001,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.93
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "ok": 0,
+       "hate": 0,
+       "insult": 1,
+       "spam": 0,
+       "threat": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m017": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 954,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "ok": 1,
+       "spam": 0,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m062": {
+   "offensive": 0.87,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0.01,
+    "insult": 0.99,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 554,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.87
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "hate": 0,
+       "threat": 0,
+       "ok": 0.01,
+       "spam": 0,
+       "insult": 0.99
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m114": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 446,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "insult": 0,
+       "threat": 0,
+       "hate": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m115": {
+   "offensive": 0.03,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 301,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.03
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "insult": 0,
+       "spam": 0,
+       "hate": 0,
+       "ok": 1
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m019": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 399,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m003": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 304,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "spam": 0,
+       "ok": 1,
+       "insult": 0,
+       "threat": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m128": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 399,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "hate": 0,
+       "ok": 1,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m060": {
+   "offensive": 0.95,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 378,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.95
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "insult": 1,
+       "threat": 0,
+       "spam": 0,
+       "ok": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m142": {
+   "offensive": 0.47,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.56,
+    "insult": 0.43,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0.01
+   },
+   "confidence": 0.44,
+   "latencyMs": 269,
+   "inputTokens": 561,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.47
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "spam": 0,
+       "insult": 0.43,
+       "ok": 0.56,
+       "threat": 0.01
+      },
+      "confidence": 0.44
+     }
+    },
+    "usage": {
+     "inputTokens": 561,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.44
+      }
+     }
+    }
+   }
+  },
+  "m025": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 310,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m109": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.96,
+    "insult": 0.04,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.95,
+   "latencyMs": 414,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "insult": 0.04,
+       "threat": 0,
+       "hate": 0,
+       "ok": 0.96
+      },
+      "confidence": 0.95
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.95
+      }
+     }
+    }
+   }
+  },
+  "m023": {
+   "offensive": 0.09,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 571,
+   "inputTokens": 550,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.09
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 550,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m066": {
+   "offensive": 0.95,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 315,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.95
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "ok": 0,
+       "threat": 0,
+       "spam": 0,
+       "hate": 0,
+       "insult": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m100": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.94,
+    "insult": 0.01,
+    "hate": 0.01,
+    "spam": 0.01,
+    "threat": 0.03
+   },
+   "confidence": 0.94,
+   "latencyMs": 602,
+   "inputTokens": 552,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.94,
+       "spam": 0.01,
+       "threat": 0.03,
+       "insult": 0.01,
+       "hate": 0.01
+      },
+      "confidence": 0.94
+     }
+    },
+    "usage": {
+     "inputTokens": 552,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.94
+      }
+     }
+    }
+   }
+  },
+  "m026": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 271,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "hate": 0,
+       "threat": 0,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m178": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 360,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "ok": 1,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m133": {
+   "offensive": 0.21,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.74,
+    "insult": 0.25,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0.01
+   },
+   "confidence": 0.67,
+   "latencyMs": 403,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.21
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.74,
+       "threat": 0.01,
+       "spam": 0,
+       "hate": 0,
+       "insult": 0.25
+      },
+      "confidence": 0.67
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.67
+      }
+     }
+    }
+   }
+  },
+  "m158": {
+   "offensive": 0.98,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 1,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 567,
+   "inputTokens": 563,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.98
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "ok": 0,
+       "threat": 0,
+       "spam": 0,
+       "insult": 0,
+       "hate": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 563,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m134": {
+   "offensive": 0.09,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 252,
+   "inputTokens": 549,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.09
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "ok": 1,
+       "threat": 0,
+       "hate": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 549,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m048": {
+   "offensive": 0.08,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.96,
+    "insult": 0.04,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.94,
+   "latencyMs": 392,
+   "inputTokens": 566,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.08
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "ok": 0.96,
+       "insult": 0.04,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 0.94
+     }
+    },
+    "usage": {
+     "inputTokens": 566,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.94
+      }
+     }
+    }
+   }
+  },
+  "m152": {
+   "offensive": 0.95,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 581,
+   "inputTokens": 563,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.95
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "threat": 0,
+       "hate": 0,
+       "ok": 0,
+       "insult": 1,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 563,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m046": {
+   "offensive": 0.22,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.87,
+    "insult": 0.13,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.83,
+   "latencyMs": 233,
+   "inputTokens": 550,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.22
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0.13,
+       "threat": 0,
+       "spam": 0,
+       "ok": 0.87,
+       "hate": 0
+      },
+      "confidence": 0.83
+     }
+    },
+    "usage": {
+     "inputTokens": 550,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.83
+      }
+     }
+    }
+   }
+  },
+  "m096": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 424,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "spam": 0,
+       "hate": 0,
+       "ok": 1,
+       "threat": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m030": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 490,
+   "inputTokens": 552,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "ok": 1,
+       "threat": 0,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 552,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m160": {
+   "offensive": 0.95,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 1,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 444,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.95
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "insult": 0,
+       "ok": 0,
+       "threat": 0,
+       "hate": 1,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m021": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 656,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "threat": 0,
+       "ok": 1,
+       "hate": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m163": {
+   "offensive": 0.02,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 1,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 549,
+   "inputTokens": 562,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "insult": 0,
+       "ok": 0,
+       "spam": 1,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 562,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m072": {
+   "offensive": 0.02,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 1,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 581,
+   "inputTokens": 563,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "hate": 0,
+       "ok": 0,
+       "threat": 0,
+       "insult": 0,
+       "spam": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 563,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m058": {
+   "offensive": 0.98,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 310,
+   "inputTokens": 558,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.98
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 1,
+       "threat": 0,
+       "ok": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 558,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m136": {
+   "offensive": 0.11,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.59,
+    "insult": 0.26,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0.15
+   },
+   "confidence": 0.49,
+   "latencyMs": 370,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.11
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0.15,
+       "ok": 0.59,
+       "insult": 0.26,
+       "hate": 0,
+       "spam": 0
+      },
+      "confidence": 0.49
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.49
+      }
+     }
+    }
+   }
+  },
+  "m137": {
+   "offensive": 0.21,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.91,
+    "insult": 0.09,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.89,
+   "latencyMs": 343,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.21
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "threat": 0,
+       "ok": 0.91,
+       "spam": 0,
+       "insult": 0.09
+      },
+      "confidence": 0.89
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.89
+      }
+     }
+    }
+   }
+  },
+  "m061": {
+   "offensive": 0.94,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 301,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.94
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "insult": 1,
+       "spam": 0,
+       "ok": 0,
+       "hate": 0,
+       "threat": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m083": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 658,
+   "inputTokens": 558,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "ok": 1,
+       "threat": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 558,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m179": {
+   "offensive": 0.28,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.63,
+    "insult": 0.37,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.53,
+   "latencyMs": 318,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.28
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "hate": 0,
+       "ok": 0.63,
+       "insult": 0.37
+      },
+      "confidence": 0.53
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.53
+      }
+     }
+    }
+   }
+  },
+  "m105": {
+   "offensive": 0.38,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0.45,
+    "insult": 0.55,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.44,
+   "latencyMs": 234,
+   "inputTokens": 552,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.38
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "ok": 0.45,
+       "hate": 0,
+       "insult": 0.55
+      },
+      "confidence": 0.44
+     }
+    },
+    "usage": {
+     "inputTokens": 552,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.44
+      }
+     }
+    }
+   }
+  },
+  "m032": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 575,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "hate": 0,
+       "threat": 0,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m184": {
+   "offensive": 0.35,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.65,
+    "insult": 0.34,
+    "hate": 0,
+    "spam": 0.01,
+    "threat": 0
+   },
+   "confidence": 0.56,
+   "latencyMs": 674,
+   "inputTokens": 562,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.35
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "hate": 0,
+       "insult": 0.34,
+       "ok": 0.65,
+       "spam": 0.01
+      },
+      "confidence": 0.56
+     }
+    },
+    "usage": {
+     "inputTokens": 562,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.56
+      }
+     }
+    }
+   }
+  },
+  "m040": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 344,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "ok": 1,
+       "hate": 0,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m164": {
+   "offensive": 0.02,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 1,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 328,
+   "inputTokens": 570,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "spam": 1,
+       "hate": 0,
+       "ok": 0,
+       "threat": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 570,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m004": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 347,
+   "inputTokens": 552,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "spam": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 552,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m120": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 291,
+   "inputTokens": 558,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "hate": 0,
+       "threat": 0,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 558,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m118": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.99,
+    "insult": 0.01,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.98,
+   "latencyMs": 268,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "insult": 0.01,
+       "ok": 0.99,
+       "threat": 0,
+       "spam": 0
+      },
+      "confidence": 0.98
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.98
+      }
+     }
+    }
+   }
+  },
+  "m082": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 272,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "spam": 0,
+       "ok": 1,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m089": {
+   "offensive": 0.1,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.95,
+    "insult": 0.05,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.94,
+   "latencyMs": 711,
+   "inputTokens": 551,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.1
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0.05,
+       "ok": 0.95,
+       "hate": 0,
+       "threat": 0,
+       "spam": 0
+      },
+      "confidence": 0.94
+     }
+    },
+    "usage": {
+     "inputTokens": 551,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.94
+      }
+     }
+    }
+   }
+  },
+  "m014": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 6560,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "ok": 1,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m080": {
+   "offensive": 0.85,
+   "category": "threat",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 1
+   },
+   "confidence": 1,
+   "latencyMs": 903,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.85
+     },
+     "category": {
+      "type": "choice",
+      "choice": "threat",
+      "probabilities": {
+       "ok": 0,
+       "spam": 0,
+       "threat": 1,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m122": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 399,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "insult": 0,
+       "spam": 0,
+       "hate": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m146": {
+   "offensive": 0.88,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 280,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.88
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "insult": 1,
+       "threat": 0,
+       "hate": 0,
+       "ok": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m057": {
+   "offensive": 0.95,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 567,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.95
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "hate": 0,
+       "insult": 1,
+       "ok": 0,
+       "spam": 0,
+       "threat": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m166": {
+   "offensive": 0.04,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0.02,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.98,
+    "threat": 0
+   },
+   "confidence": 0.97,
+   "latencyMs": 344,
+   "inputTokens": 562,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "spam": 0.98,
+       "insult": 0,
+       "ok": 0.02,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 0.97
+     }
+    },
+    "usage": {
+     "inputTokens": 562,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.97
+      }
+     }
+    }
+   }
+  },
+  "m024": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 322,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "threat": 0,
+       "spam": 0,
+       "hate": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m147": {
+   "offensive": 0.96,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 268,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.96
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "hate": 0,
+       "threat": 0,
+       "ok": 0,
+       "insult": 1,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m088": {
+   "offensive": 0.24,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0.46,
+    "insult": 0.54,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.43,
+   "latencyMs": 319,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.24
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "insult": 0.54,
+       "ok": 0.46,
+       "threat": 0,
+       "hate": 0,
+       "spam": 0
+      },
+      "confidence": 0.43
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.43
+      }
+     }
+    }
+   }
+  },
+  "m161": {
+   "offensive": 0.02,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 1,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 337,
+   "inputTokens": 565,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "insult": 0,
+       "ok": 0,
+       "threat": 0,
+       "hate": 0,
+       "spam": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 565,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m041": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 371,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "threat": 0,
+       "hate": 0,
+       "ok": 1,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m176": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 385,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "ok": 1,
+       "threat": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m059": {
+   "offensive": 0.97,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 280,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.97
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "insult": 1,
+       "threat": 0,
+       "hate": 0,
+       "ok": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m131": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 886,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "ok": 1,
+       "threat": 0,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m068": {
+   "offensive": 0.98,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 1,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 943,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.98
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "threat": 0,
+       "hate": 1,
+       "ok": 0,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m076": {
+   "offensive": 0.01,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0.29,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.71,
+    "threat": 0
+   },
+   "confidence": 0.64,
+   "latencyMs": 322,
+   "inputTokens": 558,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "hate": 0,
+       "spam": 0.71,
+       "ok": 0.29,
+       "threat": 0,
+       "insult": 0
+      },
+      "confidence": 0.64
+     }
+    },
+    "usage": {
+     "inputTokens": 558,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.64
+      }
+     }
+    }
+   }
+  },
+  "m167": {
+   "offensive": 0.92,
+   "category": "threat",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 1
+   },
+   "confidence": 1,
+   "latencyMs": 415,
+   "inputTokens": 562,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.92
+     },
+     "category": {
+      "type": "choice",
+      "choice": "threat",
+      "probabilities": {
+       "ok": 0,
+       "threat": 1,
+       "spam": 0,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 562,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m064": {
+   "offensive": 0.96,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 546,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.96
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 1,
+       "threat": 0,
+       "ok": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m124": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 332,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "insult": 0,
+       "threat": 0,
+       "hate": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m106": {
+   "offensive": 0.03,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 333,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.03
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "ok": 1,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m044": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.92,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.08,
+    "threat": 0
+   },
+   "confidence": 0.9,
+   "latencyMs": 398,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "insult": 0,
+       "spam": 0.08,
+       "hate": 0,
+       "ok": 0.92
+      },
+      "confidence": 0.9
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.9
+      }
+     }
+    }
+   }
+  },
+  "m101": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.99,
+    "insult": 0.01,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.98,
+   "latencyMs": 312,
+   "inputTokens": 549,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "threat": 0,
+       "ok": 0.99,
+       "insult": 0.01,
+       "spam": 0
+      },
+      "confidence": 0.98
+     }
+    },
+    "usage": {
+     "inputTokens": 549,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.98
+      }
+     }
+    }
+   }
+  },
+  "m127": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 356,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m094": {
+   "offensive": 0.03,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 423,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.03
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "insult": 0,
+       "threat": 0,
+       "spam": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m151": {
+   "offensive": 0.82,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0.04,
+    "insult": 0.96,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.95,
+   "latencyMs": 390,
+   "inputTokens": 558,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.82
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 0.96,
+       "threat": 0,
+       "ok": 0.04
+      },
+      "confidence": 0.95
+     }
+    },
+    "usage": {
+     "inputTokens": 558,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.95
+      }
+     }
+    }
+   }
+  },
+  "m037": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.99,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.01,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 419,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.99,
+       "insult": 0,
+       "spam": 0.01,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m181": {
+   "offensive": 0.17,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.88,
+    "insult": 0.12,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.84,
+   "latencyMs": 279,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.17
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.88,
+       "hate": 0,
+       "threat": 0,
+       "insult": 0.12,
+       "spam": 0
+      },
+      "confidence": 0.84
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.84
+      }
+     }
+    }
+   }
+  },
+  "m070": {
+   "offensive": 0.92,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0.02,
+    "hate": 0.98,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.98,
+   "latencyMs": 233,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.92
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "ok": 0,
+       "hate": 0.98,
+       "threat": 0,
+       "insult": 0.02,
+       "spam": 0
+      },
+      "confidence": 0.98
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.98
+      }
+     }
+    }
+   }
+  },
+  "m113": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 262,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "threat": 0,
+       "insult": 0,
+       "spam": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m036": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.99,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.01,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 566,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.99,
+       "threat": 0,
+       "hate": 0,
+       "spam": 0.01,
+       "insult": 0
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m053": {
+   "offensive": 0.16,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.95,
+    "insult": 0.05,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.93,
+   "latencyMs": 619,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.16
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 0.05,
+       "threat": 0,
+       "ok": 0.95
+      },
+      "confidence": 0.93
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.93
+      }
+     }
+    }
+   }
+  },
+  "m035": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 520,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "spam": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m121": {
+   "offensive": 0.03,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 326,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.03
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m090": {
+   "offensive": 0.18,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.74,
+    "insult": 0.26,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.66,
+   "latencyMs": 346,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.18
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "insult": 0.26,
+       "ok": 0.74,
+       "hate": 0
+      },
+      "confidence": 0.66
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.66
+      }
+     }
+    }
+   }
+  },
+  "m027": {
+   "offensive": 0.07,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.83,
+    "insult": 0.17,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.78,
+   "latencyMs": 262,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.07
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0.17,
+       "spam": 0,
+       "ok": 0.83,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 0.78
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.78
+      }
+     }
+    }
+   }
+  },
+  "m111": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 409,
+   "inputTokens": 551,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "hate": 0,
+       "spam": 0,
+       "ok": 1,
+       "threat": 0
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 551,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m143": {
+   "offensive": 0.14,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.66,
+    "insult": 0.34,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.58,
+   "latencyMs": 448,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.14
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0.34,
+       "spam": 0,
+       "ok": 0.66,
+       "hate": 0,
+       "threat": 0
+      },
+      "confidence": 0.58
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.58
+      }
+     }
+    }
+   }
+  },
+  "m038": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 644,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "ok": 1,
+       "threat": 0,
+       "spam": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m018": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 503,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "spam": 0,
+       "ok": 1,
+       "hate": 0,
+       "threat": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m177": {
+   "offensive": 0.2,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.57,
+    "insult": 0.43,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.46,
+   "latencyMs": 639,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.2
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.57,
+       "hate": 0,
+       "insult": 0.43,
+       "spam": 0,
+       "threat": 0
+      },
+      "confidence": 0.46
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.46
+      }
+     }
+    }
+   }
+  },
+  "m112": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.98,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.02,
+    "threat": 0
+   },
+   "confidence": 0.97,
+   "latencyMs": 738,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "insult": 0,
+       "spam": 0.02,
+       "hate": 0,
+       "ok": 0.98
+      },
+      "confidence": 0.97
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.97
+      }
+     }
+    }
+   }
+  },
+  "m171": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 321,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "hate": 0,
+       "insult": 0,
+       "spam": 0,
+       "threat": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m006": {
+   "offensive": 0.05,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.99,
+    "insult": 0.01,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 284,
+   "inputTokens": 549,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.05
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "hate": 0,
+       "ok": 0.99,
+       "insult": 0.01
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 549,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m175": {
+   "offensive": 0.1,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.97,
+    "insult": 0.03,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.96,
+   "latencyMs": 292,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.1
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.97,
+       "spam": 0,
+       "insult": 0.03,
+       "hate": 0,
+       "threat": 0
+      },
+      "confidence": 0.96
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.96
+      }
+     }
+    }
+   }
+  },
+  "m086": {
+   "offensive": 0.14,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.95,
+    "insult": 0.05,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.94,
+   "latencyMs": 437,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.14
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "insult": 0.05,
+       "threat": 0,
+       "ok": 0.95,
+       "spam": 0
+      },
+      "confidence": 0.94
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.94
+      }
+     }
+    }
+   }
+  },
+  "m091": {
+   "offensive": 0.2,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.89,
+    "insult": 0.11,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.86,
+   "latencyMs": 287,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.2
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "ok": 0.89,
+       "insult": 0.11,
+       "hate": 0
+      },
+      "confidence": 0.86
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.86
+      }
+     }
+    }
+   }
+  },
+  "m183": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 297,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "ok": 1,
+       "hate": 0,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m093": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.98,
+    "insult": 0,
+    "hate": 0.02,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.98,
+   "latencyMs": 267,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.98,
+       "hate": 0.02,
+       "threat": 0,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 0.98
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.98
+      }
+     }
+    }
+   }
+  },
+  "m110": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 435,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "threat": 0,
+       "spam": 0,
+       "hate": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m117": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 352,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m141": {
+   "offensive": 0.14,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.94,
+    "insult": 0.06,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.93,
+   "latencyMs": 307,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.14
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.94,
+       "hate": 0,
+       "insult": 0.06,
+       "spam": 0,
+       "threat": 0
+      },
+      "confidence": 0.93
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.93
+      }
+     }
+    }
+   }
+  },
+  "m016": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 513,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "ok": 1,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m155": {
+   "offensive": 0.93,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 453,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.93
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "threat": 0,
+       "ok": 0,
+       "hate": 0,
+       "insult": 1,
+       "spam": 0
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m085": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 580,
+   "inputTokens": 552,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "threat": 0,
+       "ok": 1,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 552,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m098": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 278,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "hate": 0,
+       "threat": 0,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m073": {
+   "offensive": 0.29,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 1,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 318,
+   "inputTokens": 564,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.29
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "insult": 0,
+       "threat": 0,
+       "ok": 0,
+       "spam": 1,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 564,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m123": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 423,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m055": {
+   "offensive": 0.59,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0.03,
+    "insult": 0.97,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.96,
+   "latencyMs": 351,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.59
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "threat": 0,
+       "insult": 0.97,
+       "spam": 0,
+       "hate": 0,
+       "ok": 0.03
+      },
+      "confidence": 0.96
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.96
+      }
+     }
+    }
+   }
+  },
+  "m029": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 462,
+   "inputTokens": 551,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "spam": 0,
+       "threat": 0,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 551,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m145": {
+   "offensive": 0.15,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.83,
+    "insult": 0.17,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.78,
+   "latencyMs": 253,
+   "inputTokens": 552,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.15
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 0.83,
+       "hate": 0,
+       "threat": 0,
+       "insult": 0.17,
+       "spam": 0
+      },
+      "confidence": 0.78
+     }
+    },
+    "usage": {
+     "inputTokens": 552,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.78
+      }
+     }
+    }
+   }
+  },
+  "m140": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 460,
+   "inputTokens": 563,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "threat": 0,
+       "spam": 0,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 563,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m071": {
+   "offensive": 0.95,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 1,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 306,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.95
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "insult": 0,
+       "hate": 1,
+       "ok": 0,
+       "threat": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m081": {
+   "offensive": 0.93,
+   "category": "threat",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0.03,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0.97
+   },
+   "confidence": 0.96,
+   "latencyMs": 300,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.93
+     },
+     "category": {
+      "type": "choice",
+      "choice": "threat",
+      "probabilities": {
+       "insult": 0.03,
+       "spam": 0,
+       "ok": 0,
+       "threat": 0.97,
+       "hate": 0
+      },
+      "confidence": 0.96
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.96
+      }
+     }
+    }
+   }
+  },
+  "m132": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.94,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.06,
+    "threat": 0
+   },
+   "confidence": 0.92,
+   "latencyMs": 277,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0.06,
+       "ok": 0.94,
+       "threat": 0,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 0.92
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.92
+      }
+     }
+    }
+   }
+  },
+  "m031": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 314,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "insult": 0,
+       "threat": 0,
+       "hate": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m054": {
+   "offensive": 0.43,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.62,
+    "insult": 0.37,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0.01
+   },
+   "confidence": 0.52,
+   "latencyMs": 620,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.43
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0.01,
+       "ok": 0.62,
+       "insult": 0.37,
+       "hate": 0,
+       "spam": 0
+      },
+      "confidence": 0.52
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.52
+      }
+     }
+    }
+   }
+  },
+  "m135": {
+   "offensive": 0.15,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.85,
+    "insult": 0.15,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.81,
+   "latencyMs": 367,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.15
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "insult": 0.15,
+       "hate": 0,
+       "ok": 0.85,
+       "threat": 0
+      },
+      "confidence": 0.81
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.81
+      }
+     }
+    }
+   }
+  },
+  "m153": {
+   "offensive": 0.97,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 309,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.97
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "hate": 0,
+       "threat": 0,
+       "ok": 0,
+       "spam": 0,
+       "insult": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m009": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.87,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0.13,
+    "threat": 0
+   },
+   "confidence": 0.84,
+   "latencyMs": 343,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0.13,
+       "threat": 0,
+       "insult": 0,
+       "ok": 0.87,
+       "hate": 0
+      },
+      "confidence": 0.84
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.84
+      }
+     }
+    }
+   }
+  },
+  "m169": {
+   "offensive": 0.93,
+   "category": "threat",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 1
+   },
+   "confidence": 1,
+   "latencyMs": 264,
+   "inputTokens": 563,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.93
+     },
+     "category": {
+      "type": "choice",
+      "choice": "threat",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 0,
+       "threat": 1,
+       "ok": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 563,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m103": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 240,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "ok": 1,
+       "threat": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m056": {
+   "offensive": 0.24,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.55,
+    "insult": 0.45,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.44,
+   "latencyMs": 277,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.24
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "hate": 0,
+       "insult": 0.45,
+       "threat": 0,
+       "ok": 0.55
+      },
+      "confidence": 0.44
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.44
+      }
+     }
+    }
+   }
+  },
+  "m180": {
+   "offensive": 0.31,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.7,
+    "insult": 0.29,
+    "hate": 0.01,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.62,
+   "latencyMs": 287,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.31
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "ok": 0.7,
+       "hate": 0.01,
+       "insult": 0.29,
+       "spam": 0
+      },
+      "confidence": 0.62
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.62
+      }
+     }
+    }
+   }
+  },
+  "m012": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 416,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "threat": 0,
+       "spam": 0,
+       "ok": 1,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m005": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 284,
+   "inputTokens": 553,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "threat": 0,
+       "spam": 0,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 553,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m156": {
+   "offensive": 0.9,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 1,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 301,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.9
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "spam": 0,
+       "ok": 0,
+       "threat": 0,
+       "insult": 0,
+       "hate": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m130": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 228,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "hate": 0,
+       "threat": 0,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m028": {
+   "offensive": 0.05,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 423,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.05
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "ok": 1,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m107": {
+   "offensive": 0.04,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.97,
+    "insult": 0.02,
+    "hate": 0.01,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.96,
+   "latencyMs": 297,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.04
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "hate": 0.01,
+       "insult": 0.02,
+       "ok": 0.97
+      },
+      "confidence": 0.96
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.96
+      }
+     }
+    }
+   }
+  },
+  "m065": {
+   "offensive": 0.96,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 352,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.96
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "insult": 1,
+       "hate": 0,
+       "threat": 0,
+       "spam": 0,
+       "ok": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m008": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 253,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "insult": 0,
+       "threat": 0,
+       "ok": 1,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m104": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 251,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "insult": 0,
+       "ok": 1,
+       "threat": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m075": {
+   "offensive": 0.03,
+   "category": "spam",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 0,
+    "spam": 1,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 267,
+   "inputTokens": 565,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.03
+     },
+     "category": {
+      "type": "choice",
+      "choice": "spam",
+      "probabilities": {
+       "spam": 1,
+       "threat": 0,
+       "ok": 0,
+       "insult": 0,
+       "hate": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 565,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m154": {
+   "offensive": 0.86,
+   "category": "insult",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 1,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 323,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.86
+     },
+     "category": {
+      "type": "choice",
+      "choice": "insult",
+      "probabilities": {
+       "hate": 0,
+       "insult": 1,
+       "threat": 0,
+       "spam": 0,
+       "ok": 0
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m013": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 431,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "ok": 1,
+       "threat": 0,
+       "spam": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m047": {
+   "offensive": 0.23,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.69,
+    "insult": 0.31,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.62,
+   "latencyMs": 774,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.23
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "spam": 0,
+       "threat": 0,
+       "ok": 0.69,
+       "hate": 0,
+       "insult": 0.31
+      },
+      "confidence": 0.62
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.62
+      }
+     }
+    }
+   }
+  },
+  "m159": {
+   "offensive": 0.92,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0.04,
+    "hate": 0.96,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.95,
+   "latencyMs": 631,
+   "inputTokens": 563,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.92
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "spam": 0,
+       "ok": 0,
+       "insult": 0.04,
+       "hate": 0.96,
+       "threat": 0
+      },
+      "confidence": 0.95
+     }
+    },
+    "usage": {
+     "inputTokens": 563,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.95
+      }
+     }
+    }
+   }
+  },
+  "m069": {
+   "offensive": 0.98,
+   "category": "hate",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0,
+    "hate": 1,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 377,
+   "inputTokens": 561,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.98
+     },
+     "category": {
+      "type": "choice",
+      "choice": "hate",
+      "probabilities": {
+       "ok": 0,
+       "threat": 0,
+       "spam": 0,
+       "insult": 0,
+       "hate": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 561,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m010": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 585,
+   "inputTokens": 557,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "hate": 0,
+       "ok": 1,
+       "insult": 0,
+       "spam": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 557,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m007": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.99,
+   "latencyMs": 368,
+   "inputTokens": 554,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "insult": 0,
+       "spam": 0,
+       "ok": 1,
+       "hate": 0,
+       "threat": 0
+      },
+      "confidence": 0.99
+     }
+    },
+    "usage": {
+     "inputTokens": 554,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.99
+      }
+     }
+    }
+   }
+  },
+  "m172": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 779,
+   "inputTokens": 560,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "hate": 0,
+       "ok": 1,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 560,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m084": {
+   "offensive": 0.02,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 261,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.02
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "spam": 0,
+       "hate": 0,
+       "threat": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m051": {
+   "offensive": 0.56,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 0.51,
+    "insult": 0.49,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 0.39,
+   "latencyMs": 368,
+   "inputTokens": 556,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.56
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "threat": 0,
+       "spam": 0,
+       "hate": 0,
+       "insult": 0.49,
+       "ok": 0.51
+      },
+      "confidence": 0.39
+     }
+    },
+    "usage": {
+     "inputTokens": 556,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.39
+      }
+     }
+    }
+   }
+  },
+  "m020": {
+   "offensive": 0.01,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 301,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.01
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "hate": 0,
+       "insult": 0,
+       "spam": 0,
+       "threat": 0,
+       "ok": 1
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  },
+  "m170": {
+   "offensive": 0.93,
+   "category": "threat",
+   "categoryProbabilities": {
+    "ok": 0,
+    "insult": 0.05,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0.95
+   },
+   "confidence": 0.94,
+   "latencyMs": 270,
+   "inputTokens": 559,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.93
+     },
+     "category": {
+      "type": "choice",
+      "choice": "threat",
+      "probabilities": {
+       "hate": 0,
+       "spam": 0,
+       "ok": 0,
+       "insult": 0.05,
+       "threat": 0.95
+      },
+      "confidence": 0.94
+     }
+    },
+    "usage": {
+     "inputTokens": 559,
+     "outputTokens": 73
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 0.94
+      }
+     }
+    }
+   }
+  },
+  "m042": {
+   "offensive": 0.03,
+   "category": "ok",
+   "categoryProbabilities": {
+    "ok": 1,
+    "insult": 0,
+    "hate": 0,
+    "spam": 0,
+    "threat": 0
+   },
+   "confidence": 1,
+   "latencyMs": 572,
+   "inputTokens": 555,
+   "model": "typesafe-ai/jev",
+   "raw": {
+    "model": "typesafe-ai/jev",
+    "answers": {
+     "offensive": {
+      "type": "boolean",
+      "probability": 0.03
+     },
+     "category": {
+      "type": "choice",
+      "choice": "ok",
+      "probabilities": {
+       "ok": 1,
+       "spam": 0,
+       "threat": 0,
+       "hate": 0,
+       "insult": 0
+      },
+      "confidence": 1
+     }
+    },
+    "usage": {
+     "inputTokens": 555,
+     "outputTokens": 72
+    },
+    "providerMetadata": {
+     "typesafe": {
+      "confidence": {
+       "category": 1
+      }
+     }
+    }
+   }
+  }
+ }
+}
