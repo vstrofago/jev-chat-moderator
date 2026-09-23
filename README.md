@@ -1,5 +1,5 @@
 # Jev Chat Moderator
-[See the demo here!](vstrofago.github.io/jev-chat-moderator)
+[See the demo here!](https://vstrofago.github.io/jev-chat-moderator)
 
 
 A small, open-source playground that shows [TypeSafe AI](https://typesafe.ai)'s **Jev**
