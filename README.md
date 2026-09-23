@@ -15,7 +15,6 @@ two questions about every chat message in a single call:
 code (`src/core/policy.ts`) applied to those probabilities. Drag the threshold sliders
 and every message on screen is re-evaluated instantly, without calling Jev again.
 
-![screenshot](docs/screenshot.png)
 <img width="1466" height="891" alt="image" src="https://github.com/user-attachments/assets/4c87b519-66ce-41ad-88c7-c4132cfbfcdb" />
 
 
