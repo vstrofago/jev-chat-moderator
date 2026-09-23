@@ -24,8 +24,6 @@
   --review-soft: #fbf3e2;
   --allow: #4f7a58;
 
-  --brand-a: #46637f;
-  --brand-b: #b0513c;
 
   --radius: 8px;
   --radius-lg: 12px;
@@ -56,8 +54,6 @@
     --review-soft: #241c0e;
     --allow: #8fb597;
 
-    --brand-a: #8ea8c1;
-    --brand-b: #d9836e;
     color-scheme: dark;
   }
 }
@@ -83,8 +79,6 @@
   --review-soft: #241c0e;
   --allow: #8fb597;
 
-  --brand-a: #8ea8c1;
-  --brand-b: #d9836e;
   color-scheme: dark;
 }
 
@@ -174,12 +168,10 @@ pre {
   margin: 2px 0 0;
   font-size: 14px;
 }
-/* The product mark keeps its colour; everything around it stays neutral. */
+/* The product mark: an emoji, kept in full colour. */
 .brand-mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--brand-a) 50%, var(--brand-b) 50%);
+  font-size: 30px;
+  line-height: 1;
   flex: none;
 }
 .header-actions {
@@ -193,24 +185,27 @@ pre {
   gap: 8px;
   text-decoration: none;
 }
-.icon-btn {
+.btn.icon-btn {
   width: 36px;
   padding: 0;
   display: inline-grid;
   place-items: center;
 }
-.icon-moon,
-:root[data-theme="dark"] .icon-sun {
+.icon-btn svg {
+  display: block;
+}
+.icon-btn .icon-moon,
+:root[data-theme="dark"] .icon-btn .icon-sun {
   display: none;
 }
-:root[data-theme="dark"] .icon-moon {
+:root[data-theme="dark"] .icon-btn .icon-moon {
   display: block;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .icon-sun {
+  :root:not([data-theme="light"]) .icon-btn .icon-sun {
     display: none;
   }
-  :root:not([data-theme="light"]) .icon-moon {
+  :root:not([data-theme="light"]) .icon-btn .icon-moon {
     display: block;
   }
 }

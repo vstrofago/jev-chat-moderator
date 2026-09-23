@@ -1,7 +1,7 @@
 {
  "meta.title": "Jev Chat Moderator · playground",
  "meta.description": "Jev, TypeSafe AI's System One model, moderating a live-stream chat in real time.",
- "header.tagline": "A Jev playground (TypeSafe AI)",
+ "header.tagline": "by vstrofago",
  "intro.text": "jev-chat-moderator reads every message in a chat and says how likely it is to be offensive, and what kind. The decision to delete is made by code, using the thresholds you set.",
  "chat.title": "Simulated chat",
  "chat.play": "Play",
