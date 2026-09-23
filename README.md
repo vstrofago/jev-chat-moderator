@@ -1,4 +1,6 @@
 # Jev Chat Moderator
+vstrofago.github.io/jev-chat-moderator
+
 
 A small, open-source playground that shows [TypeSafe AI](https://typesafe.ai)'s **Jev**
 moderating a simulated live-stream chat in real time.
