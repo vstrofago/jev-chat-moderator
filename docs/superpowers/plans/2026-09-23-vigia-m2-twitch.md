@@ -153,12 +153,49 @@ possible spam).
 - The IRC reader reports the channel id (`room`) from ROOMSTATE, and `observe` loads the
   emotes after joining.
 
-### Later tasks (detailed when reached)
+### Task 5: Helix client
 
-4b. OAuth spike (device code flow + implicit flow for Public clients). Needs the author's
-   client ID.
-5. EventSub WebSocket client (`channel.chat.message`, `channel.update`,
-   `channel.moderator.add/remove`), tested against `twitch event websocket start-server`.
-6. Helix client (delete, timeout, ban, send chat, moderators, channel info), tested with an
-   injected fetch and `twitch mock-api`.
-7. `ChatPlatform` adapter plus category tracking wired into the engine.
+`createHelix({ clientId, token, refresh? })` provides `deleteMessage`, `ban` (a timeout when
+`duration` is set), `sendChat` (as a reply, and it throws when Twitch drops the message),
+`moderatorIds` (paginated), `category`, `me` and `subscribe` (EventSub over WebSocket).
+- A 401 refreshes the token once and retries, then throws `TwitchAuthError`.
+- A 429 waits for `Ratelimit-Reset` once, capped at 5 s.
+
+### Task 6: EventSub WebSocket client
+
+`connectEventSub(handlers)`:
+- subscribes after `session_welcome`;
+- moves to the `session_reconnect` URL without subscribing again;
+- starts a fresh session when keepalives stop (timeout + 5 s);
+- drops duplicate message ids and reports revocations;
+- closes and retries with backoff when subscribing fails.
+
+`chatEventToMessage` maps `channel.chat.message`: roles come from badges (and
+broadcaster = chatter id), mentions and cheermotes become text, and emotes become emote
+fragments.
+
+### Task 7: Adapter
+
+- `createTwitchPlatform(helix, ids)` implements `ChatPlatform`.
+- `connectTwitch()` subscribes to `channel.chat.message`, `channel.update` and
+  `channel.moderator.add/remove`, then loads the category, the moderators and the
+  third-party emotes, and feeds chat to the engine.
+- A separate bot account ignores its own messages.
+
+### Task 8: Login and `pnpm live`
+
+- `startDeviceLogin`, `refreshTokens` (Public clients: no secret, one-time refresh tokens),
+  `validateToken`, and `createTokenManager`, which refreshes 5 minutes ahead and uses one
+  in-flight refresh for concurrent callers.
+- `pnpm live` connects to the logged-in user's own channel. It starts in observe mode
+  (`--act` makes it real), stores tokens at `~/.config/vigia/dev-tokens.json` with mode 0600,
+  and `--logout` removes them.
+
+### Still open
+
+- **Mod login for server mode** (the implicit flow) is deferred to M4, where the dashboard
+  login lives. Twitch's docs confirm the implicit flow still exists for apps without a
+  server.
+- **An e2e run against the Twitch CLI mock** (`twitch event websocket start-server`). The CLI
+  isn't installed here, and the unit tests cover the protocol with fake sockets.
+- **A real run of `pnpm live`**, which needs the author's client ID.

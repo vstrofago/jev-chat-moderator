@@ -12,6 +12,7 @@ import { createEngine, jevEvaluator, parseConfig, type ChatPlatform } from "@vig
 import { readChannel } from "../src/irc-reader";
 import { loadThirdPartyEmotes, withThirdPartyEmotes } from "../src/third-party-emotes";
 import { createRateGate } from "../src/rate-gate";
+import { color, formatDecision } from "./print";
 
 const PRICE_PER_TOKEN = 0.042 / 1_000_000;
 const SUMMARY_EVERY_MS = 30_000;
@@ -69,9 +70,6 @@ const stats = { seen: 0, evaluated: 0, wouldModerate: 0, uncertain: 0, highlight
 const gate = createRateGate(rate);
 const started = Date.now();
 
-const color = (code: number, s: string) => (process.stdout.isTTY ? `\x1b[${code}m${s}\x1b[0m` : s);
-const pct = (p: number) => p.toFixed(2);
-
 engine.on((e) => {
   if (e.type === "warning") {
     stats.errors++;
@@ -79,28 +77,13 @@ engine.on((e) => {
   }
   if (e.type !== "decision") return;
   stats.evaluated++;
-  const { outcome: o, message: m } = e;
-  const tags: string[] = [];
-  if (o.moderation) {
-    stats.wouldModerate++;
-    const v = o.verdicts.find((x) => x.ruleId === o.moderation!.ruleId)!;
-    const note = o.moderation.downgraded ? " (emotes only → log)" : "";
-    tags.push(color(31, `WOULD ${o.moderation.action.toUpperCase()} ${v.ruleId} ${pct(v.probability)}${note}`));
-  }
-  if (o.highlight) {
-    stats.highlights++;
-    tags.push(color(32, `HIGHLIGHT ${o.highlight.ruleId} ${pct(o.highlight.probability)}`));
-  }
-  if (o.suggestion) {
-    stats.suggestions++;
-    tags.push(color(36, `SUGGEST ${o.suggestion.ruleId} ${pct(o.suggestion.probability)}`));
-  }
+  const o = e.outcome;
+  if (o.moderation) stats.wouldModerate++;
+  if (o.highlight) stats.highlights++;
+  if (o.suggestion) stats.suggestions++;
   if (o.uncertain.length > 0) stats.uncertain++;
-  for (const u of o.uncertain) tags.push(color(35, `UNSURE ${u.ruleId} ${pct(u.probability)}`));
-  if (tags.length === 0) return;
-  // Possible spoilers are hidden here too, as they will be in the dashboard.
-  const text = o.spoiler ? color(2, "[possible spoiler hidden]") : m.text;
-  console.log(`${tags.join(" | ")}  ${color(2, m.author.displayName + ":")} ${text}`);
+  const line = formatDecision(e);
+  if (line) console.log(line);
 });
 
 function summary() {
