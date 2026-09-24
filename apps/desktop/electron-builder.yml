@@ -24,7 +24,7 @@ extraResources:
 publish:
   provider: github
   owner: vstrofago
-  repo: jev-chat-moderator
+  repo: vigia
 win:
   target: nsis
   icon: build/icon@2x.png

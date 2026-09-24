@@ -56,13 +56,13 @@ Kept current at the end of every block of work so a new session (or a person) ca
 ## Blocked on the author
 - **Twitch app registration** needs 2FA, which the author can't enable yet. `pnpm live`
   has never run for real. This is a launch blocker for M6.
-- The repo rename to `vigia`, and merging or pushing, wait on the author's go-ahead.
+- Merging to `main` waits on the author's go-ahead (the repo is renamed to `vigia`).
 
 ## Next steps (author)
 1. `AI_GATEWAY_API_KEY=vck_... pnpm eval`, then commit `docs/evals/results.json` and the
    updated README tables.
-2. Merge, rename the repo to `vigia` (then update the repo URLs in the READMEs, the
-   electron-builder `publish` block and the demo), and do the real-account check (2FA).
+2. Merge, and do the real-account check (2FA). The repo is already renamed to `vigia`
+   and the URLs are updated (Pages moves to vstrofago.github.io/vigia on the next deploy).
 3. Bump `apps/desktop/package.json` to 1.0.0, push the `v1.0.0` tag, then check and publish
    the draft.
 

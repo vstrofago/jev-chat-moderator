@@ -1,6 +1,6 @@
 # Vigía
 
-[Español](README.es.md) · [Try the playground](https://vstrofago.github.io/jev-chat-moderator)
+[Español](README.es.md) · [Try the playground](https://vstrofago.github.io/vigia)
 
 **A free, self-hosted chat watchman for Twitch streamers**, powered by
 [TypeSafe AI](https://typesafe.ai)'s Jev.
@@ -39,7 +39,7 @@ usernames, and your keys never leave your computer except to reach Jev and Twitc
 
 ### Desktop app (Windows, macOS, Linux)
 
-Download it from [Releases](https://github.com/vstrofago/jev-chat-moderator/releases). A
+Download it from [Releases](https://github.com/vstrofago/vigia/releases). A
 window walks you through setup in about ten minutes.
 
 - **Windows:** run `Vigia-…-win-x64.exe`. Until the app is signed, SmartScreen may warn
@@ -66,7 +66,7 @@ Updates arrive by themselves.
 On a VPS with a domain pointing at it:
 
 ```bash
-git clone https://github.com/vstrofago/jev-chat-moderator vigia && cd vigia
+git clone https://github.com/vstrofago/vigia && cd vigia
 export VIGIA_DOMAIN=vigia.example.com
 export AI_GATEWAY_API_KEY=vck_...          # or TYPESAFE_API_KEY
 export TWITCH_CLIENT_ID=...                # your own Public app (below)
@@ -260,7 +260,7 @@ Want to help? Rules, spoiler packs, translations and code are all welcome: see
 
 ## The playground
 
-[The playground](https://vstrofago.github.io/jev-chat-moderator) is where Vigía started. It
+[The playground](https://vstrofago.github.io/vigia) is where Vigía started. It
 replays about 180 scripted chat messages with the answers Jev really gave, and lets you drag
 the thresholds to see decisions change instantly. You can also paste your own Vercel AI
 Gateway key to try it live. Run it locally with `pnpm dev`, or with `docker compose up

@@ -1,6 +1,6 @@
 # Jev Chat Moderator (the playground)
 
-[See it live](https://vstrofago.github.io/jev-chat-moderator) · Back to [Vigía](../../README.md)
+[See it live](https://vstrofago.github.io/vigia) · Back to [Vigía](../../README.md)
 
 A small playground that shows Jev moderating a simulated live-stream chat in real time. It
 asks two questions about every message in one call (`offensive`, a yes/no probability, and
@@ -28,8 +28,8 @@ message on screen instantly without calling Jev again.
 No Node needed. Both kinds of key work here, including TypeSafe keys:
 
 ```bash
-git clone https://github.com/vstrofago/jev-chat-moderator
-cd jev-chat-moderator
+git clone https://github.com/vstrofago/vigia
+cd vigia
 docker compose up --build
 # open http://localhost:8080
 ```
