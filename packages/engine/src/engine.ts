@@ -68,7 +68,8 @@ export function createEngine(o: EngineOptions) {
     halted: false,
     disabledRules: [],
   };
-  const queue = createPriorityQueue({ concurrency: o.concurrency ?? 8, maxPending: o.maxPending ?? 200 });
+  const maxPending = o.maxPending ?? 200;
+  const queue = createPriorityQueue({ concurrency: o.concurrency ?? 8, maxPending });
   const listeners = new Set<(e: EngineEvent) => void>();
   let highlightSeq = 0;
 
@@ -77,7 +78,15 @@ export function createEngine(o: EngineOptions) {
     disabledRules: [...state.disabledRules],
     protectedTopicCount: protectedTopics.length,
   });
-  const emit = (e: EngineEvent) => listeners.forEach((l) => l(e));
+  // A failing listener (a UI bug) must never stop moderation or crash the process.
+  const emit = (e: EngineEvent) =>
+    listeners.forEach((l) => {
+      try {
+        l(e);
+      } catch (err) {
+        console.error("Vigía event listener failed:", err);
+      }
+    });
   const changed = () => emit({ type: "state", state: snapshot() });
   const warn = (code: Extract<EngineEvent, { type: "warning" }>["code"], e: unknown) =>
     emit({ type: "warning", code, detail: e instanceof Error ? e.message : String(e) });
@@ -136,15 +145,22 @@ export function createEngine(o: EngineOptions) {
 
   const activeRules = () => config.rules.filter((r) => !state.disabledRules.includes(r.id));
 
+  /**
+   * Rules to ask about for this message. When the queue is half full (a raid), highlight
+   * questions are left out so moderation keeps up; exempt authors' highlight-only calls
+   * are then dropped by the queue first.
+   */
   function rulesFor(m: ChatMessage): Rule[] {
+    const busy = queue.pending() >= maxPending / 2;
     const a = m.author;
     const exempt =
       (a.broadcaster && config.exempt.includes("broadcaster")) ||
       (a.moderator && config.exempt.includes("moderators")) ||
       (a.vip && config.exempt.includes("vips"));
     return activeRules().filter((r) => {
-      if (r.action === "highlight") return !a.broadcaster || config.highlights.includeBroadcaster;
-      return !exempt && !state.paused;
+      if (r.action !== "highlight") return !exempt && !state.paused;
+      if (a.broadcaster && !config.highlights.includeBroadcaster) return false;
+      return !busy || exempt;
     });
   }
 

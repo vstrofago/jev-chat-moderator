@@ -281,6 +281,47 @@ describe("createEngine", () => {
   });
 });
 
+describe("listeners", () => {
+  it("keep the engine running when one of them throws", async () => {
+    const { engine, calls } = setup({ spam: 0.99 });
+    const seen: string[] = [];
+    engine.on(() => {
+      throw new Error("ui bug");
+    });
+    engine.on((e) => seen.push(e.type));
+    const m = msg("buy followers");
+    await expect(engine.handleMessage(m)).resolves.toBeUndefined();
+    expect(calls).toEqual([`delete ${m.id}`]);
+    expect(seen).toContain("decision");
+  });
+});
+
+describe("load shedding", () => {
+  it("stops asking highlight questions while the queue is backed up", async () => {
+    const { platform } = fakePlatform();
+    const asked: string[][] = [];
+    let release!: () => void;
+    const blocked = new Promise<void>((r) => (release = r));
+    const engine = createEngine({
+      config: config(),
+      platform,
+      observe: false,
+      concurrency: 1,
+      maxPending: 4,
+      evaluate: async (_s, questions) => {
+        asked.push(Object.keys(questions));
+        await blocked;
+        return {};
+      },
+    });
+    const all = [1, 2, 3, 4, 5].map((i) => engine.handleMessage(msg(`message ${i}`)));
+    release();
+    await Promise.all(all);
+    expect(asked[0]).toContain("q");
+    expect(asked.at(-1)).toEqual(["tox", "spam", "sp"]);
+  });
+});
+
 describe("jevEvaluator", () => {
   it("returns one probability per question", async () => {
     const fetch = (async () =>
