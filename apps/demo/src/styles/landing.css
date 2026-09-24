@@ -668,7 +668,8 @@ pre {
 .install pre {
   margin: 0;
   padding: 14px 16px;
-  background: var(--night);
+  background: #0a101b;
+  border: 1px solid var(--night-line);
   color: var(--night-ink);
   border-radius: var(--radius);
   line-height: 1.6;
@@ -686,6 +687,75 @@ pre {
 }
 .note-row .text-link {
   margin: 0;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 20px;
+}
+.install-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  border-color: color-mix(in srgb, var(--lamp) 55%, var(--line));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lamp) 14%, transparent);
+}
+.install-main > div:first-child {
+  max-width: 620px;
+}
+.install-main p:not(.os) {
+  margin-bottom: 0;
+}
+.badge {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--lamp) 22%, transparent);
+  color: var(--accent-ink);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.download {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+.btn-download {
+  height: 52px;
+  padding: 0 30px;
+  font-size: 17px;
+}
+.soon {
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.btn-soon {
+  gap: 10px;
+  height: 40px;
+  padding: 0 14px;
+  font-size: 15px;
+  border-color: var(--line);
+  background: transparent;
+  color: var(--ink-3);
+  cursor: not-allowed;
+}
+.soon-tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--line);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.note-row {
+  align-items: center;
 }
 
 /* Community */
@@ -750,6 +820,15 @@ pre {
   }
   .split {
     gap: 32px;
+  }
+}
+@media (max-width: 800px) {
+  .install-main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 640px) {

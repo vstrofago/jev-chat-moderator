@@ -205,32 +205,46 @@ const shot = (name: string) => `${base}shots/${name}.png`;
         <div class="container">
           <p class="kicker" data-i18n="install.kicker">{t("install.kicker")}</p>
           <h2 data-i18n="install.title">{t("install.title")}</h2>
-          <div class="grid grid-3">
-            <article class="card install">
+          <article class="card install install-main">
+            <div>
+              <span class="badge" data-i18n="install.recommended">{t("install.recommended")}</span>
               <h3 data-i18n="install.desktop.title">{t("install.desktop.title")}</h3>
               <p class="os" data-i18n="install.desktop.os">{t("install.desktop.os")}</p>
               <p data-i18n="install.desktop.body">{t("install.desktop.body")}</p>
+            </div>
+            <div class="download">
+              <a class="btn btn-accent btn-download" href={`${repo}/releases/latest`} data-i18n="install.desktop.cta">{t("install.desktop.cta")}</a>
+              <span class="soon" data-i18n="install.desktop.soon">{t("install.desktop.soon")}</span>
+            </div>
+          </article>
+          <div class="grid grid-2">
+            <article class="card install">
+              <h3 data-i18n="install.docker.title">{t("install.docker.title")}</h3>
+              <p class="os" data-i18n="install.docker.os">{t("install.docker.os")}</p>
+              <p data-i18n="install.docker.body">{t("install.docker.body")}</p>
+              <pre><code>git clone {repo}
+cd vigia
+export AI_GATEWAY_API_KEY=vck_...
+export VIGIA_SOURCE=observe:&lt;channel&gt;
+docker compose up --build</code></pre>
+            </article>
+            <article class="card install">
+              <h3 data-i18n="install.pnpm.title">{t("install.pnpm.title")}</h3>
+              <p class="os" data-i18n="install.pnpm.os">{t("install.pnpm.os")}</p>
+              <p data-i18n="install.pnpm.body">{t("install.pnpm.body")}</p>
               <pre><code>pnpm install
+pnpm --filter @vigia/ui build
 pnpm --filter @vigia/desktop start</code></pre>
             </article>
-            <article class="card install">
-              <h3 data-i18n="install.server.title">{t("install.server.title")}</h3>
-              <p class="os" data-i18n="install.server.os">{t("install.server.os")}</p>
-              <p data-i18n="install.server.body">{t("install.server.body")}</p>
-              <pre><code>export VIGIA_DOMAIN=vigia.example.com
-docker compose -f apps/server/docker-compose.yml up -d</code></pre>
-            </article>
-            <article class="card install">
-              <h3 data-i18n="install.cli.title">{t("install.cli.title")}</h3>
-              <p class="os" data-i18n="install.cli.os">{t("install.cli.os")}</p>
-              <p data-i18n="install.cli.body">{t("install.cli.body")}</p>
-              <pre><code>pnpm vigia --source observe:&lt;channel&gt;</code></pre>
-            </article>
           </div>
-          <p class="note-row">
+          <div class="note-row">
             <span data-i18n="install.note">{t("install.note")}</span>
             <a class="text-link" href={`${repo}#install`} data-i18n="install.guide">{t("install.guide")}</a>
-          </p>
+            <button type="button" class="btn btn-soon" disabled>
+              <span data-i18n="install.docs">{t("install.docs")}</span>
+              <span class="soon-tag" data-i18n="install.soon">{t("install.soon")}</span>
+            </button>
+          </div>
         </div>
       </section>
 
