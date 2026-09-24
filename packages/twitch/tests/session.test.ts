@@ -71,6 +71,27 @@ describe("openTwitchSession", () => {
     expect((await stat(file)).mode & 0o777).toBe(0o600);
   });
 
+  it("can keep tokens in a custom store instead of a file", async () => {
+    let kept: string | null = stored("a1");
+    const saves: string[] = [];
+    const t = fakeId({ "/oauth2/validate": [[401, {}], [200, VALID]], "/oauth2/token": [[200, TOKENS]] });
+    const s = await openTwitchSession({
+      clientId: "cid",
+      tokenStore: {
+        load: async () => kept,
+        save: async (text) => {
+          kept = text;
+          saves.push(JSON.parse(text).refreshToken);
+        },
+      },
+      onCode: () => {},
+      fetch: t.fetch,
+      sleep: async () => {},
+    });
+    await expect(s.token()).resolves.toBe("a2");
+    expect(saves).toEqual(["r2"]);
+  });
+
   it("ignores tokens stored for another client id", async () => {
     const file = join(dir, "tokens.json");
     await writeFile(file, stored("a1").replace('"cid"', '"other"'));
