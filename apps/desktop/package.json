@@ -1,0 +1,26 @@
+{
+  "name": "@vigia/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vigía for streamers: a desktop app that watches your Twitch chat.",
+  "type": "module",
+  "main": "dist/main.mjs",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node build.mjs && electron .",
+    "smoke": "node build.mjs && VIGIA_SMOKE=1 electron .",
+    "dist": "pnpm --filter @vigia/ui build && node build.mjs && electron-builder"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9"
+  },
+  "devDependencies": {
+    "@vigia/core": "workspace:*",
+    "@vigia/engine": "workspace:*",
+    "@vigia/server": "workspace:*",
+    "@vigia/twitch": "workspace:*",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.28.2"
+  }
+}

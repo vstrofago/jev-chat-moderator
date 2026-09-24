@@ -20,7 +20,9 @@
     "packages/*/tests/**/*",
     "packages/*/scripts/**/*",
     "apps/server/src/**/*",
-    "apps/server/tests/**/*"
+    "apps/server/tests/**/*",
+    "apps/desktop/src/**/*",
+    "apps/desktop/tests/**/*"
   ],
   "exclude": [
     "packages/ui/**"
