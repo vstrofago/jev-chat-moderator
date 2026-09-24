@@ -1,8 +1,8 @@
-# Vigía M5: Desktop App (Electron)
+# Vigia M5: Desktop App (Electron)
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** A small streamer downloads Vigía, double-clicks it, sets it up in a window, and
+**Goal:** A small streamer downloads Vigia, double-clicks it, sets it up in a window, and
 leaves it in the tray while streaming. There is no terminal, and nobody hosts anything.
 
 **Architecture:** `apps/desktop` is a thin Electron shell around `startVigia()`.
@@ -23,7 +23,7 @@ leaves it in the tray while streaming. There is no terminal, and nobody hosts an
 
 - **Setup offers two sources.** One is "Connect my channel" (the Twitch app plus device
   login). The other is "Just watch a channel" (read-only, observe forever), for trying
-  Vigía without a Twitch app. That second one is exactly the author's situation today (no
+  Vigia without a Twitch app. That second one is exactly the author's situation today (no
   2FA). It costs one extra choice on the first screen.
 - **The port is fixed at 7777**, falling back to 7778–7787 if busy. The chosen port is
   remembered, because the OBS overlay address must not change between runs.

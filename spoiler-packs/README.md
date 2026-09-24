@@ -2,11 +2,11 @@
 
 [Español](README.es.md)
 
-A spoiler pack tells Vigía what must never be revealed in chat for one game or show. When
-the stream category changes, Vigía loads the matching pack by itself. The streamer only picks
+A spoiler pack tells Vigia what must never be revealed in chat for one game or show. When
+the stream category changes, Vigia loads the matching pack by itself. The streamer only picks
 how far they are, from part names that spoil nothing, and never reads a topic.
 
-Vigía ships the format and the loader, but no game packs. Every pack in this folder is
+Vigia ships the format and the loader, but no game packs. Every pack in this folder is
 written by the community. [Add yours](#contribute-a-pack).
 
 ## How a pack works
@@ -55,13 +55,13 @@ The [template](_template.yaml) has every field with comments.
 - **Server or CLI:** put it in `<data folder>/spoiler-packs/` (for example
   `vigia-data/spoiler-packs/`).
 
-Vigía reads the folder again every time the category changes. Your own packs win over the
+Vigia reads the folder again every time the category changes. Your own packs win over the
 bundled ones for the same category. A broken file is skipped, and the log says why.
 
 ## Contribute a pack
 
 1. Copy `_template.yaml` to `spoiler-packs/<game-name>.yaml`, using lowercase and hyphens.
-2. Fill it in, and try it with your own Vigía (see above).
+2. Fill it in, and try it with your own Vigia (see above).
 3. Open a pull request. In the description, say which checkpoints you tested with.
    Reviewers read the topics, so please mark the PR title with **[spoilers]**.
 

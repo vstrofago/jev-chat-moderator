@@ -75,7 +75,7 @@
  "verdict.remove": "eliminar",
  "footer.recorded": "Repetición grabada con",
  "live.typesafeLocalOnly": "Las keys de TypeSafe solo funcionan con el playground corriendo en tu máquina, porque su API no acepta llamadas desde otros sitios web. Clona el repo y ejecuta: docker compose up --build (luego abre http://localhost:8080). Aquí puedes usar una key del Vercel AI Gateway.",
- "header.download": "Conoce Vigía",
+ "header.download": "Conoce Vigia",
  "header.github": "Código en GitHub",
  "theme.toggle": "Cambiar tema claro/oscuro"
 }

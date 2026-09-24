@@ -1,4 +1,4 @@
-# Vigía
+# Vigia
 
 [Español](README.es.md) · [Website](https://vstrofago.github.io/vigia/) · [Try the playground](https://vstrofago.github.io/vigia/playground/)
 
@@ -7,7 +7,7 @@
 
 - **Rules in plain language.** Each rule is a yes/no question for Jev ("is this unsolicited
   backseating?"), not a list of banned words.
-- **Anti-spoiler protection that never spoils you.** Vigía spots the *shape* of a spoiler,
+- **Anti-spoiler protection that never spoils you.** Vigia spots the *shape* of a spoiler,
   hides what it flags even from the streamer's own dashboard, and loads community spoiler
   packs for the game you're playing.
 - **Questions and great messages on stream.** It picks them out of chat and shows them in
@@ -21,7 +21,7 @@
 
 ## How it works
 
-Jev is a *System One* model: it doesn't write text. Vigía sends it each chat message and your
+Jev is a *System One* model: it doesn't write text. Vigia sends it each chat message and your
 rules as typed yes/no questions, and Jev answers with a probability for each one, in one
 fast, cheap call. **Jev never decides by itself.** Your thresholds do:
 
@@ -44,8 +44,8 @@ window walks you through setup in about ten minutes.
 
 - **Windows:** run `Vigia-…-win-x64.exe`. Until the app is signed, SmartScreen may warn
   you: choose **More info → Run anyway**.
-- **macOS (experimental, unsigned):** open the `.dmg` and drag Vigía to Applications. The
-  first time, right-click Vigía and choose **Open**. On recent macOS, go to **System
+- **macOS (experimental, unsigned):** open the `.dmg` and drag Vigia to Applications. The
+  first time, right-click Vigia and choose **Open**. On recent macOS, go to **System
   Settings → Privacy & Security → Open Anyway**.
 - **Linux:** make the AppImage executable (`chmod +x Vigia-…-linux-x86_64.AppImage`) and
   run it.
@@ -53,12 +53,12 @@ window walks you through setup in about ten minutes.
 Setup asks where to watch:
 
 - **My channel** needs a free Twitch app of your own (below), a Twitch login and a Jev key.
-- **Just watch a channel** reads any public channel, read-only, so you can try Vigía with
+- **Just watch a channel** reads any public channel, read-only, so you can try Vigia with
   only a Jev key.
 
 After setup, the dashboard opens, and its own wizard covers your rules, the anti-spoiler,
-the OBS overlay and observe mode. Closing the window keeps Vigía running in the tray, whose
-menu can copy the overlay address, pause moderation or start Vigía with your computer.
+the OBS overlay and observe mode. Closing the window keeps Vigia running in the tray, whose
+menu can copy the overlay address, pause moderation or start Vigia with your computer.
 Updates arrive by themselves.
 
 ### Server (Docker, for teams of mods)
@@ -117,7 +117,7 @@ your account before you can register apps.
    - **Client type:** **Public**.
 3. Create it, open **Manage**, and copy the **Client ID**. There is no secret to keep.
 
-Vigía logs in with Twitch's device code: you confirm a code on twitch.tv, and it asks only
+Vigia logs in with Twitch's device code: you confirm a code on twitch.tv, and it asks only
 for what it uses (reading and sending chat, deleting messages, timeouts and bans, and seeing
 your mods).
 
@@ -165,7 +165,7 @@ rules:
 - **Every rule** can set its own `act` and `unsure`.
 - **The Rules tab** shows how many recent messages a rule would act on as you drag its
   sliders, without calling Jev again, and has a test box for trying any message.
-- **Start in observe mode.** Vigía logs what it *would* do. Turn it off once the log looks
+- **Start in observe mode.** Vigia logs what it *would* do. Turn it off once the log looks
   right.
 
 ## Anti-spoiler
@@ -260,7 +260,7 @@ Want to help? Rules, spoiler packs, translations and code are all welcome: see
 
 ## The playground
 
-[The playground](https://vstrofago.github.io/vigia/playground/) is where Vigía started. It
+[The playground](https://vstrofago.github.io/vigia/playground/) is where Vigia started. It
 replays about 180 scripted chat messages with the answers Jev really gave, and lets you drag
 the thresholds to see decisions change instantly. You can also paste your own Vercel AI
 Gateway key to try it live. Run it locally with `pnpm dev`, or with `docker compose up

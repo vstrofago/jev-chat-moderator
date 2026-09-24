@@ -31,7 +31,7 @@ const OFF = new Set(["off", "no"]);
 // Twitch starts the text of a reply with "@author ".
 const COMMAND = /^\s*(?:@\w+\s+)?!vigia(?:\s+(.*))?$/is;
 
-/** Parses `!vigia ...`. Returns null when the text is not a Vigía command at all. */
+/** Parses `!vigia ...`. Returns null when the text is not a Vigia command at all. */
 export function parseCommand(text: string): Command | null {
   const match = COMMAND.exec(text);
   if (!match) return null;

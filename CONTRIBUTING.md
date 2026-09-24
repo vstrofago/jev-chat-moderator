@@ -1,6 +1,6 @@
-# Contributing to Vigía
+# Contributing to Vigia
 
-Thanks for helping! Vigía is a free, open-source project, and the best contributions are the
+Thanks for helping! Vigia is a free, open-source project, and the best contributions are the
 ones that make it work for more streamers: rules, spoiler packs, translations and fixes.
 
 *¿Hablas español? Puedes abrir issues y pull requests en español.*

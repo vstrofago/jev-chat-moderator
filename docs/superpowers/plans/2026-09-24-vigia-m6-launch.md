@@ -1,4 +1,4 @@
-# Vigía M6: Launch Readiness
+# Vigia M6: Launch Readiness
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
@@ -21,7 +21,7 @@ author can do (the repo rename, the real Twitch account check, publishing the re
   the template, per the spec) and the user's own `<dataDir>/spoiler-packs/`. When both have a
   pack for the same category, the user's pack wins. The folders are read again on every
   category change, so a new file needs no restart.
-- **Nobody reads pack topics in Vigía.** The API and the dashboard show the pack name, the
+- **Nobody reads pack topics in Vigia.** The API and the dashboard show the pack name, the
   checkpoint names and a topic count. Mods keep their own hidden topic list as before, and
   the engine receives the mod topics plus the active pack topics.
 - The chosen checkpoint is remembered per category (the store setting
@@ -55,4 +55,4 @@ author can do (the repo rename, the real Twitch account check, publishing the re
 6. `README.md`, `README.es.md`, `CONTRIBUTING.md`, and `spoiler-packs/README.md` plus the
    template.
 7. `ci.yml` and `release.yml`, the desktop and Docker packaging in CI, and a
-   "Download Vigía" link in the demo.
+   "Download Vigia" link in the demo.

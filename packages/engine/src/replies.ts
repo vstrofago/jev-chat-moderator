@@ -12,8 +12,8 @@ export type ReplyKey =
 
 const REPLIES: Record<"en" | "es", Record<ReplyKey, string>> = {
   en: {
-    paused: "Vigía paused: no automatic moderation until !vigia resume. Highlights continue.",
-    resumed: "Vigía is moderating again.",
+    paused: "Vigia paused: no automatic moderation until !vigia resume. Highlights continue.",
+    resumed: "Vigia is moderating again.",
     progress: "Anti-spoiler progress set to: {progress}",
     ruleOn: "Rule {id} is on.",
     ruleOff: "Rule {id} is off.",
@@ -24,8 +24,8 @@ const REPLIES: Record<"en" | "es", Record<ReplyKey, string>> = {
     help: "Commands: pause, resume, progress, rule <id> on/off, highlight, clear, status.",
   },
   es: {
-    paused: "Vigía en pausa: sin moderación automática hasta !vigia sigue. Los destacados continúan.",
-    resumed: "Vigía vuelve a moderar.",
+    paused: "Vigia en pausa: sin moderación automática hasta !vigia sigue. Los destacados continúan.",
+    resumed: "Vigia vuelve a moderar.",
     progress: "Progreso del antispoiler: {progress}",
     ruleOn: "Regla {id} activada.",
     ruleOff: "Regla {id} desactivada.",

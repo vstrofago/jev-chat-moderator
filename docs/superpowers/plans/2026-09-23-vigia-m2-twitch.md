@@ -1,9 +1,9 @@
-# Vigía M2: Twitch Implementation Plan
+# Vigia M2: Twitch Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Connect the engine to Twitch. The first part is a read-only calibration tool,
-`pnpm observe <channel>`, which runs Vigía in observe mode on any public channel's live
+`pnpm observe <channel>`, which runs Vigia in observe mode on any public channel's live
 chat. The later tasks are the real integration: OAuth, EventSub, Helix and the
 `ChatPlatform` adapter.
 

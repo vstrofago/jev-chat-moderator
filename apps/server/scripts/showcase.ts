@@ -1,5 +1,5 @@
 /**
- * A full Vigía with a scripted chat and canned Jev answers: no key, no Twitch, no network.
+ * A full Vigia with a scripted chat and canned Jev answers: no key, no Twitch, no network.
  * For working on the dashboard and overlay, and for the screenshots on the landing page.
  *
  *   pnpm --filter @vigia/ui build && pnpm --filter @vigia/server-app showcase [--port 7790] [--lang es]

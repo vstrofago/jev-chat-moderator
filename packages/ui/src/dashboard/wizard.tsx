@@ -30,7 +30,7 @@ export function Wizard({ overview, lang, setLang, reload, done }: { overview: Ov
     <div class="wizard">
       <div class="brand">
         <Mark />
-        <span>Vigía</span>
+        <span>Vigia</span>
       </div>
       <ol class="wizard-steps" aria-label={t("wizard.progress")}>
         {STEPS.map((s, i) => (

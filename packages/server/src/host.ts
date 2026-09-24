@@ -62,7 +62,7 @@ const TYPES: Record<string, string> = {
 const LOOPBACK_HOSTS = new Set(["127.0.0.1", "localhost", "::1"]);
 const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
-/** Runs Vigía: config file, engine, history, highlights, overlay, dashboard and its API. */
+/** Runs Vigia: config file, engine, history, highlights, overlay, dashboard and its API. */
 export async function startVigia(o: VigiaOptions) {
   const log = createLogDedupe(o.log ?? ((line: string) => console.log(line)));
   await mkdir(o.dataDir, { recursive: true });

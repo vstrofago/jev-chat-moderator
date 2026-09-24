@@ -1,6 +1,6 @@
 # Jev Chat Moderator (the playground)
 
-[See it live](https://vstrofago.github.io/vigia/playground/) · Back to [Vigía](../../README.md)
+[See it live](https://vstrofago.github.io/vigia/playground/) · Back to [Vigia](../../README.md)
 
 A small playground that shows Jev moderating a simulated live-stream chat in real time. It
 asks two questions about every message in one call (`offensive`, a yes/no probability, and
@@ -31,7 +31,7 @@ No Node needed. Both kinds of key work here, including TypeSafe keys:
 git clone https://github.com/vstrofago/vigia
 cd vigia
 docker compose up --build
-# open http://localhost:8080/playground/ (the site root is the Vigía landing page)
+# open http://localhost:8080/playground/ (the site root is the Vigia landing page)
 ```
 
 nginx serves the site and forwards `/typesafe-api/v1/systemone` to `api.typesafe.ai`, and
@@ -59,7 +59,7 @@ policy agree with the hand-written labels, along with a confusion table.
 ## Project layout
 
 ```
-packages/core/  (shared with Vigía) pure TypeScript, no DOM
+packages/core/  (shared with Vigia) pure TypeScript, no DOM
   jev-client.ts   evaluate() for Vercel AI Gateway and TypeSafe, typed errors
   questions.ts    the two moderation questions
   moderate.ts     moderate(text) -> ModerationResult

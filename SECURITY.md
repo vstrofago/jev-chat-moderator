@@ -8,7 +8,7 @@ as possible.
 
 ## How keys and data are handled
 
-**Vigía** (desktop, server and CLI):
+**Vigia** (desktop, server and CLI):
 
 - **Nothing reaches the author.** Keys are sent only to Jev (Vercel AI Gateway or
   TypeSafe) and to Twitch, and the project runs no server of its own.

@@ -1,4 +1,4 @@
-# Vigía rules. Every rule is one yes/no question for Jev plus what to do with the answer.
+# Vigia rules. Every rule is one yes/no question for Jev plus what to do with the answer.
 # Probabilities at or above `act` trigger the action; between `unsure` and `act` the
 # message goes to the uncertain log (or becomes a suggested highlight).
 version: 1

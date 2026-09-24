@@ -97,7 +97,7 @@ export function createEngine(o: EngineOptions) {
       try {
         l(e);
       } catch (err) {
-        console.error("Vigía event listener failed:", err);
+        console.error("Vigia event listener failed:", err);
       }
     });
   const changed = () => emit({ type: "state", state: snapshot() });
@@ -183,7 +183,7 @@ export function createEngine(o: EngineOptions) {
     const applied = acts && !state.observe;
     if (applied && mod.action === "delete") await platformCall(() => o.platform.deleteMessage(m.id));
     if (applied && mod.action === "timeout") {
-      await platformCall(() => o.platform.timeout(m.author.id, mod.seconds ?? 60, `Vigía: ${mod.ruleId}`));
+      await platformCall(() => o.platform.timeout(m.author.id, mod.seconds ?? 60, `Vigia: ${mod.ruleId}`));
     }
     emit({ type: "decision", message: m, outcome, applied });
 

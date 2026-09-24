@@ -1,5 +1,5 @@
 /**
- * Watches a public Twitch channel's chat and prints what Vigía *would* do, without doing
+ * Watches a public Twitch channel's chat and prints what Vigia *would* do, without doing
  * anything: observe mode, anonymous read-only connection, nothing written to chat or disk.
  * A development tool for calibrating rules against real chat.
  *

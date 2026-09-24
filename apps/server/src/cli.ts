@@ -1,5 +1,5 @@
 /**
- * Headless Vigía, for a terminal or a VPS (Docker).
+ * Headless Vigia, for a terminal or a VPS (Docker).
  *
  *   AI_GATEWAY_API_KEY=vck_... pnpm vigia --source observe:<channel>
  *   AI_GATEWAY_API_KEY=vck_... TWITCH_CLIENT_ID=... pnpm vigia --source twitch
@@ -71,7 +71,7 @@ const access =
     ? `  Dashboard: ${vigia.url} (exposed: sign in with Twitch, or with the admin code ${vigia.adminCode})`
     : `  Dashboard: ${vigia.url} (only this computer can open it)`;
 console.log(`
-Vigía is running — ${mode}
+Vigia is running — ${mode}
 ${access}
   Rules:     ${configPath}
   Overlay:   ${vigia.overlayUrl}

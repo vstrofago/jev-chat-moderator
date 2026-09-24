@@ -10,7 +10,7 @@ const LAST = 7787;
 export async function pickPort(remembered: number | undefined, isFree: (port: number) => Promise<boolean> = portIsFree) {
   if (remembered && (await isFree(remembered))) return remembered;
   for (let p = FIRST; p <= LAST; p++) if (await isFree(p)) return p;
-  throw new Error(`Ports ${FIRST}-${LAST} are all busy. Close the program using them and start Vigía again.`);
+  throw new Error(`Ports ${FIRST}-${LAST} are all busy. Close the program using them and start Vigia again.`);
 }
 
 function portIsFree(port: number): Promise<boolean> {

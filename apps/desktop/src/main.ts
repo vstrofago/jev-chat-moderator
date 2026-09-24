@@ -1,5 +1,5 @@
 /**
- * Vigía for streamers: a window to set it up, then the dashboard, and a tray icon while
+ * Vigia for streamers: a window to set it up, then the dashboard, and a tray icon while
  * streaming. Everything runs on this computer; the host only listens on 127.0.0.1.
  */
 import { createWriteStream } from "node:fs";
@@ -29,31 +29,31 @@ const SETUP_URL = "vigia://setup/setup.html";
 const es = app.getLocale().startsWith("es");
 const T = es
   ? {
-      open: "Abrir Vigía",
+      open: "Abrir Vigia",
       copyOverlay: "Copiar dirección del overlay",
       pause: "Pausar moderación",
       loginItem: "Iniciar con el equipo",
       packsFolder: "Abrir carpeta de packs de spoilers",
       setupAgain: "Configurar de nuevo…",
       quit: "Salir",
-      stillRunning: "Vigía sigue funcionando en la bandeja del sistema.",
+      stillRunning: "Vigia sigue funcionando en la bandeja del sistema.",
       badKey: "Jev rechazó la clave. Revisa que esté completa y que tu cuenta tenga saldo o tarjeta.",
       noJev: "No se pudo contactar a Jev: ",
-      startFailed: "Vigía no pudo iniciar",
+      startFailed: "Vigia no pudo iniciar",
       retry: "Reintentar",
     }
   : {
-      open: "Open Vigía",
+      open: "Open Vigia",
       copyOverlay: "Copy overlay address",
       pause: "Pause moderation",
       loginItem: "Start with the computer",
       packsFolder: "Open spoiler packs folder",
       setupAgain: "Set up again…",
       quit: "Quit",
-      stillRunning: "Vigía keeps running in the system tray.",
+      stillRunning: "Vigia keeps running in the system tray.",
       badKey: "Jev rejected the key. Check that it is complete and that your account has credit or a card.",
       noJev: "Could not reach Jev: ",
-      startFailed: "Vigía could not start",
+      startFailed: "Vigia could not start",
       retry: "Try again",
     };
 
@@ -94,7 +94,7 @@ function createWindow() {
     minWidth: 720,
     minHeight: 540,
     show: false,
-    title: "Vigía",
+    title: "Vigia",
     backgroundColor: "#0e1116",
     icon: join(ICONS, "icon.png"),
     autoHideMenuBar: true,
@@ -126,7 +126,7 @@ function createWindow() {
     w.hide();
     if (!toldAboutTray && process.platform === "win32") {
       toldAboutTray = true;
-      tray.displayBalloon({ title: "Vigía", content: T.stillRunning });
+      tray.displayBalloon({ title: "Vigia", content: T.stillRunning });
     }
   });
   w.once("ready-to-show", () => {
@@ -346,7 +346,7 @@ async function startHost() {
     spoilerPackDirs: [userPacksDir(), SPOILER_PACKS],
     log,
   });
-  log(`Vigía is running at ${vigia.url}`);
+  log(`Vigia is running at ${vigia.url}`);
   vigia.engine.on((e) => {
     if (e.type === "state") updateTray();
   });
@@ -373,7 +373,7 @@ function createTray() {
   const icon = nativeImage.createFromPath(join(ICONS, "tray.png"));
   if (process.platform === "darwin") icon.setTemplateImage(true);
   tray = new Tray(icon);
-  tray.setToolTip("Vigía");
+  tray.setToolTip("Vigia");
   tray.on("click", show);
   updateTray();
 }
@@ -445,7 +445,7 @@ async function startHostOrAsk(): Promise<void> {
     await stopHost();
     const r = await dialog.showMessageBox({
       type: "error",
-      title: "Vigía",
+      title: "Vigia",
       message: T.startFailed,
       detail: (e as Error).message,
       buttons: [T.retry, T.setupAgain, T.quit],

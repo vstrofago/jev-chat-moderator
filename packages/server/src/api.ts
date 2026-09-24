@@ -91,10 +91,10 @@ export function createApi(ctx: ApiContext) {
   /** delete / timeout / ban on the author of a stored decision. */
   async function moderate(user: User, action: string, d: StoredDecision, seconds?: number) {
     if (action === "delete") await platform.deleteMessage(d.messageId);
-    else if (action === "timeout") await platform.timeout(d.authorId, seconds ?? 600, `Vigía: ${user.login}`);
+    else if (action === "timeout") await platform.timeout(d.authorId, seconds ?? 600, `Vigia: ${user.login}`);
     else if (action === "ban") {
       if (!platform.ban) throw new HttpError(501, "This source cannot ban");
-      await platform.ban(d.authorId, `Vigía: ${user.login}`);
+      await platform.ban(d.authorId, `Vigia: ${user.login}`);
     }
     usage.action();
     audit(user, action, d.authorLogin, action === "timeout" ? `${seconds ?? 600} s` : "");

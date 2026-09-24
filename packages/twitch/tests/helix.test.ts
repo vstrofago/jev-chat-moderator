@@ -39,11 +39,11 @@ describe("helix", () => {
 
   it("times out with a duration and a reason", async () => {
     const t = fakeTwitch([[200, { data: [] }]]);
-    await auth(t.fetch).ban("b1", "m1", "u9", { duration: 60, reason: "Vigía: toxicity" });
+    await auth(t.fetch).ban("b1", "m1", "u9", { duration: 60, reason: "Vigia: toxicity" });
     expect(t.calls[0]).toMatchObject({
       method: "POST",
       url: "https://api.twitch.tv/helix/moderation/bans?broadcaster_id=b1&moderator_id=m1",
-      body: { data: { user_id: "u9", duration: 60, reason: "Vigía: toxicity" } },
+      body: { data: { user_id: "u9", duration: 60, reason: "Vigia: toxicity" } },
     });
   });
 

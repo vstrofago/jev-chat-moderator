@@ -1,8 +1,8 @@
-# Vigía M3: Server + OBS Overlay Implementation Plan
+# Vigia M3: Server + OBS Overlay Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** A runnable Vigía host (`startVigia()`). It loads `vigia.yaml`, watches it and
+**Goal:** A runnable Vigia host (`startVigia()`). It loads `vigia.yaml`, watches it and
 writes changes back, stores history in SQLite, runs the highlight queue, and serves the OBS
 overlay over HTTP + WebSocket. It ships a headless `vigia` CLI and a Docker + Caddy
 setup. The overlay must be demoable with **real chat and no Twitch account**, using the
@@ -53,7 +53,7 @@ read-only source.
 
 ## Review Focus
 
-1. **A hand edit that breaks the YAML** while Vigía runs keeps the old rules and reports
+1. **A hand edit that breaks the YAML** while Vigia runs keeps the old rules and reports
    the error, and a later fix is picked up (Task 2 test).
 2. **Write-back keeps the user's comments** and formatting in `vigia.yaml` (Task 2 test).
 3. **The overlay without the right token** gets 401 on both HTTP and WS (Task 5 test).

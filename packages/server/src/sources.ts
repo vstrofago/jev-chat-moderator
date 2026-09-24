@@ -17,7 +17,7 @@ const refuse = async () => {
 const READ_ONLY: ChatPlatform = { deleteMessage: refuse, timeout: refuse, sendChat: refuse };
 
 /**
- * Any public channel, read anonymously, always in observe mode. For trying Vigía (and the
+ * Any public channel, read anonymously, always in observe mode. For trying Vigia (and the
  * overlay) without a Twitch app. Rate-limits Jev calls per second.
  */
 export function observeSource(channel: string, o: { rate?: number; category?: string; WebSocket?: typeof WebSocket } = {}): ChatSource {

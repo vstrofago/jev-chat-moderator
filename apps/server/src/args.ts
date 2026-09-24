@@ -17,7 +17,7 @@ export interface CliOptions {
 export const USAGE = `Usage: vigia --source twitch|observe:<channel> [options]
 
   --source twitch            your own channel (needs TWITCH_CLIENT_ID of your Public app)
-  --source observe:<channel> any public channel, read-only, never acts (for trying Vigía)
+  --source observe:<channel> any public channel, read-only, never acts (for trying Vigia)
   --config <file>            rules file (default: vigia.yaml, created if missing)
   --data <dir>               history and login (default: vigia-data)
   --host <address>           default 127.0.0.1 (only this machine); 0.0.0.0 to expose

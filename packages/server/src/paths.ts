@@ -6,7 +6,7 @@ export function exampleConfigText(): string {
   return readFileSync(new URL("../../engine/examples/vigia.yaml", import.meta.url), "utf8");
 }
 
-/** The spoiler packs that ship with Vigía (the repository's spoiler-packs folder). */
+/** The spoiler packs that ship with Vigia (the repository's spoiler-packs folder). */
 export function defaultSpoilerPackDir(): string {
   return fileURLToPath(new URL("../../../spoiler-packs", import.meta.url));
 }

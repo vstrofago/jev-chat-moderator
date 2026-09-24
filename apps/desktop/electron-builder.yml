@@ -1,6 +1,6 @@
 # Packaging for Windows, macOS and Linux. Release builds run in CI (M6).
 appId: io.github.vstrofago.vigia
-productName: Vigía
+productName: Vigia
 executableName: vigia
 artifactName: Vigia-${version}-${os}-${arch}.${ext}
 directories:

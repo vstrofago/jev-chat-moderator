@@ -1,4 +1,4 @@
-# Vigía server mode for a VPS. Build from the repository root:
+# Vigia server mode for a VPS. Build from the repository root:
 #   docker compose -f apps/server/docker-compose.yml up -d --build
 FROM node:24-alpine
 WORKDIR /app

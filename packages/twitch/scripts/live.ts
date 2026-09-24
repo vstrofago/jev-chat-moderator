@@ -1,5 +1,5 @@
 /**
- * Connects Vigía to YOUR channel with your own Twitch app, for trying it for real
+ * Connects Vigia to YOUR channel with your own Twitch app, for trying it for real
  * (for example the !vigia commands). Starts in observe mode: nothing is deleted or
  * timed out unless you pass --act. Command replies are posted to your chat.
  *
@@ -98,7 +98,7 @@ const conn = connectTwitch({
 });
 
 console.log(
-  color(2, `Vigía on #${who.login} with ${rulesPath} — ${values.act ? color(31, "ACTING (deletes and timeouts are real)") : "observe mode (nothing is deleted)"}. Ctrl+C to stop.`),
+  color(2, `Vigia on #${who.login} with ${rulesPath} — ${values.act ? color(31, "ACTING (deletes and timeouts are real)") : "observe mode (nothing is deleted)"}. Ctrl+C to stop.`),
 );
 process.on("SIGINT", () => {
   conn.close();

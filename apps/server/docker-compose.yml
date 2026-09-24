@@ -1,4 +1,4 @@
-# Vigía on your own VPS, with HTTPS from Caddy.
+# Vigia on your own VPS, with HTTPS from Caddy.
 #
 #   export VIGIA_DOMAIN=vigia.example.com      # a domain pointing at this server
 #   export AI_GATEWAY_API_KEY=vck_...          # or TYPESAFE_API_KEY

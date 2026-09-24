@@ -1,4 +1,4 @@
-# Vigía: where we are (handoff)
+# Vigia: where we are (handoff)
 
 Kept current at the end of every block of work so a new session (or a person) can resume.
 
@@ -45,7 +45,7 @@ Kept current at the end of every block of work so a new session (or a person) ca
   - `packages/evals`: 240 labeled messages and `pnpm eval`. The READMEs say "not measured
     yet" until it runs with a key.
   - `README.md`, a full `README.es.md`, `CONTRIBUTING.md` and `SECURITY.md`. The
-    playground docs moved to `apps/demo/README.md`, and the demo has a "Download Vigía" link.
+    playground docs moved to `apps/demo/README.md`, and the demo has a "Download Vigia" link.
   - `ci.yml` runs tests, the typecheck, the builds and the desktop smoke run.
     `release.yml` runs on `v*` tags: a draft release with win/mac/linux, plus
     `ghcr.io/<owner>/vigia`.

@@ -25,9 +25,9 @@ export class ConfigFileError extends Error {
 export interface ConfigFileOptions {
   /** Written when the file does not exist yet. */
   exampleText: string;
-  /** The file was edited outside Vigía and is valid. */
+  /** The file was edited outside Vigia and is valid. */
   onChange(config: VigiaConfig, text: string): void;
-  /** The file was edited outside Vigía and is broken; the previous config stays active. */
+  /** The file was edited outside Vigia and is broken; the previous config stays active. */
   onError(errors: ConfigError[]): void;
   debounceMs?: number;
 }

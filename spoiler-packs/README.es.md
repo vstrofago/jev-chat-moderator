@@ -2,12 +2,12 @@
 
 [English](README.md)
 
-Un pack de spoilers le dice a Vigía qué no se debe revelar nunca en el chat de un juego o una
-serie. Cuando cambia la categoría del stream, Vigía carga el pack que corresponde por su
+Un pack de spoilers le dice a Vigia qué no se debe revelar nunca en el chat de un juego o una
+serie. Cuando cambia la categoría del stream, Vigia carga el pack que corresponde por su
 cuenta. El streamer solo elige hasta dónde va, con nombres de partes que no revelan nada, y
 nunca lee un tema.
 
-Vigía trae el formato y el cargador, pero ningún pack de juegos. Todos los packs de esta
+Vigia trae el formato y el cargador, pero ningún pack de juegos. Todos los packs de esta
 carpeta los escribe la comunidad. [Agrega el tuyo](#aporta-un-pack).
 
 ## Cómo funciona un pack
@@ -58,14 +58,14 @@ La [plantilla](_template.yaml) tiene todos los campos comentados.
 - **Servidor o CLI:** ponlo en `<carpeta de datos>/spoiler-packs/` (por ejemplo
   `vigia-data/spoiler-packs/`).
 
-Vigía vuelve a leer la carpeta cada vez que cambia la categoría. Tus packs ganan sobre los
+Vigia vuelve a leer la carpeta cada vez que cambia la categoría. Tus packs ganan sobre los
 incluidos para la misma categoría. Si un archivo está mal, se salta, y el log dice por qué.
 
 ## Aporta un pack
 
 1. Copia `_template.yaml` a `spoiler-packs/<nombre-del-juego>.yaml`, en minúsculas y con
    guiones.
-2. Llénalo y pruébalo con tu propio Vigía (ver arriba).
+2. Llénalo y pruébalo con tu propio Vigia (ver arriba).
 3. Abre un pull request. En la descripción, di con qué checkpoints lo probaste. Quienes
    revisan leen los temas, así que marca el título del PR con **[spoilers]**.
 

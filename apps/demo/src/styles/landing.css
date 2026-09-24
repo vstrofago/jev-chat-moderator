@@ -1,5 +1,5 @@
 /*
- * Vigía's landing page. The brand is the lookout's lantern: night navy and lamp amber.
+ * Vigia's landing page. The brand is the lookout's lantern: night navy and lamp amber.
  * The hero and the "yours" band stay at night in both themes; the rest follows the theme.
  */
 :root {
@@ -345,7 +345,7 @@ pre {
   color: var(--night-ink-2);
 }
 
-/* Hero stage: a chat with Vigía's verdicts, and the OBS card it produced */
+/* Hero stage: a chat with Vigia's verdicts, and the OBS card it produced */
 .stage {
   position: relative;
   padding-bottom: 84px;

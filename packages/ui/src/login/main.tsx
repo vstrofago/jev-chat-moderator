@@ -64,7 +64,7 @@ function Login() {
       <div class="panel stack login-card">
         <div class="brand">
           <Mark />
-          <span>Vigía</span>
+          <span>Vigia</span>
         </div>
         <h1>{t("login.title")}</h1>
         {info?.twitchClientId && (

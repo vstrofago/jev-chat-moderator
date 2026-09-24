@@ -22,7 +22,7 @@ function Setup({ lang, setLang }: { lang: Lang; setLang(l: Lang): void }) {
       <div class="row">
         <div class="brand">
           <Mark />
-          <span>Vigía</span>
+          <span>Vigia</span>
         </div>
         <span class="spacer" />
         <select

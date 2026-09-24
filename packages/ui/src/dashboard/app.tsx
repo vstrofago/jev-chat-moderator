@@ -94,7 +94,7 @@ function Dashboard({ lang, setLang }: { lang: Lang; setLang(l: Lang): void }) {
       <header class="topbar">
         <div class="brand">
           <Mark />
-          <span>Vigía</span>
+          <span>Vigia</span>
         </div>
         <Lantern state={state} />
         <div class="context muted small">
@@ -137,7 +137,7 @@ function Dashboard({ lang, setLang }: { lang: Lang; setLang(l: Lang): void }) {
 }
 
 /**
- * The one loud element: what Vigía is doing right now. Amber lantern while it only
+ * The one loud element: what Vigia is doing right now. Amber lantern while it only
  * watches, green light while it moderates, dark while paused.
  */
 function Lantern({ state }: { state: RuntimeState }) {

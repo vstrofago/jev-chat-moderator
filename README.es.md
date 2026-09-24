@@ -1,4 +1,4 @@
-# Vigía
+# Vigia
 
 [English](README.md) · [Sitio web](https://vstrofago.github.io/vigia/) · [Prueba el playground](https://vstrofago.github.io/vigia/playground/)
 
@@ -7,7 +7,7 @@
 
 - **Reglas en lenguaje normal.** Cada regla es una pregunta de sí o no para Jev ("¿esto es
   backseat que nadie pidió?"), no una lista de palabras prohibidas.
-- **Protección anti-spoilers que nunca te hace spoiler.** Vigía detecta la *forma* de un
+- **Protección anti-spoilers que nunca te hace spoiler.** Vigia detecta la *forma* de un
   spoiler, oculta lo que marca incluso en el dashboard del propio streamer, y carga packs de
   spoilers de la comunidad para el juego que estás jugando.
 - **Preguntas y buenos mensajes en pantalla.** Los saca del chat y los muestra en un overlay
@@ -22,7 +22,7 @@
 
 ## Cómo funciona
 
-Jev es un modelo *System One*: no escribe texto. Vigía le manda cada mensaje del chat y tus
+Jev es un modelo *System One*: no escribe texto. Vigia le manda cada mensaje del chat y tus
 reglas como preguntas tipadas de sí o no, y Jev responde con una probabilidad para cada una,
 en una sola llamada rápida y barata. **Jev nunca decide solo.** Deciden tus umbrales:
 
@@ -45,8 +45,8 @@ ventana te guía en la configuración en unos diez minutos.
 
 - **Windows:** ejecuta `Vigia-…-win-x64.exe`. Mientras la app no esté firmada, SmartScreen
   puede avisarte: elige **Más información → Ejecutar de todas formas**.
-- **macOS (experimental, sin firma):** abre el `.dmg` y arrastra Vigía a Aplicaciones. La
-  primera vez, haz clic derecho sobre Vigía y elige **Abrir**. En macOS reciente, ve a
+- **macOS (experimental, sin firma):** abre el `.dmg` y arrastra Vigia a Aplicaciones. La
+  primera vez, haz clic derecho sobre Vigia y elige **Abrir**. En macOS reciente, ve a
   **Configuración del Sistema → Privacidad y seguridad → Abrir de todos modos**.
 - **Linux:** haz ejecutable el AppImage (`chmod +x Vigia-…-linux-x86_64.AppImage`) y ábrelo.
 
@@ -55,12 +55,12 @@ La configuración pregunta dónde vigilar:
 - **Mi canal** necesita una app de Twitch propia y gratuita (abajo), iniciar sesión en
   Twitch y una key de Jev.
 - **Solo mirar un canal** lee cualquier canal público, en modo solo lectura, para probar
-  Vigía con solo una key de Jev.
+  Vigia con solo una key de Jev.
 
 Después se abre el dashboard, y su propio asistente te lleva por tus reglas, el
-anti-spoiler, el overlay de OBS y el modo observación. Al cerrar la ventana, Vigía sigue
+anti-spoiler, el overlay de OBS y el modo observación. Al cerrar la ventana, Vigia sigue
 funcionando en la bandeja del sistema, cuyo menú puede copiar la dirección del overlay,
-pausar la moderación o iniciar Vigía con tu equipo. Las actualizaciones llegan solas.
+pausar la moderación o iniciar Vigia con tu equipo. Las actualizaciones llegan solas.
 
 ### Servidor (Docker, para equipos de mods)
 
@@ -119,7 +119,7 @@ tu cuenta antes de registrar apps.
    - **Client type:** **Public**.
 3. Créala, abre **Manage** y copia el **Client ID**. No hay ningún secreto que guardar.
 
-Vigía inicia sesión con el código de dispositivo de Twitch: confirmas un código en
+Vigia inicia sesión con el código de dispositivo de Twitch: confirmas un código en
 twitch.tv, y solo pide lo que usa (leer y escribir en el chat, borrar mensajes, timeouts y
 baneos, y ver a tus mods).
 
@@ -169,7 +169,7 @@ rules:
 - **La pestaña Reglas** muestra sobre cuántos mensajes recientes actuaría una regla mientras
   mueves sus controles, sin volver a llamar a Jev, y tiene una caja para probar cualquier
   mensaje.
-- **Empieza en modo observación.** Vigía registra lo que *haría*. Desactívalo cuando el
+- **Empieza en modo observación.** Vigia registra lo que *haría*. Desactívalo cuando el
   registro se vea bien.
 
 ## Anti-spoiler
@@ -267,7 +267,7 @@ spoiler-packs      packs de spoilers de la comunidad
 
 ## El playground
 
-[El playground](https://vstrofago.github.io/vigia/playground/) es donde empezó Vigía.
+[El playground](https://vstrofago.github.io/vigia/playground/) es donde empezó Vigia.
 Reproduce unos 180 mensajes de chat guionados con las respuestas que Jev dio de verdad, y te
 deja mover los umbrales para ver cómo cambian las decisiones al instante. También puedes
 pegar tu propia key del Vercel AI Gateway para probarlo en vivo. Córrelo en tu equipo con
