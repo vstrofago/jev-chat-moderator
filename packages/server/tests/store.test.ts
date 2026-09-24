@@ -22,7 +22,7 @@ describe("openStore", () => {
   it("records decisions and reads them back newest first", () => {
     let now = 1000;
     const store = openStore(":memory:", { now: () => now });
-    store.recordDecision(decision("a"));
+    expect(store.recordDecision(decision("a"))).toBe(1);
     now = 2000;
     store.recordDecision(decision("b", { moderation: { ruleId: "spam", action: "delete", downgraded: false } }, true));
     const rows = store.recentDecisions(10);

@@ -112,9 +112,10 @@ export function openStore(path: string, o: StoreOptions = {}) {
   });
 
   return {
-    recordDecision(e: DecisionEvent) {
+    /** Stores a decision and returns its id. */
+    recordDecision(e: DecisionEvent): number {
       const { message: m, outcome } = e;
-      insert.run(
+      const r = insert.run(
         now(),
         m.id,
         m.author.id,
@@ -126,6 +127,7 @@ export function openStore(path: string, o: StoreOptions = {}) {
         outcome.spoiler ? 1 : 0,
         outcome.uncertain.length > 0 ? 1 : 0,
       );
+      return Number(r.lastInsertRowid);
     },
     recentDecisions: (limit: number) => recent.all(limit).map(toDecision),
     /** Unresolved uncertain entries, newest first. */

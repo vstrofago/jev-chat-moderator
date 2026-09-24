@@ -304,6 +304,30 @@ rules:
   });
 });
 
+describe("dashboard helpers", () => {
+  it("tests a message against every enabled rule without acting", async () => {
+    const { engine, calls, events } = setup({ spam: 0.99, q: 0.6 });
+    await engine.handleMessage(msg("!vigia regla tox off", mod));
+    calls.length = 0;
+    events.length = 0;
+    const verdicts = await engine.test("buy followers?");
+    expect(verdicts.map((v) => [v.ruleId, v.band])).toEqual([
+      ["spam", "act"],
+      ["sp", "none"],
+      ["q", "unsure"],
+    ]);
+    expect(calls).toEqual([]);
+    expect(events).toEqual([]);
+  });
+
+  it("pauses and resumes like the chat command", () => {
+    const { engine, events } = setup();
+    engine.setPaused(true);
+    expect(engine.state().paused).toBe(true);
+    expect(events.at(-1)).toMatchObject({ type: "state", state: { paused: true } });
+  });
+});
+
 describe("listeners", () => {
   it("keep the engine running when one of them throws", async () => {
     const { engine, calls } = setup({ spam: 0.99 });

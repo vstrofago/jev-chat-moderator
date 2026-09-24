@@ -58,6 +58,16 @@ describe("createHighlightQueue", () => {
     expect(log.at(-1)).toBe("show b");
   });
 
+  it("skips to the next highlight on demand", () => {
+    const { q, log } = setup();
+    q.push(item("a"));
+    q.push(item("b"));
+    q.next();
+    expect(log).toEqual(["show a", "show b"]);
+    q.next();
+    expect(log).toEqual(["show a", "show b", "clear"]);
+  });
+
   it("follows a new duration", () => {
     const { q, log } = setup();
     q.setSeconds(2);

@@ -15,6 +15,7 @@ export function createTwitchPlatform(helix: Helix, ids: TwitchIds): ChatPlatform
     deleteMessage: (messageId) => helix.deleteMessage(ids.broadcasterId, ids.actorId, messageId),
     timeout: (userId, seconds, reason) => helix.ban(ids.broadcasterId, ids.actorId, userId, { duration: seconds, reason }),
     sendChat: (text, replyToId) => helix.sendChat(ids.broadcasterId, ids.actorId, text, replyToId),
+    ban: (userId, reason) => helix.ban(ids.broadcasterId, ids.actorId, userId, { reason }),
   };
 }
 

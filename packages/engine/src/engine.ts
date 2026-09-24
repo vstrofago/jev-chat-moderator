@@ -1,7 +1,7 @@
 import { AuthError } from "@vigia/core";
 import { parseCommand, type Command } from "./commands";
 import { isPackRule, parseConfig, type ConfigResult, type Rule, type VigiaConfig } from "./config";
-import { combine, type Outcome } from "./decide";
+import { combine, type Outcome, type RuleVerdict } from "./decide";
 import type { Evaluator } from "./evaluator";
 import { isEmoteOnly, type ChatMessage, type Fragment } from "./message";
 import { createPriorityQueue, DroppedError } from "./priority-queue";
@@ -15,6 +15,8 @@ export interface ChatPlatform {
   deleteMessage(messageId: string): Promise<void>;
   timeout(userId: string, seconds: number, reason: string): Promise<void>;
   sendChat(text: string, replyToId?: string): Promise<void>;
+  /** Manual bans from the dashboard only; rules can never ban. */
+  ban?(userId: string, reason: string): Promise<void>;
 }
 
 export interface HighlightItem {
@@ -225,6 +227,31 @@ export function createEngine(o: EngineOptions) {
       }
       const outcome = combine(probabilities, rules, config.defaults, { emoteOnly: isEmoteOnly(m) });
       await apply(m, outcome, rules);
+    },
+
+    /** The dashboard's test box: every enabled rule on `text`, without acting or logging. */
+    async test(text: string): Promise<RuleVerdict[]> {
+      const rules = activeRules();
+      if (rules.length === 0) return [];
+      const m: ChatMessage = {
+        id: "test",
+        text,
+        author: { id: "test", login: "test", displayName: "test", broadcaster: false, moderator: false, vip: false },
+        fragments: [{ type: "text", text }],
+      };
+      const { state: jevState, questions } = buildRequest(m, rules, {
+        category: state.category,
+        progress: state.progress,
+        protectedTopics,
+        emotes: config.emotes,
+      });
+      const probabilities = await evaluate(jevState, questions);
+      return combine(probabilities, rules, config.defaults, { emoteOnly: isEmoteOnly(m) }).verdicts;
+    },
+
+    setPaused(on: boolean) {
+      state.paused = on;
+      changed();
     },
 
     /** Parses and applies new YAML. On errors the previous config keeps running. */

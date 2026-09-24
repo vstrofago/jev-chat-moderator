@@ -50,6 +50,11 @@ export function createHighlightQueue(o: HighlightQueueOptions) {
     showNow(item: HighlightItem) {
       show(item);
     },
+    /** Ends the current turn now: shows the next highlight, or clears. */
+    next() {
+      clearTimeout(timer);
+      endTurn();
+    },
     /** Hides the current card; the next one waits a full turn. */
     clear() {
       if (current) {
