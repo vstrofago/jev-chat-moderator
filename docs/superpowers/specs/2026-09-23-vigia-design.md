@@ -401,3 +401,14 @@ GitHub Actions runs on version tags:
   million input tokens, but the dashboard shows an hourly estimate so no one is surprised.
 - **Unsigned binaries** scare some users. SignPath covers Windows, and the docs cover the
   rest.
+
+## After launch (roadmap)
+
+- **Kick adapter** (a second `ChatPlatform`).
+- **Local models.** [Laya](https://laya-ai.com/) (Convai, Apache 2.0) is an open-weight
+  "System 1" decision model like Jev: typed questions in, calibrated probabilities out, run
+  locally. It becomes another `Evaluator`, so rules and packs don't change. It needs no API
+  key, has no per-message cost, and chat never leaves the machine. To check first: the
+  runtime (Laya ships as a Python package, so likely a local sidecar), CPU/GPU load next to
+  OBS and a game, and how well it handles Spanish.
+- **Community spoiler packs** grow over time (the format ships at launch).
