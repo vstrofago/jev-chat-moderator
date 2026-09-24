@@ -5,6 +5,7 @@ export interface StoredDecision {
   id: number;
   ts: number;
   messageId: string;
+  authorId: string;
   authorLogin: string;
   authorName: string;
   text: string;
@@ -12,6 +13,17 @@ export interface StoredDecision {
   applied: boolean;
   /** The anti-spoiler rule flagged it: the UI must blur the text. */
   spoiler: boolean;
+  /** For uncertain entries: what a mod decided. */
+  resolved: "applied" | "dismissed" | null;
+}
+
+export interface AuditEntry {
+  ts: number;
+  login: string;
+  role: string;
+  action: string;
+  target: string;
+  detail: string;
 }
 
 export interface StoreOptions {
@@ -50,13 +62,32 @@ export function openStore(path: string, o: StoreOptions = {}) {
     );
     CREATE INDEX IF NOT EXISTS decisions_ts ON decisions (ts);
     CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+    CREATE TABLE IF NOT EXISTS audit (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      ts INTEGER NOT NULL,
+      login TEXT NOT NULL,
+      role TEXT NOT NULL,
+      action TEXT NOT NULL,
+      target TEXT NOT NULL,
+      detail TEXT NOT NULL
+    );
   `);
+  // Columns added after the first release of the table.
+  const columns = new Set((db.prepare("PRAGMA table_info(decisions)").all() as { name: string }[]).map((c) => c.name));
+  if (!columns.has("author_id")) db.exec("ALTER TABLE decisions ADD COLUMN author_id TEXT NOT NULL DEFAULT ''");
+  if (!columns.has("resolved")) db.exec("ALTER TABLE decisions ADD COLUMN resolved TEXT");
 
   const insert = db.prepare(`
-    INSERT INTO decisions (ts, message_id, author_login, author_name, text, outcome_json, applied, spoiler, uncertain)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+    INSERT INTO decisions (ts, message_id, author_id, author_login, author_name, text, outcome_json, applied, spoiler, uncertain)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
   const recent = db.prepare("SELECT * FROM decisions ORDER BY ts DESC, id DESC LIMIT ?");
-  const recentUncertain = db.prepare("SELECT * FROM decisions WHERE uncertain = 1 ORDER BY ts DESC, id DESC LIMIT ?");
+  const recentUncertain = db.prepare(
+    "SELECT * FROM decisions WHERE uncertain = 1 AND resolved IS NULL ORDER BY ts DESC, id DESC LIMIT ?",
+  );
+  const byId = db.prepare("SELECT * FROM decisions WHERE id = ?");
+  const setResolved = db.prepare("UPDATE decisions SET resolved = ? WHERE id = ?");
+  const insertAudit = db.prepare("INSERT INTO audit (ts, login, role, action, target, detail) VALUES (?, ?, ?, ?, ?, ?)");
+  const recentAudit = db.prepare("SELECT ts, login, role, action, target, detail FROM audit ORDER BY ts DESC, id DESC LIMIT ?");
   const getSetting = db.prepare("SELECT value FROM settings WHERE key = ?");
   const putSetting = db.prepare(
     "INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
@@ -70,12 +101,14 @@ export function openStore(path: string, o: StoreOptions = {}) {
     id: Number(r.id),
     ts: Number(r.ts),
     messageId: r.message_id,
+    authorId: r.author_id,
     authorLogin: r.author_login,
     authorName: r.author_name,
     text: r.text,
     outcome: JSON.parse(r.outcome_json),
     applied: r.applied === 1,
     spoiler: r.spoiler === 1,
+    resolved: r.resolved ?? null,
   });
 
   return {
@@ -84,6 +117,7 @@ export function openStore(path: string, o: StoreOptions = {}) {
       insert.run(
         now(),
         m.id,
+        m.author.id,
         m.author.login,
         m.author.displayName,
         m.text,
@@ -94,7 +128,20 @@ export function openStore(path: string, o: StoreOptions = {}) {
       );
     },
     recentDecisions: (limit: number) => recent.all(limit).map(toDecision),
+    /** Unresolved uncertain entries, newest first. */
     uncertain: (limit: number) => recentUncertain.all(limit).map(toDecision),
+    decision(id: number): StoredDecision | undefined {
+      const r = byId.get(id);
+      return r ? toDecision(r) : undefined;
+    },
+    resolve(id: number, how: "applied" | "dismissed") {
+      setResolved.run(how, id);
+    },
+
+    recordAudit(e: Omit<AuditEntry, "ts" | "detail"> & { detail?: string }) {
+      insertAudit.run(now(), e.login, e.role, e.action, e.target, e.detail ?? "");
+    },
+    audit: (limit: number) => recentAudit.all(limit).map((r: any) => ({ ...r, ts: Number(r.ts) }) as AuditEntry),
 
     setting<T = unknown>(key: string): T | undefined {
       const row = getSetting.get(key) as { value: string } | undefined;

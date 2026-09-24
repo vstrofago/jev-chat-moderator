@@ -27,7 +27,16 @@ describe("openStore", () => {
     store.recordDecision(decision("b", { moderation: { ruleId: "spam", action: "delete", downgraded: false } }, true));
     const rows = store.recentDecisions(10);
     expect(rows.map((r) => r.messageId)).toEqual(["b", "a"]);
-    expect(rows[0]).toMatchObject({ ts: 2000, authorName: "Viewer", authorLogin: "viewer", text: "text b", applied: true, spoiler: false });
+    expect(rows[0]).toMatchObject({
+      ts: 2000,
+      authorId: "u1",
+      authorName: "Viewer",
+      authorLogin: "viewer",
+      text: "text b",
+      applied: true,
+      spoiler: false,
+      resolved: null,
+    });
     expect(rows[0].outcome.moderation?.ruleId).toBe("spam");
     store.close();
   });
@@ -37,6 +46,34 @@ describe("openStore", () => {
     store.recordDecision(decision("a"));
     store.recordDecision(decision("b", { uncertain: [{ ruleId: "tox", action: "timeout", probability: 0.6, band: "unsure" }] }));
     expect(store.uncertain(10).map((r) => r.messageId)).toEqual(["b"]);
+    store.close();
+  });
+
+  it("resolves uncertain entries so they leave the log", () => {
+    const store = openStore(":memory:");
+    const unsure = { uncertain: [{ ruleId: "tox", action: "timeout" as const, probability: 0.6, band: "unsure" as const }] };
+    store.recordDecision(decision("a", unsure));
+    store.recordDecision(decision("b", unsure));
+    const [b, a] = store.uncertain(10);
+    expect(store.decision(a.id)?.messageId).toBe("a");
+    store.resolve(a.id, "applied");
+    store.resolve(b.id, "dismissed");
+    expect(store.uncertain(10)).toEqual([]);
+    expect(store.decision(a.id)?.resolved).toBe("applied");
+    expect(store.decision(999)).toBeUndefined();
+    store.close();
+  });
+
+  it("keeps an audit trail of manual actions", () => {
+    let now = 5;
+    const store = openStore(":memory:", { now: () => now });
+    store.recordAudit({ login: "mod1", role: "moderator", action: "timeout", target: "viewer", detail: "600 s" });
+    now = 6;
+    store.recordAudit({ login: "streamer", role: "broadcaster", action: "rule-off", target: "spam" });
+    expect(store.audit(10)).toEqual([
+      { ts: 6, login: "streamer", role: "broadcaster", action: "rule-off", target: "spam", detail: "" },
+      { ts: 5, login: "mod1", role: "moderator", action: "timeout", target: "viewer", detail: "600 s" },
+    ]);
     store.close();
   });
 
