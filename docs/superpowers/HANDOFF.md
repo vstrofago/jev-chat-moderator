@@ -2,7 +2,7 @@
 
 Kept current at the end of every block of work so a new session (or a person) can resume.
 
-**Last updated:** 2026-09-24, M4 done, starting M5 (Electron).
+**Last updated:** 2026-09-24, M5 done (Electron), next is M6.
 
 ## Branches (stacked, none merged or pushed)
 - `vigia/m1-engine`: monorepo plus `@vigia/engine`. Done and self-reviewed.
@@ -27,16 +27,25 @@ Kept current at the end of every block of work so a new session (or a person) ca
   - Wizard scope ruling: the Twitch app, device login and Jev key steps belong to M5
     (secrets live in Electron `safeStorage`).
 
+- `vigia/m5-desktop`: done (pushed). `apps/desktop`: Electron shell around `startVigia()`.
+  Setup page on a `vigia://` scheme (source, Twitch app, device login, Jev key tested with a
+  real call), secrets in `safeStorage`, host on 127.0.0.1:7777 (remembered port), tray
+  (open, copy overlay address, pause, start with the computer, set up again, quit),
+  navigation locked to the local host, `electron-updater` in packaged builds.
+  - Verified: `pnpm --filter @vigia/desktop smoke` (setup and dashboard screenshots) under
+    Xvfb, both from source and from the packaged Linux build; the AppImage builds
+    (`pnpm --filter @vigia/desktop dist -- --linux AppImage --publish never`).
+  - Unverified: Windows/macOS packaging and signing (M6 CI), the tray on real desktops,
+    and the Twitch device login (same 2FA blocker).
+  - Smoke under Xvfb needs `--no-sandbox` in containers running as root.
+
 ## Blocked on the author
 - **Twitch app registration** needs 2FA, which the author can't enable yet. `pnpm live`
   has never run for real. This is a launch blocker for M6.
 - The repo rename to `vigia`, and merging or pushing, wait on the author's go-ahead.
 
 ## Next steps
-1. M5: Electron (write its plan first): the window shows the dashboard, the wizard gains
-   the Twitch app, device login and Jev key steps stored with `safeStorage`, a tray icon,
-   start-with-OS, and `electron-updater`.
-2. M6: pack evals, the community spoiler-pack loader, README en/es, CONTRIBUTING, release
+1. M6: pack evals, the community spoiler-pack loader, README en/es, CONTRIBUTING, release
    CI, the repo rename, and the real-account check.
 
 ## Useful commands
