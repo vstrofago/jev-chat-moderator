@@ -186,7 +186,7 @@ export async function startVigia(o: VigiaOptions) {
 
   const uiRoot = resolve(o.uiDir);
   const notFound = (res: ServerResponse) => res.writeHead(404).end("Not found");
-  async function serveFile(res: ServerResponse, relative: string) {
+  async function serveFile(res: ServerResponse, relative: string, o: { framable?: boolean } = {}) {
     const path = resolve(uiRoot, relative);
     if (!path.startsWith(uiRoot + sep)) return notFound(res);
     try {
@@ -196,7 +196,7 @@ export async function startVigia(o: VigiaOptions) {
         "Cache-Control": "no-cache",
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "no-referrer",
-        ...(extname(path) === ".html" ? { "X-Frame-Options": "DENY" } : {}),
+        ...(extname(path) === ".html" && !o.framable ? { "X-Frame-Options": "DENY" } : {}),
       });
       res.end(body);
     } catch {
@@ -231,7 +231,7 @@ export async function startVigia(o: VigiaOptions) {
       case "/overlay.html":
         if (!keyOk(url.searchParams.get("key"))) return res.writeHead(401).end("Missing or wrong overlay key");
         // The overlay is embedded by OBS, so it may be framed; skip the dashboard headers.
-        return serveFile(res, "overlay.html");
+        return serveFile(res, "overlay.html", { framable: true });
       case "/login":
       case "/auth/callback":
         return serveFile(res, "login.html");

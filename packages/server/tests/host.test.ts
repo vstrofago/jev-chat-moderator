@@ -35,6 +35,7 @@ beforeEach(async () => {
   dir = await mkdtemp(join(tmpdir(), "vigia-host-"));
   await mkdir(join(dir, "ui", "assets"), { recursive: true });
   await writeFile(join(dir, "ui", "overlay.html"), "<html>overlay page</html>");
+  await writeFile(join(dir, "ui", "login.html"), "<html>login page</html>");
   await writeFile(join(dir, "ui", "assets", "overlay.js"), "console.log(1)");
   replies.length = 0;
 });
@@ -79,6 +80,9 @@ describe("startVigia", () => {
     const ok = await fetch(v.overlayUrl);
     expect(ok.status).toBe(200);
     expect(await ok.text()).toContain("overlay page");
+    // OBS setups and preview tools may embed the overlay; the dashboard stays unframable.
+    expect(ok.headers.get("x-frame-options")).toBeNull();
+    expect((await fetch(`${base}/login`)).headers.get("x-frame-options")).toBe("DENY");
     expect((await fetch(`${base}/assets/overlay.js`)).status).toBe(200);
     expect((await fetch(`${base}/assets/../../vigia.yaml`)).status).toBe(404);
     expect((await fetch(`${base}/nope`)).status).toBe(404);
