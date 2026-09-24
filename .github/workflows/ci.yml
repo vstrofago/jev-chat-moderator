@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches-ignore: [main]   # main runs the same checks in deploy.yml
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm typecheck
+      - run: pnpm --filter @vigia/ui build
+      - run: pnpm --filter @vigia/demo build
+
+      # Boots the desktop app offscreen: the setup page, then the dashboard on a read-only source.
+      - name: Desktop smoke run
+        working-directory: apps/desktop
+        run: |
+          node build.mjs
+          mkdir -p smoke
+          # Ubuntu runners block Chromium's user-namespace sandbox.
+          VIGIA_SMOKE=1 VIGIA_SMOKE_OUT=smoke xvfb-run -a pnpm exec electron --no-sandbox .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: desktop-smoke
+          path: apps/desktop/smoke/*.png
+          if-no-files-found: ignore

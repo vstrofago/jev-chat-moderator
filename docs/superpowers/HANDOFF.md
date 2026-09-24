@@ -2,9 +2,9 @@
 
 Kept current at the end of every block of work so a new session (or a person) can resume.
 
-**Last updated:** 2026-09-24, M5 done (Electron), next is M6.
+**Last updated:** 2026-09-24, M6 done except the author-only steps; next is the v1.0 release.
 
-## Branches (stacked, none merged or pushed)
+## Branches (stacked, pushed, none merged)
 - `vigia/m1-engine`: monorepo plus `@vigia/engine`. Done and self-reviewed.
 - `vigia/m2-twitch`: `@vigia/twitch` (IRC read-only, `pnpm observe`, 7TV/BTTV/FFZ emotes,
   Helix, EventSub, device-code login, `pnpm live`). Done except the real-account check.
@@ -39,12 +39,34 @@ Kept current at the end of every block of work so a new session (or a person) ca
     and the Twitch device login (same 2FA blocker).
   - Smoke under Xvfb needs `--no-sandbox` in containers running as root.
 
+- M6 (also on `vigia/m5-desktop`, plan `plans/2026-09-24-vigia-m6-launch.md`): done.
+  - Community spoiler packs: the format, loader, API and dashboard checkpoint picker, the
+    `spoiler-packs/` folder (template and docs, no game packs), and the desktop tray entry.
+  - `packages/evals`: 240 labeled messages and `pnpm eval`. The READMEs say "not measured
+    yet" until it runs with a key.
+  - `README.md`, a full `README.es.md`, `CONTRIBUTING.md` and `SECURITY.md`. The
+    playground docs moved to `apps/demo/README.md`, and the demo has a "Download Vigía" link.
+  - `ci.yml` runs tests, the typecheck, the builds and the desktop smoke run.
+    `release.yml` runs on `v*` tags: a draft release with win/mac/linux, plus
+    `ghcr.io/<owner>/vigia`.
+  - The Docker image installs only the server and the UI.
+  - Unverified: both workflows have never run (no GitHub Actions here), and neither has
+    `docker build`.
+
 ## Blocked on the author
 - **Twitch app registration** needs 2FA, which the author can't enable yet. `pnpm live`
   has never run for real. This is a launch blocker for M6.
 - The repo rename to `vigia`, and merging or pushing, wait on the author's go-ahead.
 
-## Next steps
+## Next steps (author)
+1. `AI_GATEWAY_API_KEY=vck_... pnpm eval`, then commit `docs/evals/results.json` and the
+   updated README tables.
+2. Merge, rename the repo to `vigia` (then update the repo URLs in the READMEs, the
+   electron-builder `publish` block and the demo), and do the real-account check (2FA).
+3. Bump `apps/desktop/package.json` to 1.0.0, push the `v1.0.0` tag, then check and publish
+   the draft.
+
+## Earlier plan
 1. M6: pack evals, the community spoiler-pack loader, README en/es, CONTRIBUTING, release
    CI, the repo rename, and the real-account check.
 

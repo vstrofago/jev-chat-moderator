@@ -4,7 +4,8 @@ FROM node:24-alpine
 WORKDIR /app
 RUN npm install -g pnpm@12.4.2
 COPY . .
-RUN pnpm install --frozen-lockfile && pnpm --filter @vigia/ui build
+# Only the server and the UI (with their dependencies): the desktop app would pull in Electron.
+RUN pnpm install --frozen-lockfile --filter "@vigia/server-app..." --filter "@vigia/ui..." && pnpm --filter @vigia/ui build
 ENV VIGIA_UI_DIR=/app/packages/ui/dist \
     NODE_ENV=production
 WORKDIR /app/apps/server

@@ -215,24 +215,26 @@ function SpoilerSettings({ rule, user, reload, spoilers, setSpoilers }: { rule: 
         <p class="muted small">{count === 0 ? t("spoiler.topics.none") : t("spoiler.topics.count", { n: count })}</p>
       )}
       {spoilers.pack ? (
-        <label class="field">
-          <span>{t("spoiler.pack", { name: spoilers.pack.name, n: spoilers.pack.topicCount })}</span>
-          {spoilers.pack.checkpoints.length > 0 && (
-            <select
-              value={spoilers.checkpoint ?? ""}
-              onChange={(e) => {
-                const checkpoint = e.currentTarget.value || null;
-                run(t("done.saved"), () => api<SpoilerStatus>("PUT", "/api/spoiler-pack/checkpoint", { checkpoint })).then((r) => r && setSpoilers(r));
-              }}
-            >
-              <option value="">{t("spoiler.pack.all")}</option>
-              {spoilers.pack.checkpoints.map((c) => (
-                <option key={c} value={c}>{t("spoiler.pack.at", { name: c })}</option>
-              ))}
-            </select>
-          )}
-          <span class="muted small">{t("spoiler.pack.help")}</span>
-        </label>
+        <div class="stack">
+          <label class="field">
+            <span>{t("spoiler.pack", { name: spoilers.pack.name, n: spoilers.pack.topicCount })}</span>
+            {spoilers.pack.checkpoints.length > 0 && (
+              <select
+                value={spoilers.checkpoint ?? ""}
+                onChange={(e) => {
+                  const checkpoint = e.currentTarget.value || null;
+                  run(t("done.saved"), () => api<SpoilerStatus>("PUT", "/api/spoiler-pack/checkpoint", { checkpoint })).then((r) => r && setSpoilers(r));
+                }}
+              >
+                <option value="">{t("spoiler.pack.all")}</option>
+                {spoilers.pack.checkpoints.map((c) => (
+                  <option key={c} value={c}>{t("spoiler.pack.at", { name: c })}</option>
+                ))}
+              </select>
+            )}
+          </label>
+          <p class="muted small">{t("spoiler.pack.help")}</p>
+        </div>
       ) : (
         <p class="muted small">{t("spoiler.pack.none")}</p>
       )}

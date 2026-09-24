@@ -8,4 +8,5 @@ vigia-data/
 /vigia.yaml
 apps/server/vigia.yaml
 apps/desktop/smoke-*.png
+apps/desktop/smoke/
 apps/desktop/release/

@@ -3,10 +3,12 @@
 #   export VIGIA_DOMAIN=vigia.example.com      # a domain pointing at this server
 #   export AI_GATEWAY_API_KEY=vck_...          # or TYPESAFE_API_KEY
 #   export TWITCH_CLIENT_ID=...                # your own Public app at dev.twitch.tv
-#   docker compose -f apps/server/docker-compose.yml up -d --build
+#   docker compose -f apps/server/docker-compose.yml up -d           # the released image
+#   docker compose -f apps/server/docker-compose.yml up -d --build   # or build from source
 #   docker compose -f apps/server/docker-compose.yml logs -f vigia   # Twitch login code + overlay URL
 services:
   vigia:
+    image: ghcr.io/vstrofago/vigia:${VIGIA_VERSION:-latest}
     build:
       context: ../..
       dockerfile: apps/server/Dockerfile
