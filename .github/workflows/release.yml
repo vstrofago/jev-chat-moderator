@@ -3,9 +3,13 @@ name: Release
 # Push a tag like v1.2.3 (matching apps/desktop/package.json). The desktop apps and the
 # server image are built into a draft, which is published as a PRE-RELEASE only once every
 # build succeeded: while Vigia is experimental, no release is marked "latest".
+#
+# Or run it by hand (Actions → Release → Run workflow, on main): it tags main with
+# v<version> from apps/desktop/package.json, then does the same.
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -18,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.v.outputs.version }}
+      tag: ${{ steps.v.outputs.tag }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -26,21 +31,39 @@ jobs:
           node-version: 24
           cache: pnpm
       - id: v
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           version=$(node -p "require('./apps/desktop/package.json').version")
-          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            if [ "$GITHUB_REF" != "refs/heads/main" ]; then
+              echo "::error::Run the release from main."
+              exit 1
+            fi
+            if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/v$version" >/dev/null 2>&1; then
+              echo "::error::v$version already exists. Bump apps/desktop/package.json first."
+              exit 1
+            fi
+          elif [ "v$version" != "$GITHUB_REF_NAME" ]; then
             echo "::error::Tag $GITHUB_REF_NAME does not match apps/desktop/package.json ($version)"
             exit 1
           fi
           echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm typecheck
+      - name: Tag main (manual runs)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api "repos/$GITHUB_REPOSITORY/git/refs" -f "ref=refs/tags/${{ steps.v.outputs.tag }}" -f "sha=$GITHUB_SHA"
       - name: Create the draft release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.v.outputs.tag }}
         run: |
-          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 && exit 0
+          gh release view "$TAG" >/dev/null 2>&1 && exit 0
           cat > notes.md <<'NOTES'
           > [!WARNING]
           > **Experimental, work in progress.** Expect bugs and breaking changes. Start in observe mode, and don't make Vigia your only moderation yet. "My channel" has not been tested with a real Twitch account yet.
@@ -49,8 +72,8 @@ jobs:
 
           **Install:** Windows `Vigia-*-win-x64.exe` (unsigned: *More info → Run anyway*), macOS `.dmg` (unsigned: right-click → *Open*), Linux `.AppImage` (`chmod +x`). Server: `docker pull IMAGE_REF`, or `docker compose up` from the repository.
           NOTES
-          sed -i "s|IMAGE_REF|ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/vigia:${GITHUB_REF_NAME#v}|" notes.md
-          gh release create "$GITHUB_REF_NAME" --draft --prerelease --title "Vigia $GITHUB_REF_NAME (experimental)" --notes-file notes.md --generate-notes
+          sed -i "s|IMAGE_REF|ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/vigia:${TAG#v}|" notes.md
+          gh release create "$TAG" --verify-tag --draft --prerelease --title "Vigia $TAG (experimental)" --notes-file notes.md --generate-notes
 
   desktop:
     needs: version
@@ -102,10 +125,10 @@ jobs:
 
   # Every build made it: publish the draft, as a pre-release.
   publish:
-    needs: [desktop, server-image]
+    needs: [version, desktop, server-image]
     runs-on: ubuntu-latest
     steps:
       - env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
-        run: gh release edit "$GITHUB_REF_NAME" --draft=false --prerelease --latest=false
+        run: gh release edit "${{ needs.version.outputs.tag }}" --draft=false --prerelease --latest=false
