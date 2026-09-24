@@ -1,6 +1,6 @@
 # Vigía
 
-[English](README.md) · [Prueba el playground](https://vstrofago.github.io/vigia)
+[English](README.md) · [Sitio web](https://vstrofago.github.io/vigia/) · [Prueba el playground](https://vstrofago.github.io/vigia/playground/)
 
 **Un vigilante de chat gratuito y autoalojado para streamers de Twitch**, con Jev de
 [TypeSafe AI](https://typesafe.ai).
@@ -267,7 +267,7 @@ spoiler-packs      packs de spoilers de la comunidad
 
 ## El playground
 
-[El playground](https://vstrofago.github.io/vigia) es donde empezó Vigía.
+[El playground](https://vstrofago.github.io/vigia/playground/) es donde empezó Vigía.
 Reproduce unos 180 mensajes de chat guionados con las respuestas que Jev dio de verdad, y te
 deja mover los umbrales para ver cómo cambian las decisiones al instante. También puedes
 pegar tu propia key del Vercel AI Gateway para probarlo en vivo. Córrelo en tu equipo con

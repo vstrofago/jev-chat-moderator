@@ -1,6 +1,6 @@
 # Vigía
 
-[Español](README.es.md) · [Try the playground](https://vstrofago.github.io/vigia)
+[Español](README.es.md) · [Website](https://vstrofago.github.io/vigia/) · [Try the playground](https://vstrofago.github.io/vigia/playground/)
 
 **A free, self-hosted chat watchman for Twitch streamers**, powered by
 [TypeSafe AI](https://typesafe.ai)'s Jev.
@@ -260,7 +260,7 @@ Want to help? Rules, spoiler packs, translations and code are all welcome: see
 
 ## The playground
 
-[The playground](https://vstrofago.github.io/vigia) is where Vigía started. It
+[The playground](https://vstrofago.github.io/vigia/playground/) is where Vigía started. It
 replays about 180 scripted chat messages with the answers Jev really gave, and lets you drag
 the thresholds to see decisions change instantly. You can also paste your own Vercel AI
 Gateway key to try it live. Run it locally with `pnpm dev`, or with `docker compose up
