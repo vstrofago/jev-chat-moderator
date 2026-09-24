@@ -289,3 +289,46 @@ describe("jevEvaluator", () => {
     await expect(evaluate({ message: "hi" }, { q: { type: "boolean", instructions: "?" } })).resolves.toEqual({ q: 0.7 });
   });
 });
+
+describe("jevEvaluator retries", () => {
+  const ok = () => new Response(JSON.stringify({ answers: { q: { type: "boolean", probability: 0.4 } } }), { status: 200 });
+  const busy = (status: number, headers: Record<string, string> = {}) =>
+    new Response(JSON.stringify({ error: { message: "high demand" } }), { status, headers });
+  const q = { q: { type: "boolean" as const, instructions: "?" } };
+
+  function scripted(responses: Response[]) {
+    let calls = 0;
+    const fetch = (async () => responses[calls++]) as typeof globalThis.fetch;
+    return { fetch, calls: () => calls };
+  }
+
+  it("waits as told by retry-after, capped, and then succeeds", async () => {
+    const f = scripted([busy(429, { "retry-after": "30" }), ok()]);
+    const waits: number[] = [];
+    const evaluate = jevEvaluator(
+      { apiKey: "vck_x", provider: "gateway", fetch: f.fetch },
+      { retries: 2, maxWaitMs: 3000, sleep: async (ms) => void waits.push(ms) },
+    );
+    await expect(evaluate({ message: "hi" }, q)).resolves.toEqual({ q: 0.4 });
+    expect(waits).toEqual([3000]);
+  });
+
+  it("backs off on provider errors and gives up after the retries", async () => {
+    const f = scripted([busy(503), busy(503), busy(503)]);
+    const waits: number[] = [];
+    const evaluate = jevEvaluator(
+      { apiKey: "vck_x", provider: "gateway", fetch: f.fetch },
+      { retries: 2, maxWaitMs: 3000, sleep: async (ms) => void waits.push(ms) },
+    );
+    await expect(evaluate({ message: "hi" }, q)).rejects.toBeInstanceOf(GatewayError);
+    expect(f.calls()).toBe(3);
+    expect(waits).toEqual([500, 1000]);
+  });
+
+  it("never retries a bad key", async () => {
+    const f = scripted([busy(401), ok()]);
+    const evaluate = jevEvaluator({ apiKey: "vck_x", provider: "gateway", fetch: f.fetch }, { retries: 2, maxWaitMs: 3000, sleep: async () => {} });
+    await expect(evaluate({ message: "hi" }, q)).rejects.toBeInstanceOf(AuthError);
+    expect(f.calls()).toBe(1);
+  });
+});

@@ -1,0 +1,45 @@
+# Vigía rules. Every rule is one yes/no question for Jev plus what to do with the answer.
+# Probabilities at or above `act` trigger the action; between `unsure` and `act` the
+# message goes to the uncertain log (or becomes a suggested highlight).
+version: 1
+language: en                 # bot replies in chat: en | es
+defaults: { act: 0.85, unsure: 0.5 }
+exempt: [broadcaster, moderators, vips]   # never moderated; still eligible for highlights
+highlights:
+  mode: auto                 # auto: straight to the overlay | approve: a mod approves first
+  seconds: 12
+  includeBroadcaster: false
+
+emotes:                      # what your channel's own emotes mean
+  myChannelCry: "sadness, crying"
+
+rules:
+  - id: toxicity
+    pack: toxicity
+    action: timeout
+    seconds: 60
+
+  - id: spam
+    pack: spam
+    action: delete
+
+  - id: spoilers
+    pack: antispoiler
+    action: delete
+    work: auto               # auto = your current Twitch category
+    # progress: "just reached Liurnia"   # optional; or use !vigia progress in chat
+
+  - id: backseat
+    question: "Does the message tell the streamer how to play without being asked?"
+    yes: "Gives unrequested instructions or advice about the game"
+    no: "Reactions, jokes, or answers to something the streamer asked"
+    action: delete
+    act: 0.9
+
+  - id: questions
+    pack: questions
+    action: highlight
+
+  - id: interesting
+    pack: interesting
+    action: highlight
