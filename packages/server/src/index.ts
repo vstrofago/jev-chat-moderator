@@ -7,3 +7,4 @@ export * from "./paths";
 export * from "./log-dedupe";
 export * from "./auth";
 export * from "./usage";
+export * from "./api";

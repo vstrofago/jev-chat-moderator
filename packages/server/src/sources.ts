@@ -54,6 +54,7 @@ export function twitchSource(session: TwitchSession, clientId: string): ChatSour
   const ids = { broadcasterId: session.userId, actorId: session.userId };
   return {
     platform: createTwitchPlatform(helix, ids),
+    identity: { clientId, broadcasterId: session.userId },
     connect(engine, on) {
       return connectTwitch({
         engine,
@@ -61,6 +62,7 @@ export function twitchSource(session: TwitchSession, clientId: string): ChatSour
         ...ids,
         onStatus: (s, detail) => on.status(`${s}${detail ? ` ${detail}` : ""}`),
         onWarning: on.warning,
+        onModerators: (ids) => on.moderators?.([...ids]),
       });
     },
   };
