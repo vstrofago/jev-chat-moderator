@@ -17,8 +17,15 @@
 - **Un dashboard en vivo**, en tu propia PC o en un servidor donde tus mods entran con
   Twitch.
 
-> **Estado:** versión previa. Todo lo de abajo funciona desde el código fuente; los primeros
-> instaladores se publican con la v1.0.
+> [!WARNING]
+> **Experimental, en desarrollo (v0.1.0).** Espera errores y cambios que rompan cosas entre
+> versiones.
+> - **Empieza en modo observación**, y no uses Vigia como tu única moderación todavía.
+> - **"Mi canal" todavía no se ha probado con una cuenta real de Twitch.** "Solo mirar un
+>   canal" es el camino que ya corrió con chat real.
+> - **Los instaladores no están firmados**, así que Windows y macOS te van a avisar (ver
+>   abajo).
+> - **La precisión de los packs** todavía no está publicada.
 
 ## Cómo funciona
 
@@ -40,7 +47,7 @@ nombres de usuario, y tus keys nunca salen de tu equipo salvo para llegar a Jev 
 
 ### App de escritorio (Windows, macOS, Linux)
 
-Descárgala de [Releases](https://github.com/vstrofago/vigia/releases). Una
+Descárgala de [Releases](https://github.com/vstrofago/vigia/releases) (las versiones van marcadas como *pre-release* mientras Vigia sea experimental). Una
 ventana te guía en la configuración en unos diez minutos.
 
 - **Windows:** ejecuta `Vigia-…-win-x64.exe`. Mientras la app no esté firmada, SmartScreen

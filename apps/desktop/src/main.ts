@@ -316,7 +316,11 @@ async function boot() {
   if (SMOKE) return smoke();
   if (nextStep(secrets.get()) !== "done") return showSetup();
   await startHostOrAsk();
-  if (app.isPackaged) electronUpdater.autoUpdater.checkForUpdatesAndNotify().catch((e: Error) => log(`Update check failed: ${e.message}`));
+  if (app.isPackaged) {
+    // While Vigia is experimental, every release is marked pre-release on GitHub.
+    electronUpdater.autoUpdater.allowPrerelease = true;
+    electronUpdater.autoUpdater.checkForUpdatesAndNotify().catch((e: Error) => log(`Update check failed: ${e.message}`));
+  }
 }
 
 async function startHostOrAsk(): Promise<void> {

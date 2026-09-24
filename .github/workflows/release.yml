@@ -1,7 +1,8 @@
 name: Release
 
-# Push a tag like v1.2.3 (matching apps/desktop/package.json). The desktop apps land in a
-# DRAFT release for a maintainer to check and publish; the server image goes to GHCR.
+# Push a tag like v1.2.3 (matching apps/desktop/package.json). The desktop apps and the
+# server image are built into a draft, which is published as a PRE-RELEASE only once every
+# build succeeded: while Vigia is experimental, no release is marked "latest".
 on:
   push:
     tags: ["v*"]
@@ -38,7 +39,18 @@ jobs:
       - name: Create the draft release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --draft --title "Vigia $GITHUB_REF_NAME" --generate-notes
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 && exit 0
+          cat > notes.md <<'NOTES'
+          > [!WARNING]
+          > **Experimental, work in progress.** Expect bugs and breaking changes. Start in observe mode, and don't make Vigia your only moderation yet. "My channel" has not been tested with a real Twitch account yet.
+          >
+          > **Experimental, en desarrollo.** Espera errores y cambios que rompan cosas. Empieza en modo observación, y no uses Vigia como tu única moderación todavía. "Mi canal" todavía no se ha probado con una cuenta real de Twitch.
+
+          **Install:** Windows `Vigia-*-win-x64.exe` (unsigned: *More info → Run anyway*), macOS `.dmg` (unsigned: right-click → *Open*), Linux `.AppImage` (`chmod +x`). Server: `docker pull IMAGE_REF`, or `docker compose up` from the repository.
+          NOTES
+          sed -i "s|IMAGE_REF|ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/vigia:${GITHUB_REF_NAME#v}|" notes.md
+          gh release create "$GITHUB_REF_NAME" --draft --prerelease --title "Vigia $GITHUB_REF_NAME (experimental)" --notes-file notes.md --generate-notes
 
   desktop:
     needs: version
@@ -87,3 +99,13 @@ jobs:
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.version=${{ needs.version.outputs.version }}
             org.opencontainers.image.licenses=MIT
+
+  # Every build made it: publish the draft, as a pre-release.
+  publish:
+    needs: [desktop, server-image]
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release edit "$GITHUB_REF_NAME" --draft=false --prerelease --latest=false

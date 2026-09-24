@@ -16,8 +16,14 @@
   about instead of guessing.
 - **A live dashboard**, on your own PC or on a server your mods log in to with Twitch.
 
-> **Status:** pre-release. Everything below works from source; the first installers are
-> published with v1.0.
+> [!WARNING]
+> **Experimental, work in progress (v0.1.0).** Expect bugs and breaking changes between
+> versions.
+> - **Start in observe mode**, and don't make Vigia your only moderation yet.
+> - **"My channel" has not been tested with a real Twitch account yet.** "Just watch a
+>   channel" is the path that has run against real chat.
+> - **The installers are unsigned**, so Windows and macOS will warn you (see below).
+> - **Pack accuracy** is not published yet.
 
 ## How it works
 
@@ -39,7 +45,7 @@ usernames, and your keys never leave your computer except to reach Jev and Twitc
 
 ### Desktop app (Windows, macOS, Linux)
 
-Download it from [Releases](https://github.com/vstrofago/vigia/releases). A
+Download it from [Releases](https://github.com/vstrofago/vigia/releases) (versions are marked *pre-release* while Vigia is experimental). A
 window walks you through setup in about ten minutes.
 
 - **Windows:** run `Vigia-…-win-x64.exe`. Until the app is signed, SmartScreen may warn
