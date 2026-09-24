@@ -1,0 +1,167 @@
+import { DatabaseSync } from "node:sqlite";
+import type { EngineEvent, Outcome } from "@vigia/engine";
+
+export interface StoredDecision {
+  id: number;
+  ts: number;
+  messageId: string;
+  authorId: string;
+  authorLogin: string;
+  authorName: string;
+  text: string;
+  outcome: Outcome;
+  applied: boolean;
+  /** The anti-spoiler rule flagged it: the UI must blur the text. */
+  spoiler: boolean;
+  /** For uncertain entries: what a mod decided. */
+  resolved: "applied" | "dismissed" | null;
+}
+
+export interface AuditEntry {
+  ts: number;
+  login: string;
+  role: string;
+  action: string;
+  target: string;
+  detail: string;
+}
+
+export interface StoreOptions {
+  now?: () => number;
+  /** Keep at most this many decisions (default 50,000). */
+  maxRows?: number;
+  /** Keep decisions for this long (default 7 days). */
+  maxAgeMs?: number;
+}
+
+type DecisionEvent = Extract<EngineEvent, { type: "decision" }>;
+
+/**
+ * Local history on the streamer's machine: decisions (for the live feed and the uncertain
+ * log) and settings that must not live in vigia.yaml (protected spoiler topics, tokens).
+ * Uses Node's built-in SQLite, so there is no native module to package.
+ */
+export function openStore(path: string, o: StoreOptions = {}) {
+  const now = o.now ?? Date.now;
+  const maxRows = o.maxRows ?? 50_000;
+  const maxAgeMs = o.maxAgeMs ?? 7 * 24 * 3600_000;
+  const db = new DatabaseSync(path);
+  db.exec(`
+    PRAGMA journal_mode = WAL;
+    CREATE TABLE IF NOT EXISTS decisions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      ts INTEGER NOT NULL,
+      message_id TEXT NOT NULL,
+      author_login TEXT NOT NULL,
+      author_name TEXT NOT NULL,
+      text TEXT NOT NULL,
+      outcome_json TEXT NOT NULL,
+      applied INTEGER NOT NULL,
+      spoiler INTEGER NOT NULL,
+      uncertain INTEGER NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS decisions_ts ON decisions (ts);
+    CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+    CREATE TABLE IF NOT EXISTS audit (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      ts INTEGER NOT NULL,
+      login TEXT NOT NULL,
+      role TEXT NOT NULL,
+      action TEXT NOT NULL,
+      target TEXT NOT NULL,
+      detail TEXT NOT NULL
+    );
+  `);
+  // Columns added after the first release of the table.
+  const columns = new Set((db.prepare("PRAGMA table_info(decisions)").all() as { name: string }[]).map((c) => c.name));
+  if (!columns.has("author_id")) db.exec("ALTER TABLE decisions ADD COLUMN author_id TEXT NOT NULL DEFAULT ''");
+  if (!columns.has("resolved")) db.exec("ALTER TABLE decisions ADD COLUMN resolved TEXT");
+
+  const insert = db.prepare(`
+    INSERT INTO decisions (ts, message_id, author_id, author_login, author_name, text, outcome_json, applied, spoiler, uncertain)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+  const recent = db.prepare("SELECT * FROM decisions ORDER BY ts DESC, id DESC LIMIT ?");
+  const recentUncertain = db.prepare(
+    "SELECT * FROM decisions WHERE uncertain = 1 AND resolved IS NULL ORDER BY ts DESC, id DESC LIMIT ?",
+  );
+  const byId = db.prepare("SELECT * FROM decisions WHERE id = ?");
+  const setResolved = db.prepare("UPDATE decisions SET resolved = ? WHERE id = ?");
+  const insertAudit = db.prepare("INSERT INTO audit (ts, login, role, action, target, detail) VALUES (?, ?, ?, ?, ?, ?)");
+  const recentAudit = db.prepare("SELECT ts, login, role, action, target, detail FROM audit ORDER BY ts DESC, id DESC LIMIT ?");
+  const getSetting = db.prepare("SELECT value FROM settings WHERE key = ?");
+  const putSetting = db.prepare(
+    "INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+  );
+  const pruneOld = db.prepare("DELETE FROM decisions WHERE ts < ?");
+  const pruneExtra = db.prepare(
+    "DELETE FROM decisions WHERE id NOT IN (SELECT id FROM decisions ORDER BY ts DESC, id DESC LIMIT ?)",
+  );
+
+  const toDecision = (r: any): StoredDecision => ({
+    id: Number(r.id),
+    ts: Number(r.ts),
+    messageId: r.message_id,
+    authorId: r.author_id,
+    authorLogin: r.author_login,
+    authorName: r.author_name,
+    text: r.text,
+    outcome: JSON.parse(r.outcome_json),
+    applied: r.applied === 1,
+    spoiler: r.spoiler === 1,
+    resolved: r.resolved ?? null,
+  });
+
+  return {
+    /** Stores a decision and returns its id. */
+    recordDecision(e: DecisionEvent): number {
+      const { message: m, outcome } = e;
+      const r = insert.run(
+        now(),
+        m.id,
+        m.author.id,
+        m.author.login,
+        m.author.displayName,
+        m.text,
+        JSON.stringify(outcome),
+        e.applied ? 1 : 0,
+        outcome.spoiler ? 1 : 0,
+        outcome.uncertain.length > 0 ? 1 : 0,
+      );
+      return Number(r.lastInsertRowid);
+    },
+    recentDecisions: (limit: number) => recent.all(limit).map(toDecision),
+    /** Unresolved uncertain entries, newest first. */
+    uncertain: (limit: number) => recentUncertain.all(limit).map(toDecision),
+    decision(id: number): StoredDecision | undefined {
+      const r = byId.get(id);
+      return r ? toDecision(r) : undefined;
+    },
+    resolve(id: number, how: "applied" | "dismissed") {
+      setResolved.run(how, id);
+    },
+
+    recordAudit(e: Omit<AuditEntry, "ts" | "detail"> & { detail?: string }) {
+      insertAudit.run(now(), e.login, e.role, e.action, e.target, e.detail ?? "");
+    },
+    audit: (limit: number) => recentAudit.all(limit).map((r: any) => ({ ...r, ts: Number(r.ts) }) as AuditEntry),
+
+    setting<T = unknown>(key: string): T | undefined {
+      const row = getSetting.get(key) as { value: string } | undefined;
+      return row ? (JSON.parse(row.value) as T) : undefined;
+    },
+    setSetting(key: string, value: unknown) {
+      putSetting.run(key, JSON.stringify(value));
+    },
+
+    /** Drops decisions older than the age limit or beyond the row limit; returns how many. */
+    prune(): number {
+      const old = Number(pruneOld.run(now() - maxAgeMs).changes);
+      const extra = Number(pruneExtra.run(maxRows).changes);
+      return old + extra;
+    },
+
+    close: () => db.close(),
+  };
+}
+
+export type Store = ReturnType<typeof openStore>;

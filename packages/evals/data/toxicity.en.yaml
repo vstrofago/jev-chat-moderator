@@ -1,0 +1,26 @@
+# Labeled for the `toxicity` pack: is the message offensive?
+messages:
+  - { text: "you're a braindead idiot, uninstall the game", expect: true }
+  - { text: "shut up you fat pig nobody wants to hear you", expect: true }
+  - { text: "go kill yourself honestly", expect: true }
+  - { text: "this streamer is trash and so is everyone in this chat", expect: true }
+  - { text: "women can't play shooters, go back to the kitchen", expect: true }
+  - { text: "imagine being this ugly and still turning the camera on", expect: true }
+  - { text: "your mom should have aborted you", expect: true }
+  - { text: "stupid r*tard can't even jump", expect: true }
+  - { text: "I hope your house burns down tonight", expect: true }
+  - { text: "all you people from that country are thieves", expect: true }
+  - { text: "@mod_anna you're a power-tripping loser, get a life", expect: true }
+  - { text: "you sound like a dying goat, mute your mic forever", expect: true }
+  - { text: "that boss absolutely destroyed you LUL", expect: false }
+  - { text: "I'm so bad at this game, I'd die on the tutorial", expect: false }
+  - { text: "kill him! go for the head!", expect: false }
+  - { text: "that was a sick play, insane", expect: false }
+  - { text: "this game is so hard it's killing me", expect: false }
+  - { text: "I disagree, the first game had a better story", expect: false }
+  - { text: "your aim is kinda off today, no offense", expect: false }
+  - { text: "bro just got clapped by a level 1 goblin", expect: false }
+  - { text: "that villain is such an evil bastard, love him", expect: false }
+  - { text: "lmao you absolute legend", expect: false }
+  - { text: "please don't be mean to the new mods, they're learning", expect: false }
+  - { text: "rip my ears, the explosion was loud", expect: false }

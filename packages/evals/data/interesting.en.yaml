@@ -1,0 +1,26 @@
+# Labeled for the `interesting` pack: would the streamer want it highlighted on stream?
+messages:
+  - { text: "first time chatting after lurking for 3 years, your streams got me through a rough time. thank you", expect: true }
+  - { text: "I just got my first job offer and wanted to tell you first!", expect: true }
+  - { text: "5 year follow anniversary today! been here since you had 3 viewers", expect: true }
+  - { text: "you asked about the secret: hit the wall left of the statue twice, it opens a shortcut", expect: true, replying_to: "does anyone know how to open this door?" }
+  - { text: "I started drawing because of your art streams and today I sold my first commission", expect: true }
+  - { text: "watching from the hospital, your stream is keeping me sane. surgery went well!", expect: true }
+  - { text: "my daughter (6) says you're her favorite streamer and she drew you a picture", expect: true }
+  - { text: "fun fact: the devs said this level was designed in a single weekend", expect: true }
+  - { text: "I finally beat this boss myself after watching your strategy, thanks!", expect: true }
+  - { text: "greetings from the Antarctic research station, the internet is slow but we're here", expect: true }
+  - { text: "tip since you asked: the rune arc is in the chest behind the waterfall", expect: true, replying_to: "where do I get rune arcs?" }
+  - { text: "I got married yesterday and we played your stream at the after-party", expect: true }
+  - { text: "hi", expect: false }
+  - { text: "LUL", expect: false }
+  - { text: "GG", expect: false }
+  - { text: "hype hype hype", expect: false }
+  - { text: "lol", expect: false }
+  - { text: "this game sucks honestly", expect: false }
+  - { text: "first", expect: false }
+  - { text: "what time is it there?", expect: false }
+  - { text: "nice", expect: false }
+  - { text: "chat is so slow today", expect: false }
+  - { text: "hello everyone", expect: false }
+  - { text: "you missed that jump lmao", expect: false }

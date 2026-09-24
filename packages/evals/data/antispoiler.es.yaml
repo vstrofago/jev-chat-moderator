@@ -1,0 +1,28 @@
+# AVISO DE SPOILERS: este archivo revela a propósito momentos de las obras que nombra.
+# Etiquetado para el pack `antispoiler`: ¿el mensaje revela o insinúa trama que el streamer
+# todavía no vio (según `work`, y `progress` si existe)?
+messages:
+  - { text: "disfruta a Arthur mientras dure", work: Red Dead Redemption 2, progress: "Capítulo 2", expect: true }
+  - { text: "espera a ver lo que le pasa a Joel jaja", work: The Last of Us Part II, progress: "recién empieza", expect: true }
+  - { text: "Darth Vader es el papá de Luke por cierto", work: "Star Wars: The Empire Strikes Back", progress: "primeros 20 minutos", expect: true }
+  - { text: "no te encariñes con ese perro", work: Dog Adventure, expect: true }
+  - { text: "el que te está ayudando es el jefe final", work: Dark Souls, progress: "Burgo de los No Muertos", expect: true }
+  - { text: "Bruce Willis estaba muerto todo el tiempo", work: The Sixth Sense, progress: "a la mitad", expect: true }
+  - { text: "el final te va a destrozar, el protagonista no sobrevive", work: Red Dead Redemption 2, progress: "Capítulo 4", expect: true }
+  - { text: "espera el giro del capítulo 5, cambia todo", work: Final Fantasy VII, progress: "Capítulo 2", expect: true }
+  - { text: "Aerith 🪦", work: Final Fantasy VII, progress: "Midgar", expect: true }
+  - { text: "vas a llorar muchísimo al final de este capítulo", work: The Last of Us, progress: "Pittsburgh", expect: true }
+  - { text: "acuérdate de este momento, importa después ;)", work: Red Dead Redemption 2, progress: "Capítulo 1", expect: true }
+  - { text: "el caballero enmascarado es su hermana", work: Example Quest, topics: ["the masked knight's true identity"], expect: true }
+  - { text: "usa flechas de fuego con ese jefe, es débil al fuego", work: Elden Ring, progress: "Necrolimbo", expect: false }
+  - { text: "qué buena está esta música", work: Final Fantasy VII, expect: false }
+  - { text: "noooo se acaba de morir frente a nosotros 😭", work: Red Dead Redemption 2, progress: "Capítulo 6, acaba de ver el final", expect: false }
+  - { text: "¿te acuerdas cuando le ganaste a Margit ayer? épico", work: Elden Ring, progress: "Liurnia", expect: false }
+  - { text: "¿cuántas horas llevas en este juego?", work: Elden Ring, expect: false }
+  - { text: "yo creo que el villano los va a traicionar, es mi teoría", work: Example Quest, expect: false }
+  - { text: "mejora tu arma antes de ir para allá", work: Dark Souls, progress: "Burgo de los No Muertos", expect: false }
+  - { text: "ese jefe me mató 40 veces", work: Dark Souls, expect: false }
+  - { text: "este juego tiene la mejor historia, te va a encantar", work: The Last of Us, expect: false }
+  - { text: "JAJAJA el bug del caballo", work: Red Dead Redemption 2, expect: false }
+  - { text: "guarda antes de la siguiente puerta", work: Resident Evil 4, expect: false }
+  - { text: "¿cuál es tu teoría del final?", work: Example Quest, expect: false }

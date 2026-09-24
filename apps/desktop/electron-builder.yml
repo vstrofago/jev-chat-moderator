@@ -1,0 +1,47 @@
+# Packaging for Windows, macOS and Linux. Release builds run in CI (M6).
+appId: io.github.vstrofago.vigia
+productName: Vigia
+executableName: vigia
+artifactName: Vigia-${version}-${os}-${arch}.${ext}
+directories:
+  output: release
+  buildResources: build
+files:
+  - dist/**/*
+  - "!dist/**/*.map"
+  - package.json
+extraResources:
+  - from: ../../packages/ui/dist
+    to: ui
+  - from: ../../spoiler-packs
+    to: spoiler-packs
+    filter: ["*.yaml", "*.yml", "README*.md"]
+  - from: ../../packages/engine/examples/vigia.yaml
+    to: vigia.yaml
+  - from: build
+    to: icons
+    filter: ["icon.png", "tray.png", "tray@2x.png"]
+publish:
+  provider: github
+  owner: vstrofago
+  repo: vigia
+win:
+  target: nsis
+  icon: build/icon@2x.png
+nsis:
+  oneClick: true
+  perMachine: false
+mac:
+  # The zip is what electron-updater uses on macOS.
+  target:
+    - target: dmg
+      arch: [arm64, x64]
+    - target: zip
+      arch: [arm64, x64]
+  category: public.app-category.utilities
+  icon: build/icon@2x.png
+linux:
+  target: AppImage
+  category: Utility
+  syncDesktopName: true
+  icon: build/icon.png

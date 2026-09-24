@@ -1,0 +1,26 @@
+# Etiquetado para el pack `questions`: ¿una pregunta genuina para el streamer?
+messages:
+  - { text: "¿qué mouse usas?", expect: true }
+  - { text: "¿hace cuánto haces stream?", expect: true }
+  - { text: "¿vas a jugar el DLC después?", expect: true }
+  - { text: "¿qué clase elegiste y por qué?", expect: true }
+  - { text: "¿tienes perro? escuché ladridos", expect: true }
+  - { text: "¿cuál es tu juego favorito de todos los tiempos?", expect: true }
+  - { text: "streamer, ¿cómo manejas los nervios en vivo?", expect: true }
+  - { text: "¿puedes enseñar tu build?", expect: true }
+  - { text: "¿de dónde eres? me gusta tu acento", expect: true }
+  - { text: "¿es tu primera partida?", expect: true }
+  - { text: "oye, ¿mañana hay stream?", expect: true }
+  - { text: "¿qué opinas de los nerfs del parche nuevo?", expect: true }
+  - { text: "¿quién juega esto en 2026 jaja?", expect: false }
+  - { text: "chat, ¿alguien sabe cuándo se acaba la oferta?", expect: false }
+  - { text: "¿¿qué?? ¿cómo sobrevivió a eso?", expect: false }
+  - { text: "GG", expect: false }
+  - { text: "ese jefe está durísimo", expect: false }
+  - { text: "¿por qué soy así? 😂", expect: false }
+  - { text: "mods, ¿puedo mandar un link?", expect: false }
+  - { text: "¡saludos desde México!", expect: false }
+  - { text: "me encanta esta canción", expect: false }
+  - { text: "@viewer22 ¿qué rango eres?", expect: false }
+  - { text: "¿no es increíble lo bien que se ve este juego?", expect: false }
+  - { text: "jaja", expect: false }

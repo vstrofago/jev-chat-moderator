@@ -1,0 +1,31 @@
+# A community spoiler pack. Copy this file, rename it (for example elden-ring.yaml), and
+# replace everything below. Files whose names start with "_" are never loaded.
+version: 1
+
+# The game or show, as people know it.
+name: Example Quest
+
+# Find the id at https://www.twitch.tv/directory: open the category, then use a lookup
+# such as `twitch api get games -q name="Example Quest"`, or ask in your PR.
+# The id is the reliable match. `category` (the exact Twitch category name) is the
+# fallback, and the only match in the read-only "just watch a channel" mode.
+category_id: "000000"
+category: Example Quest
+
+# Protected wherever the streamer is. Keep each topic short and concrete.
+topics:
+  - who the narrator really is
+
+# In story order. Names must not spoil anything: the streamer reads them to pick
+# where they are. Each checkpoint lists what is revealed in that part.
+checkpoints:
+  - name: Chapter 1
+    topics:
+      - the mentor's fate
+  - name: Chapter 2
+    topics:
+      - the castle burning
+      - the second villain's identity
+  - name: Final chapter
+    topics:
+      - the ending

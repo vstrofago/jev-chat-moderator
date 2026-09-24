@@ -1,0 +1,26 @@
+# Etiquetado para el pack `interesting`: ¿el streamer querría destacarlo en pantalla?
+messages:
+  - { text: "primera vez que escribo después de 3 años mirando, tus streams me ayudaron en una época muy difícil. gracias", expect: true }
+  - { text: "¡me acaban de ofrecer mi primer trabajo y quería contártelo primero!", expect: true }
+  - { text: "¡hoy cumplo 5 años siguiéndote! estoy desde que tenías 3 viewers", expect: true }
+  - { text: "preguntaste por el secreto: golpea dos veces la pared a la izquierda de la estatua y se abre un atajo", expect: true, replying_to: "¿alguien sabe cómo se abre esta puerta?" }
+  - { text: "empecé a dibujar por tus streams de arte y hoy vendí mi primera comisión", expect: true }
+  - { text: "te veo desde el hospital, tu stream me mantiene cuerdo. ¡la operación salió bien!", expect: true }
+  - { text: "mi hija de 6 años dice que eres su streamer favorito y te hizo un dibujo", expect: true }
+  - { text: "dato curioso: los desarrolladores dijeron que este nivel lo diseñaron en un solo fin de semana", expect: true }
+  - { text: "por fin le gané a este jefe yo solo después de ver tu estrategia, ¡gracias!", expect: true }
+  - { text: "saludos desde la base científica en la Antártida, el internet es lento pero aquí estamos", expect: true }
+  - { text: "tip porque preguntaste: el arco rúnico está en el cofre detrás de la cascada", expect: true, replying_to: "¿dónde consigo arcos rúnicos?" }
+  - { text: "me casé ayer y pusimos tu stream en la fiesta", expect: true }
+  - { text: "hola", expect: false }
+  - { text: "KEKW", expect: false }
+  - { text: "GG", expect: false }
+  - { text: "vamos vamos vamos", expect: false }
+  - { text: "jaja", expect: false }
+  - { text: "este juego está malísimo la verdad", expect: false }
+  - { text: "primero", expect: false }
+  - { text: "¿qué hora es allá?", expect: false }
+  - { text: "bien", expect: false }
+  - { text: "el chat está muy lento hoy", expect: false }
+  - { text: "hola a todos", expect: false }
+  - { text: "fallaste el salto jajaja", expect: false }

@@ -1,0 +1,10 @@
+# The playground on this computer, with a local proxy so TypeSafe keys work too.
+#   docker compose -f apps/demo/docker-compose.yml up --build
+# then open http://localhost:8080/playground/ (the site root is the Vigia landing page).
+services:
+  playground:
+    build:
+      context: ../..
+      dockerfile: apps/demo/Dockerfile
+    ports:
+      - "8080:8080"

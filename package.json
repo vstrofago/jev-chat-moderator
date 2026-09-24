@@ -1,21 +1,25 @@
 {
-  "name": "jev-chat-moderator",
+  "name": "vigia",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Playground: TypeSafe AI's Jev moderating a simulated live-stream chat.",
+  "description": "Self-hosted chat watchman for Twitch streamers, powered by TypeSafe AI's Jev.",
   "license": "MIT",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "dev": "pnpm --filter @vigia/demo dev",
+    "build": "pnpm --filter @vigia/demo build && pnpm --filter @vigia/ui build",
+    "record": "pnpm --filter @vigia/demo record",
+    "simulate": "pnpm --filter @vigia/engine simulate",
     "test": "vitest run",
-    "record": "tsx scripts/record.ts"
-  },
-  "dependencies": {
-    "astro": "7.3.3"
+    "typecheck": "tsc -p tsconfig.json && tsc -p packages/ui/tsconfig.json",
+    "observe": "pnpm --filter @vigia/twitch observe",
+    "live": "pnpm --filter @vigia/twitch live",
+    "vigia": "pnpm --filter @vigia/server-app start",
+    "eval": "pnpm --filter @vigia/evals eval",
+    "e2e": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@types/node": "^26.6.2",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",

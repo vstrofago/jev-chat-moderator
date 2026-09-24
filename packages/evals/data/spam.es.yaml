@@ -1,0 +1,26 @@
+# Etiquetado para el pack `spam`.
+messages:
+  - { text: "Compra seguidores, primes y viewers en mejoresviewers punto com", expect: true }
+  - { text: "¿Quieres ser famoso? 1000 seguidores por 5 dólares, escríbeme", expect: true }
+  - { text: "SORTEO DE NITRO GRATIS entra aquí discord-gift.co/xyz", expect: true }
+  - { text: "pasen por mi canal twitch.tv/otro_wey estoy en vivo!!", expect: true }
+  - { text: "sígueme y te sigo de vuelta, sigo a todos", expect: true }
+  - { text: "gané 3000 dólares esta semana con cripto, escríbeme y te enseño", expect: true }
+  - { text: "JAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA", expect: true }
+  - { text: "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ COPIA ESTO SI AMAS AL STREAMER ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬", expect: true }
+  - { text: "suscríbanse a mi youtube para los mejores montajes youtube.com/@mismontajes", expect: true }
+  - { text: "¡Keys de juegos baratísimas! 90% de descuento en keysdeal, link en mi perfil", expect: true }
+  - { text: "streamer deberías usar nuestro servicio de overlays, 50% para ti, mándame dm", expect: true }
+  - { text: "reclama tu skin gratis antes de que se acabe: steamcommunnity.ru/regalo", expect: true }
+  - { text: "GG GG GG GG", expect: false }
+  - { text: "KEKW KEKW KEKW", expect: false }
+  - { text: "hola chat, primera vez por aquí!", expect: false }
+  - { text: "aquí está el mapa que pediste: https://mapgenie.io/elden-ring", expect: false }
+  - { text: "¿este es el parche nuevo?", expect: false }
+  - { text: "VAMOOOOS", expect: false }
+  - { text: "vi tu VOD de ayer, el final estuvo loquísimo", expect: false }
+  - { text: "acabo de seguirte, me gusta el ambiente", expect: false }
+  - { text: "qué raid tan grande la de ibai", expect: false }
+  - { text: "¿qué teclado usas?", expect: false }
+  - { text: "!discord", expect: false }
+  - { text: "sí sí sí sí", expect: false }

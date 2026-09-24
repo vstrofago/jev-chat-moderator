@@ -1,0 +1,17 @@
+{
+  "name": "@vigia/twitch",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "observe": "tsx scripts/observe.ts",
+    "live": "tsx scripts/live.ts"
+  },
+  "dependencies": {
+    "@vigia/core": "workspace:*",
+    "@vigia/engine": "workspace:*"
+  }
+}

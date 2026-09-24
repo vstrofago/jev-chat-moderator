@@ -1,0 +1,14 @@
+{
+  "name": "@vigia/engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "simulate": "tsx scripts/simulate.ts"
+  },
+  "dependencies": {
+    "@vigia/core": "workspace:*",
+    "yaml": "^2.9.1"
+  }
+}

@@ -1,0 +1,28 @@
+# SPOILER WARNING: this file reveals plot points of the works it names, on purpose.
+# Labeled for the `antispoiler` pack: does the message reveal or hint at plot the streamer
+# has not seen yet (given `work`, and `progress` when set)?
+messages:
+  - { text: "enjoy Arthur while he lasts", work: Red Dead Redemption 2, progress: "Chapter 2", expect: true }
+  - { text: "wait until you see what happens to Joel lol", work: The Last of Us Part II, progress: "just started", expect: true }
+  - { text: "Darth Vader is Luke's father btw", work: "Star Wars: The Empire Strikes Back", progress: "first 20 minutes", expect: true }
+  - { text: "don't get too attached to that dog", work: Dog Adventure, expect: true }
+  - { text: "the guy helping you is the final boss", work: Dark Souls, progress: "Undead Burg", expect: true }
+  - { text: "Bruce Willis was dead the whole time", work: The Sixth Sense, progress: "halfway", expect: true }
+  - { text: "the ending of this game will destroy you, the main character doesn't make it", work: Red Dead Redemption 2, progress: "Chapter 4", expect: true }
+  - { text: "just wait for the plot twist in Chapter 5, it changes everything", work: Final Fantasy VII, progress: "Chapter 2", expect: true }
+  - { text: "Aerith 🪦", work: Final Fantasy VII, progress: "Midgar", expect: true }
+  - { text: "you're gonna cry so hard at the end of this chapter", work: The Last of Us, progress: "Pittsburgh", expect: true }
+  - { text: "remember this moment, it matters later ;)", work: Red Dead Redemption 2, progress: "Chapter 1", expect: true }
+  - { text: "the masked knight is his sister", work: Example Quest, topics: ["the masked knight's true identity"], expect: true }
+  - { text: "use the fire arrows on that boss, it's weak to fire", work: Elden Ring, progress: "Limgrave", expect: false }
+  - { text: "this music is so good", work: Final Fantasy VII, expect: false }
+  - { text: "noooo he just died in front of us 😭", work: Red Dead Redemption 2, progress: "Chapter 6, just watched the ending", expect: false }
+  - { text: "remember when you beat Margit yesterday? that was epic", work: Elden Ring, progress: "Liurnia", expect: false }
+  - { text: "how many hours do you have in this game?", work: Elden Ring, expect: false }
+  - { text: "I think the villain is gonna betray them, just a guess", work: Example Quest, expect: false }
+  - { text: "you should upgrade your weapon before going there", work: Dark Souls, progress: "Undead Burg", expect: false }
+  - { text: "that boss killed me 40 times", work: Dark Souls, expect: false }
+  - { text: "this game has the best story ever, you'll love it", work: The Last of Us, expect: false }
+  - { text: "LMAO the horse glitch", work: Red Dead Redemption 2, expect: false }
+  - { text: "save before the next door", work: Resident Evil 4, expect: false }
+  - { text: "what's your theory about the ending?", work: Example Quest, expect: false }
