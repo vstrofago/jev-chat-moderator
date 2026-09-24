@@ -87,16 +87,14 @@ Merging to `main` redeploys the website (GitHub Pages).
 
 ## Repository protections (maintainers)
 
-GitHub settings cannot be set from the code, so they live here as a checklist. The rules are
-exported as JSON in `.github/rulesets/`: import each one in **Settings → Rules → Rulesets →
-New ruleset → Import a ruleset**.
+These live in the repository settings (**Settings → Rules → Rulesets**), not in the code:
 
-- **`main.json`:**
+- **`main`:**
   - Pull requests only, merged with a merge commit (so `dev` and `main` stay in step).
   - Checks `check`, `e2e` and `docker` must pass on the latest commit.
   - No force-push, no deletion.
-- **`dev.json`:** no force-push, no deletion.
-- **`release-tags.json`:** `v*` tags can't be moved or deleted.
+- **`dev`:** no force-push, no deletion.
+- **`v*` tags:** can't be moved or deleted.
 
 In **Settings → Code security**, turn on:
 - Private vulnerability reporting (`SECURITY.md` points to it);
