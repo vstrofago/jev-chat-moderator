@@ -4,3 +4,6 @@ dist/
 .env
 .superpowers/
 .wrangler/
+vigia-data/
+/vigia.yaml
+apps/server/vigia.yaml

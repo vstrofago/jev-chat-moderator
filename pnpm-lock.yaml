@@ -188,6 +188,21 @@ importers:
         specifier: 7.3.3
         version: 7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.2)(tsx@4.23.15)(yaml@2.9.1)
 
+  apps/server:
+    dependencies:
+      '@vigia/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vigia/engine':
+        specifier: workspace:*
+        version: link:../../packages/engine
+      '@vigia/server':
+        specifier: workspace:*
+        version: link:../../packages/server
+      '@vigia/twitch':
+        specifier: workspace:*
+        version: link:../../packages/twitch
+
   packages/core: {}
 
   packages/engine:
@@ -229,6 +244,16 @@ importers:
       '@vigia/engine':
         specifier: workspace:*
         version: link:../engine
+
+  packages/ui:
+    dependencies:
+      '@vigia/engine':
+        specifier: workspace:*
+        version: link:../engine
+    devDependencies:
+      vite:
+        specifier: ^8.3.0
+        version: 8.3.0(@types/node@26.6.2)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
 
 packages:
 

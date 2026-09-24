@@ -7,14 +7,14 @@
  *
  * The Twitch login is stored in ~/.config/vigia/dev-tokens.json (readable only by you).
  */
-import { chmod, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { readFile, rm } from "node:fs/promises";
 import { homedir } from "node:os";
-import { dirname, join, resolve } from "node:path";
+import { join, resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { createEngine, jevEvaluator, parseConfig } from "@vigia/engine";
-import { createTokenManager, refreshTokens, SCOPES, startDeviceLogin, validateToken, type Tokens } from "../src/auth";
 import { connectTwitch, createTwitchPlatform } from "../src/connect";
 import { createHelix } from "../src/helix";
+import { openTwitchSession } from "../src/session";
 import { color, formatDecision } from "./print";
 
 const { values } = parseArgs({
@@ -51,52 +51,19 @@ if (!parsed.ok) {
   process.exit(1);
 }
 
-async function save(t: Tokens) {
-  await mkdir(dirname(TOKEN_FILE), { recursive: true, mode: 0o700 });
-  await writeFile(TOKEN_FILE, JSON.stringify({ clientId, ...t }, null, 2), { mode: 0o600 });
-  await chmod(TOKEN_FILE, 0o600);
-}
-
-async function stored(): Promise<Tokens | null> {
-  try {
-    const t = JSON.parse(await readFile(TOKEN_FILE, "utf8"));
-    return t.clientId === clientId ? t : null;
-  } catch {
-    return null;
-  }
-}
-
-async function login(): Promise<Tokens> {
-  const flow = await startDeviceLogin({ clientId: clientId! }).catch((e: Error) => {
-    console.error(e.message);
-    process.exit(1);
-  });
-  console.log(`\nOpen ${color(36, flow.verificationUri)}`);
-  console.log(`and confirm the code ${color(32, flow.userCode)} (valid ${Math.round(flow.expiresIn / 60)} min).\n`);
-  const t = await flow.poll();
-  await save(t);
-  console.log("Logged in.");
-  return t;
-}
-
-// Reuse the stored login when it still works (refreshing it if needed), otherwise log in.
-let tokens = await stored();
-let who = tokens ? await validateToken(tokens.accessToken) : null;
-if (tokens && !who) {
-  try {
-    tokens = await refreshTokens({ clientId, refreshToken: tokens.refreshToken });
-    await save(tokens);
-    who = await validateToken(tokens.accessToken);
-  } catch {
-    who = null;
-  }
-}
-if (!tokens || !who || !SCOPES.every((s) => who!.scopes.includes(s))) {
-  tokens = await login();
-  who = await validateToken(tokens.accessToken);
-}
-if (!who) throw new Error("Twitch did not accept the new login.");
-const manager = createTokenManager({ clientId, tokens, save });
+const session = await openTwitchSession({
+  clientId,
+  tokenFile: TOKEN_FILE,
+  onCode: (uri, code, minutes) => {
+    console.log(`\nOpen ${color(36, uri)}`);
+    console.log(`and confirm the code ${color(32, code)} (valid ${minutes} min).\n`);
+  },
+}).catch((e: Error) => {
+  console.error(e.message);
+  process.exit(1);
+});
+const who = { userId: session.userId, login: session.login };
+const manager = session;
 
 const helix = createHelix({ clientId, token: manager.token, refresh: manager.refresh });
 const ids = { broadcasterId: who.userId, actorId: who.userId };

@@ -1,0 +1,16 @@
+{
+  "name": "@vigia/ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@vigia/engine": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@vigia/server-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Headless Vigía: the CLI and Docker image for a VPS or a terminal.",
+  "scripts": {
+    "start": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "@vigia/core": "workspace:*",
+    "@vigia/engine": "workspace:*",
+    "@vigia/server": "workspace:*",
+    "@vigia/twitch": "workspace:*"
+  }
+}

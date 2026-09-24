@@ -6,3 +6,4 @@ export * from "./helix";
 export * from "./eventsub";
 export * from "./connect";
 export * from "./auth";
+export * from "./session";

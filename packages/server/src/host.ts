@@ -7,6 +7,7 @@ import { createEngine, type ChatPlatform, type Engine, type Evaluator, type High
 import { WebSocketServer, type WebSocket } from "ws";
 import { openConfigFile } from "./config-file";
 import { createHighlightQueue } from "./highlights";
+import { createLogDedupe } from "./log-dedupe";
 import { openStore } from "./store";
 
 /** Where chat comes from: Twitch for real, or a read-only channel for trying things out. */
@@ -42,7 +43,7 @@ const TYPES: Record<string, string> = {
 
 /** Runs Vigía: config file, engine, history, highlight queue, and the overlay server. */
 export async function startVigia(o: VigiaOptions) {
-  const log = o.log ?? ((line: string) => console.log(line));
+  const log = createLogDedupe(o.log ?? ((line: string) => console.log(line)));
   await mkdir(o.dataDir, { recursive: true });
   const store = openStore(join(o.dataDir, "vigia.db"));
   store.prune();
@@ -177,6 +178,7 @@ export async function startVigia(o: VigiaOptions) {
       source.close();
       highlights.close();
       clearInterval(pruneTimer);
+      log.close();
       for (const ws of overlays) ws.terminate();
       wss.close();
       await new Promise<void>((r) => server.close(() => r()));

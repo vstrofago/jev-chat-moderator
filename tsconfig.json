@@ -7,8 +7,19 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node"],
-    "lib": ["es2024", "dom"]
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "es2024",
+      "dom"
+    ]
   },
-  "include": ["packages/*/src/**/*", "packages/*/tests/**/*", "packages/*/scripts/**/*"]
+  "include": [
+    "packages/*/src/**/*",
+    "packages/*/tests/**/*",
+    "packages/*/scripts/**/*",
+    "apps/server/src/**/*",
+    "apps/server/tests/**/*"
+  ]
 }
