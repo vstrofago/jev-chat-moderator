@@ -180,7 +180,7 @@ language. Custom rules may be written in any language; the docs recommend Englis
 
 | Pack | Kind | Purpose |
 |---|---|---|
-| `toxicity` | moderation | The playground's `offensive` + `category` questions |
+| `toxicity` | moderation | The playground's `offensive` question (every rule is one yes/no question; spam lives in its own pack) |
 | `spam` | moderation | Scams, selling followers, self-promotion, flooding |
 | `antispoiler` | moderation | See below |
 | `questions` | highlight | Messages that ask the streamer something |
