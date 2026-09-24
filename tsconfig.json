@@ -23,7 +23,9 @@
     "apps/server/scripts/**/*",
     "apps/server/tests/**/*",
     "apps/desktop/src/**/*",
-    "apps/desktop/tests/**/*"
+    "apps/desktop/tests/**/*",
+    "e2e/**/*",
+    "playwright.config.ts"
   ],
   "exclude": [
     "packages/ui/**"

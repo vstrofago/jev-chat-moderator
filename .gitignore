@@ -10,3 +10,5 @@ apps/server/vigia.yaml
 apps/desktop/smoke-*.png
 apps/desktop/smoke/
 apps/desktop/release/
+test-results/
+playwright-report/

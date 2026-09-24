@@ -15,9 +15,11 @@
     "observe": "pnpm --filter @vigia/twitch observe",
     "live": "pnpm --filter @vigia/twitch live",
     "vigia": "pnpm --filter @vigia/server-app start",
-    "eval": "pnpm --filter @vigia/evals eval"
+    "eval": "pnpm --filter @vigia/evals eval",
+    "e2e": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@types/node": "^26.6.2",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",

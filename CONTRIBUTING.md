@@ -58,6 +58,8 @@ pnpm test && pnpm typecheck        # both must pass
 pnpm --filter @vigia/ui build      # needed by the server, the CLI and the desktop app
 pnpm vigia --source observe:<channel>    # try it on real chat, read-only
 pnpm --filter @vigia/desktop smoke       # the desktop app, offscreen, with screenshots
+pnpm e2e                         # browser tests: web setup, dashboard, overlay (Playwright)
+pnpm --filter @vigia/server-app showcase # a dashboard with a scripted chat, no keys needed
 ```
 
 - **TypeScript, ESM, strict**, formatted the way the surrounding code is. Keep modules small

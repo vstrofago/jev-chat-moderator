@@ -37,7 +37,8 @@ author can do (the repo rename, the real Twitch account check, publishing the re
     GitHub Release, which the author publishes by hand.
   - The server image goes to GHCR.
   - `ci.yml` runs tests, the typecheck and the desktop smoke run on every push and PR.
-- **UI Playwright tests** are left for later. The desktop smoke run already loads the setup
+- **UI Playwright tests** were first left for later, then added in `e2e/` (web setup, dashboard,
+  overlay). The desktop smoke run already loads the setup
   page and the dashboard in real Chromium.
 
 ## Tasks

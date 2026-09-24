@@ -85,6 +85,9 @@ Kept current at the end of every block of work so a new session (or a person) ca
    CI, the repo rename, and the real-account check.
 
 ## Useful commands
+- `pnpm e2e`: Playwright tests of the web setup, the dashboard and the overlay (build the UI
+  first; `PW_CHROMIUM=<path>` uses an installed Chromium). CI also builds and starts the
+  Docker image on every push.
 - `pnpm test`, `pnpm typecheck`
 - `pnpm simulate`: the scripted chat through the engine.
 - `pnpm observe <channel>`: real chat, read-only, observe mode (needs `AI_GATEWAY_API_KEY`).
