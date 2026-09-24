@@ -85,7 +85,7 @@
   "install.desktop.soon": "Los instaladores llegan con la v1.0.",
   "install.docker.title": "Con Docker",
   "install.docker.os": "Sin instalar Node",
-  "install.docker.body": "Un comando levanta Vigia en tu equipo. Abre 127.0.0.1:7777 y entra con el código de admin que sale en los logs.",
+  "install.docker.body": "Un comando levanta Vigia en tu equipo. Abre 127.0.0.1:7777 y configúralo en el navegador con el código que sale en los logs.",
   "install.pnpm.title": "Desde el código",
   "install.pnpm.os": "Node 22+ · pnpm",
   "install.pnpm.body": "Para probar lo más nuevo o para contribuir. Abre la misma app de escritorio, directo desde el repositorio.",

@@ -16,4 +16,4 @@ VOLUME /data
 EXPOSE 7777
 USER node
 ENTRYPOINT ["npx", "tsx", "src/cli.ts", "--config", "/data/vigia.yaml", "--data", "/data", "--host", "0.0.0.0"]
-CMD ["--source", "twitch"]
+# No --source: Vigia is set up in the browser, and the settings stay in /data.

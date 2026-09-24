@@ -85,7 +85,7 @@
   "install.desktop.soon": "Installers arrive with v1.0.",
   "install.docker.title": "With Docker",
   "install.docker.os": "No Node needed",
-  "install.docker.body": "One command starts Vigia on your machine. Open 127.0.0.1:7777 and log in with the admin code from the logs.",
+  "install.docker.body": "One command starts Vigia on your machine. Open 127.0.0.1:7777 and set it up in the browser with the code from the logs.",
   "install.pnpm.title": "From source",
   "install.pnpm.os": "Node 22+ · pnpm",
   "install.pnpm.body": "To try the latest or to contribute. It opens the same desktop app, straight from the repository.",

@@ -64,16 +64,24 @@ pausar la moderación o iniciar Vigia con tu equipo. Las actualizaciones llegan 
 
 ### Docker en tu equipo
 
-No necesitas Node. Desde una copia del repositorio:
+No necesitas Node ni configurar nada antes. Desde una copia del repositorio:
 
 ```bash
-export AI_GATEWAY_API_KEY=vck_...          # o TYPESAFE_API_KEY
-export VIGIA_SOURCE=observe:<canal>        # o: twitch, con TWITCH_CLIENT_ID
 docker compose up --build
+docker compose logs vigia        # el código de configuración
 ```
 
-Abre `http://127.0.0.1:7777` y entra con el **código de admin** que aparece en los logs.
-Solo tu equipo puede abrir el dashboard y el overlay.
+Abre `http://127.0.0.1:7777`. La página te pide el código de configuración de los logs y
+luego te lleva por los mismos pasos que la app de escritorio: dónde vigilar, tu app de
+Twitch, el login de Twitch y tu key de Jev. Al terminar se abre el dashboard. La
+configuración queda en el volumen de Docker, así que la próxima vez arranca directo en el
+dashboard.
+
+- **El código de configuración** también es el **código de admin** para entrar al dashboard
+  después.
+- **Solo tu equipo** puede abrir el dashboard y el overlay.
+- **Para configurarlo de nuevo:** `docker compose down` y luego
+  `docker compose run --rm --service-ports vigia --setup`.
 
 ### Servidor (Docker, para equipos de mods)
 
@@ -82,15 +90,15 @@ En un VPS con un dominio que apunte a él:
 ```bash
 git clone https://github.com/vstrofago/vigia && cd vigia
 export VIGIA_DOMAIN=vigia.ejemplo.com
-export AI_GATEWAY_API_KEY=vck_...          # o TYPESAFE_API_KEY
-export TWITCH_CLIENT_ID=...                # tu propia app Public (abajo)
 docker compose -f apps/server/docker-compose.yml up -d
-docker compose -f apps/server/docker-compose.yml logs -f vigia
+docker compose -f apps/server/docker-compose.yml logs vigia    # el código de configuración
 ```
 
+Abre `https://<tu dominio>` y configura Vigia en el navegador, como arriba.
+
 - **HTTPS:** Caddy consigue solo el certificado de tu dominio.
-- **Los logs** muestran el código para iniciar sesión en Twitch, la dirección del overlay y
-  el **código de admin**.
+- **Los logs** muestran el código de configuración (el **código de admin**) y, ya
+  funcionando, la dirección del overlay.
 - **Los mods entran con Twitch.** Agrega `https://<tu dominio>/auth/callback` a las OAuth
   Redirect URLs de tu app de Twitch.
 - **El streamer** también entra con Twitch, o con el código de admin.
@@ -103,12 +111,20 @@ Con Node 22+ y pnpm:
 
 ```bash
 pnpm install && pnpm --filter @vigia/ui build
+pnpm vigia                       # configúralo en el navegador, en http://127.0.0.1:7777
+```
+
+O sáltate la configuración en el navegador y pasa todo en el entorno:
+
+```bash
 AI_GATEWAY_API_KEY=vck_... pnpm vigia --source observe:<canal>    # cualquier canal, solo lectura
 AI_GATEWAY_API_KEY=vck_... TWITCH_CLIENT_ID=... pnpm vigia --source twitch
 ```
 
 | Opción | Por defecto | |
 |---|---|---|
+| (sin `--source`) | | Configura Vigia en el navegador; la configuración queda en `--data` |
+| `--setup` | | Vuelve a abrir la configuración en el navegador (conserva la key de Jev) |
 | `--source twitch` · `observe:<canal>` | | Tu canal, o cualquier canal público en solo lectura |
 | `--config <archivo>` | `vigia.yaml` | Archivo de reglas; si no existe, se crea con comentarios |
 | `--data <carpeta>` | `vigia-data` | Historial, sesión de Twitch y tus propios packs de spoilers |

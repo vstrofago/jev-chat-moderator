@@ -56,7 +56,11 @@ Kept current at the end of every block of work so a new session (or a person) ca
 ## Naming and layout (latest)
 - The project name is **Vigia**, without an accent. The logo for now is the 🦇 emoji. The
   desktop icons are rendered from it with `apps/desktop/scripts/render-icons.cjs`.
-- The root `docker-compose.yml` runs the Vigia app (on 127.0.0.1:7777, admin-code login).
+- The root `docker-compose.yml` runs the Vigia app (on 127.0.0.1:7777) with no variables:
+  started without `--source`, the CLI serves the setup page in the browser (the same steps
+  and code as the desktop, `createSetupFlow` in `@vigia/server`), locked with the admin code
+  when reachable from other machines, and keeps the settings in `<data>/settings.json`.
+  `--source` with environment variables still works as before; `--setup` reruns setup.
   The playground has its own `apps/demo/docker-compose.yml`, and the VPS setup with Caddy
   is `apps/server/docker-compose.yml`.
 - The Pages site is the Vigia landing page, with the playground at `/playground/`.
