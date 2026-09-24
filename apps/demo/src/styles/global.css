@@ -1,85 +1,34 @@
 /*
- * Scandinavian system: neutral canvas, one sans family, hierarchy through an alpha ink
- * ladder and space. The only hues are semantic (remove / review / allow / live) and the logo.
+ * Dracula Classic for the replay playground: one dark surface, readable state colors,
+ * and the same high-contrast type across controls, messages, and thresholds.
  */
+@import "../../../../packages/ui/src/styles/dracula.css";
+
 :root {
-  --canvas: #ffffff;
-  --ink: rgb(0 0 0 / 90%);
-  --ink-2: rgb(0 0 0 / 64%);
-  /* Latency, labels and metadata carry real reading here, so the tertiary rung is lifted. */
-  --ink-3: rgb(0 0 0 / 56%);
-  --line: rgb(0 0 0 / 10%);
-  --line-strong: rgb(0 0 0 / 18%);
-  --hover: rgb(0 0 0 / 5%);
-  --pressed: rgb(0 0 0 / 9%);
-  --wash: rgb(0 0 0 / 4%);
-  --scrim: rgb(0 0 0 / 44%);
-  --primary: #000000;
-  --on-primary: #ffffff;
+  --canvas: var(--dracula-background);
+  --ink: var(--dracula-foreground);
+  --ink-2: var(--dracula-muted);
+  --ink-3: var(--dracula-subtle);
+  --line: rgb(98 114 164 / 40%);
+  --line-strong: var(--dracula-current-line);
+  --hover: rgb(189 147 249 / 10%);
+  --pressed: rgb(189 147 249 / 18%);
+  --wash: var(--dracula-floating);
+  --scrim: rgb(25 26 33 / 84%);
+  --primary: var(--dracula-purple);
+  --on-primary: var(--dracula-background);
 
-  --remove: #a8432f;
-  --remove-soft: #fbeeea;
-  --review: #b7842a;
-  --review-ink: #7d5510;
-  --review-soft: #fbf3e2;
-  --allow: #4f7a58;
-
+  --remove: var(--dracula-danger-text);
+  --remove-soft: rgb(255 85 85 / 14%);
+  --review: var(--dracula-orange);
+  --review-ink: var(--dracula-orange);
+  --review-soft: rgb(255 184 108 / 14%);
+  --allow: var(--dracula-bright-green);
 
   --radius: 8px;
   --radius-lg: 12px;
-  --font: "Inter", "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font: "Atkinson Hyperlegible Next", system-ui, sans-serif;
   --mono: ui-monospace, "SFMono-Regular", "Menlo", monospace;
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --canvas: #0a0a0a;
-    --ink: rgb(255 255 255 / 92%);
-    --ink-2: rgb(255 255 255 / 56%);
-    --ink-3: rgb(255 255 255 / 46%);
-    --line: rgb(255 255 255 / 12%);
-    --line-strong: rgb(255 255 255 / 20%);
-    --hover: rgb(255 255 255 / 9%);
-    --pressed: rgb(255 255 255 / 14%);
-    --wash: rgb(255 255 255 / 5%);
-    --scrim: rgb(0 0 0 / 60%);
-    --primary: rgb(255 255 255 / 92%);
-    --on-primary: #0a0a0a;
-
-    --remove: #e38c77;
-    --remove-soft: #2a1612;
-    --review: #d9ad5c;
-    --review-ink: #e6bd70;
-    --review-soft: #241c0e;
-    --allow: #8fb597;
-
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
-  --canvas: #0a0a0a;
-  --ink: rgb(255 255 255 / 92%);
-  --ink-2: rgb(255 255 255 / 56%);
-  --ink-3: rgb(255 255 255 / 46%);
-  --line: rgb(255 255 255 / 12%);
-  --line-strong: rgb(255 255 255 / 20%);
-  --hover: rgb(255 255 255 / 9%);
-  --pressed: rgb(255 255 255 / 14%);
-  --wash: rgb(255 255 255 / 5%);
-  --scrim: rgb(0 0 0 / 60%);
-  --primary: rgb(255 255 255 / 92%);
-  --on-primary: #0a0a0a;
-
-  --remove: #e38c77;
-  --remove-soft: #2a1612;
-  --review: #d9ad5c;
-  --review-ink: #e6bd70;
-  --review-soft: #241c0e;
-  --allow: #8fb597;
-
-  color-scheme: dark;
 }
 
 *,
@@ -99,6 +48,7 @@ body {
   background: var(--canvas);
   color: var(--ink);
   font: 16px/1.55 var(--font);
+  font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -148,7 +98,7 @@ pre {
 }
 
 :focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--dracula-purple);
   outline-offset: 2px;
 }
 
@@ -185,30 +135,6 @@ pre {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-}
-.btn.icon-btn {
-  width: 36px;
-  padding: 0;
-  display: inline-grid;
-  place-items: center;
-}
-.icon-btn svg {
-  display: block;
-}
-.icon-btn .icon-moon,
-:root[data-theme="dark"] .icon-btn .icon-sun {
-  display: none;
-}
-:root[data-theme="dark"] .icon-btn .icon-moon {
-  display: block;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .icon-btn .icon-sun {
-    display: none;
-  }
-  :root:not([data-theme="light"]) .icon-btn .icon-moon {
-    display: block;
-  }
 }
 .lang-toggle {
   display: inline-flex;
@@ -398,6 +324,12 @@ select option {
   scroll-behavior: smooth;
   font-size: 15px;
 }
+@media (prefers-reduced-motion: reduce) {
+  .chat {
+    scroll-behavior: auto;
+  }
+}
+
 .chat-empty {
   padding: 40px 12px;
 }
@@ -445,44 +377,30 @@ select option {
 }
 .msg.review {
   background: var(--review-soft);
-  box-shadow: inset 2px 0 0 var(--review);
+  box-shadow: inset 1px 0 0 var(--review);
 }
 .msg.review .msg-note {
   color: var(--review-ink);
 }
 .msg.remove {
-  box-shadow: inset 2px 0 0 var(--remove);
+  box-shadow: inset 1px 0 0 var(--remove);
 }
 .msg.remove .msg-text {
   color: var(--ink-3);
   font-style: italic;
 }
 .msg.error {
-  box-shadow: inset 2px 0 0 var(--line-strong);
+  box-shadow: inset 1px 0 0 var(--line-strong);
 }
 .msg.error .msg-note {
   color: var(--ink-2);
 }
 .dot {
   display: inline-block;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--ink-3);
-  animation: pulse 1s infinite ease-in-out;
-}
-@keyframes pulse {
-  50% {
-    opacity: 0.3;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .dot {
-    animation: none;
-  }
-  .chat {
-    scroll-behavior: auto;
-  }
+  background: var(--dracula-red);
 }
 
 .compose {
@@ -703,10 +621,17 @@ select option {
   }
   .chat {
     flex: none;
-    height: 56vh;
+    height: clamp(280px, 42vh, 350px);
     min-height: 0;
   }
 }
+
+@media (pointer: coarse) {
+  .btn, input, select { min-height: 44px; }
+  input[type="range"] { min-height: 44px; }
+  .inline-field select { min-width: 112px; }
+}
+
 
 @media (max-width: 560px) {
   .site-header {

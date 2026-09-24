@@ -7,7 +7,6 @@ type Key = keyof typeof es;
 
 // Shared with the playground so a visitor's choices follow them between pages.
 const LANG_STORAGE = "jev-chat-moderator.lang";
-const THEME_STORAGE = "jev-chat-moderator.theme";
 
 const dicts: Record<Lang, Record<Key, string>> = { es, en };
 
@@ -33,11 +32,3 @@ if (initial !== "es") setLang(initial);
 for (const b of document.querySelectorAll<HTMLButtonElement>("[data-lang]")) {
   b.addEventListener("click", () => setLang(b.dataset.lang as Lang));
 }
-
-document.getElementById("theme-toggle")?.addEventListener("click", () => {
-  const root = document.documentElement;
-  const current = root.dataset.theme ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  const next = current === "dark" ? "light" : "dark";
-  root.dataset.theme = next;
-  safeSet(THEME_STORAGE, next);
-});
