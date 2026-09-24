@@ -58,7 +58,7 @@ let tokens = 0;
 const engine = createEngine({
   config: parsed.config,
   platform,
-  observe: true,
+  forceObserve: true,
   evaluate: jevEvaluator(
     gatewayKey ? { apiKey: gatewayKey, provider: "gateway" } : { apiKey: typesafeKey!, provider: "typesafe" },
     { onUsage: (n) => (tokens += n) },
@@ -99,7 +99,7 @@ function summary() {
   );
 }
 
-let thirdPartyEmotes = new Set<string>();
+let thirdPartyEmotes: ReadonlyMap<string, string> = new Map();
 
 const reader = readChannel(channel, {
   message: (m) => {

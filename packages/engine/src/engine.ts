@@ -52,8 +52,8 @@ export interface EngineOptions {
   config: VigiaConfig;
   platform: ChatPlatform;
   evaluate: Evaluator;
-  /** Start in observe mode (default true, as after setup). */
-  observe?: boolean;
+  /** Keep observe mode on whatever the config or dashboard says (the read-only tools). */
+  forceObserve?: boolean;
   concurrency?: number;
   maxPending?: number;
 }
@@ -64,10 +64,19 @@ export function createEngine(o: EngineOptions) {
   let protectedTopics: string[] = [];
   const state: Omit<RuntimeState, "protectedTopicCount"> = {
     paused: false,
-    observe: o.observe ?? true,
+    observe: true,
     halted: false,
     disabledRules: [],
   };
+
+  /** The file is the source of truth for observe mode, rule switches and progress. */
+  function seedFromConfig() {
+    state.observe = o.forceObserve || config.observe;
+    state.disabledRules = config.rules.filter((r) => r.enabled === false).map((r) => r.id);
+    const spoiler = config.rules.find((r) => isPackRule(r) && r.pack === "antispoiler");
+    state.progress = spoiler && isPackRule(spoiler) ? spoiler.progress : undefined;
+  }
+  seedFromConfig();
   const maxPending = o.maxPending ?? 200;
   const queue = createPriorityQueue({ concurrency: o.concurrency ?? 8, maxPending });
   const listeners = new Set<(e: EngineEvent) => void>();
@@ -221,11 +230,17 @@ export function createEngine(o: EngineOptions) {
     /** Parses and applies new YAML. On errors the previous config keeps running. */
     updateConfig(text: string): ConfigResult {
       const r = parseConfig(text);
-      if (r.ok) config = r.config;
+      if (r.ok) {
+        config = r.config;
+        seedFromConfig();
+        changed();
+      }
       return r;
     },
     setConfig(c: VigiaConfig) {
       config = c;
+      seedFromConfig();
+      changed();
     },
     setCategory(name: string | undefined) {
       state.category = name;
@@ -236,7 +251,7 @@ export function createEngine(o: EngineOptions) {
       changed();
     },
     setObserve(on: boolean) {
-      state.observe = on;
+      state.observe = o.forceObserve || on;
       changed();
     },
     /** Replaces the evaluator (for example after a new key) and clears `halted`. */

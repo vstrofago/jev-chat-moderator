@@ -14,6 +14,7 @@ describe("parseConfig", () => {
       config: {
         version: 1,
         language: "en",
+        observe: true,
         defaults: { act: 0.85, unsure: 0.5 },
         exempt: ["broadcaster", "moderators", "vips"],
         highlights: { mode: "auto", seconds: 12, includeBroadcaster: false },
@@ -110,6 +111,15 @@ rules:
       parseConfig("version: 1\nexempt: [mods]\nrules:\n  - {id: 'Bad Id', pack: spam, action: log}\n"),
     );
     expect(errors.map((e) => e.path)).toEqual(["exempt.0", "rules.0.id"]);
+  });
+
+  it("reads observe mode and per-rule enabled flags", () => {
+    const r = parseConfig("version: 1\nobserve: false\nrules:\n  - {id: a, pack: spam, action: log, enabled: false}\n");
+    if (!r.ok) throw new Error(JSON.stringify(r.errors));
+    expect(r.config.observe).toBe(false);
+    expect(r.config.rules[0]).toMatchObject({ id: "a", enabled: false });
+    const bad = parseConfig("version: 1\nobserve: maybe\nrules:\n  - {id: a, pack: spam, action: log, enabled: 1}\n");
+    expect(errorsOf(bad).map((e) => e.path)).toEqual(["observe", "rules.0.enabled"]);
   });
 
   it("returns syntax errors instead of throwing", () => {

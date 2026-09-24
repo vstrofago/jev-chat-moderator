@@ -8,6 +8,7 @@ import type { ChatAuthor, ChatMessage } from "../src/message";
 const YAML = `
 version: 1
 language: en
+observe: false
 rules:
   - { id: tox, pack: toxicity, action: timeout, seconds: 60 }
   - { id: spam, pack: spam, action: delete }
@@ -50,10 +51,10 @@ function fixed(probabilities: Record<string, number>) {
   return { evaluate, seen };
 }
 
-function setup(probabilities: Record<string, number> = {}, opts: { observe?: boolean; config?: VigiaConfig } = {}) {
+function setup(probabilities: Record<string, number> = {}, opts: { config?: VigiaConfig } = {}) {
   const { platform, calls } = fakePlatform();
   const ev = fixed(probabilities);
-  const engine = createEngine({ config: opts.config ?? config(), platform, evaluate: ev.evaluate, observe: opts.observe ?? false });
+  const engine = createEngine({ config: opts.config ?? config(), platform, evaluate: ev.evaluate });
   const events: EngineEvent[] = [];
   engine.on((e) => events.push(e));
   return { engine, calls, events, seen: ev.seen };
@@ -62,7 +63,7 @@ function setup(probabilities: Record<string, number> = {}, opts: { observe?: boo
 describe("createEngine", () => {
   it("starts in observe mode by default and never touches chat there", async () => {
     const { platform, calls } = fakePlatform();
-    const engine = createEngine({ config: config(), platform, evaluate: fixed({ spam: 0.99 }).evaluate });
+    const engine = createEngine({ config: config(YAML.replace("observe: false\n", "")), platform, evaluate: fixed({ spam: 0.99 }).evaluate });
     const events: EngineEvent[] = [];
     engine.on((e) => events.push(e));
     expect(engine.state().observe).toBe(true);
@@ -153,7 +154,6 @@ describe("createEngine", () => {
     const engine = createEngine({
       config: config(),
       platform,
-      observe: false,
       evaluate: async () => {
         calls++;
         throw new AuthError("bad key");
@@ -179,7 +179,6 @@ describe("createEngine", () => {
     const engine = createEngine({
       config: config(),
       platform,
-      observe: false,
       evaluate: async (_s, questions) => {
         if (fail) throw new GatewayError("Network error");
         return Object.fromEntries(Object.keys(questions).map((id) => [id, id === "spam" ? 0.99 : 0]));
@@ -200,7 +199,6 @@ describe("createEngine", () => {
   it("reports platform failures without throwing", async () => {
     const engine = createEngine({
       config: config(),
-      observe: false,
       evaluate: fixed({ spam: 0.99 }).evaluate,
       platform: {
         deleteMessage: async () => Promise.reject(new Error("403")),
@@ -281,6 +279,31 @@ describe("createEngine", () => {
   });
 });
 
+describe("state from the config file", () => {
+  it("takes observe mode, disabled rules and progress from the config", () => {
+    const c = config(`
+version: 1
+observe: false
+rules:
+  - { id: spam, pack: spam, action: delete, enabled: false }
+  - { id: sp, pack: antispoiler, action: delete, progress: "chapter 3" }
+`);
+    const engine = createEngine({ config: c, platform: fakePlatform().platform, evaluate: fixed({}).evaluate });
+    expect(engine.state()).toMatchObject({ observe: false, disabledRules: ["spam"], progress: "chapter 3" });
+  });
+
+  it("re-reads them when the file changes, unless observe is forced", () => {
+    const engine = createEngine({ config: config(), platform: fakePlatform().platform, evaluate: fixed({}).evaluate, forceObserve: true });
+    engine.updateConfig("version: 1\nobserve: false\nrules:\n  - { id: x, pack: spam, action: log, enabled: false }\n");
+    expect(engine.state()).toMatchObject({ observe: true, disabledRules: ["x"] });
+
+    const free = createEngine({ config: config(), platform: fakePlatform().platform, evaluate: fixed({}).evaluate });
+    expect(free.state().observe).toBe(false);
+    free.updateConfig("version: 1\nobserve: true\n");
+    expect(free.state().observe).toBe(true);
+  });
+});
+
 describe("listeners", () => {
   it("keep the engine running when one of them throws", async () => {
     const { engine, calls } = setup({ spam: 0.99 });
@@ -305,7 +328,6 @@ describe("load shedding", () => {
     const engine = createEngine({
       config: config(),
       platform,
-      observe: false,
       concurrency: 1,
       maxPending: 4,
       evaluate: async (_s, questions) => {

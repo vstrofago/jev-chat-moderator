@@ -1,5 +1,8 @@
 /** One piece of a chat message, as Twitch EventSub splits it. */
-export type Fragment = { type: "text"; text: string } | { type: "emote"; text: string; id: string };
+export type Fragment =
+  | { type: "text"; text: string }
+  /** `imageUrl` is set for 7TV/BTTV/FFZ emotes; Twitch emotes are drawn from their id. */
+  | { type: "emote"; text: string; id: string; imageUrl?: string };
 
 export interface ChatAuthor {
   id: string;

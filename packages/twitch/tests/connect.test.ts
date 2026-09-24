@@ -56,13 +56,12 @@ const chat = (id: string, chatter: string, text: string, badges: string[] = []) 
 function setup(actorId = "100") {
   FakeSocket.all = [];
   const { helix, calls } = fakeHelix();
-  const cfg = parseConfig("version: 1\nrules:\n  - { id: spam, pack: spam, action: delete }\n");
+  const cfg = parseConfig("version: 1\nobserve: false\nrules:\n  - { id: spam, pack: spam, action: delete }\n");
   if (!cfg.ok) throw new Error("bad config");
   const engine = createEngine({
     config: cfg.config,
     platform: createTwitchPlatform(helix, { broadcasterId: "100", actorId }),
     evaluate: async (_s, q) => Object.fromEntries(Object.keys(q).map((id) => [id, 0.99])),
-    observe: false,
   });
   const events: EngineEvent[] = [];
   engine.on((e) => events.push(e));

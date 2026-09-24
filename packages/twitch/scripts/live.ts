@@ -102,9 +102,8 @@ const helix = createHelix({ clientId, token: manager.token, refresh: manager.ref
 const ids = { broadcasterId: who.userId, actorId: who.userId };
 
 const engine = createEngine({
-  config: parsed.config,
+  config: { ...parsed.config, observe: !values.act },
   platform: createTwitchPlatform(helix, ids),
-  observe: !values.act,
   evaluate: jevEvaluator(gatewayKey ? { apiKey: gatewayKey, provider: "gateway" } : { apiKey: typesafeKey!, provider: "typesafe" }),
 });
 

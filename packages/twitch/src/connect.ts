@@ -36,7 +36,7 @@ export function connectTwitch(o: ConnectOptions) {
   const { engine, helix, broadcasterId, actorId } = o;
   const warn = (text: string) => o.onWarning?.(text);
   const moderators = new Set<string>();
-  let emotes = new Set<string>();
+  let emotes: ReadonlyMap<string, string> = new Map();
   let emotesLoaded = false;
 
   async function welcome(sessionId: string) {

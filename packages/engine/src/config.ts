@@ -17,6 +17,8 @@ export interface Thresholds {
 interface RuleCommon {
   id: string;
   action: Action;
+  /** False turns the rule off (also set by `!vigia rule <id> off`). */
+  enabled?: boolean;
   /** Timeout length; required when `action` is `timeout`. */
   seconds?: number;
   act?: number;
@@ -42,6 +44,8 @@ export interface VigiaConfig {
   version: 1;
   /** Language of the bot's chat replies. */
   language: "en" | "es";
+  /** Log what would happen without acting in chat. On until the streamer trusts the rules. */
+  observe: boolean;
   defaults: Thresholds;
   /** Roles skipped by moderation rules (highlights still apply). */
   exempt: ExemptRole[];
@@ -63,6 +67,7 @@ export type ConfigResult = { ok: true; config: VigiaConfig } | { ok: false; erro
 export const DEFAULT_CONFIG: VigiaConfig = {
   version: 1,
   language: "en",
+  observe: true,
   defaults: { act: 0.85, unsure: 0.5 },
   exempt: ["broadcaster", "moderators", "vips"],
   highlights: { mode: "auto", seconds: 12, includeBroadcaster: false },
@@ -108,6 +113,9 @@ export function parseConfig(text: string): ConfigResult {
   const language = raw.language ?? DEFAULT_CONFIG.language;
   if (language !== "en" && language !== "es") fail(["language"], oneOf(["en", "es"]));
 
+  const observe = raw.observe ?? DEFAULT_CONFIG.observe;
+  if (typeof observe !== "boolean") fail(["observe"], "must be true or false");
+
   const defaults = { ...DEFAULT_CONFIG.defaults, ...(isObj(raw.defaults) ? raw.defaults : {}) } as Thresholds;
   if (!isProbability(defaults.act)) fail(["defaults", "act"], "must be a number from 0 to 1");
   if (!isProbability(defaults.unsure)) fail(["defaults", "unsure"], "must be a number from 0 to 1");
@@ -137,6 +145,7 @@ export function parseConfig(text: string): ConfigResult {
     config: {
       version: 1,
       language: language as VigiaConfig["language"],
+      observe: observe as boolean,
       defaults,
       exempt: exempt as ExemptRole[],
       highlights: highlights as VigiaConfig["highlights"],
@@ -177,6 +186,7 @@ function validateRules(rules: unknown[], fail: (path: (string | number)[], messa
         fail(at("seconds"), `must be a whole number from 1 to ${MAX_TIMEOUT_SECONDS}`);
       }
     }
+    if ("enabled" in rule && typeof rule.enabled !== "boolean") fail(at("enabled"), "must be true or false");
     for (const key of ["act", "unsure"]) {
       if (key in rule && !isProbability(rule[key])) fail(at(key), "must be a number from 0 to 1");
     }

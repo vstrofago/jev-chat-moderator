@@ -7,7 +7,8 @@ import type { ChatMessage, Fragment } from "@vigia/engine";
  */
 export async function loadThirdPartyEmotes(twitchUserId: string, o: { fetch?: typeof fetch } = {}) {
   const doFetch = o.fetch ?? globalThis.fetch;
-  const names = new Set<string>();
+  /** Emote name → image URL. */
+  const names = new Map<string, string>();
   const warnings: string[] = [];
 
   /** 404 means the channel has no account there, which is normal. */
@@ -24,7 +25,9 @@ export async function loadThirdPartyEmotes(twitchUserId: string, o: { fetch?: ty
       async () => {
         const global = await get("https://7tv.io/v3/emote-sets/global");
         const channel = await get(`https://7tv.io/v3/users/twitch/${twitchUserId}`);
-        for (const e of [...(global?.emotes ?? []), ...(channel?.emote_set?.emotes ?? [])]) names.add(e.name);
+        for (const e of [...(global?.emotes ?? []), ...(channel?.emote_set?.emotes ?? [])]) {
+          names.set(e.name, `https://cdn.7tv.app/emote/${e.id}/2x.webp`);
+        }
       },
     ],
     [
@@ -32,7 +35,9 @@ export async function loadThirdPartyEmotes(twitchUserId: string, o: { fetch?: ty
       async () => {
         const global = await get("https://api.betterttv.net/3/cached/emotes/global");
         const channel = await get(`https://api.betterttv.net/3/cached/users/twitch/${twitchUserId}`);
-        for (const e of [...(global ?? []), ...(channel?.channelEmotes ?? []), ...(channel?.sharedEmotes ?? [])]) names.add(e.code);
+        for (const e of [...(global ?? []), ...(channel?.channelEmotes ?? []), ...(channel?.sharedEmotes ?? [])]) {
+          names.set(e.code, `https://cdn.betterttv.net/emote/${e.id}/2x`);
+        }
       },
     ],
     [
@@ -44,8 +49,10 @@ export async function loadThirdPartyEmotes(twitchUserId: string, o: { fetch?: ty
         const sets = [
           ...defaults.map((id) => global?.sets?.[String(id)]),
           ...Object.values(channel?.sets ?? {}),
-        ] as { emoticons?: { name: string }[] }[];
-        for (const set of sets) for (const e of set?.emoticons ?? []) names.add(e.name);
+        ] as { emoticons?: { name: string; urls: Record<string, string> }[] }[];
+        for (const set of sets) {
+          for (const e of set?.emoticons ?? []) names.set(e.name, e.urls["2"] ?? e.urls["1"]);
+        }
       },
     ],
   ];
@@ -63,7 +70,7 @@ export async function loadThirdPartyEmotes(twitchUserId: string, o: { fetch?: ty
 }
 
 /** Splits text fragments so that known third-party emote words become emote fragments. */
-export function withThirdPartyEmotes(m: ChatMessage, names: Set<string>): ChatMessage {
+export function withThirdPartyEmotes(m: ChatMessage, names: ReadonlyMap<string, string>): ChatMessage {
   if (names.size === 0) return m;
   const fragments: Fragment[] = [];
   let pending = "";
@@ -80,7 +87,7 @@ export function withThirdPartyEmotes(m: ChatMessage, names: Set<string>): ChatMe
     for (const part of f.text.split(/(\s+)/)) {
       if (part && names.has(part)) {
         flush();
-        fragments.push({ type: "emote", text: part, id: `3p:${part}` });
+        fragments.push({ type: "emote", text: part, id: `3p:${part}`, imageUrl: names.get(part) });
       } else pending += part;
     }
   }

@@ -55,10 +55,9 @@ const platform: ChatPlatform = {
 };
 
 const engine = createEngine({
-  config: parsed.config,
+  config: { ...parsed.config, observe: false },
   platform,
   evaluate: apiKey ? jevEvaluator({ apiKey, provider: "gateway" }) : replayEvaluator(),
-  observe: false,
   concurrency: 4,
 });
 engine.setCategory("Elden Ring");
