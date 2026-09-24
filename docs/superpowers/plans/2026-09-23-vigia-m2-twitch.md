@@ -139,9 +139,23 @@ Usage: `pnpm observe <channel> [--rules path.yaml] [--rate 1] [--category "Elden
 - [ ] Test that `jevEvaluator` reports `inputTokens` through `onUsage`.
 - [ ] Implement, run the tests and typecheck, then commit `feat(twitch): pnpm observe <channel> read-only calibration tool`.
 
+### Task 4: Third-party emotes (7TV, BTTV, FFZ)
+
+Found while observing real chat: in big channels most emotes are 7TV/BTTV/FFZ words that
+Twitch sends as plain text, so Jev reads them as gibberish ("databaseEZ" came out as
+possible spam).
+- `loadThirdPartyEmotes(twitchUserId)` loads global and channel emote names from the three
+  public APIs (no login, called from the streamer's machine). A 404 means no account there,
+  and a failing provider only produces a warning.
+- `withThirdPartyEmotes(message, names)` turns whole matching words into emote fragments.
+- The engine's `buildRequest` labels any emote without a known meaning as "an emote" and
+  ships meanings for common third-party emotes (KEKW, Sadge, monkaS, …).
+- The IRC reader reports the channel id (`room`) from ROOMSTATE, and `observe` loads the
+  emotes after joining.
+
 ### Later tasks (detailed when reached)
 
-4. OAuth spike (device code flow + implicit flow for Public clients). Needs the author's
+4b. OAuth spike (device code flow + implicit flow for Public clients). Needs the author's
    client ID.
 5. EventSub WebSocket client (`channel.chat.message`, `channel.update`,
    `channel.moderator.add/remove`), tested against `twitch event websocket start-server`.

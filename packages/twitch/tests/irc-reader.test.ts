@@ -72,6 +72,14 @@ describe("readChannel", () => {
     expect(e.log).toContain("joined");
   });
 
+  it("reports the channel's Twitch id once joined", () => {
+    const rooms: string[] = [];
+    readChannel("dallas", { ...events().on, room: (id) => void rooms.push(id) }, { WebSocket: Socket });
+    last().open();
+    last().receive("@emote-only=0;room-id=12826 :tmi.twitch.tv ROOMSTATE #dallas\r\n@emote-only=1;room-id=12826 :tmi.twitch.tv ROOMSTATE #dallas\r\n");
+    expect(rooms).toEqual(["12826"]);
+  });
+
   it("emits every chat message in a frame", () => {
     const e = events();
     readChannel("dallas", e.on, { WebSocket: Socket });

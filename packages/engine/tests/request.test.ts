@@ -60,6 +60,18 @@ describe("buildRequest", () => {
     expect(state.emotes).toEqual({ miCanalLlora: "sadness", Kappa: expect.any(String) });
   });
 
+  it("labels emotes with no known meaning so Jev doesn't read them as words", () => {
+    const fragments: Fragment[] = [{ type: "emote", text: "xqcGoofy", id: "3p:xqcGoofy" }];
+    const { state } = buildRequest(msg("xqcGoofy", { fragments }), [{ id: "q", pack: "questions", action: "highlight" }], ctx);
+    expect(state.emotes).toEqual({ xqcGoofy: "an emote" });
+  });
+
+  it("knows common third-party emotes", () => {
+    const fragments: Fragment[] = [{ type: "emote", text: "KEKW", id: "3p:KEKW" }];
+    const { state } = buildRequest(msg("KEKW", { fragments }), [{ id: "q", pack: "questions", action: "highlight" }], ctx);
+    expect(state.emotes).toEqual({ KEKW: "laughing hard" });
+  });
+
   it("uses the Twitch category when antispoiler work is auto", () => {
     const rules: Rule[] = [{ id: "sp", pack: "antispoiler", action: "delete", work: "auto" }];
     const { state } = buildRequest(msg("x"), rules, { ...ctx, category: "Elden Ring" });

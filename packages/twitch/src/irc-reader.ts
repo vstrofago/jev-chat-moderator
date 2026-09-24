@@ -5,6 +5,8 @@ export interface ReaderEvents {
   message(m: ChatMessage): void;
   status(s: "connecting" | "joined" | "reconnecting" | "closed", detail?: string): void;
   warning(text: string): void;
+  /** The channel's Twitch user id, reported once after the first join. */
+  room?(id: string): void;
 }
 
 export interface ReaderOptions {
@@ -33,11 +35,14 @@ export function readChannel(channel: string, on: ReaderEvents, o: ReaderOptions 
   let failures = 0;
   let retryTimer: ReturnType<typeof setTimeout> | undefined;
   let joinTimer: ReturnType<typeof setTimeout> | undefined;
+  let joined = false;
+  let roomId: string | undefined;
 
   function connect() {
     on.status("connecting");
     const ws = new Socket(IRC_URL);
     socket = ws;
+    joined = false;
     ws.onopen = () => {
       ws.send("CAP REQ :twitch.tv/tags twitch.tv/commands");
       ws.send("PASS SCHMOOPIIE");
@@ -72,10 +77,19 @@ export function readChannel(channel: string, on: ReaderEvents, o: ReaderOptions 
         return ws.send(`PONG :${line.params[0] ?? ""}`);
       case "RECONNECT":
         return ws.close();
-      case "ROOMSTATE":
+      case "ROOMSTATE": {
+        // Sent on join and again whenever a chat setting changes.
+        const id = line.tags["room-id"];
+        if (id && id !== roomId) {
+          roomId = id;
+          on.room?.(id);
+        }
+        if (joined) return;
+        joined = true;
         clearTimeout(joinTimer);
         failures = 0;
         return on.status("joined", `#${room}`);
+      }
       case "PRIVMSG": {
         const m = toChatMessage(line);
         if (m) on.message(m);

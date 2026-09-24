@@ -10,6 +10,7 @@ import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 import { createEngine, jevEvaluator, parseConfig, type ChatPlatform } from "@vigia/engine";
 import { readChannel } from "../src/irc-reader";
+import { loadThirdPartyEmotes, withThirdPartyEmotes } from "../src/third-party-emotes";
 import { createRateGate } from "../src/rate-gate";
 
 const PRICE_PER_TOKEN = 0.042 / 1_000_000;
@@ -115,10 +116,18 @@ function summary() {
   );
 }
 
+let thirdPartyEmotes = new Set<string>();
+
 const reader = readChannel(channel, {
   message: (m) => {
     stats.seen++;
-    if (gate.allow()) void engine.handleMessage(m);
+    if (gate.allow()) void engine.handleMessage(withThirdPartyEmotes(m, thirdPartyEmotes));
+  },
+  room: async (id) => {
+    const { names, warnings } = await loadThirdPartyEmotes(id);
+    thirdPartyEmotes = names;
+    for (const w of warnings) console.log(color(33, `  ! ${w}`));
+    console.log(color(2, `[${names.size} 7TV/BTTV/FFZ emotes loaded]`));
   },
   status: (s, detail) => console.log(color(2, `[${s}${detail ? ` ${detail}` : ""}]`)),
   warning: (w) => console.log(color(33, `  ! ${w}`)),

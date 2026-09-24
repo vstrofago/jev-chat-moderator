@@ -14,8 +14,12 @@ export interface RequestContext {
   emotes: Record<string, string>;
 }
 
-/** Meanings of common global Twitch emotes. Channel emotes come from the config. */
-const GLOBAL_EMOTES: Record<string, string> = {
+/**
+ * Meanings of common emotes: Twitch globals and the most used 7TV/BTTV/FFZ ones. Channel
+ * emotes come from the config; any other emote is labelled "an emote" so Jev doesn't read
+ * it as a word.
+ */
+const KNOWN_EMOTES: Record<string, string> = {
   Kappa: "sarcasm, joking",
   LUL: "laughing",
   BibleThump: "crying, sadness",
@@ -32,6 +36,36 @@ const GLOBAL_EMOTES: Record<string, string> = {
   HeyGuys: "greeting",
   VoHiYo: "cheerful greeting",
   "<3": "love",
+  KEKW: "laughing hard",
+  OMEGALUL: "laughing hard",
+  LULW: "laughing hard",
+  ICANT: "laughing, can't take it",
+  Pog: "excitement, amazement",
+  PogU: "excitement, amazement",
+  POGGERS: "excitement",
+  monkaS: "nervous, scared",
+  monkaW: "very scared",
+  Sadge: "sadness",
+  PepeHands: "sadness, crying",
+  FeelsBadMan: "sadness",
+  FeelsGoodMan: "happiness",
+  FeelsStrongMan: "emotional but staying strong",
+  catJAM: "vibing to music",
+  Clap: "applause",
+  EZ: "easy, gloating",
+  "5Head": "smart, clever",
+  Copium: "coping, denial",
+  Aware: "ominous realization",
+  Kappa2: "sarcasm",
+  WeirdChamp: "disapproval, cringe",
+  PauseChamp: "anticipation",
+  HUH: "confusion",
+  Stare: "staring, judging",
+  peepoHappy: "happiness",
+  widepeepoHappy: "happiness",
+  GIGACHAD: "confident, admiration",
+  Deadge: "dead, a death happened",
+  RIPBOZO: "mocking someone's failure",
 };
 
 /**
@@ -47,8 +81,7 @@ export function buildRequest(m: ChatMessage, rules: Rule[], ctx: RequestContext)
   const emotes: Record<string, string> = {};
   for (const f of m.fragments) {
     if (f.type !== "emote") continue;
-    const meaning = ctx.emotes[f.text] ?? GLOBAL_EMOTES[f.text];
-    if (meaning) emotes[f.text] = meaning;
+    emotes[f.text] = ctx.emotes[f.text] ?? KNOWN_EMOTES[f.text] ?? "an emote";
   }
   if (Object.keys(emotes).length > 0) state.emotes = emotes;
 
