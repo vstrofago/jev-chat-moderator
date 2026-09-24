@@ -76,8 +76,9 @@ Work lands on `dev`, and `main` only moves through pull requests from `dev` with
 Merging to `main` redeploys the website (GitHub Pages).
 
 1. Bump `version` in `apps/desktop/package.json` (on `dev`), and merge `dev` into `main`.
-2. Tag `main` with `v<version>` and push the tag. The `release` workflow then:
-   - checks the tag against the version and runs the tests;
+2. Run **Actions → Release → Run workflow** on `main` (or push a `v<version>` tag yourself).
+   The `release` workflow then:
+   - checks the version, tags `main` with `v<version>` when run by hand, and runs the tests;
    - builds the Windows, macOS and Linux apps into a draft GitHub Release, and pushes the
      server image to `ghcr.io/vstrofago/vigia`;
    - publishes the release, as a **pre-release**, once every build succeeded.
