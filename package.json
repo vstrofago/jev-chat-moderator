@@ -14,7 +14,8 @@
     "typecheck": "tsc -p tsconfig.json && tsc -p packages/ui/tsconfig.json",
     "observe": "pnpm --filter @vigia/twitch observe",
     "live": "pnpm --filter @vigia/twitch live",
-    "vigia": "pnpm --filter @vigia/server-app start"
+    "vigia": "pnpm --filter @vigia/server-app start",
+    "eval": "pnpm --filter @vigia/evals eval"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",

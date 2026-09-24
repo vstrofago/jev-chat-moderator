@@ -1,0 +1,26 @@
+# Labeled for the `spam` pack.
+messages:
+  - { text: "Buy followers, primes and viewers at bestviewers dot com", expect: true }
+  - { text: "Wanna become famous? Get 1000 followers for $5! DM me", expect: true }
+  - { text: "FREE NITRO giveaway click here discord-gift.co/xyz", expect: true }
+  - { text: "hey check out my channel twitch.tv/some_other_guy I'm live now!!", expect: true }
+  - { text: "follow me back pls I follow everyone f4f", expect: true }
+  - { text: "I made $3000 this week trading crypto, message me to learn how", expect: true }
+  - { text: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", expect: true }
+  - { text: "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ COPY THIS IF YOU LOVE THE STREAMER ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬", expect: true }
+  - { text: "subscribe to my youtube for the best montages youtube.com/@mymontages", expect: true }
+  - { text: "Cheap game keys! 90% off everything at keysdeal shop, link in my bio", expect: true }
+  - { text: "streamer you should use our overlay service, 50% off for you, dm me", expect: true }
+  - { text: "claim your free skin before it expires: steamcommunnity.ru/gift", expect: true }
+  - { text: "GG GG GG GG", expect: false }
+  - { text: "LUL LUL LUL", expect: false }
+  - { text: "hi chat, first time here!", expect: false }
+  - { text: "here's the map you asked for: https://mapgenie.io/elden-ring", expect: false }
+  - { text: "is this the new patch?", expect: false }
+  - { text: "HYPE HYPE HYPE", expect: false }
+  - { text: "I watched your VOD from yesterday, the ending was crazy", expect: false }
+  - { text: "just followed, love the vibe here", expect: false }
+  - { text: "the raid from xqc was huge", expect: false }
+  - { text: "what's your keyboard?", expect: false }
+  - { text: "!discord", expect: false }
+  - { text: "ok ok ok ok", expect: false }

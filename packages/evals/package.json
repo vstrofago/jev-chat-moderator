@@ -1,0 +1,15 @@
+{
+  "name": "@vigia/evals",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Labeled chat messages per bundled pack, and the script that measures Jev on them.",
+  "scripts": {
+    "eval": "tsx src/run.ts"
+  },
+  "dependencies": {
+    "@vigia/core": "workspace:*",
+    "@vigia/engine": "workspace:*",
+    "yaml": "^2.9.1"
+  }
+}

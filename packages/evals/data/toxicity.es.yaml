@@ -1,0 +1,26 @@
+# Etiquetado para el pack `toxicity`: ¿el mensaje es ofensivo?
+messages:
+  - { text: "eres un inútil, deja de jugar que das pena", expect: true }
+  - { text: "cállate gorda nadie te quiere escuchar", expect: true }
+  - { text: "ojalá te mueras en un accidente", expect: true }
+  - { text: "qué asco de streamer y qué asco de chat", expect: true }
+  - { text: "las mujeres no saben jugar, a la cocina", expect: true }
+  - { text: "estás tan feo que deberías apagar la cámara", expect: true }
+  - { text: "tu madre es una puta", expect: true }
+  - { text: "retrasado mental ni saltar sabes", expect: true }
+  - { text: "sé dónde vives y te voy a partir la cara", expect: true }
+  - { text: "todos los de ese país son unos ladrones", expect: true }
+  - { text: "@mod_ana eres una amargada sin vida, deja de banear", expect: true }
+  - { text: "tu voz es horrible, ojalá te quedes mudo", expect: true }
+  - { text: "ese jefe te destrozó jajaja", expect: false }
+  - { text: "soy malísimo en este juego, me muero en el tutorial", expect: false }
+  - { text: "¡mátalo! ¡a la cabeza!", expect: false }
+  - { text: "qué jugadón, brutal", expect: false }
+  - { text: "este juego es tan difícil que me está matando", expect: false }
+  - { text: "no estoy de acuerdo, la historia del primero era mejor", expect: false }
+  - { text: "hoy andas medio perdido con la puntería, sin ofender", expect: false }
+  - { text: "wey te mató un goblin nivel 1 xd", expect: false }
+  - { text: "ese villano es un cabrón malísimo, lo amo", expect: false }
+  - { text: "jajaja eres una leyenda", expect: false }
+  - { text: "no sean malos con los mods nuevos, están aprendiendo", expect: false }
+  - { text: "rip mis oídos, qué fuerte sonó la explosión", expect: false }

@@ -1,0 +1,26 @@
+# Labeled for the `questions` pack: a genuine question for the streamer?
+messages:
+  - { text: "what mouse are you using?", expect: true }
+  - { text: "how long have you been streaming?", expect: true }
+  - { text: "are you going to play the DLC after this?", expect: true }
+  - { text: "which class did you pick and why?", expect: true }
+  - { text: "do you have a dog? I heard barking", expect: true }
+  - { text: "what's your favorite game of all time?", expect: true }
+  - { text: "streamer, how do you deal with nerves when streaming?", expect: true }
+  - { text: "can you show your build?", expect: true }
+  - { text: "where are you from? your accent is cool", expect: true }
+  - { text: "is this your first playthrough?", expect: true }
+  - { text: "hey, do you plan to stream tomorrow?", expect: true }
+  - { text: "thoughts on the new patch nerfs?", expect: true }
+  - { text: "who even plays this in 2026 lol?", expect: false }
+  - { text: "chat, does anyone know when the sale ends?", expect: false }
+  - { text: "what?? how did he survive that", expect: false }
+  - { text: "GG", expect: false }
+  - { text: "that boss is so hard", expect: false }
+  - { text: "why am I like this 😂", expect: false }
+  - { text: "mods, can I post a link?", expect: false }
+  - { text: "hello from Brazil!", expect: false }
+  - { text: "I love this song", expect: false }
+  - { text: "@viewer22 what rank are you?", expect: false }
+  - { text: "isn't it crazy how good this game looks", expect: false }
+  - { text: "lol", expect: false }
