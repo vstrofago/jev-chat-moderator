@@ -4,7 +4,7 @@ import "../styles/app.css";
 import "../styles/dashboard.css";
 import { Mark } from "../dashboard/app";
 import { initialLang, LangContext, saveLang, useT, type Lang } from "../dashboard/i18n";
-import { desktop, type SetupState } from "./bridge";
+import { desktop, LockedError, type SetupState } from "./bridge";
 
 const TWITCH_CONSOLE = "https://dev.twitch.tv/console/apps/create";
 const GATEWAY_KEYS = "https://vercel.com/docs/ai-gateway";
@@ -12,10 +12,21 @@ const GATEWAY_KEYS = "https://vercel.com/docs/ai-gateway";
 function Setup({ lang, setLang }: { lang: Lang; setLang(l: Lang): void }) {
   const t = useT();
   const [state, setState] = useState<SetupState | null>(null);
+  const [locked, setLocked] = useState(false);
+  const load = () =>
+    desktop()
+      .state()
+      .then((s) => {
+        setLocked(false);
+        setState(s);
+      })
+      .catch((e) => {
+        if (e instanceof LockedError) setLocked(true);
+      });
   useEffect(() => {
-    desktop().state().then(setState);
+    load();
   }, []);
-  if (!state) return null;
+  if (!state && !locked) return null;
 
   return (
     <main class="wizard setup">
@@ -39,13 +50,49 @@ function Setup({ lang, setLang }: { lang: Lang; setLang(l: Lang): void }) {
           <option value="es">Español</option>
         </select>
       </div>
-      {state.weak && <p class="notice">{t("setup.weak")}</p>}
-      {state.step === "source" && <Source setState={setState} />}
-      {state.step === "twitch-app" && <TwitchApp setState={setState} />}
-      {state.step === "twitch-login" && <TwitchLogin setState={setState} />}
-      {state.step === "jev-key" && <JevKey setState={setState} />}
-      {state.step === "done" && <Done />}
+      {locked || !state ? (
+        <Unlock onUnlocked={load} />
+      ) : (
+        <>
+          {state.weak && <p class="notice">{t("setup.weak")}</p>}
+          {state.step === "source" && <Source setState={setState} />}
+          {state.step === "twitch-app" && <TwitchApp setState={setState} />}
+          {state.step === "twitch-login" && <TwitchLogin setState={setState} />}
+          {state.step === "jev-key" && <JevKey setState={setState} />}
+          {state.step === "done" && <Done />}
+        </>
+      )}
     </main>
+  );
+}
+
+/** Web setup reachable from other machines: the code printed in Vigia's logs unlocks it. */
+function Unlock({ onUnlocked }: { onUnlocked(): void }) {
+  const t = useT();
+  const [code, setCode] = useState("");
+  const [error, setError] = useState(false);
+  return (
+    <form
+      class="panel stack wizard-body"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        setError(false);
+        if (await desktop().unlock?.(code)) onUnlocked();
+        else setError(true);
+      }}
+    >
+      <h2>{t("setup.unlock.title")}</h2>
+      <p class="muted">{t("setup.unlock.body")}</p>
+      <label class="field">
+        <span>{t("setup.unlock.code")}</span>
+        <input type="text" required autoComplete="off" autoCapitalize="characters" spellcheck={false} value={code} onInput={(e) => setCode(e.currentTarget.value)} />
+      </label>
+      {error && <p class="error" role="alert">{t("setup.unlock.wrong")}</p>}
+      <div class="row">
+        <span class="spacer" />
+        <button class="btn primary">{t("setup.unlock.go")}</button>
+      </div>
+    </form>
   );
 }
 
@@ -166,10 +213,12 @@ function TwitchLogin({ setState }: { setState(s: SetupState): void }) {
       <p class="muted">{t("setup.login.body")}</p>
       {code ? (
         <div class="stack device-code">
-          <p>{t("setup.login.opened")}</p>
+          <p>{t(desktop().autoOpens ? "setup.login.opened" : "setup.login.openThis")}</p>
           <p class="code-big" aria-label={t("setup.login.code")}>{code.code}</p>
           <p class="muted small">{t("setup.login.waiting", { minutes: code.minutes })}</p>
-          <button class="btn" onClick={() => desktop().openExternal(code.uri)}>{t("setup.login.reopen")}</button>
+          <button class={desktop().autoOpens ? "btn" : "btn primary"} onClick={() => desktop().openExternal(code.uri)}>
+            {t(desktop().autoOpens ? "setup.login.reopen" : "setup.login.open")}
+          </button>
         </div>
       ) : (
         <button class="btn primary big" onClick={start}>{t("setup.login.start")}</button>
@@ -194,13 +243,15 @@ function JevKey({ setState }: { setState(s: SetupState): void }) {
     setError("");
     const r = await desktop().saveJevKey(key.trim());
     setBusy(false);
-    if (r.ok && r.state) setState(r.state);
+    if (r.ok) setState(r.state);
+    else if (r.code === "bad-key") setError(t("setup.jev.error.badKey"));
+    else if (r.code === "unreachable") setError(`${t("setup.jev.error.unreachable")} ${r.error ?? ""}`.trim());
     else setError(r.error ?? "");
   };
   return (
     <form class="panel stack wizard-body" onSubmit={save}>
       <h2>{t("setup.jev.title")}</h2>
-      <p class="muted">{t("setup.jev.body")}</p>
+      <p class="muted">{t(desktop().autoOpens ? "setup.jev.body" : "setup.jev.body.server")}</p>
       <label class="field">
         <span>{t("setup.jev.key")}</span>
         <input type="password" autoComplete="off" required value={key} onInput={(e) => setKey(e.currentTarget.value)} />

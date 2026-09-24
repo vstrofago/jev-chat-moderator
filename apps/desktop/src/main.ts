@@ -7,15 +7,12 @@ import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { AuthError, detectProvider, evaluate } from "@vigia/core";
+import { detectProvider } from "@vigia/core";
 import { jevEvaluator } from "@vigia/engine";
-import { createUsageMeter, observeSource, startVigia, twitchSource, type Vigia } from "@vigia/server";
-import { openTwitchSession } from "@vigia/twitch";
+import { createSetupFlow, createUsageMeter, NeedsLogin, nextStep, openSecrets, sourceFromSettings, startVigia, type Secrets, type SetupFlow, type Vigia } from "@vigia/server";
 import { app, BrowserWindow, clipboard, dialog, ipcMain, Menu, nativeImage, net, protocol, safeStorage, session, shell, Tray, type IpcMainInvokeEvent } from "electron";
 import electronUpdater from "electron-updater";
 import { pickPort } from "./ports";
-import { openSecrets, type DesktopSettings, type Secrets } from "./secrets";
-import { nextStep } from "./setup-state";
 
 const SMOKE = process.env.VIGIA_SMOKE === "1";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -37,8 +34,6 @@ const T = es
       setupAgain: "Configurar de nuevo…",
       quit: "Salir",
       stillRunning: "Vigia sigue funcionando en la bandeja del sistema.",
-      badKey: "Jev rechazó la clave. Revisa que esté completa y que tu cuenta tenga saldo o tarjeta.",
-      noJev: "No se pudo contactar a Jev: ",
       startFailed: "Vigia no pudo iniciar",
       retry: "Reintentar",
     }
@@ -51,8 +46,6 @@ const T = es
       setupAgain: "Set up again…",
       quit: "Quit",
       stillRunning: "Vigia keeps running in the system tray.",
-      badKey: "Jev rejected the key. Check that it is complete and that your account has credit or a card.",
-      noJev: "Could not reach Jev: ",
       startFailed: "Vigia could not start",
       retry: "Try again",
     };
@@ -169,10 +162,7 @@ function serveSetupPage() {
   });
 }
 
-const setupState = () => {
-  const s = secrets.get();
-  return { step: nextStep(s), source: s.source, observeChannel: s.observeChannel, twitchClientId: s.twitchClientId, weak: secrets.weak };
-};
+let flow: SetupFlow;
 
 /** Every setup call must come from the setup page itself. */
 function handle(channel: string, fn: (...args: any[]) => unknown) {
@@ -182,116 +172,24 @@ function handle(channel: string, fn: (...args: any[]) => unknown) {
   });
 }
 
-// A device login keeps polling Twitch until it is confirmed or expires; one started before
-// "Back" must not save anything afterwards.
-let loginRun = 0;
-
 function registerSetupCalls() {
-  handle("state", () => setupState());
-
-  handle("chooseSource", async (source: unknown, channel: unknown) => {
-    if (source === "observe") {
-      if (typeof channel !== "string" || !/^[a-z0-9_]{3,25}$/.test(channel)) throw new Error("Invalid channel name");
-      await secrets.update({ source, observeChannel: channel });
-    } else if (source === "twitch") {
-      await secrets.update({ source, observeChannel: undefined });
-    }
-    return setupState();
+  flow = createSetupFlow({
+    secrets,
+    onLogin: (r) => win?.webContents.send("setup:twitchLogin", r),
+    openExternal: (url) => void shell.openExternal(url),
   });
-
-  handle("saveClientId", async (clientId: unknown) => {
-    if (typeof clientId !== "string" || !/^[a-z0-9]{10,64}$/i.test(clientId)) throw new Error("Invalid Client ID");
-    await secrets.update({ twitchClientId: clientId, twitchTokens: undefined });
-    return setupState();
-  });
-
-  handle("startTwitchLogin", () => {
-    const clientId = secrets.get().twitchClientId;
-    if (!clientId) throw new Error("No Client ID");
-    const run = ++loginRun;
-    const current = () => run === loginRun;
-    return new Promise((resolveCode, rejectCode) => {
-      let gotCode = false;
-      openTwitchSession({
-        clientId,
-        tokenStore: {
-          load: async () => secrets.get().twitchTokens ?? null,
-          save: async (text) => {
-            if (current()) await secrets.update({ twitchTokens: text });
-          },
-        },
-        onCode: (uri, code, minutes) => {
-          gotCode = true;
-          void shell.openExternal(uri);
-          resolveCode({ uri, code, minutes });
-        },
-      }).then(
-        (s) => {
-          if (!current()) return;
-          if (!gotCode) resolveCode({ uri: "", code: "", minutes: 0 });
-          win?.webContents.send("setup:twitchLogin", { ok: true, login: s.login });
-        },
-        (err: Error) => {
-          if (!current()) return;
-          if (!gotCode) rejectCode(err);
-          else win?.webContents.send("setup:twitchLogin", { ok: false, error: err.message });
-        },
-      );
-    });
-  });
-
-  handle("saveJevKey", async (key: unknown) => {
-    if (typeof key !== "string" || !key.trim()) return { ok: false, error: T.badKey };
-    const error = await testJevKey(key.trim());
-    if (error) return { ok: false, error };
-    await secrets.update({ jevKey: key.trim() });
-    return { ok: true, state: setupState() };
-  });
-
-  handle("back", async () => {
-    loginRun++;
-    const s = secrets.get();
-    const patch: Partial<Record<keyof DesktopSettings, undefined>> = {};
-    switch (nextStep(s)) {
-      case "twitch-app":
-        patch.source = undefined;
-        break;
-      case "twitch-login":
-        patch.twitchClientId = undefined;
-        break;
-      case "jev-key":
-        if (s.source === "observe") Object.assign(patch, { source: undefined, observeChannel: undefined });
-        else patch.twitchTokens = undefined;
-        break;
-      case "done":
-        patch.jevKey = undefined;
-        break;
-    }
-    await secrets.update(patch);
-    return setupState();
-  });
-
+  handle("state", () => flow.state());
+  handle("chooseSource", (source: unknown, channel: unknown) => flow.chooseSource(source, channel));
+  handle("saveClientId", (clientId: unknown) => flow.saveClientId(clientId));
+  handle("startTwitchLogin", () => flow.startTwitchLogin());
+  handle("saveJevKey", (key: unknown) => flow.saveJevKey(key));
+  handle("back", () => flow.back());
   handle("finish", async () => {
-    if (nextStep(secrets.get()) === "done") await startHostOrAsk();
+    if (flow.state().step === "done") await startHostOrAsk();
   });
-
   handle("openExternal", async (url: unknown) => {
     if (typeof url === "string" && /^https:\/\//.test(url)) await shell.openExternal(url);
   });
-}
-
-/** One tiny yes/no question: proves the key works before it is saved. Returns an error. */
-async function testJevKey(apiKey: string): Promise<string | null> {
-  try {
-    await evaluate(
-      { message: "hello chat!" },
-      { greeting: { type: "boolean", instructions: "Is this message a greeting?" } },
-      { apiKey, provider: detectProvider(apiKey), timeoutMs: 20_000 },
-    );
-    return null;
-  } catch (e) {
-    return e instanceof AuthError ? T.badKey : T.noJev + (e as Error).message;
-  }
 }
 
 function showSetup() {
@@ -301,34 +199,18 @@ function showSetup() {
 
 // ---------- the host ----------
 
-class NeedsLogin extends Error {}
-
 async function startHost() {
   const s = secrets.get();
   const port = await pickPort(s.port);
   if (port !== s.port) await secrets.update({ port });
 
   let source;
-  if (s.source === "twitch") {
-    const clientId = s.twitchClientId!;
-    try {
-      const session = await openTwitchSession({
-        clientId,
-        tokenStore: { load: async () => secrets.get().twitchTokens ?? null, save: (text) => secrets.update({ twitchTokens: text }) },
-        // The saved login stopped working (revoked, or new scopes): log in again in setup.
-        onCode: () => {
-          throw new NeedsLogin();
-        },
-      });
-      log(`Logged in to Twitch as ${session.login}`);
-      source = twitchSource(session, clientId);
-    } catch (e) {
-      if (!(e instanceof NeedsLogin)) throw e;
-      await secrets.update({ twitchTokens: undefined });
-      return showSetup();
-    }
-  } else {
-    source = observeSource(s.observeChannel!);
+  try {
+    source = await sourceFromSettings(secrets, { log });
+  } catch (e) {
+    // The saved Twitch login stopped working (revoked, or new scopes): log in again in setup.
+    if (!(e instanceof NeedsLogin)) throw e;
+    return showSetup();
   }
 
   const usage = createUsageMeter();
@@ -408,7 +290,7 @@ function updateTray() {
       click: async () => {
         await stopHost();
         // Keep the Jev key and the port (the OBS overlay address); ask for the rest again.
-        await secrets.update({ source: undefined, observeChannel: undefined, twitchClientId: undefined, twitchTokens: undefined });
+        await flow.reset();
         showSetup();
         show();
       },

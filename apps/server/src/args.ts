@@ -10,12 +10,16 @@ export interface CliOptions {
   dataDir: string;
   host: string;
   port: number;
-  source: SourceOption;
-  jev: Pick<ClientOptions, "apiKey" | "provider">;
+  /** Set up in the browser instead of with --source: settings live in the data folder. */
+  setup: { force: boolean; seed: { jevKey?: string; twitchClientId?: string } } | null;
+  source?: SourceOption;
+  jev?: Pick<ClientOptions, "apiKey" | "provider">;
 }
 
-export const USAGE = `Usage: vigia --source twitch|observe:<channel> [options]
+export const USAGE = `Usage: vigia [--source twitch|observe:<channel>] [options]
 
+  (no --source)              set Vigia up in the browser; the settings are kept in --data
+  --setup                    run the browser setup again (keeps the Jev key)
   --source twitch            your own channel (needs TWITCH_CLIENT_ID of your Public app)
   --source observe:<channel> any public channel, read-only, never acts (for trying Vigia)
   --config <file>            rules file (default: vigia.yaml, created if missing)
@@ -25,7 +29,8 @@ export const USAGE = `Usage: vigia --source twitch|observe:<channel> [options]
   --rate <n>                 observe only: messages evaluated per second (default 1)
   --category <name>          observe only: game name for the anti-spoiler rule
 
-Environment: AI_GATEWAY_API_KEY (vck_...) or TYPESAFE_API_KEY; TWITCH_CLIENT_ID.`;
+Environment: AI_GATEWAY_API_KEY (vck_...) or TYPESAFE_API_KEY; TWITCH_CLIENT_ID. Without --source
+they are optional and only fill in the browser setup.`;
 
 export function parseCliArgs(
   argv: string[],
@@ -43,6 +48,7 @@ export function parseCliArgs(
         port: { type: "string", default: "7777" },
         rate: { type: "string", default: "1" },
         category: { type: "string" },
+        setup: { type: "boolean", default: false },
       },
     }));
   } catch (e) {
@@ -52,8 +58,17 @@ export function parseCliArgs(
   const port = Number(values.port);
   if (!Number.isInteger(port) || port < 0 || port > 65535) return { ok: false, error: "--port must be a number from 0 to 65535" };
 
+  const envKey = env.AI_GATEWAY_API_KEY || env.TYPESAFE_API_KEY || undefined;
+  const common = { configPath: values.config!, dataDir: values.data!, host: values.host!, port };
+  if (values.source === undefined) {
+    return {
+      ok: true,
+      options: { ...common, setup: { force: values.setup!, seed: { jevKey: envKey, twitchClientId: env.TWITCH_CLIENT_ID || undefined } } },
+    };
+  }
+
   let source: SourceOption;
-  const raw = values.source ?? "";
+  const raw = values.source;
   if (raw === "twitch") {
     if (!env.TWITCH_CLIENT_ID) {
       return { ok: false, error: "Set TWITCH_CLIENT_ID to the client ID of your own app at dev.twitch.tv (client type: Public)." };
@@ -77,6 +92,6 @@ export function parseCliArgs(
 
   return {
     ok: true,
-    options: { configPath: values.config!, dataDir: values.data!, host: values.host!, port, source, jev },
+    options: { ...common, setup: null, source, jev },
   };
 }

@@ -12,6 +12,7 @@ describe("parseCliArgs", () => {
         dataDir: "vigia-data",
         host: "127.0.0.1",
         port: 7777,
+        setup: null,
         source: { kind: "observe", channel: "xqc", rate: 1 },
         jev: { apiKey: "vck_x", provider: "gateway" },
       },
@@ -41,8 +42,15 @@ describe("parseCliArgs", () => {
     expect(r).toMatchObject({ ok: true, options: { source: { kind: "observe", channel: "ibai", rate: 2, category: "Just Chatting" } } });
   });
 
+  it("sets up in the browser without --source, seeding what the environment gives", () => {
+    expect(parseCliArgs([], {})).toMatchObject({ ok: true, options: { setup: { force: false, seed: {} } } });
+    expect(parseCliArgs(["--setup", "--data", "/data"], { TYPESAFE_API_KEY: "ts_x", TWITCH_CLIENT_ID: "cid" })).toMatchObject({
+      ok: true,
+      options: { dataDir: "/data", setup: { force: true, seed: { jevKey: "ts_x", twitchClientId: "cid" } } },
+    });
+  });
+
   it("explains what is missing", () => {
-    expect(parseCliArgs([], env)).toMatchObject({ ok: false, error: expect.stringContaining("--source") });
     expect(parseCliArgs(["--source", "observe:x"], {})).toMatchObject({ ok: false, error: expect.stringContaining("AI_GATEWAY_API_KEY") });
     expect(parseCliArgs(["--source", "twitch"], env)).toMatchObject({ ok: false, error: expect.stringContaining("TWITCH_CLIENT_ID") });
     expect(parseCliArgs(["--source", "kick"], env)).toMatchObject({ ok: false, error: expect.stringContaining("--source") });

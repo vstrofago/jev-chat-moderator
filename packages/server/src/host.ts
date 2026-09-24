@@ -59,8 +59,28 @@ const TYPES: Record<string, string> = {
   ".woff2": "font/woff2",
 };
 
-const LOOPBACK_HOSTS = new Set(["127.0.0.1", "localhost", "::1"]);
+export const LOOPBACK_HOSTS = new Set(["127.0.0.1", "localhost", "::1"]);
 const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+const makeAdminCode = () => Array.from({ length: 12 }, () => CODE_ALPHABET[randomInt(CODE_ALPHABET.length)]).join("");
+
+/**
+ * The broadcaster's admin code, created on first use. Setup asks for it before Vigia runs,
+ * and the dashboard login takes the same one afterwards.
+ */
+export async function readAdminCode(dataDir: string): Promise<string> {
+  await mkdir(dataDir, { recursive: true });
+  const store = openStore(join(dataDir, "vigia.db"));
+  try {
+    let code = store.setting<string>("adminCode");
+    if (!code) {
+      code = makeAdminCode();
+      store.setSetting("adminCode", code);
+    }
+    return code;
+  } finally {
+    store.close();
+  }
+}
 
 /** Runs Vigia: config file, engine, history, highlights, overlay, dashboard and its API. */
 export async function startVigia(o: VigiaOptions) {
@@ -80,7 +100,7 @@ export async function startVigia(o: VigiaOptions) {
     return value;
   }
   const overlayToken = secret("overlayToken", () => randomBytes(24).toString("base64url"));
-  const adminCode = secret("adminCode", () => Array.from({ length: 12 }, () => CODE_ALPHABET[randomInt(CODE_ALPHABET.length)]).join(""));
+  const adminCode = secret("adminCode", makeAdminCode);
 
   const file = await openConfigFile(o.configPath, {
     exampleText: o.exampleText,

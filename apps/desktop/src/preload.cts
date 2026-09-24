@@ -9,6 +9,7 @@ if (location.protocol === "vigia:") {
       ipcRenderer.invoke(`setup:${channel}`, ...args);
 
   contextBridge.exposeInMainWorld("vigiaDesktop", {
+    autoOpens: true,
     state: call("state"),
     chooseSource: call("chooseSource"),
     saveClientId: call("saveClientId"),
