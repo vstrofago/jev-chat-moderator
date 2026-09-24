@@ -5,3 +5,4 @@ export * from "./host";
 export * from "./sources";
 export * from "./paths";
 export * from "./log-dedupe";
+export * from "./auth";
