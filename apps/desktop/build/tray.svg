@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <path d="M11 3h10l-1.5 4h-7z" fill="#d5deea"/>
-  <rect x="8.5" y="9" width="15" height="15" rx="3.5" fill="none" stroke="#d5deea" stroke-width="2.6"/>
-  <circle cx="16" cy="16.5" r="3.6" fill="#f2b544"/>
-  <path d="M12 28.5h8" stroke="#d5deea" stroke-width="2.6" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🦇</text></svg>

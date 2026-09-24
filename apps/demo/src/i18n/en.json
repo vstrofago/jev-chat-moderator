@@ -1,8 +1,8 @@
 {
- "meta.title": "Jev Chat Moderator · playground",
+ "meta.title": "Vigia Playground",
  "meta.description": "Jev, TypeSafe AI's System One model, moderating a live-stream chat in real time.",
- "header.tagline": "by vstrofago",
- "intro.text": "jev-chat-moderator reads every message in a chat and says how likely it is to be offensive, and what kind. The decision to delete is made by code, using the thresholds you set.",
+ "header.tagline": "Jev moderating a simulated chat",
+ "intro.text": "The Vigia playground reads every message in a chat and says how likely it is to be offensive, and what kind. The decision to delete is made by code, using the thresholds you set.",
  "chat.title": "Simulated chat",
  "chat.play": "Play",
  "chat.pause": "Pause",
@@ -74,7 +74,7 @@
  "verdict.review": "review",
  "verdict.remove": "remove",
  "footer.recorded": "Replay recorded with",
- "live.typesafeLocalOnly": "TypeSafe keys only work with the playground running on your machine, because their API doesn't accept calls from other websites. Clone the repo and run: docker compose up --build (then open http://localhost:8080). Here you can use a Vercel AI Gateway key.",
+ "live.typesafeLocalOnly": "TypeSafe keys only work with the playground running on your machine, because their API doesn't accept calls from other websites. Clone the repo and run: docker compose -f apps/demo/docker-compose.yml up --build (then open http://localhost:8080/playground/). Here you can use a Vercel AI Gateway key.",
  "header.download": "Meet Vigia",
  "header.github": "Code on GitHub",
  "theme.toggle": "Toggle light/dark theme"

@@ -193,14 +193,11 @@ function Warning({ code, detail, close }: { code: string; detail: string; close(
   );
 }
 
-/** The logo: a lookout's lantern. */
+/** The logo, for now: a bat, the night lookout. */
 export function Mark() {
   return (
-    <svg class="mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-      <path d="M8 3h8l-1 3H9z" fill="currentColor" />
-      <rect x="7" y="7" width="10" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
-      <circle cx="12" cy="12.5" r="2.4" fill="var(--lantern)" />
-      <path d="M9 20h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-    </svg>
+    <span class="mark" aria-hidden="true">
+      🦇
+    </span>
   );
 }

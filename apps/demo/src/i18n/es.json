@@ -1,8 +1,8 @@
 {
- "meta.title": "Jev Chat Moderator · playground",
+ "meta.title": "Vigia Playground",
  "meta.description": "Jev, el modelo System One de TypeSafe AI, moderando un chat de stream en tiempo real.",
- "header.tagline": "by vstrofago",
- "intro.text": "jev-chat-moderator lee cada mensaje de un chat y dice qué tan probable es que sea ofensivo y de qué tipo. La decisión de borrar la toma el código, con los umbrales que tú ajustas.",
+ "header.tagline": "Jev moderando un chat simulado",
+ "intro.text": "El playground de Vigia lee cada mensaje de un chat y dice qué tan probable es que sea ofensivo y de qué tipo. La decisión de borrar la toma el código, con los umbrales que tú ajustas.",
  "chat.title": "Chat simulado",
  "chat.play": "Reproducir",
  "chat.pause": "Pausar",
@@ -74,7 +74,7 @@
  "verdict.review": "revisar",
  "verdict.remove": "eliminar",
  "footer.recorded": "Repetición grabada con",
- "live.typesafeLocalOnly": "Las keys de TypeSafe solo funcionan con el playground corriendo en tu máquina, porque su API no acepta llamadas desde otros sitios web. Clona el repo y ejecuta: docker compose up --build (luego abre http://localhost:8080). Aquí puedes usar una key del Vercel AI Gateway.",
+ "live.typesafeLocalOnly": "Las keys de TypeSafe solo funcionan con el playground corriendo en tu máquina, porque su API no acepta llamadas desde otros sitios web. Clona el repo y ejecuta: docker compose -f apps/demo/docker-compose.yml up --build (luego abre http://localhost:8080/playground/). Aquí puedes usar una key del Vercel AI Gateway.",
  "header.download": "Conoce Vigia",
  "header.github": "Código en GitHub",
  "theme.toggle": "Cambiar tema claro/oscuro"

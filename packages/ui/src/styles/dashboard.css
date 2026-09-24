@@ -19,7 +19,7 @@
   z-index: 5;
 }
 .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: var(--step-1); }
-.mark { color: var(--fog-2); }
+.mark { font-size: 22px; line-height: 1; }
 .context { display: flex; gap: 12px; }
 .offline { color: var(--lantern); font-weight: 700; }
 

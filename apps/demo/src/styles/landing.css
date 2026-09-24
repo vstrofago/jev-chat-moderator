@@ -172,9 +172,9 @@ pre {
   font-size: 18px;
   text-decoration: none;
 }
-.logo svg {
-  border-radius: 7px;
-  box-shadow: 0 0 0 1px var(--night-line);
+.logo-mark {
+  font-size: 26px;
+  line-height: 1;
 }
 .nav {
   display: flex;
