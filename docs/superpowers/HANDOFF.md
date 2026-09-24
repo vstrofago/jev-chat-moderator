@@ -53,6 +53,13 @@ Kept current at the end of every block of work so a new session (or a person) ca
   - Unverified: both workflows have never run (no GitHub Actions here), and neither has
     `docker build`.
 
+## Release 0.1.0 (experimental)
+- v0.1.0 is released as a GitHub **pre-release**, and marked experimental/WIP in the
+  READMEs, the landing page and the release notes. Pack accuracy is not published (the eval
+  results were left out on purpose).
+- Branch flow: `dev` → PR → `main`, merged with merge commits. The rulesets to import and
+  the security settings checklist are in `.github/rulesets/` and CONTRIBUTING.md.
+
 ## Naming and layout (latest)
 - The project name is **Vigia**, without an accent. The logo for now is the 🦇 emoji. The
   desktop icons are rendered from it with `apps/desktop/scripts/render-icons.cjs`.

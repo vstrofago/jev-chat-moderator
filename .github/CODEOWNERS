@@ -1,0 +1,8 @@
+# Reviews are requested from the maintainer for everything. Workflows, the release setup and
+# the security-sensitive server code are listed explicitly so they stay owned if this changes.
+*                                   @vstrofago
+/.github/                           @vstrofago
+/apps/desktop/electron-builder.yml  @vstrofago
+/packages/server/src/auth.ts        @vstrofago
+/packages/server/src/setup-server.ts @vstrofago
+/SECURITY.md                        @vstrofago

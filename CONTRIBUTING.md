@@ -70,10 +70,39 @@ pnpm --filter @vigia/server-app showcase # a dashboard with a scripted chat, no 
 - **Security issues** go through the private report described in
   [SECURITY.md](SECURITY.md), never a public issue.
 
-## Releases (maintainers)
+## Branches and releases (maintainers)
 
-1. Bump `version` in `apps/desktop/package.json`.
-2. Push a `v1.2.3` tag. The `release` workflow then builds the Windows, macOS and Linux apps
-   into a **draft** GitHub Release, and pushes the server image to GHCR.
-3. Check the draft (install it, and run the setup), then publish it. The desktop apps update
-   themselves from published releases.
+Work lands on `dev`, and `main` only moves through pull requests from `dev` with green CI.
+Merging to `main` redeploys the website (GitHub Pages).
+
+1. Bump `version` in `apps/desktop/package.json` (on `dev`), and merge `dev` into `main`.
+2. Tag `main` with `v<version>` and push the tag. The `release` workflow then:
+   - checks the tag against the version and runs the tests;
+   - builds the Windows, macOS and Linux apps into a draft GitHub Release, and pushes the
+     server image to `ghcr.io/vstrofago/vigia`;
+   - publishes the release, as a **pre-release**, once every build succeeded.
+3. While Vigia is experimental (0.x), every release is a pre-release, and the desktop apps
+   update from pre-releases too.
+
+## Repository protections (maintainers)
+
+GitHub settings cannot be set from the code, so they live here as a checklist. The rules are
+exported as JSON in `.github/rulesets/`: import each one in **Settings → Rules → Rulesets →
+New ruleset → Import a ruleset**.
+
+- **`main.json`:**
+  - Pull requests only, merged with a merge commit (so `dev` and `main` stay in step).
+  - Checks `check`, `e2e` and `docker` must pass on the latest commit.
+  - No force-push, no deletion.
+- **`dev.json`:** no force-push, no deletion.
+- **`release-tags.json`:** `v*` tags can't be moved or deleted.
+
+In **Settings → Code security**, turn on:
+- Private vulnerability reporting (`SECURITY.md` points to it);
+- Dependabot alerts and security updates;
+- Secret scanning with push protection.
+
+In **Settings → Actions → General**:
+- **Workflow permissions:** read-only, since each workflow asks for what it needs.
+- **Allow GitHub Actions to create and approve pull requests:** off.
+- **Fork pull request workflows:** require approval for first-time contributors.
