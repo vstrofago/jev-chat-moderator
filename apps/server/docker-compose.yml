@@ -1,0 +1,34 @@
+# Vigía on your own VPS, with HTTPS from Caddy.
+#
+#   export VIGIA_DOMAIN=vigia.example.com      # a domain pointing at this server
+#   export AI_GATEWAY_API_KEY=vck_...          # or TYPESAFE_API_KEY
+#   export TWITCH_CLIENT_ID=...                # your own Public app at dev.twitch.tv
+#   docker compose -f apps/server/docker-compose.yml up -d --build
+#   docker compose -f apps/server/docker-compose.yml logs -f vigia   # Twitch login code + overlay URL
+services:
+  vigia:
+    build:
+      context: ../..
+      dockerfile: apps/server/Dockerfile
+    restart: unless-stopped
+    environment:
+      - AI_GATEWAY_API_KEY
+      - TYPESAFE_API_KEY
+      - TWITCH_CLIENT_ID
+    command: ["--source", "${VIGIA_SOURCE:-twitch}"]
+    volumes:
+      - vigia-data:/data
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    command: caddy reverse-proxy --from ${VIGIA_DOMAIN:?set VIGIA_DOMAIN} --to vigia:7777
+    volumes:
+      - caddy-data:/data
+
+volumes:
+  vigia-data:
+  caddy-data:
