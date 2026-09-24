@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { AuthError, detectProvider, GatewayError, RateLimitError } from "../src/core/jev-client";
-import { moderate } from "../src/core/moderate";
+import { AuthError, detectProvider, GatewayError, RateLimitError, moderate } from "../src/index";
 
 type Call = { url: string; init: RequestInit; body: any };
 

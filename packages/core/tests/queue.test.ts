@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createQueue } from "../src/core/queue";
+import { createQueue } from "../src/index";
 
 const tick = (ms: number) => new Promise((r) => setTimeout(r, ms));
 

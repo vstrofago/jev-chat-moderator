@@ -5,11 +5,17 @@
  *   AI_GATEWAY_API_KEY=vck_... pnpm record
  */
 import { readFileSync, writeFileSync } from "node:fs";
-import { GatewayError, RateLimitError } from "../src/core/jev-client";
-import { moderate } from "../src/core/moderate";
-import { decide, DEFAULT_THRESHOLDS } from "../src/core/policy";
-import { createQueue } from "../src/core/queue";
-import { CATEGORIES, type Category, type ModerationResult } from "../src/core/types";
+import {
+  GatewayError,
+  RateLimitError,
+  moderate,
+  decide,
+  DEFAULT_THRESHOLDS,
+  createQueue,
+  CATEGORIES,
+  type Category,
+  type ModerationResult,
+} from "@vigia/core";
 
 interface Message {
   id: string;

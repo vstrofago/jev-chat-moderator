@@ -1,5 +1,5 @@
-import { decide } from "../core/policy";
-import type { Category, ModerationResult, Thresholds } from "../core/types";
+import { decide } from "@vigia/core";
+import type { Category, ModerationResult, Thresholds } from "@vigia/core";
 
 /** Jev 1.13 input price: $0.042 per million tokens; output is free. */
 const USD_PER_INPUT_TOKEN = 0.042 / 1e6;

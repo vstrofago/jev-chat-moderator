@@ -1,5 +1,7 @@
 services:
   playground:
-    build: .
+    build:
+      context: .
+      dockerfile: apps/demo/Dockerfile
     ports:
       - "8080:8080"

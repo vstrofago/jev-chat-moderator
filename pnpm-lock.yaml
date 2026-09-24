@@ -165,10 +165,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      astro:
-        specifier: 7.3.3
-        version: 7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.2)(tsx@4.23.15)
     devDependencies:
       '@types/node':
         specifier: ^26.6.2
@@ -182,6 +178,17 @@ importers:
       vitest:
         specifier: ^5.0.1
         version: 5.0.1(@types/node@26.6.2)(vite@8.3.0(@types/node@26.6.2)(esbuild@0.28.2)(tsx@4.23.15))
+
+  apps/demo:
+    dependencies:
+      '@vigia/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      astro:
+        specifier: 7.3.3
+        version: 7.3.3(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@26.6.2)(tsx@4.23.15)
+
+  packages/core: {}
 
 packages:
 

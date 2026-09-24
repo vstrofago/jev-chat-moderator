@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { decide, DEFAULT_THRESHOLDS } from "../src/core/policy";
-import type { Category } from "../src/core/types";
+import { decide, DEFAULT_THRESHOLDS, type Category } from "../src/index";
 
 function result(offensive: number, category: Category = "ok", categoryProbability = 1) {
   const categoryProbabilities = { ok: 0, insult: 0, hate: 0, spam: 0, threat: 0 };

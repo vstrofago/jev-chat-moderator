@@ -1,8 +1,18 @@
-import { AuthError, detectProvider, RateLimitError, type Provider } from "../core/jev-client";
-import { moderate } from "../core/moderate";
-import { decide, DEFAULT_THRESHOLDS } from "../core/policy";
-import { createQueue } from "../core/queue";
-import { CATEGORIES, type Category, type ModerationResult, type Thresholds, type Verdict } from "../core/types";
+import {
+  AuthError,
+  detectProvider,
+  RateLimitError,
+  type Provider,
+  moderate,
+  decide,
+  DEFAULT_THRESHOLDS,
+  createQueue,
+  CATEGORIES,
+  type Category,
+  type ModerationResult,
+  type Thresholds,
+  type Verdict,
+} from "@vigia/core";
 import messages from "../data/messages.json";
 import replay from "../data/replay.json";
 import { currentLang, setLang, t, type Key, type Lang } from "./i18n";

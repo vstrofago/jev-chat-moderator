@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { computeStats, type StatItem } from "../src/client/stats";
-import type { Category, ModerationResult } from "../src/core/types";
+import type { Category, ModerationResult } from "@vigia/core";
 
 function done(offensive: number, expected?: Category, latencyMs = 100, inputTokens = 1000): StatItem {
   const result: ModerationResult = {

@@ -1,0 +1,17 @@
+{
+  "name": "@vigia/demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Playground: TypeSafe AI's Jev moderating a simulated live-stream chat.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "record": "tsx scripts/record.ts"
+  },
+  "dependencies": {
+    "@vigia/core": "workspace:*",
+    "astro": "7.3.3"
+  }
+}
