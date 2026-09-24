@@ -280,6 +280,26 @@ describe("moderation from the dashboard", () => {
 });
 
 describe("rules and settings", () => {
+  it("never undoes a rule edit with state changes happening at the same time", async () => {
+    const v = await start("local");
+    // Pausing and topics are not in the file; saving them used to write back a stale copy of
+    // the rules that could land in the middle of a dashboard edit.
+    const noise = setInterval(() => {
+      engine.setPaused(!engine.state().paused);
+      engine.setProtectedTopics([String(Math.random())]);
+    }, 1);
+    try {
+      for (let i = 0; i < 20; i++) {
+        const enabled = i % 2 === 1;
+        expect((await call(v, "PATCH", "/api/rules/spam", { body: { enabled }, headers: W })).status).toBe(200);
+        expect(engine.state().disabledRules).toEqual(enabled ? [] : ["spam"]);
+      }
+    } finally {
+      clearInterval(noise);
+    }
+    await v.close();
+  });
+
   it("edits rules, applies them at once and keeps the file valid", async () => {
     const v = await start("local");
     expect((await call(v, "PATCH", "/api/rules/spam", { body: { enabled: false }, headers: W })).status).toBe(200);

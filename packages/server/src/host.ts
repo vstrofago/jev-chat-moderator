@@ -166,6 +166,13 @@ export async function startVigia(o: VigiaOptions) {
   });
   spoilers.stateChanged();
 
+  const initial = engine.state();
+  let lastPersisted = JSON.stringify({
+    observe: o.source.forceObserve ? file.config().observe : initial.observe,
+    disabledRules: initial.disabledRules,
+    progress: initial.progress,
+  });
+
   // Persist state changes (chat commands, dashboard) back to vigia.yaml, one write at a time.
   let persisting = Promise.resolve();
   engine.on((e) => {
@@ -188,10 +195,14 @@ export async function startVigia(o: VigiaOptions) {
         const s = e.state;
         spoilers.stateChanged();
         toDashboards({ type: "state", state: s });
-        const observe = o.source.forceObserve ? file.config().observe : s.observe;
-        persisting = persisting
-          .then(() => file.persistState({ observe, disabledRules: s.disabledRules, progress: s.progress }))
-          .catch((err) => log(`Could not save ${o.configPath}: ${err.message}`));
+        // Only what the file holds is written back, and only when it changed. Pausing, the
+        // category or protected topics must not queue a write with this (soon stale) snapshot:
+        // it could land in the middle of a dashboard edit and undo it.
+        const persisted = { observe: o.source.forceObserve ? file.config().observe : s.observe, disabledRules: s.disabledRules, progress: s.progress };
+        const key = JSON.stringify(persisted);
+        if (key === lastPersisted) return;
+        lastPersisted = key;
+        persisting = persisting.then(() => file.persistState(persisted)).catch((err) => log(`Could not save ${o.configPath}: ${err.message}`));
       }
     }
   });

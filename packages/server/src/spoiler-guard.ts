@@ -58,8 +58,13 @@ export function createSpoilerGuard(o: {
   const checkpoint = () => (pack ? (o.store.setting<string>(checkpointSetting()) ?? null) : null);
   const modTopics = () => o.store.setting<string[]>("protectedTopics") ?? [];
 
+  let applied = "[]";
   function apply() {
-    o.engine.setProtectedTopics([...modTopics(), ...(pack ? activeSpoilerTopics(pack, checkpoint()) : [])]);
+    const topics = [...modTopics(), ...(pack ? activeSpoilerTopics(pack, checkpoint()) : [])];
+    const key = JSON.stringify(topics);
+    if (key === applied) return;
+    applied = key;
+    o.engine.setProtectedTopics(topics);
   }
 
   const status = (): SpoilerStatus => ({ pack: pack ? summarizeSpoilerPack(pack) : null, checkpoint: checkpoint() });
