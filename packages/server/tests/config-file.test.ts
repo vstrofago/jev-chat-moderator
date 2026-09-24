@@ -117,3 +117,71 @@ describe("openConfigFile", () => {
     f2.close();
   });
 });
+
+describe("config mutations", () => {
+  const RULES = `# my rules
+version: 1
+rules:
+  # delete spam
+  - id: spam
+    pack: spam
+    action: delete
+`;
+  async function open() {
+    const path = join(dir, "vigia.yaml");
+    await writeFile(path, RULES);
+    return { path, file: await openConfigFile(path, { exampleText: RULES, onChange() {}, onError() {} }) };
+  }
+
+  it("patches a rule and removes keys set to null", async () => {
+    const { path, file } = await open();
+    expect((await file.setRule("spam", { act: 0.9, action: "timeout", seconds: 30 })).ok).toBe(true);
+    expect(file.config().rules[0]).toMatchObject({ act: 0.9, action: "timeout", seconds: 30 });
+    await file.setRule("spam", { act: null, action: "delete", seconds: null });
+    const text = await readFile(path, "utf8");
+    expect(text).toContain("# delete spam");
+    expect(text).not.toContain("act:");
+    file.close();
+  });
+
+  it("rejects a patch that would make the file invalid, leaving it untouched", async () => {
+    const { path, file } = await open();
+    const r = await file.setRule("spam", { action: "timeout" });
+    expect(r.ok).toBe(false);
+    expect(await readFile(path, "utf8")).toBe(RULES);
+    expect((await file.setRule("nope", { act: 0.5 })).ok).toBe(false);
+    file.close();
+  });
+
+  it("adds and removes rules", async () => {
+    const { file } = await open();
+    const added = await file.addRule({ id: "backseat", question: "Backseating?", yes: "Advice", no: "Other", action: "log" });
+    expect(added.ok).toBe(true);
+    expect(file.config().rules.map((r) => r.id)).toEqual(["spam", "backseat"]);
+    expect((await file.addRule({ id: "spam", pack: "toxicity", action: "log" })).ok).toBe(false);
+    await file.removeRule("spam");
+    expect(file.config().rules.map((r) => r.id)).toEqual(["backseat"]);
+    file.close();
+  });
+
+  it("changes settings", async () => {
+    const { file } = await open();
+    await file.setSettings({ language: "es", observe: false, highlights: { mode: "approve", seconds: 8 }, exempt: ["broadcaster"] });
+    expect(file.config()).toMatchObject({
+      language: "es",
+      observe: false,
+      highlights: { mode: "approve", seconds: 8, includeBroadcaster: false },
+      exempt: ["broadcaster"],
+    });
+    file.close();
+  });
+
+  it("replaces the whole text only when it is valid", async () => {
+    const { path, file } = await open();
+    expect((await file.replaceText("version: 1\nrules: [\n")).ok).toBe(false);
+    expect(await readFile(path, "utf8")).toBe(RULES);
+    expect((await file.replaceText("version: 1\nlanguage: es\n")).ok).toBe(true);
+    expect(file.config().language).toBe("es");
+    file.close();
+  });
+});
