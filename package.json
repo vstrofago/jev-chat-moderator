@@ -11,7 +11,7 @@
     "record": "pnpm --filter @vigia/demo record",
     "simulate": "pnpm --filter @vigia/engine simulate",
     "test": "vitest run",
-    "typecheck": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json && tsc -p packages/ui/tsconfig.json",
     "observe": "pnpm --filter @vigia/twitch observe",
     "live": "pnpm --filter @vigia/twitch live",
     "vigia": "pnpm --filter @vigia/server-app start"

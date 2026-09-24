@@ -6,7 +6,11 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "lib": ["es2022", "dom", "dom.iterable"]
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "types": ["vite/client"]
   },
   "include": ["src/**/*", "vite.config.ts"]
 }

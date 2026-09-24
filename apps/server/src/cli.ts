@@ -7,7 +7,7 @@
 import { existsSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { jevEvaluator } from "@vigia/engine";
-import { defaultUiDir, exampleConfigText, observeSource, startVigia, twitchSource, ConfigFileError } from "@vigia/server";
+import { createUsageMeter, defaultUiDir, exampleConfigText, observeSource, startVigia, twitchSource, ConfigFileError } from "@vigia/server";
 import { openTwitchSession } from "@vigia/twitch";
 import { parseCliArgs } from "./args";
 
@@ -44,13 +44,15 @@ if (o.source.kind === "twitch") {
   source = observeSource(o.source.channel, { rate: o.source.rate, category: o.source.category });
 }
 
+const usage = createUsageMeter();
 const vigia = await startVigia({
   configPath,
   dataDir,
   uiDir,
   exampleText: exampleConfigText(),
   source,
-  evaluate: jevEvaluator(o.jev),
+  evaluate: jevEvaluator(o.jev, { onUsage: (n) => usage.tokens(n) }),
+  usage,
   host: o.host,
   port: o.port,
 }).catch((e: Error) => {
@@ -64,10 +66,15 @@ const mode =
     : vigia.engine.state().observe
       ? "observe mode: decisions are logged, nothing is deleted yet (set observe: false in the rules file to act)"
       : "ACTING: deletes and timeouts are real";
+const access =
+  vigia.authMode === "exposed"
+    ? `  Dashboard: ${vigia.url} (exposed: sign in with Twitch, or with the admin code ${vigia.adminCode})`
+    : `  Dashboard: ${vigia.url} (only this computer can open it)`;
 console.log(`
 Vigía is running — ${mode}
-  Rules:   ${configPath}
-  Overlay: ${vigia.overlayUrl}
+${access}
+  Rules:     ${configPath}
+  Overlay:   ${vigia.overlayUrl}
   Place it in OBS with the preview card: ${vigia.overlayUrl}&preview=1
 `);
 

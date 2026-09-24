@@ -1,0 +1,105 @@
+/*
+ * Vigía: a lookout watching chat at night. The palette is maritime navigation light:
+ * lantern amber (watching, unsure), port red (moderation), starboard green (highlight).
+ * One family, Atkinson Hyperlegible Next, because the whole job is reading chat fast.
+ */
+@import "@fontsource/atkinson-hyperlegible-next/400.css";
+@import "@fontsource/atkinson-hyperlegible-next/700.css";
+
+:root {
+  --night: #0f1726;
+  --deck: #162236;
+  --deck-2: #1c2a42;
+  --rope: #283751;
+  --fog: #d5deea;
+  --fog-2: #9fb0c7;
+  --fog-3: #7488a4;
+  --lantern: #f2b544;
+  --lantern-ink: #2a1d05;
+  --port: #e5564b;
+  --starboard: #3db98a;
+  --beam: #8fb8ff;
+  --on-color: #0f1726;
+
+  --font: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.125rem;
+  --step-2: 1.5rem;
+  --step-3: 2.25rem;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --shadow: 0 1px 0 rgb(255 255 255 / 4%) inset;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --night: #eef2f7;
+    --deck: #ffffff;
+    --deck-2: #f5f7fa;
+    --rope: #d3dbe6;
+    --fog: #152033;
+    --fog-2: #4a5b75;
+    --fog-3: #6b7c95;
+    --lantern: #b87a00;
+    --lantern-ink: #ffffff;
+    --port: #c4372d;
+    --starboard: #1d8a61;
+    --beam: #2f63c9;
+    --on-color: #ffffff;
+    color-scheme: light;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--night);
+  color: var(--fog);
+  font: 400 var(--step-0) / 1.45 var(--font);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+a { color: var(--beam); }
+:focus-visible { outline: 2px solid var(--beam); outline-offset: 2px; }
+h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.2; }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); }
+p { margin: 0; }
+.muted { color: var(--fog-2); }
+.small { font-size: var(--step--1); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 34px; padding: 0 12px; border-radius: var(--r-sm);
+  border: 1px solid var(--rope); background: var(--deck-2); cursor: pointer;
+  font-size: var(--step--1); font-weight: 700; white-space: nowrap; text-decoration: none;
+}
+.btn:hover { border-color: var(--fog-3); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn.primary { background: var(--beam); color: var(--on-color); border-color: transparent; }
+.btn.danger { color: var(--port); }
+.btn.go { color: var(--starboard); }
+.btn.quiet { background: transparent; border-color: transparent; color: var(--fog-2); }
+.btn.quiet:hover { color: var(--fog); }
+
+/* Fields */
+.field { display: grid; gap: 6px; }
+.field > span { font-weight: 700; font-size: var(--step--1); color: var(--fog-2); }
+input[type="text"], input[type="number"], input[type="password"], select, textarea {
+  width: 100%; min-height: 36px; padding: 6px 10px; border-radius: var(--r-sm);
+  border: 1px solid var(--rope); background: var(--night);
+}
+textarea { resize: vertical; line-height: 1.5; }
+input[type="range"] { width: 100%; accent-color: var(--beam); }
+
+.panel { background: var(--deck); border: 1px solid var(--rope); border-radius: var(--r-md); padding: 16px; }
+.stack { display: grid; gap: 12px; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.spacer { flex: 1; }
+.error { color: var(--port); }
+.notice { border-left: 3px solid var(--lantern); padding: 10px 12px; background: var(--deck); border-radius: var(--r-sm); }
