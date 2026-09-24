@@ -1,4 +1,4 @@
-# Jev Chat Moderator (the playground)
+# Vigia Playground
 
 [See it live](https://vstrofago.github.io/vigia/playground/) · Back to [Vigia](../../README.md)
 
@@ -30,7 +30,7 @@ No Node needed. Both kinds of key work here, including TypeSafe keys:
 ```bash
 git clone https://github.com/vstrofago/vigia
 cd vigia
-docker compose up --build
+docker compose -f apps/demo/docker-compose.yml up --build
 # open http://localhost:8080/playground/ (the site root is the Vigia landing page)
 ```
 

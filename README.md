@@ -61,6 +61,19 @@ the OBS overlay and observe mode. Closing the window keeps Vigia running in the 
 menu can copy the overlay address, pause moderation or start Vigia with your computer.
 Updates arrive by themselves.
 
+### Docker on this computer
+
+No Node needed. From a clone of the repository:
+
+```bash
+export AI_GATEWAY_API_KEY=vck_...          # or TYPESAFE_API_KEY
+export VIGIA_SOURCE=observe:<channel>      # or: twitch, with TWITCH_CLIENT_ID
+docker compose up --build
+```
+
+Open `http://127.0.0.1:7777` and log in with the **admin code** from the logs. Only this
+computer can reach the dashboard and the overlay.
+
 ### Server (Docker, for teams of mods)
 
 On a VPS with a domain pointing at it:
@@ -263,7 +276,7 @@ Want to help? Rules, spoiler packs, translations and code are all welcome: see
 [The playground](https://vstrofago.github.io/vigia/playground/) is where Vigia started. It
 replays about 180 scripted chat messages with the answers Jev really gave, and lets you drag
 the thresholds to see decisions change instantly. You can also paste your own Vercel AI
-Gateway key to try it live. Run it locally with `pnpm dev`, or with `docker compose up
+Gateway key to try it live. Run it locally with `pnpm dev`, or with `docker compose -f apps/demo/docker-compose.yml up
 --build` to use a TypeSafe key.
 
 ## License

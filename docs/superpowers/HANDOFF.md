@@ -53,16 +53,26 @@ Kept current at the end of every block of work so a new session (or a person) ca
   - Unverified: both workflows have never run (no GitHub Actions here), and neither has
     `docker build`.
 
+## Naming and layout (latest)
+- The project name is **Vigia**, without an accent. The logo for now is the 🦇 emoji. The
+  desktop icons are rendered from it with `apps/desktop/scripts/render-icons.cjs`.
+- The root `docker-compose.yml` runs the Vigia app (on 127.0.0.1:7777, admin-code login).
+  The playground has its own `apps/demo/docker-compose.yml`, and the VPS setup with Caddy
+  is `apps/server/docker-compose.yml`.
+- The Pages site is the Vigia landing page, with the playground at `/playground/`.
+  `pnpm --filter @vigia/server-app showcase` regenerates the dashboard screenshots.
+
 ## Blocked on the author
-- **Twitch app registration** needs 2FA, which the author can't enable yet. `pnpm live`
-  has never run for real. This is a launch blocker for M6.
+- **The real Twitch account check** (device login, deletes, mod login) is out of scope for
+  now, by the author's decision. `pnpm live` has never run for real, and the README should
+  say so if v1.0 ships before it is done.
 - Merging to `main` waits on the author's go-ahead (the repo is renamed to `vigia`).
 
 ## Next steps (author)
 1. `AI_GATEWAY_API_KEY=vck_... pnpm eval`, then commit `docs/evals/results.json` and the
    updated README tables.
-2. Merge, and do the real-account check (2FA). The repo is already renamed to `vigia`
-   and the URLs are updated (Pages moves to vstrofago.github.io/vigia on the next deploy).
+2. Open the PR from `dev` to `main`. The repo is already renamed to `vigia`, and the URLs
+   are updated (Pages moves to vstrofago.github.io/vigia on the next deploy).
 3. Bump `apps/desktop/package.json` to 1.0.0, push the `v1.0.0` tag, then check and publish
    the draft.
 

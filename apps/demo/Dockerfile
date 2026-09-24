@@ -1,11 +1,11 @@
 # Runs the playground locally. nginx serves the static site and forwards /typesafe-api to
 # api.typesafe.ai, so TypeSafe keys work from the browser (their API sends no CORS headers).
-# Build from the repository root: docker compose up --build
+# Build from the repository root: docker compose -f apps/demo/docker-compose.yml up --build
 FROM node:24-alpine AS build
 WORKDIR /app
 RUN npm install -g pnpm@12.4.2
 COPY . .
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --filter "@vigia/demo..."
 ENV PUBLIC_TYPESAFE_LOCAL_PROXY=true
 RUN pnpm --filter @vigia/demo build
 

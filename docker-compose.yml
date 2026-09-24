@@ -1,7 +1,30 @@
+# Vigia on this computer, with Docker. The dashboard and the OBS overlay answer on
+# http://127.0.0.1:7777 (only this computer can reach them).
+#
+#   export AI_GATEWAY_API_KEY=vck_...        # or TYPESAFE_API_KEY
+#   export VIGIA_SOURCE=observe:<channel>    # any public channel, read-only
+#   # or: export VIGIA_SOURCE=twitch TWITCH_CLIENT_ID=...   (your own Public app)
+#   docker compose up --build
+#
+# The logs print the admin code for the dashboard login, the overlay address and, for
+# `twitch`, the Twitch login code. For a VPS with HTTPS, use apps/server/docker-compose.yml.
+# The playground has its own: apps/demo/docker-compose.yml.
 services:
-  playground:
+  vigia:
+    image: ghcr.io/vstrofago/vigia:${VIGIA_VERSION:-latest}
     build:
       context: .
-      dockerfile: apps/demo/Dockerfile
+      dockerfile: apps/server/Dockerfile
+    restart: unless-stopped
+    environment:
+      - AI_GATEWAY_API_KEY
+      - TYPESAFE_API_KEY
+      - TWITCH_CLIENT_ID
+    command: ["--source", "${VIGIA_SOURCE:?set VIGIA_SOURCE to twitch or observe:<channel>}"]
     ports:
-      - "8080:8080"
+      - "127.0.0.1:7777:7777"
+    volumes:
+      - vigia-data:/data
+
+volumes:
+  vigia-data:

@@ -62,6 +62,19 @@ anti-spoiler, el overlay de OBS y el modo observación. Al cerrar la ventana, Vi
 funcionando en la bandeja del sistema, cuyo menú puede copiar la dirección del overlay,
 pausar la moderación o iniciar Vigia con tu equipo. Las actualizaciones llegan solas.
 
+### Docker en tu equipo
+
+No necesitas Node. Desde una copia del repositorio:
+
+```bash
+export AI_GATEWAY_API_KEY=vck_...          # o TYPESAFE_API_KEY
+export VIGIA_SOURCE=observe:<canal>        # o: twitch, con TWITCH_CLIENT_ID
+docker compose up --build
+```
+
+Abre `http://127.0.0.1:7777` y entra con el **código de admin** que aparece en los logs.
+Solo tu equipo puede abrir el dashboard y el overlay.
+
 ### Servidor (Docker, para equipos de mods)
 
 En un VPS con un dominio que apunte a él:
@@ -271,7 +284,7 @@ spoiler-packs      packs de spoilers de la comunidad
 Reproduce unos 180 mensajes de chat guionados con las respuestas que Jev dio de verdad, y te
 deja mover los umbrales para ver cómo cambian las decisiones al instante. También puedes
 pegar tu propia key del Vercel AI Gateway para probarlo en vivo. Córrelo en tu equipo con
-`pnpm dev`, o con `docker compose up --build` para usar una key de TypeSafe.
+`pnpm dev`, o con `docker compose -f apps/demo/docker-compose.yml up --build` para usar una key de TypeSafe.
 
 ## Licencia
 
