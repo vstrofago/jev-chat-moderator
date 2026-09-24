@@ -28,7 +28,7 @@ jobs:
       - run: pnpm --filter @vigia/ui build
       - run: pnpm --filter @vigia/demo build
 
-      # Boots the desktop app offscreen: the setup page, then the dashboard on a read-only source.
+      # Boots the desktop app under Xvfb: the setup page, then the dashboard on a read-only source.
       - name: Desktop smoke run
         working-directory: apps/desktop
         run: |

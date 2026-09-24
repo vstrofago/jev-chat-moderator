@@ -59,7 +59,11 @@ const T = es
 
 protocol.registerSchemesAsPrivileged([{ scheme: "vigia", privileges: { standard: true, secure: true, supportFetchAPI: true } }]);
 
-if (SMOKE) app.setPath("userData", await mkdtemp(join(tmpdir(), "vigia-smoke-")));
+if (SMOKE) {
+  app.setPath("userData", await mkdtemp(join(tmpdir(), "vigia-smoke-")));
+  // CI machines have no GPU; a software-rendered window can still be captured.
+  app.disableHardwareAcceleration();
+}
 if (!SMOKE && !app.requestSingleInstanceLock()) app.exit(0);
 
 let secrets: Secrets;
@@ -101,7 +105,6 @@ function createWindow() {
       nodeIntegration: false,
       webviewTag: false,
       spellcheck: false,
-      offscreen: SMOKE,
     },
   });
   w.webContents.on("will-navigate", (e, url) => {
@@ -127,7 +130,7 @@ function createWindow() {
     }
   });
   w.once("ready-to-show", () => {
-    if (!SMOKE && !startedHidden()) w.show();
+    if (SMOKE || !startedHidden()) w.show();
   });
   return w;
 }
@@ -454,9 +457,14 @@ async function startHostOrAsk(): Promise<void> {
   }
 }
 
-/** VIGIA_SMOKE=1: load the setup page and the dashboard offscreen, save screenshots, quit. */
+/** VIGIA_SMOKE=1: load the setup page and the dashboard, save screenshots, quit. Needs a display (Xvfb in CI). */
 async function smoke() {
   const out = process.env.VIGIA_SMOKE_OUT ?? process.cwd();
+  // Fail loudly instead of hanging a CI job.
+  setTimeout(() => {
+    console.error("smoke: failed: timed out after 90 s");
+    app.exit(1);
+  }, 90_000).unref();
   const capture = async (name: string) => {
     await new Promise((r) => setTimeout(r, 1500));
     const image = await win!.webContents.capturePage();
