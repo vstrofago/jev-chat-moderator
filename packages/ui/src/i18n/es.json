@@ -8,12 +8,10 @@
   "tab.rules": "Reglas",
   "tab.settings": "Ajustes",
   "tab.stats": "Estadísticas",
-
   "top.progress": "Progreso: {p}",
   "top.offline": "Reconectando…",
   "top.mod": "Sesión de {login} (mod)",
   "top.logout": "Cerrar sesión",
-
   "mode.observing": "Observando",
   "mode.observing.hint": "Todavía no borra nada",
   "mode.acting": "Moderando",
@@ -27,7 +25,6 @@
   "confirm.act": "Vigía borrará mensajes y dará timeouts por su cuenta. ¿Empezar a moderar?",
   "confirm.ban": "¿Banear a {user} del canal?",
   "confirm.removeRule": "¿Quitar la regla {id}?",
-
   "done.acting": "Vigía está moderando",
   "done.observing": "Vigía está observando",
   "done.paused": "Moderación en pausa",
@@ -42,7 +39,6 @@
   "done.removed": "Regla quitada",
   "done.saved": "Guardado",
   "done.copied": "Copiado",
-
   "warn.jev-unavailable": "Jev no responde. Los mensajes pasan sin moderar hasta que vuelva.",
   "warn.jev-auth": "Jev rechazó la key de la API.",
   "warn.platform-error": "Twitch rechazó una acción.",
@@ -50,7 +46,6 @@
   "warn.halted": "Vigía se detuvo porque Jev rechazó la key. Pon una key nueva y reinicia Vigía.",
   "common.dismiss": "Cerrar",
   "common.cancel": "Cancelar",
-
   "live.feed": "El chat como lo ve Vigía",
   "live.filter": "Mostrar",
   "live.filter.all": "Todo",
@@ -59,14 +54,12 @@
   "live.filter.highlights": "Destacados",
   "live.empty.title": "Esperando al chat",
   "live.empty.body": "Aquí aparecen los mensajes conforme Vigía los lee, con lo que opinó cada regla.",
-
   "action.delete": "Borrar",
   "action.timeout": "Timeout",
   "action.timeout10": "Timeout 10 min",
   "action.ban": "Banear",
   "action.highlight": "Destacar",
   "action.log": "Solo registrar",
-
   "verdict.did.delete": "Borrado por {rule}",
   "verdict.did.timeout": "Timeout por {rule}",
   "verdict.would.delete": "Borraría: {rule}",
@@ -74,7 +67,6 @@
   "verdict.logged": "Registrado: {rule}",
   "verdict.downgraded": "Solo emotes, registrado: {rule}",
   "verdict.unsure": "Duda: {rule}",
-
   "spoiler.hidden": "Posible spoiler, clic para leer",
   "spoiler.reveal": "Mostrar el mensaje",
   "spoiler.noHighlight": "Los posibles spoilers nunca salen en pantalla",
@@ -85,7 +77,6 @@
   "spoiler.topics.save": "Guardar temas",
   "spoiler.topics.none": "No hay temas protegidos. Tus mods pueden agregarlos sin que tú los leas.",
   "spoiler.topics.count": "{n} temas protegidos, agregados por tus mods",
-
   "screen.title": "En pantalla ahora",
   "screen.empty": "No hay nada en el overlay.",
   "screen.waiting": "{n} en espera",
@@ -97,7 +88,6 @@
   "kind.question": "Pregunta",
   "kind.highlight": "Destacado",
   "kind.announcement": "Anuncio",
-
   "uncertain.intro": "Jev no estaba seguro de estos, así que Vigía no hizo nada. Decide aquí, o ajusta los umbrales de la regla.",
   "uncertain.empty.title": "Nada dudoso",
   "uncertain.empty.body": "Los mensajes de los que Jev no está seguro llegan aquí en vez de adivinar.",
@@ -105,14 +95,12 @@
   "uncertain.apply.timeout": "Timeout {s} s",
   "uncertain.apply.log": "Marcar como correcto",
   "uncertain.dismiss": "Dejarlo",
-
   "highlights.intro.auto": "Lo que elige Jev va directo al overlay. Estos son los que le dieron más duda.",
   "highlights.intro.approve": "Nada llega al overlay hasta que un mod lo elige aquí.",
   "highlights.empty.title": "Aún no hay sugerencias",
   "highlights.empty.body": "Aquí aparecerán las preguntas y los mensajes que valga la pena mostrar.",
   "highlights.show": "Mostrar en pantalla",
   "highlights.queue": "Siguen",
-
   "rules.intro": "Cada regla es una pregunta de sí o no para Jev. Los cambios se aplican al momento y se guardan en vigia.yaml.",
   "rules.on": "Activa",
   "rules.off": "Apagada",
@@ -130,7 +118,6 @@
   "pack.antispoiler": "Spoilers de la trama del juego en pantalla",
   "pack.questions": "Preguntas para el streamer",
   "pack.interesting": "Mensajes que vale la pena mostrar",
-
   "test.label": "Prueba un mensaje",
   "test.placeholder": "Escribe lo que podría escribir un viewer",
   "test.run": "Probar",
@@ -139,7 +126,6 @@
   "band.act": "Actúa",
   "band.unsure": "Duda",
   "band.none": "Ignora",
-
   "add.open": "Agregar tu propia regla",
   "add.title": "Regla nueva",
   "add.help": "Escribe la pregunta con palabras normales. En inglés funciona mejor, pero en español también.",
@@ -151,12 +137,10 @@
   "add.no": "Cuenta como no",
   "add.no.placeholder": "Reacciones, bromas, respuestas al streamer",
   "add.submit": "Agregar regla",
-
   "raw.title": "Editar vigia.yaml directamente",
   "raw.help": "Para todo lo que no cubren los formularios. Si el archivo no es válido, se rechaza y no cambia nada.",
   "raw.error": "Línea {line}: {path} {message}",
   "raw.save": "Guardar archivo",
-
   "settings.languages": "Idiomas",
   "settings.uiLang": "Este panel",
   "settings.botLang": "Respuestas del bot en el chat",
@@ -175,7 +159,6 @@
   "settings.mode.local": "Solo esta computadora puede abrir el panel.",
   "settings.mode.exposed": "El panel está en internet. Los mods entran con Twitch.",
   "settings.adminCode": "El código de administrador aparece en los logs de Vigía al arrancar.",
-
   "overlay.title": "Overlay de OBS",
   "overlay.help": "En OBS, agrega una fuente de Navegador con esta dirección. El fondo es transparente.",
   "overlay.theme": "Estilo",
@@ -192,14 +175,12 @@
   "overlay.copy": "Copiar dirección",
   "overlay.preview": "Vista previa",
   "overlay.secret": "No compartas esta dirección: incluye la llave del overlay.",
-
   "stats.perMinute": "Mensajes por minuto",
   "stats.hour": "Mensajes en la última hora",
   "stats.actions": "Acciones en la última hora",
   "stats.cost": "Costo de Jev por hora",
   "stats.waiting": "Juntando números…",
   "stats.costNote": "Estimado a $0.042 por millón de tokens de entrada. La salida es gratis.",
-
   "audit.title": "Actividad",
   "audit.empty": "Todavía no hay acciones manuales",
   "audit.when": "Cuándo",
@@ -222,7 +203,6 @@
   "audit.action.resume": "Reanudó la moderación",
   "audit.action.observe-on": "Volvió a observar",
   "audit.action.observe-off": "Empezó a moderar",
-
   "wizard.progress": "Pasos de configuración",
   "wizard.back": "Atrás",
   "wizard.next": "Continuar",
@@ -245,7 +225,6 @@
   "wizard.observe.title": "Vigía empieza observando",
   "wizard.observe.body": "Por ahora solo muestra lo que haría: no borra nada ni le da timeout a nadie.",
   "wizard.observe.note": "Cuando en la pestaña En vivo veas decisiones con las que estás de acuerdo, haz clic en la linterna de arriba y elige Empezar a moderar de verdad.",
-
   "login.title": "Entra al panel",
   "login.twitch": "Entrar con Twitch",
   "login.twitchHelp": "Para el streamer y los moderadores del canal. Vigía solo comprueba quién eres.",
@@ -253,5 +232,48 @@
   "login.codeHelp": "Aparece en los logs de Vigía al arrancar.",
   "login.codeSubmit": "Entrar con el código",
   "login.stateError": "El inicio de sesión de Twitch no coincide con este navegador. Inténtalo otra vez.",
-  "login.twitchDenied": "Twitch no completó el inicio de sesión. Inténtalo otra vez."
+  "login.twitchDenied": "Twitch no completó el inicio de sesión. Inténtalo otra vez.",
+  "setup.weak": "Esta computadora no tiene un llavero que Vigía pueda usar, así que tus keys se guardan sin cifrar en tu carpeta de usuario.",
+  "setup.source.title": "¿Dónde debe vigilar Vigía?",
+  "setup.source.body": "Puedes cambiarlo después configurando Vigía de nuevo.",
+  "setup.source.twitch": "Mi canal",
+  "setup.source.twitch.help": "Vigía modera y destaca en tu propio chat. Necesita una app gratuita de Twitch (unos 5 minutos).",
+  "setup.source.observe": "Solo mirar un canal",
+  "setup.source.observe.help": "Prueba Vigía en cualquier canal público. Solo lectura: nunca escribe, borra ni da timeouts.",
+  "setup.source.observe.placeholder": "Nombre del canal",
+  "setup.source.observe.go": "Mirar",
+  "setup.app.title": "Crea tu app de Twitch",
+  "setup.app.body": "Vigía habla con Twitch mediante una app registrada a tu nombre, así todo queda bajo tu cuenta.",
+  "setup.app.step1": "Abre la consola de desarrolladores de Twitch e inicia sesión.",
+  "setup.app.open": "Abrir dev.twitch.tv",
+  "setup.app.step2": "Elige Register Your Application.",
+  "setup.app.step3": "Llénala así:",
+  "setup.app.name": "Nombre",
+  "setup.app.name.value": "Algo único, como vigia-tunombre",
+  "setup.app.redirect": "OAuth Redirect URL",
+  "setup.app.category": "Categoría",
+  "setup.app.type": "Client type",
+  "setup.app.step4": "Créala, entra a Manage y copia el Client ID.",
+  "setup.app.2fa": "Twitch pide verificación en dos pasos en tu cuenta antes de dejarte registrar apps.",
+  "setup.app.clientId": "Client ID",
+  "setup.login.title": "Inicia sesión en Twitch",
+  "setup.login.body": "Vigía pide solo lo que necesita: leer y escribir en el chat, borrar mensajes, timeouts y bans, y ver a tus mods.",
+  "setup.login.start": "Entrar con Twitch",
+  "setup.login.opened": "Tu navegador abrió Twitch. Confirma ahí este código:",
+  "setup.login.code": "Código de inicio de sesión",
+  "setup.login.waiting": "Esperando tu confirmación. El código sirve durante {minutes} minutos.",
+  "setup.login.reopen": "Abrir Twitch otra vez",
+  "setup.jev.title": "Agrega tu key de Jev",
+  "setup.jev.body": "Jev lee cada mensaje y responde a tus reglas. La key es tuya: el uso se cobra a tu cuenta, y se guarda cifrada en esta computadora.",
+  "setup.jev.key": "Key de la API",
+  "setup.jev.provider.gateway": "Key de Vercel AI Gateway.",
+  "setup.jev.provider.typesafe": "Key de TypeSafe.",
+  "setup.jev.where": "¿No tienes una?",
+  "setup.jev.whereLink": "Consigue una key de Vercel AI Gateway",
+  "setup.jev.save": "Probar y guardar",
+  "setup.jev.testing": "Probando con Jev…",
+  "setup.done.title": "Vigía está listo",
+  "setup.done.body": "Ahora el panel te guía con tus reglas y el overlay de OBS. Vigía empieza observando, así que no borra nada hasta que tú lo digas.",
+  "setup.done.start": "Abrir el panel",
+  "setup.done.starting": "Arrancando…"
 }

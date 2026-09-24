@@ -261,3 +261,26 @@ textarea.code { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; f
   .bar-row { grid-template-columns: 90px 1fr 44px; }
   .bar-band { display: none; }
 }
+
+/* Desktop setup */
+.setup .lang { width: auto; }
+.choices { display: grid; gap: 12px; }
+.choice {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--rope);
+  border-radius: var(--r-md);
+  background: var(--deck-2);
+  text-align: left;
+  cursor: pointer;
+}
+button.choice:hover { border-color: var(--beam); }
+form.choice { cursor: default; }
+.choice b { font-size: var(--step-1); }
+.steps { margin: 0; padding-left: 22px; display: grid; gap: 12px; }
+.app-fields { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 10px 0 0; }
+.app-fields dt { color: var(--fog-2); }
+.app-fields dd { margin: 0; }
+.device-code { align-items: start; }
+.code-big { font-size: var(--step-3); font-weight: 700; letter-spacing: 0.08em; color: var(--lantern); }

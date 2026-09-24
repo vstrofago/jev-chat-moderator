@@ -6,6 +6,6 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
-    rollupOptions: { input: { overlay: "overlay.html", index: "index.html", login: "login.html" } },
+    rollupOptions: { input: { overlay: "overlay.html", index: "index.html", login: "login.html", setup: "setup.html" } },
   },
 });
