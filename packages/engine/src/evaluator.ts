@@ -11,6 +11,11 @@ export interface RetryOptions {
   sleep?: (ms: number) => Promise<void>;
 }
 
+export interface JevEvaluatorOptions extends Partial<RetryOptions> {
+  /** Called with the input tokens of every successful call, for cost estimates. */
+  onUsage?(inputTokens: number): void;
+}
+
 const DEFAULT_RETRY: RetryOptions = { retries: 2, maxWaitMs: 3000 };
 const sleepFor = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
@@ -18,12 +23,14 @@ const sleepFor = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
  * Jev over the core client. Rate limits wait as told (capped) and provider errors back
  * off; a bad key (AuthError) is never retried.
  */
-export function jevEvaluator(o: ClientOptions, retry: RetryOptions = DEFAULT_RETRY): Evaluator {
+export function jevEvaluator(o: ClientOptions, opts: JevEvaluatorOptions = {}): Evaluator {
+  const retry = { ...DEFAULT_RETRY, ...opts };
   const sleep = retry.sleep ?? sleepFor;
   return async (state, questions) => {
     for (let attempt = 0; ; attempt++) {
       try {
         const ev = await evaluate(state, questions, o);
+        if (ev.inputTokens !== undefined) opts.onUsage?.(ev.inputTokens);
         const probabilities: Record<string, number> = {};
         for (const [id, answer] of Object.entries(ev.answers)) {
           if (answer.type !== "boolean") throw new GatewayError(`Expected a yes/no answer for "${id}"`);

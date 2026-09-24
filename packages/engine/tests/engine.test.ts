@@ -331,6 +331,19 @@ describe("jevEvaluator", () => {
   });
 });
 
+describe("jevEvaluator usage", () => {
+  it("reports input tokens for cost estimates", async () => {
+    const fetch = (async () =>
+      new Response(JSON.stringify({ answers: { q: { type: "boolean", probability: 0.1 } }, usage: { inputTokens: 612 } }), {
+        status: 200,
+      })) as typeof globalThis.fetch;
+    const used: number[] = [];
+    const evaluate = jevEvaluator({ apiKey: "vck_x", provider: "gateway", fetch }, { onUsage: (n) => used.push(n) });
+    await evaluate({ message: "hi" }, { q: { type: "boolean", instructions: "?" } });
+    expect(used).toEqual([612]);
+  });
+});
+
 describe("jevEvaluator retries", () => {
   const ok = () => new Response(JSON.stringify({ answers: { q: { type: "boolean", probability: 0.4 } } }), { status: 200 });
   const busy = (status: number, headers: Record<string, string> = {}) =>

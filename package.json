@@ -11,7 +11,8 @@
     "record": "pnpm --filter @vigia/demo record",
     "simulate": "pnpm --filter @vigia/engine simulate",
     "test": "vitest run",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "observe": "pnpm --filter @vigia/twitch observe"
   },
   "devDependencies": {
     "@types/node": "^26.6.2",
