@@ -4,3 +4,4 @@ export * from "./rate-gate";
 export * from "./third-party-emotes";
 export * from "./helix";
 export * from "./eventsub";
+export * from "./connect";
