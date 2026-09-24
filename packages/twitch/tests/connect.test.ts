@@ -32,7 +32,7 @@ function fakeHelix() {
     ban: async (_b: string, m: string, u: string, o: { duration?: number }) => void calls.push(`ban ${u} ${o.duration} as ${m}`),
     sendChat: async (_b: string, s: string, text: string, reply?: string) => void calls.push(`say "${text}" as ${s} reply ${reply}`),
     moderatorIds: async () => ["m1", "m2"],
-    category: async () => "Elden Ring",
+    category: async () => ({ id: "512953", name: "Elden Ring" }),
     subscribe: async (type: string, _v: string, condition: Record<string, string>) =>
       void calls.push(`sub ${type} ${JSON.stringify(condition)}`),
   } as unknown as Helix;
@@ -90,6 +90,7 @@ describe("connectTwitch", () => {
       'sub channel.moderator.remove {"broadcaster_user_id":"100"}',
     ]);
     expect(s.engine.state().category).toBe("Elden Ring");
+    expect(s.engine.state().categoryId).toBe("512953");
     expect(s.mods.at(-1)).toEqual(["m1", "m2"]);
     s.conn.close();
   });
@@ -128,10 +129,11 @@ describe("connectTwitch", () => {
     const s = setup();
     s.socket().push("session_welcome", { session: { id: "sess", keepalive_timeout_seconds: 10 } });
     await flush();
-    s.socket().push("notification", { subscription: { type: "channel.update" }, event: { category_name: "Hades II" } });
+    s.socket().push("notification", { subscription: { type: "channel.update" }, event: { category_id: "1702498", category_name: "Hades II" } });
     s.socket().push("notification", { subscription: { type: "channel.moderator.add" }, event: { user_id: "m3" } });
     s.socket().push("notification", { subscription: { type: "channel.moderator.remove" }, event: { user_id: "m1" } });
     expect(s.engine.state().category).toBe("Hades II");
+    expect(s.engine.state().categoryId).toBe("1702498");
     expect(s.mods.at(-1)).toEqual(["m2", "m3"]);
     s.conn.close();
   });

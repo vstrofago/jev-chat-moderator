@@ -8,3 +8,4 @@ export * from "./replies";
 export * from "./priority-queue";
 export * from "./evaluator";
 export * from "./engine";
+export * from "./spoiler-packs";

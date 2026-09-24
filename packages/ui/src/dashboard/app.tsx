@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "preact/hooks";
-import { api, connectLive, type HighlightItem, type LiveEvent, type Overview, type RuntimeState, type Stats, type StoredDecision } from "./api";
+import { api, connectLive, type HighlightItem, type LiveEvent, type Overview, type RuntimeState, type SpoilerStatus, type Stats, type StoredDecision } from "./api";
 import { HighlightsTab } from "./highlights";
 import { initialLang, LangContext, translate, useT, type Lang } from "./i18n";
 import { LiveTab } from "./live";
@@ -41,6 +41,7 @@ function Dashboard({ lang, setLang }: { lang: Lang; setLang(l: Lang): void }) {
   const [connected, setConnected] = useState(true);
   const [tab, setTab] = useState<Tab>(() => (TABS.includes(location.hash.slice(1) as Tab) ? (location.hash.slice(1) as Tab) : "live"));
   const [wizardDone, setWizardDone] = useState(false);
+  const [spoilers, setSpoilers] = useState<SpoilerStatus>({ pack: null, checkpoint: null });
 
   const reload = useCallback(async () => {
     const [o, d, u] = await Promise.all([
@@ -57,6 +58,7 @@ function Dashboard({ lang, setLang }: { lang: Lang; setLang(l: Lang): void }) {
   useEffect(() => {
     reload();
     api<Stats>("GET", "/api/stats").then(setStats);
+    api<SpoilerStatus>("GET", "/api/spoiler-pack").then(setSpoilers);
     return connectLive((e: LiveEvent) => {
       switch (e.type) {
         case "decision":
@@ -71,6 +73,8 @@ function Dashboard({ lang, setLang }: { lang: Lang; setLang(l: Lang): void }) {
           return setWarning({ code: e.code, detail: e.detail });
         case "stats":
           return setStats(e.stats);
+        case "spoilers":
+          return setSpoilers({ pack: e.pack, checkpoint: e.checkpoint });
       }
     }, setConnected);
   }, [reload]);
@@ -124,7 +128,7 @@ function Dashboard({ lang, setLang }: { lang: Lang; setLang(l: Lang): void }) {
         {tab === "highlights" && (
           <HighlightsTab decisions={decisions} config={overview.config} current={highlight.current} waiting={highlight.waiting} />
         )}
-        {tab === "rules" && <RulesTab config={overview.config} decisions={decisions} user={overview.user} progress={state.progress} reload={reload} />}
+        {tab === "rules" && <RulesTab config={overview.config} decisions={decisions} user={overview.user} progress={state.progress} spoilers={spoilers} setSpoilers={setSpoilers} reload={reload} />}
         {tab === "settings" && <SettingsTab overview={overview} lang={lang} setLang={setLang} reload={reload} />}
         {tab === "stats" && <StatsTab stats={stats} user={overview.user} />}
       </main>

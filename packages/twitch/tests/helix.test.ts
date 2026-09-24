@@ -69,11 +69,11 @@ describe("helix", () => {
 
   it("reads the channel category and the token's user", async () => {
     const t = fakeTwitch([
-      [200, { data: [{ broadcaster_id: "b1", game_name: "Elden Ring" }] }],
+      [200, { data: [{ broadcaster_id: "b1", game_id: "512953", game_name: "Elden Ring" }] }],
       [200, { data: [{ id: "b1", login: "streamer", display_name: "Streamer" }] }],
     ]);
     const helix = auth(t.fetch);
-    await expect(helix.category("b1")).resolves.toBe("Elden Ring");
+    await expect(helix.category("b1")).resolves.toEqual({ id: "512953", name: "Elden Ring" });
     await expect(helix.me()).resolves.toEqual({ id: "b1", login: "streamer", displayName: "Streamer" });
   });
 

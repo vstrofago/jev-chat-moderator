@@ -38,6 +38,8 @@ export interface RuntimeState {
   halted: boolean;
   progress?: string;
   category?: string;
+  /** The Twitch category id, when the source knows it (community spoiler packs use it). */
+  categoryId?: string;
   disabledRules: string[];
   /** Only the count: the topics themselves must never reach the streamer. */
   protectedTopicCount: number;
@@ -269,8 +271,9 @@ export function createEngine(o: EngineOptions) {
       seedFromConfig();
       changed();
     },
-    setCategory(name: string | undefined) {
+    setCategory(name: string | undefined, id?: string) {
       state.category = name;
+      state.categoryId = name ? id : undefined;
       changed();
     },
     setProtectedTopics(topics: string[]) {

@@ -117,10 +117,11 @@ export function createHelix(o: HelixOptions) {
       return ids;
     },
 
-    /** The stream category (game) name, or undefined when none is set. */
-    async category(broadcasterId: string): Promise<string | undefined> {
-      const res = await request<{ data: { game_name?: string }[] }>("GET", "/channels", { broadcaster_id: broadcasterId });
-      return res.data[0]?.game_name || undefined;
+    /** The stream category (game), or undefined when none is set. */
+    async category(broadcasterId: string): Promise<{ id: string; name: string } | undefined> {
+      const res = await request<{ data: { game_id?: string; game_name?: string }[] }>("GET", "/channels", { broadcaster_id: broadcasterId });
+      const c = res.data[0];
+      return c?.game_name ? { id: c.game_id ?? "", name: c.game_name } : undefined;
     },
 
     /** The user the token belongs to. */

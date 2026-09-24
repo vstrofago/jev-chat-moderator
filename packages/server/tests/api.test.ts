@@ -190,6 +190,43 @@ describe("exposed mode", () => {
     await v.close();
   });
 
+  it("loads the community spoiler pack for the category and lets the streamer pick a checkpoint", async () => {
+    await mkdir(join(dir, "data", "spoiler-packs"), { recursive: true });
+    await writeFile(
+      join(dir, "data", "spoiler-packs", "example.yaml"),
+      `version: 1\nname: Example Quest\ncategory_id: "42"\ntopics: [the narrator]\ncheckpoints:\n  - { name: Act 1, topics: [the mentor dies] }\n  - { name: Act 2, topics: [the castle burns, the ending] }\n`,
+    );
+    await writeFile(join(dir, "data", "spoiler-packs", "broken.yaml"), "version: 1\n");
+    const v = await start("exposed");
+    const mod = await login(v, "mod");
+    const streamer = await login(v, "streamer");
+    expect((await call(v, "GET", "/api/spoiler-pack", { headers: streamer })).body).toEqual({ pack: null, checkpoint: null });
+
+    engine.setCategory("Example Quest", "42");
+    await v.spoilers.settled();
+    const got = await call(v, "GET", "/api/spoiler-pack", { headers: streamer });
+    expect(got.body).toEqual({ pack: { name: "Example Quest", checkpoints: ["Act 1", "Act 2"], topicCount: 4 }, checkpoint: null });
+    expect(JSON.stringify(got.body)).not.toContain("castle");
+    expect(engine.state().protectedTopicCount).toBe(4);
+
+    expect((await call(v, "PUT", "/api/spoiler-pack/checkpoint", { body: { checkpoint: "Act 9" }, headers: streamer })).status).toBe(400);
+    const set = await call(v, "PUT", "/api/spoiler-pack/checkpoint", { body: { checkpoint: "Act 2" }, headers: streamer });
+    expect(set.body.checkpoint).toBe("Act 2");
+    expect(engine.state().protectedTopicCount).toBe(3);
+
+    // The mods' own topics add to the pack's; they do not replace them.
+    await call(v, "PUT", "/api/topics", { body: { topics: ["secret boss"] }, headers: mod });
+    expect(engine.state().protectedTopicCount).toBe(4);
+
+    engine.setCategory("Just Chatting", "509658");
+    await v.spoilers.settled();
+    expect(engine.state().protectedTopicCount).toBe(1);
+    engine.setCategory("Example Quest", "42");
+    await v.spoilers.settled();
+    expect(v.spoilers.status().checkpoint).toBe("Act 2");
+    await v.close();
+  });
+
   it("keeps the audit log for the broadcaster only", async () => {
     const v = await start("exposed");
     expect((await call(v, "GET", "/api/audit", { headers: await login(v, "mod") })).status).toBe(403);

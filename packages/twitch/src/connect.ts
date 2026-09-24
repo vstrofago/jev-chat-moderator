@@ -49,7 +49,7 @@ export function connectTwitch(o: ConnectOptions) {
 
     await Promise.all([
       helix.category(broadcasterId).then(
-        (name) => engine.setCategory(name),
+        (c) => engine.setCategory(c?.name, c?.id || undefined),
         (e) => warn(`Could not read the stream category: ${e.message}`),
       ),
       helix.moderatorIds(broadcasterId).then(
@@ -79,7 +79,7 @@ export function connectTwitch(o: ConnectOptions) {
         return;
       }
       case "channel.update":
-        return engine.setCategory(event.category_name || undefined);
+        return engine.setCategory(event.category_name || undefined, event.category_id || undefined);
       case "channel.moderator.add":
       case "channel.moderator.remove":
         if (type.endsWith("add")) moderators.add(event.user_id);

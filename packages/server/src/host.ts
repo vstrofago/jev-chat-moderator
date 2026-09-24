@@ -11,6 +11,8 @@ import { createAuth, type User } from "./auth";
 import { openConfigFile } from "./config-file";
 import { createHighlightQueue } from "./highlights";
 import { createLogDedupe } from "./log-dedupe";
+import { defaultSpoilerPackDir } from "./paths";
+import { createSpoilerGuard } from "./spoiler-guard";
 import { openStore } from "./store";
 import { createUsageMeter, type UsageMeter } from "./usage";
 
@@ -42,6 +44,8 @@ export interface VigiaOptions {
   authMode?: "local" | "exposed";
   /** Feed it from the evaluator's onUsage to get cost estimates. */
   usage?: UsageMeter;
+  /** Community spoiler packs; earlier folders win. Defaults to <dataDir>/spoiler-packs, then the bundled ones. */
+  spoilerPackDirs?: string[];
   validateTwitchToken?: (token: string) => Promise<{ userId: string; login: string; clientId: string } | null>;
   log?: (line: string) => void;
 }
@@ -96,7 +100,6 @@ export async function startVigia(o: VigiaOptions) {
     evaluate: o.evaluate,
     forceObserve: o.source.forceObserve,
   });
-  engine.setProtectedTopics(store.setting<string[]>("protectedTopics") ?? []);
 
   function configChanged() {
     engine.setConfig(file.config());
@@ -134,6 +137,15 @@ export async function startVigia(o: VigiaOptions) {
     },
   });
 
+  const spoilers = createSpoilerGuard({
+    engine,
+    store,
+    dirs: o.spoilerPackDirs ?? [join(o.dataDir, "spoiler-packs"), defaultSpoilerPackDir()],
+    log,
+    onChange: (status) => toDashboards({ type: "spoilers", ...status }),
+  });
+  spoilers.stateChanged();
+
   // Persist state changes (chat commands, dashboard) back to vigia.yaml, one write at a time.
   let persisting = Promise.resolve();
   engine.on((e) => {
@@ -154,6 +166,7 @@ export async function startVigia(o: VigiaOptions) {
         return toDashboards({ type: "warning", code: e.code, detail: e.detail });
       case "state": {
         const s = e.state;
+        spoilers.stateChanged();
         toDashboards({ type: "state", state: s });
         const observe = o.source.forceObserve ? file.config().observe : s.observe;
         persisting = persisting
@@ -203,6 +216,7 @@ export async function startVigia(o: VigiaOptions) {
     overlayUrl: () => overlayUrl,
     twitchClientId: o.source.identity?.clientId,
     configChanged,
+    spoilers,
   });
 
   const server = createServer(async (req: IncomingMessage, res: ServerResponse) => {
@@ -291,6 +305,7 @@ export async function startVigia(o: VigiaOptions) {
     engine,
     store,
     usage,
+    spoilers,
     async close() {
       source.close();
       highlights.close();
@@ -301,6 +316,7 @@ export async function startVigia(o: VigiaOptions) {
       wss.close();
       await new Promise<void>((r) => server.close(() => r()));
       await persisting;
+    await spoilers.settled();
       file.close();
       store.close();
     },

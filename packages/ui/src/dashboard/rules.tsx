@@ -1,13 +1,15 @@
 import type { Rule } from "@vigia/engine";
 import { useEffect, useState } from "preact/hooks";
-import { api, ApiError, type ConfigError, type RuleVerdict, type StoredDecision, type User, type VigiaConfig } from "./api";
+import { api, ApiError, type ConfigError, type RuleVerdict, type SpoilerStatus, type StoredDecision, type User, type VigiaConfig } from "./api";
 import { useT } from "./i18n";
 import { pct } from "./shared";
 import { useRun } from "./toast";
 
 const isPack = (r: Rule): r is Extract<Rule, { pack: string }> => "pack" in r;
 
-export function RulesTab(p: { config: VigiaConfig; decisions: StoredDecision[]; user: User; progress?: string; reload(): void }) {
+type Spoilers = { spoilers: SpoilerStatus; setSpoilers(s: SpoilerStatus): void };
+
+export function RulesTab(p: { config: VigiaConfig; decisions: StoredDecision[]; user: User; progress?: string; reload(): void } & Spoilers) {
   const t = useT();
   return (
     <section class="stack page rules">
@@ -17,7 +19,7 @@ export function RulesTab(p: { config: VigiaConfig; decisions: StoredDecision[]; 
       </div>
       <TestBox />
       {p.config.rules.map((rule) => (
-        <RuleEditor key={rule.id} rule={rule} config={p.config} decisions={p.decisions} user={p.user} reload={p.reload} />
+        <RuleEditor key={rule.id} rule={rule} config={p.config} decisions={p.decisions} user={p.user} reload={p.reload} spoilers={p.spoilers} setSpoilers={p.setSpoilers} />
       ))}
       <AddRule reload={p.reload} />
       <RawEditor reload={p.reload} />
@@ -64,7 +66,7 @@ function TestBox() {
   );
 }
 
-function RuleEditor({ rule, config, decisions, user, reload }: { rule: Rule; config: VigiaConfig; decisions: StoredDecision[]; user: User; reload(): void }) {
+function RuleEditor({ rule, config, decisions, user, reload, ...spoilers }: { rule: Rule; config: VigiaConfig; decisions: StoredDecision[]; user: User; reload(): void } & Spoilers) {
   const t = useT();
   const run = useRun();
   const [act, setAct] = useState(rule.act ?? config.defaults.act);
@@ -155,7 +157,7 @@ function RuleEditor({ rule, config, decisions, user, reload }: { rule: Rule; con
           : t(action === "highlight" ? "rules.preview.highlight" : "rules.preview", { n: seen.length, act: wouldAct, unsure: wouldDoubt })}
       </p>
 
-      {isPack(rule) && rule.pack === "antispoiler" && <SpoilerSettings rule={rule} user={user} reload={reload} />}
+      {isPack(rule) && rule.pack === "antispoiler" && <SpoilerSettings rule={rule} user={user} reload={reload} {...spoilers} />}
 
       {errors.map((e) => (
         <p key={e.path + e.message} class="error small">{e.message}</p>
@@ -174,7 +176,7 @@ function RuleEditor({ rule, config, decisions, user, reload }: { rule: Rule; con
   );
 }
 
-function SpoilerSettings({ rule, user, reload }: { rule: Extract<Rule, { pack: string }>; user: User; reload(): void }) {
+function SpoilerSettings({ rule, user, reload, spoilers, setSpoilers }: { rule: Extract<Rule, { pack: string }>; user: User; reload(): void } & Spoilers) {
   const t = useT();
   const run = useRun();
   const [progress, setProgress] = useState(rule.progress ?? "");
@@ -211,6 +213,28 @@ function SpoilerSettings({ rule, user, reload }: { rule: Extract<Rule, { pack: s
         </label>
       ) : (
         <p class="muted small">{count === 0 ? t("spoiler.topics.none") : t("spoiler.topics.count", { n: count })}</p>
+      )}
+      {spoilers.pack ? (
+        <label class="field">
+          <span>{t("spoiler.pack", { name: spoilers.pack.name, n: spoilers.pack.topicCount })}</span>
+          {spoilers.pack.checkpoints.length > 0 && (
+            <select
+              value={spoilers.checkpoint ?? ""}
+              onChange={(e) => {
+                const checkpoint = e.currentTarget.value || null;
+                run(t("done.saved"), () => api<SpoilerStatus>("PUT", "/api/spoiler-pack/checkpoint", { checkpoint })).then((r) => r && setSpoilers(r));
+              }}
+            >
+              <option value="">{t("spoiler.pack.all")}</option>
+              {spoilers.pack.checkpoints.map((c) => (
+                <option key={c} value={c}>{t("spoiler.pack.at", { name: c })}</option>
+              ))}
+            </select>
+          )}
+          <span class="muted small">{t("spoiler.pack.help")}</span>
+        </label>
+      ) : (
+        <p class="muted small">{t("spoiler.pack.none")}</p>
       )}
     </div>
   );

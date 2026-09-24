@@ -8,3 +8,4 @@ export * from "./log-dedupe";
 export * from "./auth";
 export * from "./usage";
 export * from "./api";
+export * from "./spoiler-guard";

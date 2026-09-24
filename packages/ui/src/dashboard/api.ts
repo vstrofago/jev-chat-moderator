@@ -1,7 +1,7 @@
 import type { ConfigError, HighlightItem, RuleVerdict, RuntimeState, VigiaConfig } from "@vigia/engine";
-import type { AuditEntry, StoredDecision, User } from "@vigia/server";
+import type { AuditEntry, SpoilerStatus, StoredDecision, User } from "@vigia/server";
 
-export type { AuditEntry, ConfigError, HighlightItem, RuleVerdict, RuntimeState, StoredDecision, User, VigiaConfig };
+export type { AuditEntry, SpoilerStatus, ConfigError, HighlightItem, RuleVerdict, RuntimeState, StoredDecision, User, VigiaConfig };
 
 export interface Overview {
   user: User;
@@ -49,7 +49,8 @@ export type LiveEvent =
   | { type: "state"; state: RuntimeState }
   | { type: "highlight"; current: HighlightItem | null; waiting: HighlightItem[] }
   | { type: "warning"; code: string; detail: string }
-  | { type: "stats"; stats: Stats };
+  | { type: "stats"; stats: Stats }
+  | ({ type: "spoilers" } & SpoilerStatus);
 
 /** The dashboard WebSocket, reconnecting with backoff. */
 export function connectLive(onEvent: (e: LiveEvent) => void, onStatus: (connected: boolean) => void) {

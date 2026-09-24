@@ -13,6 +13,9 @@ files:
 extraResources:
   - from: ../../packages/ui/dist
     to: ui
+  - from: ../../spoiler-packs
+    to: spoiler-packs
+    filter: ["*.yaml", "*.yml", "README*.md"]
   - from: ../../packages/engine/examples/vigia.yaml
     to: vigia.yaml
   - from: build

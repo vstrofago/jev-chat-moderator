@@ -6,6 +6,11 @@ export function exampleConfigText(): string {
   return readFileSync(new URL("../../engine/examples/vigia.yaml", import.meta.url), "utf8");
 }
 
+/** The spoiler packs that ship with Vigía (the repository's spoiler-packs folder). */
+export function defaultSpoilerPackDir(): string {
+  return fileURLToPath(new URL("../../../spoiler-packs", import.meta.url));
+}
+
 /** The built web UI (overlay, and in M4 the dashboard). VIGIA_UI_DIR overrides it. */
 export function defaultUiDir(): string {
   return process.env.VIGIA_UI_DIR ?? fileURLToPath(new URL("../../ui/dist", import.meta.url));

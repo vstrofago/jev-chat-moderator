@@ -3,7 +3,7 @@
  * streaming. Everything runs on this computer; the host only listens on 127.0.0.1.
  */
 import { createWriteStream } from "node:fs";
-import { mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -22,6 +22,7 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const RESOURCES = app.isPackaged ? process.resourcesPath : "";
 const UI_DIR = app.isPackaged ? join(RESOURCES, "ui") : resolve(ROOT, "../../packages/ui/dist");
 const EXAMPLE_RULES = app.isPackaged ? join(RESOURCES, "vigia.yaml") : resolve(ROOT, "../../packages/engine/examples/vigia.yaml");
+const SPOILER_PACKS = app.isPackaged ? join(RESOURCES, "spoiler-packs") : resolve(ROOT, "../../spoiler-packs");
 const ICONS = app.isPackaged ? join(RESOURCES, "icons") : join(ROOT, "build");
 const SETUP_URL = "vigia://setup/setup.html";
 
@@ -32,6 +33,7 @@ const T = es
       copyOverlay: "Copiar dirección del overlay",
       pause: "Pausar moderación",
       loginItem: "Iniciar con el equipo",
+      packsFolder: "Abrir carpeta de packs de spoilers",
       setupAgain: "Configurar de nuevo…",
       quit: "Salir",
       stillRunning: "Vigía sigue funcionando en la bandeja del sistema.",
@@ -45,6 +47,7 @@ const T = es
       copyOverlay: "Copy overlay address",
       pause: "Pause moderation",
       loginItem: "Start with the computer",
+      packsFolder: "Open spoiler packs folder",
       setupAgain: "Set up again…",
       quit: "Quit",
       stillRunning: "Vigía keeps running in the system tray.",
@@ -337,6 +340,7 @@ async function startHost() {
     host: "127.0.0.1",
     port,
     authMode: "local",
+    spoilerPackDirs: [userPacksDir(), SPOILER_PACKS],
     log,
   });
   log(`Vigía is running at ${vigia.url}`);
@@ -357,6 +361,9 @@ async function stopHost() {
 }
 
 // ---------- tray ----------
+
+/** The streamer's own spoiler packs; they win over the bundled ones. */
+const userPacksDir = () => join(app.getPath("userData"), "data", "spoiler-packs");
 
 function createTray() {
   if (tray) return updateTray();
@@ -383,6 +390,14 @@ function updateTray() {
       visible: loginItems,
       checked: loginItems && app.getLoginItemSettings().openAtLogin,
       click: (item) => app.setLoginItemSettings({ openAtLogin: item.checked, args: ["--hidden"] }),
+    },
+    {
+      label: T.packsFolder,
+      click: async () => {
+        const dir = userPacksDir();
+        await mkdir(dir, { recursive: true });
+        await shell.openPath(dir);
+      },
     },
     { type: "separator" },
     {

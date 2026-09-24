@@ -3,6 +3,7 @@ import type { ChatPlatform, ConfigResult, Engine, HighlightItem, Rule } from "@v
 import type { Auth, Role, User } from "./auth";
 import type { ConfigFile, RulePatch, SettingsPatch } from "./config-file";
 import type { HighlightQueue } from "./highlights";
+import type { SpoilerGuard } from "./spoiler-guard";
 import type { StoredDecision, Store } from "./store";
 import type { UsageMeter } from "./usage";
 
@@ -18,6 +19,7 @@ export interface ApiContext {
   twitchClientId?: string;
   /** Call after a successful config edit so the engine and queue follow the file. */
   configChanged(): void;
+  spoilers: SpoilerGuard;
 }
 
 class HttpError extends Error {
@@ -273,10 +275,27 @@ export function createApi(ctx: ApiContext) {
         const raw = (await readJson(req)).topics;
         if (!Array.isArray(raw)) throw new HttpError(400, "topics must be a list");
         const topics = raw.map((t) => String(t).trim().slice(0, 200)).filter(Boolean).slice(0, 100);
-        store.setSetting("protectedTopics", topics);
-        engine.setProtectedTopics(topics);
+        ctx.spoilers.setModTopics(topics);
         audit(user, "topics", "antispoiler", `${topics.length} topics`);
         return { ok: true, count: topics.length };
+      },
+    },
+    {
+      method: "GET",
+      path: /^\/api\/spoiler-pack$/,
+      // Names and counts only: a pack's topics are never sent to anyone.
+      handler: async () => ctx.spoilers.status(),
+    },
+    {
+      method: "PUT",
+      path: /^\/api\/spoiler-pack\/checkpoint$/,
+      write: true,
+      handler: async ({ req, user }) => {
+        const raw = (await readJson(req)).checkpoint;
+        const name = raw === null || raw === undefined || raw === "" ? null : String(raw);
+        if (!ctx.spoilers.setCheckpoint(name)) throw new HttpError(400, "No such checkpoint in the current pack");
+        audit(user, "checkpoint", "antispoiler", name ?? "all topics");
+        return { ok: true, ...ctx.spoilers.status() };
       },
     },
 
