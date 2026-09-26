@@ -1,53 +1,103 @@
 /*
- * Vigia: a lookout watching chat at night. The palette is maritime navigation light:
- * lantern amber (watching, unsure), port red (moderation), starboard green (highlight).
- * One family, Atkinson Hyperlegible Next, because the whole job is reading chat fast.
+ * Vigia's product UI uses Vercel's Geist design system as-is (vercel.com/geist): its
+ * gray and colour scales, Geist Sans and Geist Mono, 6px controls and 12px surfaces.
+ * Dark is the default; light follows the system unless the page sets data-theme.
+ * Status keeps Geist's scales: amber while Vigia only watches or is unsure, red for
+ * moderation, green for highlights, blue for focus and links.
  */
-@import "@fontsource/atkinson-hyperlegible-next/400.css";
-@import "@fontsource/atkinson-hyperlegible-next/700.css";
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
 
 :root {
-  --night: #0f1726;
-  --deck: #162236;
-  --deck-2: #1c2a42;
-  --rope: #283751;
-  --fog: #d5deea;
-  --fog-2: #9fb0c7;
-  --fog-3: #7488a4;
-  --lantern: #f2b544;
-  --lantern-ink: #2a1d05;
-  --port: #e5564b;
-  --starboard: #3db98a;
-  --beam: #8fb8ff;
-  --on-color: #0f1726;
+  --ds-background-100: #0a0a0a;
+  --ds-background-200: #000000;
+  --ds-gray-100: #1a1a1a;
+  --ds-gray-200: #1f1f1f;
+  --ds-gray-300: #292929;
+  --ds-gray-400: #2e2e2e;
+  --ds-gray-500: #454545;
+  --ds-gray-600: #878787;
+  --ds-gray-700: #8f8f8f;
+  --ds-gray-800: #7c7c7c;
+  --ds-gray-900: #a1a1a1;
+  --ds-gray-1000: #ededed;
+  --ds-gray-alpha-100: rgb(255 255 255 / 6%);
+  --ds-gray-alpha-200: rgb(255 255 255 / 9%);
+  --ds-gray-alpha-400: rgb(255 255 255 / 14%);
+  --ds-gray-alpha-600: rgb(255 255 255 / 51%);
+  --ds-blue-100: #0f1b2d;
+  --ds-blue-300: #0d2f5c;
+  --ds-blue-700: #0070f3;
+  --ds-blue-900: #52a8ff;
+  --ds-red-100: #2a1314;
+  --ds-red-300: #561a1e;
+  --ds-red-700: #e5484d;
+  --ds-red-900: #ff6166;
+  --ds-amber-100: #271700;
+  --ds-amber-300: #4a2900;
+  --ds-amber-700: #ffb224;
+  --ds-amber-900: #f1a10d;
+  --ds-green-100: #0b2211;
+  --ds-green-300: #0f3e1f;
+  --ds-green-700: #46a758;
+  --ds-green-900: #62c073;
+  --ds-shadow-menu: 0 0 0 1px var(--ds-gray-alpha-400), 0 4px 8px -4px rgb(0 0 0 / 40%), 0 16px 24px -8px rgb(0 0 0 / 50%);
+  --ds-shadow-toast: 0 0 0 1px var(--ds-gray-alpha-400), 0 8px 16px -4px rgb(0 0 0 / 40%), 0 24px 32px -8px rgb(0 0 0 / 60%);
+  --ds-focus-ring: 0 0 0 1px var(--ds-background-100), 0 0 0 3px var(--ds-blue-700);
 
-  --font: "Atkinson Hyperlegible Next", system-ui, sans-serif;
-  --step--1: 0.8125rem;
-  --step-0: 0.9375rem;
-  --step-1: 1.125rem;
-  --step-2: 1.5rem;
-  --step-3: 2.25rem;
+  --font: "Geist Sans", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --text-12: 0.75rem;
+  --text-13: 0.8125rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-20: 1.25rem;
+  --text-24: 1.5rem;
+  --text-32: 2rem;
   --r-sm: 6px;
-  --r-md: 10px;
-  --shadow: 0 1px 0 rgb(255 255 255 / 4%) inset;
+  --r-md: 12px;
   color-scheme: dark;
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --night: #eef2f7;
-    --deck: #ffffff;
-    --deck-2: #f5f7fa;
-    --rope: #d3dbe6;
-    --fog: #152033;
-    --fog-2: #4a5b75;
-    --fog-3: #6b7c95;
-    --lantern: #b87a00;
-    --lantern-ink: #ffffff;
-    --port: #c4372d;
-    --starboard: #1d8a61;
-    --beam: #2f63c9;
-    --on-color: #ffffff;
+    --ds-background-100: #ffffff;
+    --ds-background-200: #fafafa;
+    --ds-gray-100: #f2f2f2;
+    --ds-gray-200: #ebebeb;
+    --ds-gray-300: #e6e6e6;
+    --ds-gray-400: #ebebeb;
+    --ds-gray-500: #c9c9c9;
+    --ds-gray-600: #a8a8a8;
+    --ds-gray-700: #8f8f8f;
+    --ds-gray-800: #7d7d7d;
+    --ds-gray-900: #666666;
+    --ds-gray-1000: #171717;
+    --ds-gray-alpha-100: rgb(0 0 0 / 5%);
+    --ds-gray-alpha-200: rgb(0 0 0 / 8%);
+    --ds-gray-alpha-400: rgb(0 0 0 / 8%);
+    --ds-gray-alpha-600: rgb(0 0 0 / 34%);
+    --ds-blue-100: #f0f7ff;
+    --ds-blue-300: #dff0ff;
+    --ds-blue-700: #0070f3;
+    --ds-blue-900: #0068d6;
+    --ds-red-100: #fff0f0;
+    --ds-red-300: #ffe6e6;
+    --ds-red-700: #e5484d;
+    --ds-red-900: #ca2a30;
+    --ds-amber-100: #fff6e5;
+    --ds-amber-300: #fff1c2;
+    --ds-amber-700: #ffb224;
+    --ds-amber-900: #aa4d00;
+    --ds-green-100: #effbef;
+    --ds-green-300: #dafade;
+    --ds-green-700: #45a557;
+    --ds-green-900: #297a3a;
+    --ds-shadow-menu: 0 0 0 1px var(--ds-gray-alpha-400), 0 4px 8px -4px rgb(0 0 0 / 4%), 0 16px 24px -8px rgb(0 0 0 / 6%);
+    --ds-shadow-toast: 0 0 0 1px var(--ds-gray-alpha-400), 0 8px 16px -4px rgb(0 0 0 / 4%), 0 24px 32px -8px rgb(0 0 0 / 6%);
     color-scheme: light;
   }
 }
@@ -55,51 +105,70 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body {
-  background: var(--night);
-  color: var(--fog);
-  font: 400 var(--step-0) / 1.45 var(--font);
+  background: var(--ds-background-200);
+  color: var(--ds-gray-1000);
+  font: 400 var(--text-14) / 1.5 var(--font);
   font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
 }
 button, input, select, textarea { font: inherit; color: inherit; }
-a { color: var(--beam); }
-:focus-visible { outline: 2px solid var(--beam); outline-offset: 2px; }
-h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.2; }
-h2 { font-size: var(--step-2); }
-h3 { font-size: var(--step-1); }
+a { color: var(--ds-blue-900); text-underline-offset: 3px; }
+:focus-visible { outline: none; box-shadow: var(--ds-focus-ring); }
+h1, h2, h3 { margin: 0; font-weight: 600; }
+h1 { font-size: var(--text-32); line-height: 1.25; letter-spacing: -0.04em; }
+h2 { font-size: var(--text-24); line-height: 1.33; letter-spacing: -0.04em; }
+h3 { font-size: var(--text-16); line-height: 1.5; letter-spacing: -0.01em; }
 p { margin: 0; }
-.muted { color: var(--fog-2); }
-.small { font-size: var(--step--1); }
+code, kbd, .mono { font-family: var(--mono); }
+.muted { color: var(--ds-gray-900); }
+.small { font-size: var(--text-13); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
-/* Buttons */
+/* Buttons: Geist's secondary by default, primary in gray-1000, tertiary as .quiet. */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  min-height: 34px; padding: 0 12px; border-radius: var(--r-sm);
-  border: 1px solid var(--rope); background: var(--deck-2); cursor: pointer;
-  font-size: var(--step--1); font-weight: 700; white-space: nowrap; text-decoration: none;
+  height: 32px; padding: 0 10px; border-radius: var(--r-sm);
+  border: 0; background: var(--ds-background-100); color: var(--ds-gray-1000);
+  box-shadow: 0 0 0 1px var(--ds-gray-alpha-400);
+  cursor: pointer; font-size: var(--text-14); font-weight: 500; white-space: nowrap; text-decoration: none;
+  transition: background-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
 }
-.btn:hover { border-color: var(--fog-3); }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn.primary { background: var(--beam); color: var(--on-color); border-color: transparent; }
-.btn.danger { color: var(--port); }
-.btn.go { color: var(--starboard); }
-.btn.quiet { background: transparent; border-color: transparent; color: var(--fog-2); }
-.btn.quiet:hover { color: var(--fog); }
+.btn:hover { background: var(--ds-gray-100); }
+.btn:focus-visible { box-shadow: var(--ds-focus-ring); }
+.btn:disabled { background: var(--ds-gray-100); color: var(--ds-gray-700); box-shadow: 0 0 0 1px var(--ds-gray-alpha-400); cursor: not-allowed; }
+.btn.primary { background: var(--ds-gray-1000); color: var(--ds-background-100); box-shadow: none; }
+.btn.primary:hover { background: color-mix(in srgb, var(--ds-gray-1000) 85%, var(--ds-background-100)); }
+.btn.danger { color: var(--ds-red-900); }
+.btn.danger:hover { background: var(--ds-red-100); }
+.btn.go { color: var(--ds-green-900); }
+.btn.go:hover { background: var(--ds-green-100); }
+.btn.quiet { background: transparent; box-shadow: none; color: var(--ds-gray-900); }
+.btn.quiet:hover { background: var(--ds-gray-alpha-100); color: var(--ds-gray-1000); }
 
 /* Fields */
-.field { display: grid; gap: 6px; }
-.field > span { font-weight: 700; font-size: var(--step--1); color: var(--fog-2); }
+.field { display: grid; gap: 8px; }
+.field > span { font-weight: 500; font-size: var(--text-13); color: var(--ds-gray-900); }
 input[type="text"], input[type="number"], input[type="password"], select, textarea {
-  width: 100%; min-height: 36px; padding: 6px 10px; border-radius: var(--r-sm);
-  border: 1px solid var(--rope); background: var(--night);
+  width: 100%; min-height: 40px; padding: 0 12px; border-radius: var(--r-sm);
+  border: 0; box-shadow: 0 0 0 1px var(--ds-gray-alpha-400); background: var(--ds-background-100);
+  transition: box-shadow 150ms ease;
 }
-textarea { resize: vertical; line-height: 1.5; }
-input[type="range"] { width: 100%; accent-color: var(--beam); }
+input:hover, select:hover, textarea:hover { box-shadow: 0 0 0 1px var(--ds-gray-500); }
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  box-shadow: 0 0 0 1px var(--ds-gray-alpha-600), 0 0 0 4px var(--ds-gray-alpha-200);
+}
+textarea { padding: 10px 12px; resize: vertical; line-height: 1.5; }
+input[type="range"] { width: 100%; accent-color: var(--ds-gray-1000); }
 
-.panel { background: var(--deck); border: 1px solid var(--rope); border-radius: var(--r-md); padding: 16px; }
+.panel { background: var(--ds-background-100); border: 1px solid var(--ds-gray-alpha-400); border-radius: var(--r-md); padding: 16px; }
 .stack { display: grid; gap: 12px; }
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .spacer { flex: 1; }
-.error { color: var(--port); }
-.notice { border-left: 3px solid var(--lantern); padding: 10px 12px; background: var(--deck); border-radius: var(--r-sm); }
+.error { color: var(--ds-red-900); }
+.notice {
+  padding: 10px 12px; border-radius: var(--r-sm);
+  background: var(--ds-amber-100); color: var(--ds-amber-900);
+  border: 1px solid var(--ds-amber-300);
+}
+.notice .muted { color: inherit; opacity: 0.85; }
+.notice.error { background: var(--ds-red-100); color: var(--ds-red-900); border-color: var(--ds-red-300); }

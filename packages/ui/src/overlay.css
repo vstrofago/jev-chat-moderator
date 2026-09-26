@@ -1,7 +1,10 @@
 /*
  * The OBS browser source. The page itself is transparent; only the card is drawn, and it
  * must stay readable over any game footage. Themes: default, minimal, neon.
+ * Set in Geist, like the rest of the product.
  */
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
 html,
 body {
   margin: 0;
@@ -10,16 +13,16 @@ body {
 }
 
 :root {
-  --font: "Inter", "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font: "Geist Sans", "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
   --gap: 32px;
   --card-bg: #ffffff;
-  --card-ink: #111111;
+  --card-ink: #171717;
   --card-ink-2: rgb(0 0 0 / 60%);
   --card-shadow: 0 12px 40px rgb(0 0 0 / 35%);
-  --card-radius: 14px;
-  --label-bg: #111111;
-  --label-ink: #ffffff;
-  --accent: #111111;
+  --card-radius: 12px;
+  --label-bg: #171717;
+  --label-ink: #ededed;
+  --accent: #171717;
 }
 
 body[data-theme="minimal"] {
@@ -82,9 +85,9 @@ body[data-pos="tr"] #stage { align-items: flex-start; justify-content: flex-end;
 .label {
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  padding: 3px 9px;
+  padding: 3px 10px;
   border-radius: 999px;
   background: var(--label-bg);
   color: var(--label-ink);

@@ -193,11 +193,13 @@ function Warning({ code, detail, close }: { code: string; detail: string; close(
   );
 }
 
-/** The logo, for now: a bat, the night lookout. */
+/** The logo: a 9×9 pixel eye, the lookout. */
 export function Mark() {
   return (
     <span class="mark" aria-hidden="true">
-      🦇
+      <svg viewBox="0 0 9 9" shape-rendering="crispEdges">
+        <path fill="currentColor" d="M2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM1 3h1v1h-1zM4 3h1v1h-1zM7 3h1v1h-1zM0 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM8 4h1v1h-1zM1 5h1v1h-1zM4 5h1v1h-1zM7 5h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1z" />
+      </svg>
     </span>
   );
 }
