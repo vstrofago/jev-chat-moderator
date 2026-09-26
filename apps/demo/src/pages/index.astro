@@ -8,15 +8,18 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const repo = "https://github.com/vstrofago/vigia";
 const blob = `${repo}/blob/main`;
 const shot = (name: string) => `${base}shots/${name}.png`;
-// Vigia's mark: a 9×9 pixel eye, the lookout. Drawn in currentColor.
+// Vigia's mark: a pixel bat, the night lookout. Drawn in currentColor.
 const mark = [
-  "..XXXXX..",
-  ".X..X..X.",
-  "X..XXX..X",
-  ".X..X..X.",
-  "..XXXXX..",
+  "X.....X.X.....X",
+  "XX....XXX....XX",
+  "XXX..XXXXX..XXX",
+  ".XXXXXXXXXXXXX.",
+  "..XXXXXXXXXXX..",
+  "..X..XXXXX..X..",
+  "......XXX......",
+  ".......X.......",
 ]
-  .flatMap((row, y) => [...row].map((c, x) => (c === "X" ? `M${x} ${y + 2}h1v1h-1z` : "")))
+  .flatMap((row, y) => [...row].map((c, x) => (c === "X" ? `M${x} ${y}h1v1h-1z` : "")))
   .join("");
 ---
 
@@ -45,7 +48,7 @@ const mark = [
     <header class="topbar">
       <div class="container topbar-inner">
         <a class="logo" href={base} aria-label="Vigia">
-          <svg class="logo-mark" aria-hidden="true" viewBox="0 0 9 9" shape-rendering="crispEdges"><path fill="currentColor" d={mark} /></svg>
+          <svg class="logo-mark" aria-hidden="true" viewBox="0 0 15 8" shape-rendering="crispEdges"><path fill="currentColor" d={mark} /></svg>
           <span>Vigia</span>
         </a>
         <nav class="nav" aria-label="Main">

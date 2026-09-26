@@ -148,8 +148,8 @@ pre {
 }
 /* The product mark: an emoji, kept in full colour. */
 .brand-mark {
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 18px;
   flex: none;
 }
 .header-actions {
