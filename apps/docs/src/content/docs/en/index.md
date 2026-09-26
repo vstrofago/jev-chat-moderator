@@ -27,9 +27,7 @@ Details in [Your keys](keys/).
 
 :::caution[Experimental version (v0.1.0)]
 - Start in **observe mode**, and don't make Vigia your only moderation yet.
-- **"My channel" has not been tested with a real Twitch account yet.** "Just watch a channel" has run against real chat.
 - The installers are **unsigned**, so Windows and macOS show a warning.
-- Pack accuracy has not been measured yet.
 :::
 
 ## Next step

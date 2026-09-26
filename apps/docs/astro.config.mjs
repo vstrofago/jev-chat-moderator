@@ -52,7 +52,6 @@ export default defineConfig({
           translations: { en: "Reference" },
           items: [
             page("privacy", "Privacidad", "Privacy"),
-            page("accuracy", "Precisión", "Accuracy"),
             page("faq", "Preguntas frecuentes", "FAQ"),
             page("develop", "Desarrollo", "Develop"),
           ],
