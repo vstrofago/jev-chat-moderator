@@ -1,85 +1,63 @@
 /*
- * Scandinavian system: neutral canvas, one sans family, hierarchy through an alpha ink
- * ladder and space. The only hues are semantic (remove / review / allow / live) and the logo.
+ * The playground is a product surface, so it uses Vercel's Geist design system as-is:
+ * Geist's gray scale and alpha borders, Geist Sans and Mono, and its red, amber and
+ * green scales for remove / review / allow. Dark is the default, like the landing.
  */
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-mono/400.css";
+
 :root {
-  --canvas: #ffffff;
-  --ink: rgb(0 0 0 / 90%);
-  --ink-2: rgb(0 0 0 / 64%);
-  /* Latency, labels and metadata carry real reading here, so the tertiary rung is lifted. */
-  --ink-3: rgb(0 0 0 / 56%);
-  --line: rgb(0 0 0 / 10%);
-  --line-strong: rgb(0 0 0 / 18%);
-  --hover: rgb(0 0 0 / 5%);
-  --pressed: rgb(0 0 0 / 9%);
-  --wash: rgb(0 0 0 / 4%);
-  --scrim: rgb(0 0 0 / 44%);
-  --primary: #000000;
-  --on-primary: #ffffff;
-
-  --remove: #a8432f;
-  --remove-soft: #fbeeea;
-  --review: #b7842a;
-  --review-ink: #7d5510;
-  --review-soft: #fbf3e2;
-  --allow: #4f7a58;
-
-
-  --radius: 8px;
-  --radius-lg: 12px;
-  --font: "Inter", "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: ui-monospace, "SFMono-Regular", "Menlo", monospace;
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --canvas: #0a0a0a;
-    --ink: rgb(255 255 255 / 92%);
-    --ink-2: rgb(255 255 255 / 56%);
-    --ink-3: rgb(255 255 255 / 46%);
-    --line: rgb(255 255 255 / 12%);
-    --line-strong: rgb(255 255 255 / 20%);
-    --hover: rgb(255 255 255 / 9%);
-    --pressed: rgb(255 255 255 / 14%);
-    --wash: rgb(255 255 255 / 5%);
-    --scrim: rgb(0 0 0 / 60%);
-    --primary: rgb(255 255 255 / 92%);
-    --on-primary: #0a0a0a;
-
-    --remove: #e38c77;
-    --remove-soft: #2a1612;
-    --review: #d9ad5c;
-    --review-ink: #e6bd70;
-    --review-soft: #241c0e;
-    --allow: #8fb597;
-
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
   --canvas: #0a0a0a;
-  --ink: rgb(255 255 255 / 92%);
-  --ink-2: rgb(255 255 255 / 56%);
-  --ink-3: rgb(255 255 255 / 46%);
-  --line: rgb(255 255 255 / 12%);
-  --line-strong: rgb(255 255 255 / 20%);
-  --hover: rgb(255 255 255 / 9%);
-  --pressed: rgb(255 255 255 / 14%);
-  --wash: rgb(255 255 255 / 5%);
+  --ink: #ededed;
+  --ink-2: #a1a1a1;
+  --ink-3: #8f8f8f;
+  --line: rgb(255 255 255 / 14%);
+  --line-strong: #454545;
+  --hover: rgb(255 255 255 / 6%);
+  --pressed: rgb(255 255 255 / 9%);
+  --wash: #1a1a1a;
   --scrim: rgb(0 0 0 / 60%);
-  --primary: rgb(255 255 255 / 92%);
+  --primary: #ededed;
   --on-primary: #0a0a0a;
 
-  --remove: #e38c77;
-  --remove-soft: #2a1612;
-  --review: #d9ad5c;
-  --review-ink: #e6bd70;
-  --review-soft: #241c0e;
-  --allow: #8fb597;
+  --remove: #ff6166;
+  --remove-soft: #2a1314;
+  --review: #ffb224;
+  --review-ink: #f1a10d;
+  --review-soft: #271700;
+  --allow: #62c073;
 
+  --radius: 6px;
+  --radius-lg: 12px;
+  --font: "Geist Sans", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --canvas: #ffffff;
+  --ink: #171717;
+  --ink-2: #666666;
+  --ink-3: #666666;
+  --line: rgb(0 0 0 / 8%);
+  --line-strong: #c9c9c9;
+  --hover: rgb(0 0 0 / 5%);
+  --pressed: rgb(0 0 0 / 8%);
+  --wash: #f2f2f2;
+  --scrim: rgb(0 0 0 / 44%);
+  --primary: #171717;
+  --on-primary: #ffffff;
+
+  --remove: #ca2a30;
+  --remove-soft: #fff0f0;
+  --review: #ffb224;
+  --review-ink: #aa4d00;
+  --review-soft: #fff6e5;
+  --allow: #297a3a;
+
+  color-scheme: light;
 }
 
 *,
@@ -170,8 +148,8 @@ pre {
 }
 /* The product mark: an emoji, kept in full colour. */
 .brand-mark {
-  font-size: 30px;
-  line-height: 1;
+  width: 28px;
+  height: 28px;
   flex: none;
 }
 .header-actions {
@@ -195,20 +173,12 @@ pre {
 .icon-btn svg {
   display: block;
 }
-.icon-btn .icon-moon,
-:root[data-theme="dark"] .icon-btn .icon-sun {
+.icon-btn .icon-sun,
+:root[data-theme="light"] .icon-btn .icon-moon {
   display: none;
 }
-:root[data-theme="dark"] .icon-btn .icon-moon {
+:root[data-theme="light"] .icon-btn .icon-sun {
   display: block;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .icon-btn .icon-sun {
-    display: none;
-  }
-  :root:not([data-theme="light"]) .icon-btn .icon-moon {
-    display: block;
-  }
 }
 .lang-toggle {
   display: inline-flex;
