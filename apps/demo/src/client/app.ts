@@ -448,15 +448,6 @@ for (const b of document.querySelectorAll<HTMLButtonElement>("[data-lang]")) {
   });
 }
 
-const THEME_STORAGE = "jev-chat-moderator.theme";
-$("theme-toggle").addEventListener("click", () => {
-  const root = document.documentElement;
-  const current = root.dataset.theme ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  const next = current === "dark" ? "light" : "dark";
-  root.dataset.theme = next;
-  safeSet(THEME_STORAGE, next);
-});
-
 $("recorded-model").textContent = recorded.model;
 $("recorded-at").textContent = recorded.recordedAt ? recorded.recordedAt.slice(0, 10) : "";
 keyInput.value = safeGet(KEY_STORAGE) ?? "";
