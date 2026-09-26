@@ -768,16 +768,59 @@ pre {
 }
 
 /* Install: steps, then the download and what you need. */
-.download-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 24px;
-  margin-top: 32px;
+.install-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 16px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-surface);
+  overflow: hidden;
+}
+.option {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 16px;
+  padding: 28px;
+  background: var(--bg);
 }
 .btn-download {
   height: 48px;
   padding: 0 28px;
+}
+.code-box {
+  position: relative;
+  width: 100%;
+}
+.code-box pre {
+  margin: 0;
+  padding: 14px 80px 14px 16px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  font: 400 13px/1.7 var(--mono);
+  color: var(--fg);
+  white-space: pre;
+  overflow-x: auto;
+}
+.copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-badge);
+  background: var(--surface);
+  color: var(--fg-muted);
+  font: 500 11px var(--mono);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.copy:hover {
+  color: var(--fg);
 }
 .download-note {
   margin: 0;
@@ -916,6 +959,9 @@ pre {
   }
 }
 @media (max-width: 800px) {
+  .install-options {
+    grid-template-columns: 1fr;
+  }
   .tour-stage {
     order: -1;
   }

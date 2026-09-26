@@ -207,12 +207,28 @@ const mark = [
                 </li>
               ))}
             </ol>
-            <div class="download-row">
-              <a class="btn btn-accent btn-download" id="download" href={`${repo}/releases`}><span id="download-label" data-i18n="install.cta">{t("install.cta")}</span></a>
-              <p class="download-note">
-                <span data-i18n="install.note">{t("install.note")}</span>
-                <a href={`${repo}/releases`} data-i18n="install.other">{t("install.other")}</a>
-              </p>
+            <div class="install-options" data-reveal>
+              <div class="option">
+                <span class="label" data-i18n="install.app.label">{t("install.app.label")}</span>
+                <a class="btn btn-accent btn-download" id="download" href={`${repo}/releases`}><span id="download-label" data-i18n="install.cta">{t("install.cta")}</span></a>
+                <p class="download-note">
+                  <span data-i18n="install.note">{t("install.note")}</span>
+                  <a href={`${repo}/releases`} data-i18n="install.other">{t("install.other")}</a>
+                </p>
+              </div>
+              <div class="option">
+                <span class="label" data-i18n="install.docker.label">{t("install.docker.label")}</span>
+                <div class="code-box">
+                  <pre><code id="docker-cmd">git clone {repo}
+cd vigia
+docker compose up --build</code></pre>
+                  <button type="button" class="copy" data-copy="docker-cmd" data-i18n="install.copy">{t("install.copy")}</button>
+                </div>
+                <p class="download-note">
+                  <span data-i18n="install.docker.note">{t("install.docker.note")}</span>
+                  <a href={`${docs}docker/`} data-href-es={`${docs}docker/`} data-href-en={`${docs}en/docker/`} data-i18n="install.docker.guide">{t("install.docker.guide")}</a>
+                </p>
+              </div>
             </div>
             <p class="needs">
               <span data-i18n="install.needs">{t("install.needs")}</span>

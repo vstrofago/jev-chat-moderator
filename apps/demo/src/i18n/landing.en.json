@@ -36,8 +36,8 @@
   "tour.5.title": "Settings",
   "tour.5.body": "Languages, exemptions and the overlay address.",
   "install.kicker": "Install",
-  "start.1.title": "Download the app",
-  "start.1.body": "For Windows, macOS or Linux.",
+  "start.1.title": "Install it",
+  "start.1.body": "With the app for Windows, macOS or Linux, or with Docker.",
   "start.2.title": "Set it up",
   "start.2.body": "A window guides you. It takes about ten minutes.",
   "start.3.title": "Start by watching",
@@ -74,5 +74,11 @@
   "tour.3.alt": "The Highlights tab, with the message on the overlay and the queue.",
   "tour.4.alt": "The Rules tab, with the toxicity and spam thresholds and a field to try a message.",
   "tour.5.alt": "The Settings tab, with languages, highlights, exemptions and the OBS overlay.",
-  "tour.demo.alt": "Video: Vigia's dashboard receives live messages while the OBS overlay shows the questions and highlighted messages."
+  "tour.demo.alt": "Video: Vigia's dashboard receives live messages while the OBS overlay shows the questions and highlighted messages.",
+  "install.app.label": "Desktop app",
+  "install.docker.label": "Or with Docker",
+  "install.copy": "Copy",
+  "install.copied": "Copied",
+  "install.docker.note": "Then open 127.0.0.1:7777 and enter the code shown by docker compose logs vigia.",
+  "install.docker.guide": "Docker guide"
 }
