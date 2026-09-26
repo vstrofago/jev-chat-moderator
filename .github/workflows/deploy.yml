@@ -30,6 +30,8 @@ jobs:
         env:
           SITE: https://${{ github.repository_owner }}.github.io
           BASE_PATH: /${{ github.event.repository.name }}
+      # The docs are their own Astro site, served under /docs next to the landing page.
+      - run: cp -r apps/docs/dist apps/demo/dist/docs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: apps/demo/dist

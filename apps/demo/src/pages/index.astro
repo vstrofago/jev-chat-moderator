@@ -8,6 +8,7 @@ const t = (key: Key) => es[key];
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const repo = "https://github.com/vstrofago/vigia";
 const blob = `${repo}/blob/main`;
+const docs = `${base}docs/`;
 const shot = (name: string) => `${base}shots/${name}.png`;
 // The feature tour: one dashboard tab per slide.
 const tourSlides = ["live", "uncertain", "highlights", "rules", "settings"] as const;
@@ -56,10 +57,9 @@ const mark = [
         </a>
         <nav class="nav" aria-label="Main">
           <a href="#features" data-i18n="nav.features">{t("nav.features")}</a>
-          <a href="#spoilers" data-i18n="nav.spoilers">{t("nav.spoilers")}</a>
-          <a href="#how" data-i18n="nav.how">{t("nav.how")}</a>
+          <a href="#tour" data-i18n="nav.tour">{t("nav.tour")}</a>
           <a href="#install" data-i18n="nav.install">{t("nav.install")}</a>
-          <a href="#faq" data-i18n="nav.faq">{t("nav.faq")}</a>
+          <a href={docs} data-href-es={docs} data-href-en={`${docs}en/`} data-i18n="nav.docs">{t("nav.docs")}</a>
           <a href={`${base}playground/`} data-i18n="nav.playground">{t("nav.playground")}</a>
         </nav>
         <div class="tools">
@@ -132,14 +132,6 @@ const mark = [
             </div>
           </div>
         </div>
-        <dl class="container specs">
-          {([1, 2, 3, 4] as const).map((n) => (
-            <div>
-              <dt data-i18n={`hero.spec.${n}.k`}>{t(`hero.spec.${n}.k`)}</dt>
-              <dd data-i18n={`hero.spec.${n}.v`}>{t(`hero.spec.${n}.v`)}</dd>
-            </div>
-          ))}
-        </dl>
       </section>
 
       <section id="features" class="section">
@@ -148,33 +140,23 @@ const mark = [
             <p class="kicker"><span class="idx">01</span> — <span data-i18n="features.kicker">{t("features.kicker")}</span></p>
           </div>
           <div class="section-body">
-            <h2 data-i18n="features.title">{t("features.title")}</h2>
             <div class="grid grid-3" data-reveal>
-              {(["f1", "f2", "f3", "f4", "f5", "f6"] as const).map((f, i) => (
+              {([1, 2, 3] as const).map((n) => (
                 <article class="cell">
-                  <span class="num">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 data-i18n={`${f}.title`}>{t(`${f}.title`)}</h3>
-                  <p data-i18n={`${f}.body`}>{t(`${f}.body`)}</p>
+                  <span class="num">{String(n).padStart(2, "0")}</span>
+                  <h3 data-i18n={`f${n}.title`}>{t(`f${n}.title`)}</h3>
+                  <p data-i18n={`f${n}.body`}>{t(`f${n}.body`)}</p>
                 </article>
-              ))}
-            </div>
-            <div class="commands">
-              <span data-i18n="features.commands">{t("features.commands")}</span>
-              {(["cmd.1", "cmd.2", "cmd.3", "cmd.4"] as const).map((c) => (
-                <code data-i18n={c}>{t(c)}</code>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section id="tour" class="section">
         <div class="container section-grid">
           <div class="section-label">
-            <p class="kicker"><span class="idx">02</span> — <span data-i18n="dash.kicker">{t("dash.kicker")}</span></p>
-          </div>
-          <div class="section-body">
-            <h2 data-i18n="dash.title">{t("dash.title")}</h2>
+            <p class="kicker"><span class="idx">02</span> — <span data-i18n="tour.kicker">{t("tour.kicker")}</span></p>
           </div>
           <div class="tour" data-reveal>
             <div class="tour-tabs" role="tablist" data-i18n-aria="tour.label" aria-label={t("tour.label")}>
@@ -205,105 +187,7 @@ const mark = [
                 ))}
                 <span class="tilt-glare" aria-hidden="true"></span>
               </div>
-              <p class="tour-caption"><span class="label">Fig. <span id="tour-fig">01</span></span> <span class="tour-count">/ {String(tourSlides.length + 1).padStart(2, "0")}</span></p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="spoilers" class="section">
-        <div class="container section-grid">
-          <div class="section-label">
-            <p class="kicker"><span class="idx">03</span> — <span data-i18n="spoilers.kicker">{t("spoilers.kicker")}</span></p>
-          </div>
-          <div class="section-body split">
-            <div>
-              <h2 data-i18n="spoilers.title">{t("spoilers.title")}</h2>
-              <p class="muted" data-i18n="spoilers.lead">{t("spoilers.lead")}</p>
-              <p class="callout" data-i18n="spoilers.never">{t("spoilers.never")}</p>
-              <a class="text-link" href={`${repo}/tree/main/spoiler-packs`} data-i18n="spoilers.packs">{t("spoilers.packs")}</a>
-            </div>
-            <ol class="layers" data-reveal>
-              {(["s1", "s2", "s3"] as const).map((s, i) => (
-                <li>
-                  <span class="layer-num">{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3 data-i18n={`${s}.title`}>{t(`${s}.title`)}</h3>
-                    <p data-i18n={`${s}.body`}>{t(`${s}.body`)}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <section id="how" class="section">
-        <div class="container section-grid">
-          <div class="section-label">
-            <p class="kicker"><span class="idx">04</span> — <span data-i18n="how.kicker">{t("how.kicker")}</span></p>
-          </div>
-          <div class="section-body">
-            <h2 data-i18n="how.title">{t("how.title")}</h2>
-            <div class="grid grid-3" data-reveal>
-              {(["how.1", "how.2", "how.3"] as const).map((s, i) => (
-                <article class="cell">
-                  <span class="step-num">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 data-i18n={`${s}.title`}>{t(`${s}.title`)}</h3>
-                  <p data-i18n={`${s}.body`}>{t(`${s}.body`)}</p>
-                </article>
-              ))}
-            </div>
-            <article class="rule-example" data-reveal>
-              <div class="rule-def">
-                <span class="label" data-i18n="rule.label">{t("rule.label")}</span>
-                <code class="rule-id">id: backseat</code>
-                <p class="rule-question">{t("rule.question")}</p>
-                <p class="rule-translation muted" data-i18n="rule.translation">{t("rule.translation")}</p>
-                <dl class="rule-meta">
-                  <div><dt data-i18n="rule.yes.k">{t("rule.yes.k")}</dt><dd data-i18n="rule.yes">{t("rule.yes")}</dd></div>
-                  <div><dt data-i18n="rule.no.k">{t("rule.no.k")}</dt><dd data-i18n="rule.no">{t("rule.no")}</dd></div>
-                  <div><dt data-i18n="rule.thresholds.k">{t("rule.thresholds.k")}</dt><dd data-i18n="rule.thresholds">{t("rule.thresholds")}</dd></div>
-                </dl>
-              </div>
-              <div class="rule-run">
-                <span class="label" data-i18n="rule.msg.k">{t("rule.msg.k")}</span>
-                <p class="rule-msg"><b>backseater99</b> <span data-i18n="rule.msg">{t("rule.msg")}</span></p>
-                <div class="scale" role="img" data-i18n-aria="rule.scale.alt" aria-label={t("rule.scale.alt")}>
-                  <div class="scale-bar">
-                    <span class="zone zone-none" style="width: 50%"><b data-i18n="how.scale.none">{t("how.scale.none")}</b></span>
-                    <span class="zone zone-unsure" style="width: 40%"><b data-i18n="how.scale.unsure">{t("how.scale.unsure")}</b></span>
-                    <span class="zone zone-act" style="width: 10%"></span>
-                    <span class="marker" style="left: 88%"><span>88 %</span></span>
-                  </div>
-                  <div class="scale-ticks"><span>0</span><span style="left: 50%">50 %</span><span class="tick-act" style="left: 90%" data-i18n="rule.tick.act">{t("rule.tick.act")}</span></div>
-                </div>
-                <p class="rule-result"><span class="chip chip-review" data-i18n="rule.result.chip">{t("rule.result.chip")}</span> <span data-i18n="rule.result">{t("rule.result")}</span></p>
-              </div>
-            </article>
-            <a class="text-link" href={`${base}playground/`} data-i18n="how.playground">{t("how.playground")}</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="jev" class="section">
-        <div class="container section-grid">
-          <div class="section-label">
-            <p class="kicker"><span class="idx">05</span> — <span data-i18n="jev.kicker">{t("jev.kicker")}</span></p>
-          </div>
-          <div class="section-body">
-            <h2 data-i18n="jev.title">{t("jev.title")}</h2>
-            <p class="lead-muted" data-i18n="jev.lead">{t("jev.lead")}</p>
-            <div class="grid grid-3" data-reveal>
-              {([1, 2, 3] as const).map((n) => (
-                <article class="cell">
-                  <span class="num">{String(n).padStart(2, "0")}</span>
-                  <h3 data-i18n={`jev.${n}.title`}>{t(`jev.${n}.title`)}</h3>
-                  <p data-i18n={`jev.${n}.body`}>{t(`jev.${n}.body`)}</p>
-                </article>
-              ))}
-            </div>
-            <a class="text-link" href={`${repo}/blob/main/README.es.md#las-dos-keys-que-pones-tú`} data-href-es={`${repo}/blob/main/README.es.md#las-dos-keys-que-pones-tú`} data-href-en={`${repo}/blob/main/README.md#the-two-keys-you-bring`} data-i18n="jev.link">{t("jev.link")}</a>
           </div>
         </div>
       </section>
@@ -311,10 +195,9 @@ const mark = [
       <section id="install" class="section">
         <div class="container section-grid">
           <div class="section-label">
-            <p class="kicker"><span class="idx">06</span> — <span data-i18n="install.kicker">{t("install.kicker")}</span></p>
+            <p class="kicker"><span class="idx">03</span> — <span data-i18n="install.kicker">{t("install.kicker")}</span></p>
           </div>
           <div class="section-body">
-            <h2 data-i18n="install.title">{t("install.title")}</h2>
             <ol class="grid grid-3 start-steps" data-reveal>
               {([1, 2, 3] as const).map((n) => (
                 <li class="cell">
@@ -324,102 +207,17 @@ const mark = [
                 </li>
               ))}
             </ol>
-            <article class="card install install-main">
-              <div>
-                <span class="badge" data-i18n="install.recommended">{t("install.recommended")}</span>
-                <h3 data-i18n="install.desktop.title">{t("install.desktop.title")}</h3>
-                <p class="os" data-i18n="install.desktop.os">{t("install.desktop.os")}</p>
-                <p data-i18n="install.desktop.body">{t("install.desktop.body")}</p>
-              </div>
-              <div class="download">
-                <a class="btn btn-accent btn-download" id="download" href={`${repo}/releases`}><span id="download-label" data-i18n="install.desktop.cta">{t("install.desktop.cta")}</span></a>
-                <span class="soon" data-i18n="install.desktop.soon">{t("install.desktop.soon")}</span>
-                <a class="soon other-downloads" href={`${repo}/releases`} data-i18n="install.desktop.other">{t("install.desktop.other")}</a>
-              </div>
-            </article>
-            <div class="grid-cards">
-              <article class="card install">
-                <h3 data-i18n="install.docker.title">{t("install.docker.title")}</h3>
-                <p class="os" data-i18n="install.docker.os">{t("install.docker.os")}</p>
-                <p data-i18n="install.docker.body">{t("install.docker.body")}</p>
-                <pre><code>git clone {repo}
-cd vigia
-docker compose up --build</code></pre>
-              </article>
-              <article class="card install">
-                <h3 data-i18n="install.pnpm.title">{t("install.pnpm.title")}</h3>
-                <p class="os" data-i18n="install.pnpm.os">{t("install.pnpm.os")}</p>
-                <p data-i18n="install.pnpm.body">{t("install.pnpm.body")}</p>
-                <pre><code>pnpm install
-pnpm --filter @vigia/ui build
-pnpm --filter @vigia/desktop start</code></pre>
-              </article>
+            <div class="download-row">
+              <a class="btn btn-accent btn-download" id="download" href={`${repo}/releases`}><span id="download-label" data-i18n="install.cta">{t("install.cta")}</span></a>
+              <p class="download-note">
+                <span data-i18n="install.note">{t("install.note")}</span>
+                <a href={`${repo}/releases`} data-i18n="install.other">{t("install.other")}</a>
+              </p>
             </div>
-            <div class="note-row">
-              <span data-i18n="install.note">{t("install.note")}</span>
-              <a class="text-link" href={`${repo}#install`} data-i18n="install.guide">{t("install.guide")}</a>
-              <button type="button" class="btn btn-soon" disabled>
-                <span data-i18n="install.docs">{t("install.docs")}</span>
-                <span class="soon-tag" data-i18n="install.soon">{t("install.soon")}</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-inverse">
-        <div class="container section-grid">
-          <div class="section-label">
-            <p class="kicker"><span class="idx">07</span> — <span data-i18n="own.kicker">{t("own.kicker")}</span></p>
-          </div>
-          <div class="section-body">
-            <h2 data-i18n="own.title">{t("own.title")}</h2>
-            <div class="grid grid-3" data-reveal>
-              {(["own.1", "own.2", "own.3"] as const).map((o, i) => (
-                <article class="cell">
-                  <span class="num">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 data-i18n={`${o}.title`}>{t(`${o}.title`)}</h3>
-                  <p data-i18n={`${o}.body`}>{t(`${o}.body`)}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="faq" class="section">
-        <div class="container section-grid">
-          <div class="section-label">
-            <p class="kicker"><span class="idx">08</span> — <span data-i18n="faq.kicker">{t("faq.kicker")}</span></p>
-          </div>
-          <div class="section-body">
-            <h2 data-i18n="faq.title">{t("faq.title")}</h2>
-            <div class="faq">
-              {([1, 2, 3, 4, 5, 6] as const).map((n) => (
-                <details>
-                  <summary><span class="faq-num">{String(n).padStart(2, "0")}</span><span data-i18n={`faq.${n}.q`}>{t(`faq.${n}.q`)}</span></summary>
-                  <p data-i18n={`faq.${n}.a`}>{t(`faq.${n}.a`)}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-community">
-        <div class="container section-grid">
-          <div class="section-label">
-            <p class="kicker"><span class="idx">09</span> — <span data-i18n="community.kicker">{t("community.kicker")}</span></p>
-          </div>
-          <div class="section-body community">
-            <div>
-              <h2 data-i18n="community.title">{t("community.title")}</h2>
-              <p class="muted" data-i18n="community.body">{t("community.body")}</p>
-            </div>
-            <div class="actions">
-              <a class="btn btn-accent" href={`${blob}/CONTRIBUTING.md`} data-i18n="community.cta">{t("community.cta")}</a>
-              <a class="btn btn-ghost" href={repo} data-i18n="community.github">{t("community.github")}</a>
-            </div>
+            <p class="needs">
+              <span data-i18n="install.needs">{t("install.needs")}</span>
+              <a class="text-link" href={`${docs}keys/`} data-href-es={`${docs}keys/`} data-href-en={`${docs}en/keys/`} data-i18n="install.keys">{t("install.keys")}</a>
+            </p>
           </div>
         </div>
       </section>
@@ -429,10 +227,10 @@ pnpm --filter @vigia/desktop start</code></pre>
       <div class="container footer-inner">
         <p><span class="wordmark">Vigia</span><span data-i18n="footer.made">{t("footer.made")}</span></p>
         <nav aria-label="Footer">
+          <a href={docs} data-href-es={docs} data-href-en={`${docs}en/`} data-i18n="footer.docs">{t("footer.docs")}</a>
           <a href={repo} data-i18n="footer.github">{t("footer.github")}</a>
           <a href={`${base}playground/`} data-i18n="footer.playground">{t("footer.playground")}</a>
           <a href={`${blob}/CONTRIBUTING.md`} data-i18n="footer.contributing">{t("footer.contributing")}</a>
-          <a href={`${blob}/SECURITY.md`} data-i18n="footer.security">{t("footer.security")}</a>
         </nav>
       </div>
     </footer>

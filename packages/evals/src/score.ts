@@ -53,7 +53,7 @@ export function score(rows: Scored[], t = { act: 0.85, unsure: 0.5 }): Metrics[]
 
 const pct = (v: number | null) => (v === null ? "–" : `${Math.round(v * 100)}%`);
 
-/** The table both READMEs show. */
+/** The table the docs' Accuracy page shows. */
 export function markdownTable(metrics: Metrics[], lang: Lang): string {
   const head =
     lang === "es"
