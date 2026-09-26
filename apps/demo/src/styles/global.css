@@ -1,34 +1,63 @@
 /*
- * Dracula Classic for the replay playground: one dark surface, readable state colors,
- * and the same high-contrast type across controls, messages, and thresholds.
+ * The playground is a product surface, so it uses Vercel's Geist design system as-is:
+ * Geist's gray scale and alpha borders, Geist Sans and Mono, and its red, amber and
+ * green scales for remove / review / allow. Dark is the default, like the landing.
  */
-@import "../../../../packages/ui/src/styles/dracula.css";
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-mono/400.css";
 
 :root {
-  --canvas: var(--dracula-background);
-  --ink: var(--dracula-foreground);
-  --ink-2: var(--dracula-muted);
-  --ink-3: var(--dracula-subtle);
-  --line: rgb(98 114 164 / 40%);
-  --line-strong: var(--dracula-current-line);
-  --hover: rgb(189 147 249 / 10%);
-  --pressed: rgb(189 147 249 / 18%);
-  --wash: var(--dracula-floating);
-  --scrim: rgb(25 26 33 / 84%);
-  --primary: var(--dracula-purple);
-  --on-primary: var(--dracula-background);
+  --canvas: #0a0a0a;
+  --ink: #ededed;
+  --ink-2: #a1a1a1;
+  --ink-3: #8f8f8f;
+  --line: rgb(255 255 255 / 14%);
+  --line-strong: #454545;
+  --hover: rgb(255 255 255 / 6%);
+  --pressed: rgb(255 255 255 / 9%);
+  --wash: #1a1a1a;
+  --scrim: rgb(0 0 0 / 60%);
+  --primary: #ededed;
+  --on-primary: #0a0a0a;
 
-  --remove: var(--dracula-danger-text);
-  --remove-soft: rgb(255 85 85 / 14%);
-  --review: var(--dracula-orange);
-  --review-ink: var(--dracula-orange);
-  --review-soft: rgb(255 184 108 / 14%);
-  --allow: var(--dracula-bright-green);
+  --remove: #ff6166;
+  --remove-soft: #2a1314;
+  --review: #ffb224;
+  --review-ink: #f1a10d;
+  --review-soft: #271700;
+  --allow: #62c073;
 
-  --radius: 8px;
+  --radius: 6px;
   --radius-lg: 12px;
-  --font: "Atkinson Hyperlegible Next", system-ui, sans-serif;
-  --mono: ui-monospace, "SFMono-Regular", "Menlo", monospace;
+  --font: "Geist Sans", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --canvas: #ffffff;
+  --ink: #171717;
+  --ink-2: #666666;
+  --ink-3: #666666;
+  --line: rgb(0 0 0 / 8%);
+  --line-strong: #c9c9c9;
+  --hover: rgb(0 0 0 / 5%);
+  --pressed: rgb(0 0 0 / 8%);
+  --wash: #f2f2f2;
+  --scrim: rgb(0 0 0 / 44%);
+  --primary: #171717;
+  --on-primary: #ffffff;
+
+  --remove: #ca2a30;
+  --remove-soft: #fff0f0;
+  --review: #ffb224;
+  --review-ink: #aa4d00;
+  --review-soft: #fff6e5;
+  --allow: #297a3a;
+
+  color-scheme: light;
 }
 
 *,
@@ -48,7 +77,6 @@ body {
   background: var(--canvas);
   color: var(--ink);
   font: 16px/1.55 var(--font);
-  font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -98,7 +126,7 @@ pre {
 }
 
 :focus-visible {
-  outline: 2px solid var(--dracula-purple);
+  outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
 
@@ -120,8 +148,8 @@ pre {
 }
 /* The product mark: an emoji, kept in full colour. */
 .brand-mark {
-  font-size: 30px;
-  line-height: 1;
+  width: 34px;
+  height: 18px;
   flex: none;
 }
 .header-actions {
@@ -135,6 +163,22 @@ pre {
   align-items: center;
   gap: 8px;
   text-decoration: none;
+}
+.btn.icon-btn {
+  width: 36px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+}
+.icon-btn svg {
+  display: block;
+}
+.icon-btn .icon-sun,
+:root[data-theme="light"] .icon-btn .icon-moon {
+  display: none;
+}
+:root[data-theme="light"] .icon-btn .icon-sun {
+  display: block;
 }
 .lang-toggle {
   display: inline-flex;
@@ -324,12 +368,6 @@ select option {
   scroll-behavior: smooth;
   font-size: 15px;
 }
-@media (prefers-reduced-motion: reduce) {
-  .chat {
-    scroll-behavior: auto;
-  }
-}
-
 .chat-empty {
   padding: 40px 12px;
 }
@@ -377,30 +415,44 @@ select option {
 }
 .msg.review {
   background: var(--review-soft);
-  box-shadow: inset 1px 0 0 var(--review);
+  box-shadow: inset 2px 0 0 var(--review);
 }
 .msg.review .msg-note {
   color: var(--review-ink);
 }
 .msg.remove {
-  box-shadow: inset 1px 0 0 var(--remove);
+  box-shadow: inset 2px 0 0 var(--remove);
 }
 .msg.remove .msg-text {
   color: var(--ink-3);
   font-style: italic;
 }
 .msg.error {
-  box-shadow: inset 1px 0 0 var(--line-strong);
+  box-shadow: inset 2px 0 0 var(--line-strong);
 }
 .msg.error .msg-note {
   color: var(--ink-2);
 }
 .dot {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--dracula-red);
+  background: var(--ink-3);
+  animation: pulse 1s infinite ease-in-out;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+  .chat {
+    scroll-behavior: auto;
+  }
 }
 
 .compose {
@@ -621,17 +673,10 @@ select option {
   }
   .chat {
     flex: none;
-    height: clamp(280px, 42vh, 350px);
+    height: 56vh;
     min-height: 0;
   }
 }
-
-@media (pointer: coarse) {
-  .btn, input, select { min-height: 44px; }
-  input[type="range"] { min-height: 44px; }
-  .inline-field select { min-width: 112px; }
-}
-
 
 @media (max-width: 560px) {
   .site-header {

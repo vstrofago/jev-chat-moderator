@@ -448,6 +448,15 @@ for (const b of document.querySelectorAll<HTMLButtonElement>("[data-lang]")) {
   });
 }
 
+const THEME_STORAGE = "jev-chat-moderator.theme";
+$("theme-toggle").addEventListener("click", () => {
+  const root = document.documentElement;
+  // Dark is the default; light only when the visitor picks it.
+  const next = root.dataset.theme === "light" ? "dark" : "light";
+  root.dataset.theme = next;
+  safeSet(THEME_STORAGE, next);
+});
+
 $("recorded-model").textContent = recorded.model;
 $("recorded-at").textContent = recorded.recordedAt ? recorded.recordedAt.slice(0, 10) : "";
 keyInput.value = safeGet(KEY_STORAGE) ?? "";

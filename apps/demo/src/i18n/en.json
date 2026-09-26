@@ -76,5 +76,6 @@
  "footer.recorded": "Replay recorded with",
  "live.typesafeLocalOnly": "TypeSafe keys only work with the playground running on your machine, because their API doesn't accept calls from other websites. Clone the repo and run: docker compose -f apps/demo/docker-compose.yml up --build (then open http://localhost:8080/playground/). Here you can use a Vercel AI Gateway key.",
  "header.download": "Meet Vigia",
- "header.github": "Code on GitHub"
+ "header.github": "Code on GitHub",
+ "theme.toggle": "Toggle light/dark theme"
 }

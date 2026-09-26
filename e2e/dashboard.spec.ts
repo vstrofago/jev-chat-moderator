@@ -69,18 +69,22 @@ test("keeps all dashboard tabs visible on a 390px screen", async ({ page }) => {
   expect(visibility.every(Boolean)).toBe(true);
 });
 
-test("the overlay shows the current highlight in Dracula dark mode, and refuses a wrong key", async ({ page, request }) => {
+test("the overlay shows the current highlight on a transparent page, and refuses a wrong key", async ({ page, request }) => {
   await page.goto(overlayUrl);
   await expect(page.getByText("what controller are you using?")).toBeVisible();
   await expect(page.locator("body")).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
-  await expect(page.locator(".card")).toHaveCSS("background-color", "rgb(52, 55, 70)");
-  await expect(page.locator(".card")).toHaveCSS("color", "rgb(248, 248, 242)");
+  await expect(page.locator(".card")).toHaveCSS("background-color", "rgb(255, 255, 255)");
+  await expect(page.locator(".card")).toHaveCSS("color", "rgb(23, 23, 23)");
   const wrong = await request.get(overlayUrl.replace(/key=[^&]+/, "key=wrong"));
   expect(wrong.status()).toBe(401);
 });
 
-test("renders the dashboard in Dracula Classic dark mode", async ({ page }) => {
+test("renders the dashboard with Geist: dark by default, light when the system asks", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
   await page.goto(`${url}/#live`);
   await expect(page.locator("html")).toHaveCSS("color-scheme", "dark");
-  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(40, 42, 54)");
+  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(0, 0, 0)");
+  await page.emulateMedia({ colorScheme: "light" });
+  await expect(page.locator("html")).toHaveCSS("color-scheme", "light");
+  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(250, 250, 250)");
 });

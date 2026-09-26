@@ -23,11 +23,12 @@ test.afterAll(async () => {
   await vigia?.stop();
 });
 
-test("sets Vigia up in the browser in Dracula Classic dark mode, then opens the dashboard", async ({ page }) => {
+test("sets Vigia up in the browser in Geist dark mode, then opens the dashboard", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
   await page.goto(url);
   await expect(page.getByRole("heading", { name: "Enter the setup code" })).toBeVisible();
   await expect(page.locator("html")).toHaveCSS("color-scheme", "dark");
-  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(40, 42, 54)");
+  await expect(page.locator("body")).toHaveCSS("background-color", "rgb(0, 0, 0)");
 
   await page.getByLabel("Setup code").fill("WRONGCODE123");
   await page.getByRole("button", { name: "Continue" }).click();
