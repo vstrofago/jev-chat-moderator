@@ -27,9 +27,7 @@ Detalles en [Tus keys](keys/).
 
 :::caution[Versión experimental (v0.1.0)]
 - Empieza en **modo observación** y no uses Vigia como tu única moderación todavía.
-- **"Mi canal" todavía no se ha probado con una cuenta real de Twitch.** "Solo mirar un canal" sí se ha probado con chat real.
 - Los instaladores **no están firmados**, así que Windows y macOS muestran un aviso.
-- La precisión de los packs todavía no está medida.
 :::
 
 ## Siguiente paso

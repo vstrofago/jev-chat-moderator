@@ -15,7 +15,6 @@ Cada mensaje lo revisa Jev, un modelo de [TypeSafe AI](https://typesafe.ai) que 
 > [!WARNING]
 > **Experimental (v0.1.0).** Espera errores y cambios que rompan cosas.
 > - Empieza en **modo observación** y no uses Vigia como tu única moderación todavía.
-> - **"Mi canal" todavía no se ha probado con una cuenta real de Twitch.** "Solo mirar un canal" sí se ha probado con chat real.
 > - Los instaladores **no están firmados**, así que Windows y macOS muestran un aviso.
 
 ## Instalar
@@ -34,7 +33,6 @@ Otras formas de correrlo: [Docker](https://vstrofago.github.io/vigia/docs/docker
 - [Comandos del chat](https://vstrofago.github.io/vigia/docs/commands/)
 - [Overlay de OBS](https://vstrofago.github.io/vigia/docs/overlay/)
 - [Privacidad](https://vstrofago.github.io/vigia/docs/privacy/)
-- [Precisión](https://vstrofago.github.io/vigia/docs/accuracy/)
 - [Preguntas frecuentes](https://vstrofago.github.io/vigia/docs/faq/)
 
 Los docs viven en [`apps/docs`](apps/docs). Para verlos en tu equipo: `pnpm docs`.

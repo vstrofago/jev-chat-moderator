@@ -1,6 +1,6 @@
 /**
  * Measures Jev on the labeled messages of every bundled pack, in English and Spanish, and
- * publishes the numbers on the docs' Accuracy page, in both languages.
+ * writes the numbers to packages/evals/RESULTS.md.
  *
  *   AI_GATEWAY_API_KEY=vck_... pnpm eval            (or JEV_API_KEY for a TypeSafe key)
  *   pnpm eval --render                              (rebuild the tables from results.json)
@@ -69,14 +69,12 @@ for (const m of metrics) {
 }
 
 const date = meta.measuredAt.slice(0, 10);
-for (const [file, lang] of [["apps/docs/src/content/docs/en/accuracy.md", "en"], ["apps/docs/src/content/docs/accuracy.md", "es"]] as const) {
-  const url = new URL(file, ROOT);
-  const note =
-    lang === "es"
-      ? `Medido el ${date} con \`pnpm eval\`, a los umbrales por defecto (actuar ≥ 85 %, dudoso ≥ 50 %).`
-      : `Measured on ${date} with \`pnpm eval\`, at the default thresholds (act ≥ 85%, uncertain ≥ 50%).`;
-  const next = replaceBetweenMarkers(readFileSync(url, "utf8"), `${markdownTable(metrics, lang)}\n\n${note}`);
-  if (next === null) console.error(`${file} has no eval markers; skipped.`);
-  else writeFileSync(url, next);
+const file = new URL("packages/evals/RESULTS.md", ROOT);
+const note = `Measured on ${date} with \`pnpm eval\`, at the default thresholds (act ≥ 85%, uncertain ≥ 50%).`;
+const next = replaceBetweenMarkers(readFileSync(file, "utf8"), `${markdownTable(metrics, "en")}\n\n${note}`);
+if (next === null) {
+  console.error("packages/evals/RESULTS.md has no eval markers; nothing was written.");
+  process.exit(1);
 }
-console.log("Updated the Accuracy page of the docs, in English and Spanish.");
+writeFileSync(file, next);
+console.log("Updated packages/evals/RESULTS.md.");

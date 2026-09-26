@@ -49,7 +49,7 @@ criteria for "yes" and "no".
 - **A new pack** needs labeled examples in `packages/evals/data/<pack>.en.yaml` and
   `.es.yaml` (at least 10 yes and 10 no each, including hard negatives).
 - **Changing a pack's wording** needs a `pnpm eval` run before and after, with both tables
-  in the PR. The docs' Accuracy page only shows measured numbers.
+  in the PR. `pnpm eval` writes its table to `packages/evals/RESULTS.md`.
 - **Custom rules** you find useful fit better as an example in the docs than as a new pack.
 
 ## Code
