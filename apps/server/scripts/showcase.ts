@@ -2,7 +2,10 @@
  * A full Vigia with a scripted chat and canned Jev answers: no key, no Twitch, no network.
  * For working on the dashboard and overlay, and for the screenshots on the landing page.
  *
- *   pnpm --filter @vigia/ui build && pnpm --filter @vigia/server-app showcase [--port 7790] [--lang es]
+ *   pnpm --filter @vigia/ui build && pnpm --filter @vigia/server-app showcase [--port 7790] [--lang es] [--drip 1800]
+ *
+ * --drip sends the chat one message at a time, every so many milliseconds, looping, instead
+ * of all at once: for recording the dashboard and overlay as they react.
  */
 import { mkdtemp } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -11,7 +14,9 @@ import { parseArgs } from "node:util";
 import type { ChatAuthor, ChatMessage, Engine } from "@vigia/engine";
 import { defaultUiDir, startVigia, type ChatSource } from "@vigia/server";
 
-const { values } = parseArgs({ options: { port: { type: "string", default: "7790" }, lang: { type: "string", default: "en" } } });
+const { values } = parseArgs({
+  options: { port: { type: "string", default: "7790" }, lang: { type: "string", default: "en" }, drip: { type: "string" } },
+});
 const es = values.lang === "es";
 
 const RULES = `version: 1
@@ -83,9 +88,15 @@ const vigia = await startVigia({
 vigia.store.setSetting("setupDone", true);
 
 let seq = 0;
-for (const [login, en, esText] of CHAT) {
+const send = async ([login, en, esText]: Line) => {
   const text = es ? esText : en;
   const m: ChatMessage = { id: `m${++seq}`, text, author: author(login), fragments: [{ type: "text", text }] };
   await engine!.handleMessage(m);
+};
+if (values.drip) {
+  const every = Number(values.drip);
+  setInterval(() => void send(CHAT[seq % CHAT.length]), every);
+} else {
+  for (const line of CHAT) await send(line);
 }
 console.log(`Showcase dashboard: ${vigia.url}/  (overlay: ${vigia.overlayUrl})`);
