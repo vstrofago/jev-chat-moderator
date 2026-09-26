@@ -298,13 +298,23 @@ textarea.code { font-family: var(--mono); font-size: var(--text-13); }
     right: 0;
     flex-direction: row;
     overflow-x: auto;
-    padding: 6px;
+    gap: 2px;
+    padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
     border: 0;
     border-top: 1px solid var(--ds-gray-alpha-400);
     z-index: 5;
   }
-  .rail button { flex: none; }
-  .main { padding: 16px 16px 88px; }
+  /* All six tabs fit on a 390px screen: they share the width instead of scrolling. */
+  .rail button {
+    flex: 1 0 auto;
+    justify-content: center;
+    gap: 4px;
+    height: 44px;
+    padding: 0 5px;
+    font-size: var(--text-12);
+  }
+  .rail .badge { min-width: 16px; height: 16px; padding: 0 4px; font-size: 10px; line-height: 16px; }
+  .main { padding: 16px 16px calc(88px + env(safe-area-inset-bottom)); }
   .topbar { flex-wrap: wrap; gap: 10px; height: auto; padding: 10px 16px; }
   .context { display: none; }
   .message { grid-template-columns: 1fr; gap: 4px; }
