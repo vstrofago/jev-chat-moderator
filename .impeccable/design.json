@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-24T22:25:32Z",
+  "title": "Design System: Vigia",
+  "extensions": {
+    "colorMeta": {
+      "primary": {"role": "primary", "displayName": "Dracula Purple", "tonalRamp": ["oklch(15% 0.149 301.9)", "oklch(25% 0.149 301.9)", "oklch(35% 0.149 301.9)", "oklch(45% 0.149 301.9)", "oklch(55% 0.149 301.9)", "oklch(65% 0.149 301.9)", "oklch(80% 0.149 301.9)", "oklch(95% 0.149 301.9)"]},
+      "orange": {"role": "secondary", "displayName": "Dracula Orange", "tonalRamp": ["oklch(15% 0.124 66.6)", "oklch(25% 0.124 66.6)", "oklch(35% 0.124 66.6)", "oklch(45% 0.124 66.6)", "oklch(55% 0.124 66.6)", "oklch(65% 0.124 66.6)", "oklch(80% 0.124 66.6)", "oklch(95% 0.124 66.6)"]},
+      "background": {"role": "neutral", "displayName": "Dracula Background", "tonalRamp": ["oklch(15% 0.022 277.5)", "oklch(25% 0.022 277.5)", "oklch(35% 0.022 277.5)", "oklch(45% 0.022 277.5)", "oklch(55% 0.022 277.5)", "oklch(65% 0.022 277.5)", "oklch(80% 0.022 277.5)", "oklch(95% 0.022 277.5)"]},
+      "background-dark": {"role": "neutral", "displayName": "Dracula Dark Background", "tonalRamp": ["oklch(15% 0.019 280.5)", "oklch(25% 0.019 280.5)", "oklch(35% 0.019 280.5)", "oklch(45% 0.019 280.5)", "oklch(55% 0.019 280.5)", "oklch(65% 0.019 280.5)", "oklch(80% 0.019 280.5)", "oklch(95% 0.019 280.5)"]},
+      "background-darker": {"role": "neutral", "displayName": "Dracula Deep Background", "tonalRamp": ["oklch(15% 0.014 278.8)", "oklch(25% 0.014 278.8)", "oklch(35% 0.014 278.8)", "oklch(45% 0.014 278.8)", "oklch(55% 0.014 278.8)", "oklch(65% 0.014 278.8)", "oklch(80% 0.014 278.8)", "oklch(95% 0.014 278.8)"]},
+      "surface": {"role": "neutral", "displayName": "Dracula Floating Surface", "tonalRamp": ["oklch(15% 0.027 276.0)", "oklch(25% 0.027 276.0)", "oklch(35% 0.027 276.0)", "oklch(45% 0.027 276.0)", "oklch(55% 0.027 276.0)", "oklch(65% 0.027 276.0)", "oklch(80% 0.027 276.0)", "oklch(95% 0.027 276.0)"]},
+      "surface-raised": {"role": "neutral", "displayName": "Dracula Raised Surface", "tonalRamp": ["oklch(15% 0.020 277.9)", "oklch(25% 0.020 277.9)", "oklch(35% 0.020 277.9)", "oklch(45% 0.020 277.9)", "oklch(55% 0.020 277.9)", "oklch(65% 0.020 277.9)", "oklch(80% 0.020 277.9)", "oklch(95% 0.020 277.9)"]},
+      "selection": {"role": "neutral", "displayName": "Dracula Selection", "tonalRamp": ["oklch(15% 0.032 277.8)", "oklch(25% 0.032 277.8)", "oklch(35% 0.032 277.8)", "oklch(45% 0.032 277.8)", "oklch(55% 0.032 277.8)", "oklch(65% 0.032 277.8)", "oklch(80% 0.032 277.8)", "oklch(95% 0.032 277.8)"]},
+      "current-line": {"role": "neutral", "displayName": "Dracula Current Line", "tonalRamp": ["oklch(15% 0.080 270.1)", "oklch(25% 0.080 270.1)", "oklch(35% 0.080 270.1)", "oklch(45% 0.080 270.1)", "oklch(55% 0.080 270.1)", "oklch(65% 0.080 270.1)", "oklch(80% 0.080 270.1)", "oklch(95% 0.080 270.1)"]},
+      "foreground": {"role": "neutral", "displayName": "Dracula Foreground", "tonalRamp": ["oklch(15% 0.008 106.5)", "oklch(25% 0.008 106.5)", "oklch(35% 0.008 106.5)", "oklch(45% 0.008 106.5)", "oklch(55% 0.008 106.5)", "oklch(65% 0.008 106.5)", "oklch(80% 0.008 106.5)", "oklch(95% 0.008 106.5)"]},
+      "muted": {"role": "neutral", "displayName": "Muted Foreground", "tonalRamp": ["oklch(15% 0.008 106.5 / 78%)", "oklch(25% 0.008 106.5 / 78%)", "oklch(35% 0.008 106.5 / 78%)", "oklch(45% 0.008 106.5 / 78%)", "oklch(55% 0.008 106.5 / 78%)", "oklch(65% 0.008 106.5 / 78%)", "oklch(80% 0.008 106.5 / 78%)", "oklch(95% 0.008 106.5 / 78%)"]},
+      "subtle": {"role": "neutral", "displayName": "Subtle Foreground", "tonalRamp": ["oklch(15% 0.008 106.5 / 68%)", "oklch(25% 0.008 106.5 / 68%)", "oklch(35% 0.008 106.5 / 68%)", "oklch(45% 0.008 106.5 / 68%)", "oklch(55% 0.008 106.5 / 68%)", "oklch(65% 0.008 106.5 / 68%)", "oklch(80% 0.008 106.5 / 68%)", "oklch(95% 0.008 106.5 / 68%)"]},
+      "line": {"role": "neutral", "displayName": "Translucent Current-Line Separator", "tonalRamp": ["oklch(15% 0.080 270.1 / 40%)", "oklch(25% 0.080 270.1 / 40%)", "oklch(35% 0.080 270.1 / 40%)", "oklch(45% 0.080 270.1 / 40%)", "oklch(55% 0.080 270.1 / 40%)", "oklch(65% 0.080 270.1 / 40%)", "oklch(80% 0.080 270.1 / 40%)", "oklch(95% 0.080 270.1 / 40%)"]},
+      "red": {"role": "tertiary", "displayName": "Dracula Red", "tonalRamp": ["oklch(15% 0.206 24.4)", "oklch(25% 0.206 24.4)", "oklch(35% 0.206 24.4)", "oklch(45% 0.206 24.4)", "oklch(55% 0.206 24.4)", "oklch(65% 0.206 24.4)", "oklch(80% 0.206 24.4)", "oklch(95% 0.206 24.4)"]},
+      "danger-text": {"role": "tertiary", "displayName": "Readable Danger Text", "tonalRamp": ["oklch(15% 0.101 19.5)", "oklch(25% 0.101 19.5)", "oklch(35% 0.101 19.5)", "oklch(45% 0.101 19.5)", "oklch(55% 0.101 19.5)", "oklch(65% 0.101 19.5)", "oklch(80% 0.101 19.5)", "oklch(95% 0.101 19.5)"]},
+      "yellow": {"role": "tertiary", "displayName": "Dracula Yellow", "tonalRamp": ["oklch(15% 0.134 112.8)", "oklch(25% 0.134 112.8)", "oklch(35% 0.134 112.8)", "oklch(45% 0.134 112.8)", "oklch(55% 0.134 112.8)", "oklch(65% 0.134 112.8)", "oklch(80% 0.134 112.8)", "oklch(95% 0.134 112.8)"]},
+      "green": {"role": "tertiary", "displayName": "Dracula Green", "tonalRamp": ["oklch(15% 0.220 148.0)", "oklch(25% 0.220 148.0)", "oklch(35% 0.220 148.0)", "oklch(45% 0.220 148.0)", "oklch(55% 0.220 148.0)", "oklch(65% 0.220 148.0)", "oklch(80% 0.220 148.0)", "oklch(95% 0.220 148.0)"]},
+      "bright-green": {"role": "tertiary", "displayName": "Readable Bright Green", "tonalRamp": ["oklch(15% 0.195 150.0)", "oklch(25% 0.195 150.0)", "oklch(35% 0.195 150.0)", "oklch(45% 0.195 150.0)", "oklch(55% 0.195 150.0)", "oklch(65% 0.195 150.0)", "oklch(80% 0.195 150.0)", "oklch(95% 0.195 150.0)"]},
+      "cyan": {"role": "tertiary", "displayName": "Dracula Cyan", "tonalRamp": ["oklch(15% 0.093 212.8)", "oklch(25% 0.093 212.8)", "oklch(35% 0.093 212.8)", "oklch(45% 0.093 212.8)", "oklch(55% 0.093 212.8)", "oklch(65% 0.093 212.8)", "oklch(80% 0.093 212.8)", "oklch(95% 0.093 212.8)"]},
+      "pink": {"role": "tertiary", "displayName": "Dracula Pink", "tonalRamp": ["oklch(15% 0.183 346.8)", "oklch(25% 0.183 346.8)", "oklch(35% 0.183 346.8)", "oklch(45% 0.183 346.8)", "oklch(55% 0.183 346.8)", "oklch(65% 0.183 346.8)", "oklch(80% 0.183 346.8)", "oklch(95% 0.183 346.8)"]}
+    },
+    "typographyMeta": {
+      "display": {"displayName": "Display", "purpose": "Responsive landing hero headline in Atkinson Hyperlegible Next."},
+      "body": {"displayName": "UI and Reading", "purpose": "Chat, controls, and explanatory copy use Atkinson Hyperlegible Next."},
+      "code": {"displayName": "Technical Numerals", "purpose": "System monospace for short code, timestamps, thresholds, and tabular figures."}
+    },
+    "shadows": [
+      {"name": "showcase-chat", "value": "0 30px 80px rgb(0 0 0 / 40%)", "purpose": "Separates the landing-page chat demonstration from its surrounding stage."},
+      {"name": "floating-menu", "value": "0 16px 40px rgb(25 26 33 / 72%)", "purpose": "Elevates an open dashboard status menu above the work area."},
+      {"name": "obs-card", "value": "0 12px 40px rgb(25 26 33 / 72%)", "purpose": "Separates the OBS card from arbitrary video content behind its transparent document."}
+    ],
+    "motion": [
+      {"name": "control-feedback", "value": "150ms ease", "purpose": "Subtle hover/active feedback on landing controls."},
+      {"name": "message-action-reveal", "value": "120ms opacity", "purpose": "Reveals dashboard message actions on hover or focus; actions stay visible on touch."},
+      {"name": "overlay-enter", "value": "360ms cubic-bezier(0.2, 0.8, 0.2, 1)", "purpose": "Short entrance for the OBS card."},
+      {"name": "reduced-motion", "value": "prefers-reduced-motion: reduce; use near-instant overlay animation and disable smooth chat scrolling", "purpose": "Honors the user's reduced-motion preference."}
+    ],
+    "breakpoints": [
+      {"name": "mobile-stats", "value": "420px"},
+      {"name": "landing-mobile", "value": "640px"},
+      {"name": "dashboard-mobile-navigation", "value": "760px"},
+      {"name": "playground-stack", "value": "860px"},
+      {"name": "landing-stack", "value": "960px"},
+      {"name": "dashboard-feed-stack", "value": "1100px"}
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Operator Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Compact purple primary action used in the operational UI.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">Continue</button>",
+      "css": ".ds-button-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 12px; border: 1px solid transparent; border-radius: 6px; background: var(--dracula-purple); color: var(--dracula-background); font: 700 13px var(--font); cursor: pointer; } .ds-button-primary:hover { border-color: var(--dracula-subtle); } .ds-button-primary:focus-visible { outline: 2px solid var(--dracula-purple); outline-offset: 2px; }"
+    },
+    {
+      "name": "Landing CTA",
+      "kind": "button",
+      "refersTo": "button-landing-cta",
+      "description": "Orange, high-emphasis install/playground action on the public landing page.",
+      "html": "<a class=\"ds-landing-cta\" href=\"#install\">Install Vigia</a>",
+      "css": ".ds-landing-cta { display: inline-flex; align-items: center; justify-content: center; height: 46px; padding: 0 22px; border: 1px solid transparent; border-radius: 10px; background: var(--dracula-orange); color: var(--dracula-background); font: 600 16px var(--font); text-decoration: none; transition: transform 150ms ease, background-color 150ms ease; } .ds-landing-cta:hover { background: var(--dracula-orange); } .ds-landing-cta:active { transform: translateY(1px); } .ds-landing-cta:focus-visible { outline: 2px solid var(--dracula-purple); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Labeled operator input with a dark fill and visible focus outline.",
+      "html": "<label class=\"ds-field\"><span>Channel</span><input type=\"text\" value=\"streamer\" /></label>",
+      "css": ".ds-field { display: grid; gap: 6px; color: var(--dracula-muted); font: 700 13px var(--font); } .ds-field input { width: 100%; min-height: 36px; padding: 6px 10px; border: 1px solid rgb(98 114 164 / 46%); border-radius: 6px; background: var(--dracula-background); color: var(--dracula-foreground); font: 400 15px / 1.45 var(--font); } .ds-field input:focus-visible { outline: 2px solid var(--dracula-purple); outline-offset: 2px; }"
+    },
+    {
+      "name": "Selected Navigation Item",
+      "kind": "nav",
+      "refersTo": "nav-active",
+      "description": "Stable dashboard rail item with a purple selected marker and a labeled destination.",
+      "html": "<button class=\"ds-nav-item\" type=\"button\" aria-current=\"page\">Live</button>",
+      "css": ".ds-nav-item { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; border: 0; border-radius: 6px; background: var(--dracula-selection); color: var(--dracula-foreground); box-shadow: inset 3px 0 0 var(--dracula-purple); font: 700 15px var(--font); text-align: left; cursor: pointer; } .ds-nav-item:hover { background: var(--dracula-floating); color: var(--dracula-foreground); } .ds-nav-item:focus-visible { outline: 2px solid var(--dracula-purple); outline-offset: 2px; }"
+    },
+    {
+      "name": "Review Status Chip",
+      "kind": "chip",
+      "refersTo": "status-chip-review",
+      "description": "Outlined review label; the written state remains visible in addition to its color.",
+      "html": "<span class=\"ds-status-chip\" role=\"status\">Needs review</span>",
+      "css": ".ds-status-chip { display: inline-flex; align-items: baseline; gap: 4px; padding: 1px 8px; border: 1px solid currentColor; border-radius: 999px; color: var(--dracula-orange); font: 400 13px var(--font); }"
+    },
+    {
+      "name": "Operator Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Flat grouping surface for related dashboard controls and readings.",
+      "html": "<section class=\"ds-panel\"><h2>Rules</h2><p>Review current thresholds.</p></section>",
+      "css": ".ds-panel { padding: 16px; border: 1px solid rgb(98 114 164 / 46%); border-radius: 10px; background: var(--dracula-floating); color: var(--dracula-foreground); font: 400 15px / 1.45 var(--font); } .ds-panel h2 { margin: 0 0 8px; font: 700 24px / 1.2 var(--font); } .ds-panel p { margin: 0; color: var(--dracula-muted); }"
+    },
+    {
+      "name": "Review Message Row",
+      "kind": "custom",
+      "refersTo": "message-review",
+      "description": "Chat row marked for human review with a restrained orange tint and leading rule.",
+      "html": "<div class=\"ds-message-review\"><span>12:04</span><span>Message text</span><span class=\"ds-status-chip\">Review</span></div>",
+      "css": ".ds-message-review { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 6px 12px; border-radius: 0 6px 6px 0; background: rgb(255 184 108 / 14%); box-shadow: inset 1px 0 0 var(--dracula-orange); color: var(--dracula-foreground); font: 400 15px / 1.45 var(--font); font-variant-numeric: tabular-nums; } .ds-message-review .ds-status-chip { border: 1px solid currentColor; border-radius: 999px; padding: 1px 8px; color: var(--dracula-orange); font-size: 13px; }"
+    },
+    {
+      "name": "OBS Overlay Card",
+      "kind": "custom",
+      "refersTo": "overlay-card",
+      "description": "Dracula floating card over a transparent OBS document, with a thin accent edge.",
+      "html": "<article class=\"ds-overlay-card\"><div class=\"ds-overlay-meta\"><span class=\"ds-overlay-label\">Highlighted</span><span class=\"ds-overlay-author\">Streamer</span></div><p>Selected chat message</p></article>",
+      "css": ".ds-overlay-card { max-width: min(640px, 100%); padding: 18px 22px 20px; border: 1px solid rgb(98 114 164 / 42%); border-top: 2px solid var(--dracula-cyan); border-radius: 10px; background: var(--dracula-floating); color: var(--dracula-foreground); box-shadow: 0 12px 40px rgb(25 26 33 / 72%); font-family: var(--font); } .ds-overlay-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; } .ds-overlay-label { padding: 3px 9px; border-radius: 999px; background: var(--dracula-purple); color: var(--dracula-background); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; } .ds-overlay-author { color: var(--dracula-muted); font-size: 18px; font-weight: 600; } .ds-overlay-card p { margin: 0; font-size: 28px; line-height: 1.3; font-weight: 600; overflow-wrap: anywhere; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Legible Broadcast Scoreboard",
+    "overview": "Vigia uses Dracula Classic as a precise, readable working palette rather than a decorative neon effect. Its visual grammar borrows the stable slots and numeric clarity of a broadcast scoreboard so moderation states, reasons, and controls remain easy to scan while a stream is live.\n\nEach surface keeps its own task and affordances: the landing page demonstrates the existing chat decision flow, the playground pairs controls with a bounded chat replay, and the dashboard, setup/login, and OBS overlay remain operational. Atkinson Hyperlegible Next carries UI text; system monospace is reserved for short code and numerals. The existing bat emoji remains the product mark.",
+    "keyCharacteristics": [
+      "Dark-only Dracula Classic palette with stable, semantic color assignments.",
+      "Flat tonal surfaces, thin blue-gray separators, and restrained depth.",
+      "Explicit text labels accompany colored moderation states.",
+      "Surface-specific responsive layouts preserve controls and reading order."
+    ],
+    "rules": [
+      {"name": "The Labeled-State Rule", "body": "Color reinforces a state but never carries it alone; retain the explicit state label and any existing icon or rule marker.", "section": "colors"},
+      {"name": "The Reading-First Rule", "body": "Keep messages and explanatory copy in Atkinson Hyperlegible Next; reserve monospace for short technical or numeric values.", "section": "typography"},
+      {"name": "The Structural-Depth Rule", "body": "Prefer tonal surface changes and borders at rest; use shadows only where a layer actually floats or is being presented.", "section": "elevation"}
+    ],
+    "dos": [
+      "Do keep the Dracula Classic color roles stable across landing, playground, dashboard, setup/login, and overlay.",
+      "Do accompany status colors with explicit text and preserve visible keyboard focus.",
+      "Do use Atkinson Hyperlegible Next for UI and system monospace for short code and numerals.",
+      "Do keep the OBS document transparent and style only its floating card.",
+      "Do retain the existing bat emoji as Vigia's mark."
+    ],
+    "donts": [
+      "Don't introduce light mode, system-preference light surfaces, neon glow, glass, gradients, or pixel fonts.",
+      "Don't rely on color alone for moderation states or use current-line as small reading text.",
+      "Don't reveal spoiler-marked message text by default.",
+      "Don't replace the bat mark or redesign it as part of a visual-system extension."
+    ]
+  }
+}

@@ -1,77 +1,37 @@
 /*
- * Vigia's landing page. The brand is the lookout's lantern: night navy and lamp amber.
- * The hero and the "yours" band stay at night in both themes; the rest follows the theme.
+ * Dracula Classic for Vigia: the stream stays legible at a glance, without generic neon glow.
  */
+@import "../../../../packages/ui/src/styles/dracula.css";
 :root {
-  --night: #0f1726;
-  --night-2: #162236;
-  --night-ink: #e8edf5;
-  --night-ink-2: rgb(232 237 245 / 70%);
-  --night-line: rgb(232 237 245 / 14%);
-  --lamp: #f2b544;
-  --lamp-ink: #1b1305;
+  --night: var(--dracula-background-dark);
+  --night-2: var(--dracula-floating);
+  --night-ink: var(--dracula-foreground);
+  --night-ink-2: var(--dracula-muted);
+  --night-line: rgb(98 114 164 / 48%);
+  --lamp: var(--dracula-orange);
+  --lamp-ink: var(--dracula-background);
 
-  --bg: #f7f5f0;
-  --surface: #ffffff;
-  --ink: #0f1726;
-  --ink-2: rgb(15 23 38 / 70%);
-  --ink-3: rgb(15 23 38 / 55%);
-  --line: rgb(15 23 38 / 11%);
-  --accent-ink: #8a5a00;
+  --bg: var(--dracula-background);
+  --surface: var(--dracula-floating);
+  --ink: var(--dracula-foreground);
+  --ink-2: var(--dracula-muted);
+  --ink-3: var(--dracula-subtle);
+  --line: rgb(98 114 164 / 40%);
+  --accent-ink: var(--dracula-purple);
 
-  --remove: #b3432d;
-  --remove-soft: #fbeae5;
-  --review: #9a6a10;
-  --review-soft: #fbf1dc;
-  --allow: #2f7a4d;
-  --allow-soft: #e3f3e8;
-  --spoiler: #5b5fc7;
-  --spoiler-soft: #ebebfb;
+  --remove: var(--dracula-danger-text);
+  --remove-soft: rgb(255 85 85 / 14%);
+  --review: var(--dracula-orange);
+  --review-soft: rgb(255 184 108 / 14%);
+  --allow: var(--dracula-bright-green);
+  --allow-soft: rgb(80 250 123 / 12%);
+  --spoiler: var(--dracula-purple);
+  --spoiler-soft: rgb(189 147 249 / 14%);
 
   --radius: 10px;
   --radius-lg: 16px;
-  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font: "Atkinson Hyperlegible Next", system-ui, sans-serif;
   --mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0b111c;
-    --surface: #121a29;
-    --ink: #e8edf5;
-    --ink-2: rgb(232 237 245 / 72%);
-    --ink-3: rgb(232 237 245 / 55%);
-    --line: rgb(232 237 245 / 12%);
-    --accent-ink: #f2b544;
-    --remove: #ef8f7a;
-    --remove-soft: #2b1712;
-    --review: #e6bd70;
-    --review-soft: #2a2110;
-    --allow: #7fcb9c;
-    --allow-soft: #10271a;
-    --spoiler: #a9acf5;
-    --spoiler-soft: #1b1c38;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0b111c;
-  --surface: #121a29;
-  --ink: #e8edf5;
-  --ink-2: rgb(232 237 245 / 72%);
-  --ink-3: rgb(232 237 245 / 55%);
-  --line: rgb(232 237 245 / 12%);
-  --accent-ink: #f2b544;
-  --remove: #ef8f7a;
-  --remove-soft: #2b1712;
-  --review: #e6bd70;
-  --review-soft: #2a2110;
-  --allow: #7fcb9c;
-  --allow-soft: #10271a;
-  --spoiler: #a9acf5;
-  --spoiler-soft: #1b1c38;
-  color-scheme: dark;
 }
 
 *,
@@ -125,7 +85,7 @@ pre {
   color: var(--ink-2);
 }
 :focus-visible {
-  outline: 2px solid var(--lamp);
+  outline: 2px solid var(--dracula-purple);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -153,8 +113,7 @@ pre {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: color-mix(in srgb, var(--night) 88%, transparent);
-  backdrop-filter: saturate(1.4) blur(10px);
+  background: var(--night);
   color: var(--night-ink);
   border-bottom: 1px solid var(--night-line);
 }
@@ -210,21 +169,6 @@ pre {
   background: var(--night-line);
   color: var(--night-ink);
 }
-.icon-link .icon-moon,
-:root[data-theme="dark"] .icon-link .icon-sun {
-  display: none;
-}
-:root[data-theme="dark"] .icon-link .icon-moon {
-  display: block;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .icon-link .icon-sun {
-    display: none;
-  }
-  :root:not([data-theme="light"]) .icon-link .icon-moon {
-    display: block;
-  }
-}
 .lang {
   display: inline-flex;
   border: 1px solid var(--night-line);
@@ -264,9 +208,10 @@ pre {
 .btn-accent {
   background: var(--lamp);
   color: var(--lamp-ink);
+  border-color: transparent;
 }
 .btn-accent:hover {
-  background: #f6c66a;
+  background: var(--dracula-orange);
 }
 .btn-ghost {
   border-color: currentColor;
@@ -299,32 +244,42 @@ pre {
 /* Hero */
 .hero {
   position: relative;
-  background:
-    radial-gradient(45% 55% at 75% 50%, rgb(242 181 68 / 9%), transparent 70%),
-    var(--night);
+  background: var(--night);
   color: var(--night-ink);
   padding: 88px 0 104px;
   overflow: hidden;
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
   gap: 56px;
   align-items: center;
 }
-.eyebrow,
-.kicker {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: 32px;
+}
+.section-heading h2 {
+  max-width: 20ch;
+  margin: 0;
+}
+.section-heading .kicker {
+  flex: 0 0 auto;
+  margin: 0 0 3px;
+  color: var(--dracula-orange);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 16px;
 }
-.eyebrow {
-  color: var(--lamp);
-}
-.kicker {
-  color: var(--accent-ink);
+.hero-meta {
+  max-width: 48ch;
+  margin: 12px 0 0;
+  color: var(--night-ink-2);
+  font-size: 13px;
 }
 .hero h1 {
   font-size: clamp(44px, 7vw, 76px);
@@ -372,8 +327,7 @@ pre {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #e5484d;
-  box-shadow: 0 0 0 4px rgb(229 72 77 / 20%);
+  background: var(--dracula-red);
 }
 .chat ul {
   list-style: none;
@@ -384,35 +338,23 @@ pre {
   padding: 9px 18px;
   font-size: 15px;
   line-height: 1.45;
-  opacity: 0;
-  animation: row-in 0.5s ease forwards;
-}
-.row:nth-child(1) { animation-delay: 0.2s; }
-.row:nth-child(2) { animation-delay: 0.6s; }
-.row:nth-child(3) { animation-delay: 1s; }
-.row:nth-child(4) { animation-delay: 1.4s; }
-.row:nth-child(5) { animation-delay: 1.8s; }
-.row:nth-child(6) { animation-delay: 2.2s; }
-@keyframes row-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
 }
 .who {
   font-weight: 700;
 }
-.c1 { color: #7fb3ff; }
-.c2 { color: #ff9ecf; }
-.c3 { color: #9be29b; }
-.c4 { color: #ffb86b; }
-.c5 { color: #c9a7ff; }
-.c6 { color: #6fd6d6; }
+.c1 { color: var(--dracula-cyan); }
+.c2 { color: var(--dracula-pink); }
+.c3 { color: var(--dracula-green); }
+.c4 { color: var(--dracula-orange); }
+.c5 { color: var(--dracula-purple); }
+.c6 { color: var(--dracula-foreground); }
 .text {
   color: var(--night-ink);
 }
 .is-deleted .text {
   color: var(--night-ink-2);
   text-decoration: line-through;
-  text-decoration-color: rgb(239 143 122 / 70%);
+  text-decoration-color: var(--dracula-bright-red);
 }
 .blurred {
   filter: blur(5px);
@@ -422,7 +364,7 @@ pre {
   display: inline-block;
   margin: 4px 0 0 0;
   padding: 2px 9px;
-  border-radius: 999px;
+  border-radius: 4px;
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
@@ -431,24 +373,23 @@ pre {
 .row .chip {
   display: table;
 }
-.chip-remove { background: rgb(239 143 122 / 16%); color: #f3a592; }
-.chip-allow { background: rgb(127 203 156 / 16%); color: #95d8ae; }
-.chip-spoiler { background: rgb(169 172 245 / 18%); color: #bec0fa; }
-.chip-review { background: rgb(242 181 68 / 16%); color: #f2c56e; }
+.chip-remove { background: var(--dracula-red); color: var(--dracula-background); }
+.chip-allow { background: var(--dracula-green); color: var(--dracula-background); }
+.chip-spoiler { background: var(--dracula-purple); color: var(--dracula-background); }
+.chip-review { background: var(--dracula-orange); color: var(--dracula-background); }
 
 .overlay-card {
   position: absolute;
   right: -12px;
   bottom: 0;
   width: min(330px, 80%);
-  background: #fff;
-  color: #0f1726;
-  border-radius: 14px;
-  border-left: 5px solid var(--lamp);
+  background: var(--dracula-floating);
+  color: var(--dracula-foreground);
+  border: 1px solid var(--dracula-current-line);
+  border-top: 2px solid var(--dracula-cyan);
+  border-radius: 10px;
   padding: 14px 18px;
-  box-shadow: 0 24px 60px rgb(0 0 0 / 45%);
-  opacity: 0;
-  animation: row-in 0.6s ease 2.8s forwards;
+  box-shadow: 0 24px 60px rgb(25 26 33 / 72%);
 }
 .overlay-card p {
   margin: 0;
@@ -460,7 +401,7 @@ pre {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #8a5a00;
+  color: var(--dracula-purple);
   margin-bottom: 4px;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -494,15 +435,25 @@ pre {
   display: grid;
   gap: 20px;
 }
-.grid-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 28px;
 }
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+.grid-3 > .card {
+  padding: 22px 20px 24px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+.grid-3 > .card:nth-child(3n) { padding-right: 0; }
+.grid-3 > .card-night { border-top-color: var(--night-line); }
 .card p {
   color: var(--ink-2);
   margin: 0;
@@ -512,10 +463,6 @@ pre {
   font: 600 13px var(--mono);
   color: var(--accent-ink);
   margin-bottom: 18px;
-}
-.card-night {
-  background: var(--night-2);
-  border-color: var(--night-line);
 }
 .card-night p {
   color: var(--night-ink-2);
@@ -553,7 +500,7 @@ pre {
   height: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
-  box-shadow: 0 20px 50px rgb(15 23 38 / 14%);
+  box-shadow: 0 16px 32px rgb(25 26 33 / 58%);
 }
 .shot figcaption {
   margin-top: 14px;
@@ -571,9 +518,9 @@ pre {
 .callout {
   margin: 24px 0 8px;
   padding: 16px 18px;
-  border-left: 4px solid var(--spoiler);
+  border-top: 2px solid var(--spoiler);
   background: var(--spoiler-soft);
-  border-radius: 0 var(--radius) var(--radius) 0;
+  border-radius: 0 0 var(--radius) var(--radius);
   font-size: 16px;
 }
 .layers {
@@ -586,10 +533,11 @@ pre {
 .layers li {
   display: flex;
   gap: 18px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 20px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
 }
 .layers p {
   margin: 0;
@@ -651,6 +599,9 @@ pre {
 .scale-ticks span:first-child {
   transform: none;
 }
+.scale-ticks span:nth-last-child(2) {
+  transform: translateX(-100%);
+}
 .scale-ticks span:last-child {
   transform: translateX(-100%);
 }
@@ -668,7 +619,7 @@ pre {
 .install pre {
   margin: 0;
   padding: 14px 16px;
-  background: #0a101b;
+  background: var(--dracula-background-dark);
   border: 1px solid var(--night-line);
   color: var(--night-ink);
   border-radius: var(--radius);
@@ -698,8 +649,7 @@ pre {
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  border-color: color-mix(in srgb, var(--lamp) 55%, var(--line));
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lamp) 14%, transparent);
+  border-color: var(--dracula-orange);
 }
 .install-main > div:first-child {
   max-width: 620px;
@@ -711,9 +661,9 @@ pre {
   display: inline-block;
   margin-bottom: 12px;
   padding: 3px 10px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--lamp) 22%, transparent);
-  color: var(--accent-ink);
+  border-radius: 4px;
+  background: var(--dracula-selection);
+  color: var(--dracula-orange);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -815,8 +765,14 @@ pre {
   .hero {
     padding: 56px 0 72px;
   }
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
   .grid-3 {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
   .split {
     gap: 32px;
@@ -850,4 +806,9 @@ pre {
   .btn {
     flex: 1 1 auto;
   }
+}
+
+@media (pointer: coarse) {
+  .icon-link { width: 44px; height: 44px; }
+  .lang button { min-width: 40px; min-height: 40px; }
 }
