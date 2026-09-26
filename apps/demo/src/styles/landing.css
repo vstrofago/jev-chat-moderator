@@ -921,6 +921,167 @@ pre {
   transform: translateX(-100%);
 }
 
+/* Rule example: one real rule, one real message, and where its answer lands. */
+.rule-example {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin: 48px 0 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-surface);
+  background: var(--surface);
+  overflow: hidden;
+}
+.rule-def,
+.rule-run {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 28px;
+}
+.rule-run {
+  border-left: 1px solid var(--border);
+  background: var(--bg);
+}
+.rule-id {
+  font: 500 13px var(--mono);
+  color: var(--fg-subtle);
+}
+.rule-question {
+  margin: 0;
+  font: 400 15px/1.55 var(--mono);
+  color: var(--fg);
+}
+.rule-translation {
+  margin: 0;
+  font-size: 13px;
+}
+.rule-meta {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+.rule-meta div {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 12px;
+}
+.rule-meta dt {
+  font: 500 11px/1.9 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+.rule-meta dd {
+  margin: 0;
+  color: var(--fg-muted);
+}
+.rule-msg {
+  margin: 0;
+  font-size: 15px;
+  color: var(--fg-muted);
+}
+.rule-msg b {
+  font: 500 13px var(--mono);
+  color: var(--fg);
+}
+.rule-run .scale {
+  margin: 28px 0 0;
+}
+.rule-run .scale-ticks span:last-child {
+  transform: translateX(-50%);
+}
+.tick-act {
+  color: var(--danger);
+}
+.scale-bar {
+  position: relative;
+}
+.marker {
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--fg);
+}
+.marker span {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 6px;
+  border-radius: var(--radius-badge);
+  background: var(--fg);
+  color: var(--bg);
+  font: 500 11px/1.6 var(--mono);
+  white-space: nowrap;
+}
+.rule-result {
+  margin: 0;
+  font-size: 14px;
+  color: var(--fg-muted);
+}
+.rule-result .chip {
+  margin: 0 6px 0 0;
+}
+
+/* Jev */
+.lead-muted {
+  max-width: 44em;
+  margin: -24px 0 40px;
+  color: var(--fg-muted);
+}
+#jev .text-link {
+  margin-top: 24px;
+}
+
+/* FAQ: plain disclosure rows on hairlines. */
+.faq {
+  border-top: 1px solid var(--border);
+}
+.faq details {
+  border-bottom: 1px solid var(--border);
+}
+.faq summary {
+  display: grid;
+  grid-template-columns: 48px 1fr 24px;
+  gap: 12px;
+  align-items: baseline;
+  padding: 20px 0;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  list-style: none;
+  cursor: pointer;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  content: "+";
+  font: 400 18px var(--mono);
+  color: var(--fg-subtle);
+  text-align: right;
+  transition: transform 220ms var(--ease-standard);
+}
+.faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+.faq summary:hover::after {
+  color: var(--fg);
+}
+.faq-num {
+  font: 500 11px var(--mono);
+  letter-spacing: 0.08em;
+  color: var(--fg-subtle);
+}
+.faq details p {
+  margin: -4px 36px 24px 60px;
+  max-width: 44em;
+  color: var(--fg-muted);
+}
+
 /* Install */
 .card {
   background: var(--surface);
@@ -1000,6 +1161,13 @@ pre {
 .soon {
   font: 400 11px var(--mono);
   color: var(--fg-subtle);
+}
+.other-downloads {
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+}
+.other-downloads:hover {
+  color: var(--fg);
 }
 .note-row {
   display: flex;
@@ -1203,6 +1371,20 @@ pre {
 @media (max-width: 800px) {
   .tour-stage {
     order: -1;
+  }
+  .rule-example {
+    grid-template-columns: 1fr;
+  }
+  .rule-run {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+  .faq details p {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .faq summary {
+    grid-template-columns: 36px 1fr 20px;
   }
   .split {
     grid-template-columns: 1fr;
