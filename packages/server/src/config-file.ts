@@ -71,13 +71,22 @@ export async function openConfigFile(path: string, o: ConfigFileOptions) {
     timer = setTimeout(reload, o.debounceMs ?? 150);
   });
 
+  // Bumped whenever Vigia changes the file itself. A watcher read that overlaps one of those
+  // writes may return the previous content, and must not be taken for a hand edit: it would
+  // undo the newer change. The write's own watcher event brings a fresh read anyway.
+  let version = 0;
+  let writing = 0;
+
   async function reload() {
+    if (writing) return;
+    const seen = version;
     let next: string;
     try {
       next = await readFile(path, "utf8");
     } catch {
       return; // mid-save; the next event will catch it
     }
+    if (writing || version !== seen) return; // raced one of our writes; stale
     if (next === text) return; // our own write, or no real change
     text = next;
     const r = parseConfig(next);
@@ -106,6 +115,16 @@ export async function openConfigFile(path: string, o: ConfigFileOptions) {
   }
 
   async function write(next: string) {
+    version++;
+    writing++;
+    try {
+      await writeTo(next);
+    } finally {
+      writing--;
+    }
+  }
+
+  async function writeTo(next: string) {
     const tmp = `${path}.${process.pid}.tmp`;
     await writeFile(tmp, next);
     await rename(tmp, path);
