@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "pnpm --filter @vigia/demo dev",
-    "build": "pnpm --filter @vigia/demo build && pnpm --filter @vigia/ui build",
+    "build": "pnpm --filter @vigia/demo build && pnpm --filter @vigia/docs build && pnpm --filter @vigia/ui build",
     "record": "pnpm --filter @vigia/demo record",
     "simulate": "pnpm --filter @vigia/engine simulate",
     "test": "vitest run",
@@ -16,7 +16,8 @@
     "live": "pnpm --filter @vigia/twitch live",
     "vigia": "pnpm --filter @vigia/server-app start",
     "eval": "pnpm --filter @vigia/evals eval",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "docs": "pnpm --filter @vigia/docs dev"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

@@ -1,6 +1,6 @@
 /**
  * Measures Jev on the labeled messages of every bundled pack, in English and Spanish, and
- * publishes the numbers in both READMEs.
+ * publishes the numbers on the docs' Accuracy page, in both languages.
  *
  *   AI_GATEWAY_API_KEY=vck_... pnpm eval            (or JEV_API_KEY for a TypeSafe key)
  *   pnpm eval --render                              (rebuild the tables from results.json)
@@ -69,7 +69,7 @@ for (const m of metrics) {
 }
 
 const date = meta.measuredAt.slice(0, 10);
-for (const [file, lang] of [["README.md", "en"], ["README.es.md", "es"]] as const) {
+for (const [file, lang] of [["apps/docs/src/content/docs/en/accuracy.md", "en"], ["apps/docs/src/content/docs/accuracy.md", "es"]] as const) {
   const url = new URL(file, ROOT);
   const note =
     lang === "es"
@@ -79,4 +79,4 @@ for (const [file, lang] of [["README.md", "en"], ["README.es.md", "es"]] as cons
   if (next === null) console.error(`${file} has no eval markers; skipped.`);
   else writeFileSync(url, next);
 }
-console.log("Updated README.md and README.es.md.");
+console.log("Updated the Accuracy page of the docs, in English and Spanish.");

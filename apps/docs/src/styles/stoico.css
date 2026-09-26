@@ -1,0 +1,77 @@
+/*
+ * Vigia's docs in Stoico's Editorial voice: ink and paper, no accent colour, Geist for text
+ * and Geist Mono for code. Starlight's own layout, recoloured through its variables.
+ */
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
+@import "@fontsource/geist-pixel/400.css";
+
+:root {
+  --sl-font: "Geist Sans", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --sl-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Dark (the default): ink ground, paper text, grays from Stoico's ramp. */
+  --sl-color-accent-low: #2a2a28;
+  --sl-color-accent: #ededea;
+  --sl-color-accent-high: #ffffff;
+  --sl-color-white: #ededea;
+  --sl-color-gray-1: #d6d6d2;
+  --sl-color-gray-2: #bdbdb8;
+  --sl-color-gray-3: #a1a19b;
+  --sl-color-gray-4: #6b6b66;
+  --sl-color-gray-5: #2a2a28;
+  --sl-color-gray-6: #171716;
+  --sl-color-black: #0b0b0a;
+}
+
+:root[data-theme="light"] {
+  --sl-color-accent-low: #e6e6e3;
+  --sl-color-accent: #0b0b0a;
+  --sl-color-accent-high: #0b0b0a;
+  --sl-color-white: #0b0b0a;
+  --sl-color-gray-1: #171716;
+  --sl-color-gray-2: #2a2a28;
+  --sl-color-gray-3: #4a4a46;
+  --sl-color-gray-4: #6b6b66;
+  --sl-color-gray-5: #d6d6d2;
+  --sl-color-gray-6: #f2f2f0;
+  --sl-color-gray-7: #fafaf8;
+  --sl-color-black: #fafaf8;
+}
+
+/* The site title is the wordmark, set in Geist Pixel. */
+.site-title {
+  font-family: "Geist Pixel", "Geist Mono", monospace;
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+/* Headings: medium weight, tightening as they grow. */
+.sl-markdown-content :is(h1, h2, h3) {
+  font-weight: 500;
+}
+h1#_top {
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.sl-markdown-content h2 {
+  letter-spacing: -0.02em;
+}
+
+/* Hairline tables and code, no heavy fills. */
+.sl-markdown-content table {
+  font-size: 0.9rem;
+}
+.sl-markdown-content :not(pre) > code {
+  border-radius: 4px;
+}
+
+/* The pixel bat stays small next to the wordmark. */
+.site-title img {
+  height: 0.9rem;
+  width: auto;
+}

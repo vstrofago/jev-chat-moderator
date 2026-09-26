@@ -36,8 +36,10 @@ This is the easiest way to help, and it needs no code. See
   (a test checks this). A new language is one new file plus its entry in
   `packages/ui/src/dashboard/i18n.ts`.
 - **Bot replies in chat** live in `packages/engine/src/replies.ts`.
-- **The READMEs** are `README.md` and `README.es.md`. Keep them saying the same thing: the
-  Spanish one is a full translation, not a summary.
+- **The docs** live in `apps/docs/src/content/docs/`: Spanish at the root, English under
+  `en/`, with the same file names (a test checks this). Run them with `pnpm docs`. Keep both
+  languages saying the same thing: each page is a full translation, not a summary.
+- **The READMEs** (`README.md` and `README.es.md`) stay short and link to the docs.
 
 ## Rules and packs
 
@@ -47,7 +49,7 @@ criteria for "yes" and "no".
 - **A new pack** needs labeled examples in `packages/evals/data/<pack>.en.yaml` and
   `.es.yaml` (at least 10 yes and 10 no each, including hard negatives).
 - **Changing a pack's wording** needs a `pnpm eval` run before and after, with both tables
-  in the PR. The README only shows measured numbers.
+  in the PR. The docs' Accuracy page only shows measured numbers.
 - **Custom rules** you find useful fit better as an example in the docs than as a new pack.
 
 ## Code

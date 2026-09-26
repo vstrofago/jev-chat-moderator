@@ -27,6 +27,7 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm --filter @vigia/ui build
       - run: pnpm --filter @vigia/demo build
+      - run: pnpm --filter @vigia/docs build
 
       # Boots the desktop app under Xvfb: the setup page, then the dashboard on a read-only source.
       - name: Desktop smoke run

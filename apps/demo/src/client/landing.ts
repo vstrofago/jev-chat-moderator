@@ -207,7 +207,7 @@ function labelDownload() {
   const os = detectOs();
   const label = document.getElementById("download-label");
   if (!label || !os) return;
-  const key = `install.desktop.cta.${os}` as Key;
+  const key = `install.cta.${os}` as Key;
   label.dataset.i18n = key;
   label.textContent = dicts[currentLang][key];
 }
