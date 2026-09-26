@@ -36,8 +36,8 @@
   "tour.5.title": "Ajustes",
   "tour.5.body": "Idiomas, excepciones y la dirección del overlay.",
   "install.kicker": "Instalar",
-  "start.1.title": "Descarga la app",
-  "start.1.body": "Para Windows, macOS o Linux.",
+  "start.1.title": "Instálalo",
+  "start.1.body": "Con la app para Windows, macOS o Linux, o con Docker.",
   "start.2.title": "Configúrala",
   "start.2.body": "Una ventana te guía. Toma unos diez minutos.",
   "start.3.title": "Empieza observando",
@@ -74,5 +74,11 @@
   "tour.3.alt": "La pestaña Destacados, con el mensaje que está en el overlay y la fila de espera.",
   "tour.4.alt": "La pestaña Reglas, con los umbrales de toxicidad y spam y un campo para probar un mensaje.",
   "tour.5.alt": "La pestaña Ajustes, con idiomas, destacados, excepciones y el overlay de OBS.",
-  "tour.demo.alt": "Video: el dashboard de Vigia recibe mensajes en vivo mientras el overlay de OBS muestra las preguntas y los mensajes destacados."
+  "tour.demo.alt": "Video: el dashboard de Vigia recibe mensajes en vivo mientras el overlay de OBS muestra las preguntas y los mensajes destacados.",
+  "install.app.label": "App de escritorio",
+  "install.docker.label": "O con Docker",
+  "install.copy": "Copiar",
+  "install.copied": "Copiado",
+  "install.docker.note": "Luego abre 127.0.0.1:7777 y escribe el código que aparece en docker compose logs vigia.",
+  "install.docker.guide": "Guía de Docker"
 }

@@ -228,3 +228,15 @@ if (os) {
     })
     .catch(() => {});
 }
+
+// Copy buttons on code blocks.
+for (const button of document.querySelectorAll<HTMLButtonElement>("[data-copy]")) {
+  button.addEventListener("click", async () => {
+    const text = document.getElementById(button.dataset.copy!)?.textContent ?? "";
+    try {
+      await navigator.clipboard.writeText(text);
+      button.textContent = dicts[currentLang]["install.copied"];
+      setTimeout(() => (button.textContent = dicts[currentLang]["install.copy"]), 1600);
+    } catch {}
+  });
+}
