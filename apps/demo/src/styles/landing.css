@@ -1,6 +1,6 @@
 /*
- * Vigia's landing page, in Stoico's Aura voice (A02 Atmospheric): ink and paper, no accent
- * colour, a masked Bayer field behind the hero. Dark is the default; light via
+ * Vigia's landing page, in Stoico's Aura voice (A04 Technical): ink and paper, no accent
+ * colour, a 96px grid behind the hero and a row of specs under it. Dark is the default; light via
  * [data-theme="light"]. Emphasis comes from type, scale and space. Status colours are
  * desaturated and always paired with a word.
  */
@@ -350,62 +350,93 @@ pre {
   font-family: var(--mono);
 }
 
-/* Hero: ink, a masked Bayer field, one phrase in Geist Pixel. */
+/* Hero: ink, a 96px grid fading down, one phrase in Geist Pixel, specs underneath. */
 .hero {
   position: relative;
   margin-top: -64px;
-  padding: 192px 0 160px;
+  padding: 144px 0 0;
   overflow: hidden;
   isolation: isolate;
 }
-.field {
+.grid-bg {
   position: absolute;
   inset: -16px;
   z-index: -1;
-  width: calc(100% + 32px);
-  height: calc(100% + 32px);
-  color: var(--fg);
-  opacity: 0.55;
-  -webkit-mask-image: radial-gradient(42% 62% at 80% 45%, #000 15%, transparent 72%);
-  mask-image: radial-gradient(42% 62% at 80% 45%, #000 15%, transparent 72%);
-  transition: transform 800ms var(--ease-out);
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 96px 96px;
+  background-position: center top;
+  -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent 95%);
+  mask-image: linear-gradient(180deg, #000 40%, transparent 95%);
+  transition: transform 600ms var(--ease-out);
   pointer-events: none;
 }
 .hero-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 32px;
-  align-items: end;
+  align-items: center;
 }
 .hero-copy {
-  grid-column: 1 / span 7;
+  grid-column: 1 / span 6;
 }
 .hero h1 {
-  font: 400 clamp(56px, 7.5vw, 104px) / 0.92 var(--pixel);
+  font: 400 clamp(52px, 6.6vw, 96px) / 0.92 var(--pixel);
   letter-spacing: -0.015em;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   max-width: 10ch;
 }
 .lead {
-  font-size: clamp(17px, 1.6vw, 19px);
+  font-size: clamp(16px, 1.5vw, 18px);
   line-height: 1.6;
   color: var(--fg-muted);
   max-width: 34em;
-  margin-bottom: 48px;
+  margin-bottom: 36px;
 }
 .note {
-  margin-top: 24px;
+  margin-top: 20px;
   font: 400 12px/1.5 var(--mono);
   color: var(--fg-subtle);
   max-width: 44em;
 }
+.eyebrow {
+  margin-bottom: 24px;
+}
 
-/* Hero stage: a chat with Vigia's verdicts, and the OBS card it produced. */
+/* Specs: the technical voice's row of facts, on the grid's hairlines. */
+.specs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 72px;
+  margin-bottom: 0;
+}
+.specs > div {
+  padding: 20px 24px 28px 0;
+  border-top: 1px solid var(--border);
+}
+.specs > div + div {
+  padding-left: 24px;
+  border-left: 1px solid var(--border);
+}
+.specs dt {
+  font: 500 11px/1.4 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  margin-bottom: 8px;
+}
+.specs dd {
+  margin: 0;
+  font-size: 14px;
+  color: var(--fg);
+}
+
+/* Hero stage: a chat with Vigia's verdicts, and the OBS layer that sits on top of it. */
 .stage {
-  grid-column: 8 / span 5;
+  grid-column: 7 / span 6;
   position: relative;
-  padding-bottom: 104px;
-  transform: translateY(64px);
+  padding: 0 0 56px 56px;
 }
 .chat {
   background: var(--surface);
@@ -434,24 +465,35 @@ pre {
 .chat ul {
   list-style: none;
   margin: 0;
-  padding: 8px 0;
+  padding: 6px 0;
 }
 .row {
-  padding: 8px 16px;
+  padding: 7px 16px;
   font-size: 14px;
   line-height: 1.5;
   opacity: 0;
   animation: row-in 420ms var(--ease-out) forwards;
 }
 .row:nth-child(1) { animation-delay: 0.3s; }
-.row:nth-child(2) { animation-delay: 0.7s; }
-.row:nth-child(3) { animation-delay: 1.1s; }
-.row:nth-child(4) { animation-delay: 1.5s; }
-.row:nth-child(5) { animation-delay: 1.9s; }
-.row:nth-child(6) { animation-delay: 2.3s; }
+.row:nth-child(2) { animation-delay: 0.6s; }
+.row:nth-child(3) { animation-delay: 0.9s; }
+.row:nth-child(4) { animation-delay: 1.2s; }
+.row:nth-child(5) { animation-delay: 1.5s; }
+.row:nth-child(6) { animation-delay: 1.8s; }
 @keyframes row-in {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: none; }
+}
+/* The row Jev picked lights up just before its card goes on stream. */
+.row-picked {
+  animation:
+    row-in 420ms var(--ease-out) 0.6s forwards,
+    picked 10s var(--ease-standard) 2.2s infinite;
+}
+@keyframes picked {
+  0%, 100% { background: transparent; }
+  4%, 16% { background: var(--success-subtle); }
+  26% { background: transparent; }
 }
 .who {
   font: 500 13px var(--mono);
@@ -485,18 +527,46 @@ pre {
 .chip-spoiler { background: var(--info-subtle); color: var(--info); }
 .chip-review { background: var(--warning-subtle); color: var(--warning); }
 
-.overlay-card {
+/* The OBS layer: a dashed browser-source frame over the chat, with the card inside it. */
+.overlay-layer {
   position: absolute;
-  left: -48px;
+  left: 0;
   bottom: 0;
-  width: min(320px, 85%);
+  width: min(340px, 78%);
+  padding: 28px 12px 12px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-surface);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  animation: row-in 600ms var(--ease-out) 2s forwards;
+}
+.obs-tag {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font: 500 10px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+.overlay-card {
+  position: relative;
   background: var(--bg-inverse);
   color: var(--fg-inverse);
   border-radius: var(--radius-surface);
-  padding: 14px 16px;
+  padding: 14px 16px 18px;
   box-shadow: var(--shadow-3);
+  overflow: hidden;
   opacity: 0;
-  animation: row-in 800ms var(--ease-out) 2.9s forwards;
+  animation: on-stream 10s var(--ease-out) 2.6s infinite;
+}
+@keyframes on-stream {
+  0% { opacity: 0; transform: translate(40px, -24px) scale(0.94) rotate(-1.5deg); }
+  7% { opacity: 1; transform: translate(0, -4px) scale(1.02) rotate(0.4deg); }
+  11%, 86% { opacity: 1; transform: none; }
+  94%, 100% { opacity: 0; transform: translateY(12px); }
 }
 .overlay-card p {
   margin: 0;
@@ -506,12 +576,40 @@ pre {
   font: 500 13px var(--mono);
 }
 .overlay-label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font: 500 11px var(--mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--fg-inverse-muted);
   margin-bottom: 6px;
+}
+.rec {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--danger);
+  animation: blink 1.2s steps(2, jump-none) infinite;
+}
+@keyframes blink {
+  50% { opacity: 0.2; }
+}
+/* How long the card stays on screen, draining. */
+.overlay-timer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--fg-inverse);
+  opacity: 0.35;
+  transform-origin: left;
+  animation: drain 10s linear 2.6s infinite;
+}
+@keyframes drain {
+  0%, 7% { transform: scaleX(1); }
+  86%, 100% { transform: scaleX(0); }
 }
 
 /* Sections: a sticky label on the left, the content on the right. */
@@ -584,38 +682,146 @@ pre {
   color: var(--fg);
 }
 
-/* Dashboard screenshots: radius 0, an indexed mono caption. */
-.shots {
+/* Feature tour: the dashboard's tabs as a slideshow. */
+.tour {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
-  gap: 32px;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 48px;
   align-items: start;
+  margin-top: 16px;
 }
-.shot {
-  margin: 0;
+.tour-tabs {
+  display: grid;
+  border-top: 1px solid var(--border);
 }
-.shot-main {
-  grid-column: 1 / span 6;
+.tour-tabs button {
+  position: relative;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 8px;
+  padding: 16px 0 18px;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--fg-muted);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 140ms var(--ease-standard);
 }
-.shot-side {
-  grid-column: 7 / span 3;
-  transform: translateY(64px);
+.tour-tabs button:hover,
+.tour-tabs button[aria-selected="true"] {
+  color: var(--fg);
 }
-.shot img {
+.tour-num {
+  font: 500 11px/22px var(--mono);
+  letter-spacing: 0.08em;
+  color: var(--fg-subtle);
+}
+.tour-text b {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+.tour-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  overflow: hidden;
+  opacity: 0;
+  transition: grid-template-rows 420ms var(--ease-out), opacity 420ms var(--ease-out), margin 420ms var(--ease-out);
+}
+.tour-body > span {
+  min-height: 0;
+}
+[aria-selected="true"] .tour-body {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 6px;
+}
+.tour-progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
+  width: 100%;
+  background: var(--fg);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+[aria-selected="true"] .tour-progress {
+  animation: tour-drain var(--tour-ms, 6000ms) linear forwards;
+}
+.tour.paused .tour-progress {
+  animation-play-state: paused;
+}
+@keyframes tour-drain {
+  to { transform: scaleX(1); }
+}
+.tour-stage {
+  perspective: 1400px;
+}
+/* The screenshot behaves like a card: it tilts a little toward the cursor and lifts. */
+.tilt {
+  position: relative;
+  display: grid;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-surface);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow-2);
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0);
+  transition: transform 420ms var(--ease-out), box-shadow 420ms var(--ease-out);
+  will-change: transform;
+}
+.tilt:hover {
+  box-shadow: var(--shadow-3);
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
+}
+.tour-shot {
+  grid-area: 1 / 1;
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--border);
+  opacity: 0;
+  transform: scale(1.015);
+  transition: opacity 420ms var(--ease-out), transform 800ms var(--ease-out);
 }
-.shot figcaption {
-  margin-top: 16px;
-  font-size: 14px;
-  color: var(--fg-muted);
+.tour-shot.on {
+  opacity: 1;
+  transform: none;
 }
-.shot figcaption .label {
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgb(255 255 255 / 8%), transparent 55%);
+  opacity: 0;
+  transition: opacity 420ms var(--ease-out);
+  pointer-events: none;
+}
+.tilt:hover .tilt-glare {
+  opacity: 1;
+}
+.tour-caption {
+  margin: 16px 0 0;
+  font: 400 11px var(--mono);
+  letter-spacing: 0.08em;
+  color: var(--fg-subtle);
+}
+.tour-caption .label {
   display: inline;
-  margin-right: 8px;
   color: var(--fg);
+}
+
+/* Getting started: three numbered steps above the downloads. */
+.start-steps {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
 }
 
 /* Anti-spoiler */
@@ -919,16 +1125,33 @@ pre {
     scroll-behavior: auto;
   }
   .row,
-  .overlay-card {
+  .row-picked,
+  .overlay-layer,
+  .overlay-card,
+  .overlay-timer,
+  .rec {
     animation: none;
     opacity: 1;
+  }
+  .overlay-timer {
+    opacity: 0.35;
+  }
+  .tilt,
+  .tilt:hover,
+  .tour-shot {
+    transform: none;
+    transition: opacity 1ms;
+  }
+  [aria-selected="true"] .tour-progress {
+    animation: none;
+    transform: scaleX(1);
   }
   .js [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .field {
+  .grid-bg {
     transition: none;
   }
 }
@@ -939,16 +1162,29 @@ pre {
     display: none;
   }
   .hero {
-    padding: 144px 0 120px;
+    padding-top: 112px;
+  }
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 56px;
   }
   .hero-copy,
   .stage {
     grid-column: 1 / -1;
   }
   .stage {
-    transform: none;
-    max-width: 560px;
+    max-width: 600px;
     margin-left: auto;
+  }
+  .specs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .specs > div:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .tour {
+    grid-template-columns: 1fr;
   }
   .section {
     padding: 128px 0;
@@ -965,18 +1201,15 @@ pre {
   }
 }
 @media (max-width: 800px) {
-  .shots,
+  .tour-stage {
+    order: -1;
+  }
   .split {
     grid-template-columns: 1fr;
   }
-  .shot-main,
-  .shot-side,
   .split > :first-child,
   .split > :last-child {
     grid-column: 1 / -1;
-  }
-  .shot-side {
-    transform: none;
   }
   .install-main {
     flex-direction: column;
@@ -995,10 +1228,18 @@ pre {
     gap: 16px;
   }
   .hero {
-    padding: 120px 0 96px;
+    padding-top: 96px;
   }
-  .overlay-card {
-    left: 16px;
+  .stage {
+    padding-left: 24px;
+  }
+  .specs {
+    grid-template-columns: 1fr;
+  }
+  .specs > div,
+  .specs > div + div {
+    padding: 16px 0;
+    border-left: 0;
   }
   .grid-3 {
     grid-template-columns: 1fr;

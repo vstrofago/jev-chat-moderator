@@ -3,11 +3,14 @@ import "../styles/landing.css";
 import es from "../i18n/landing.es.json";
 
 // Spanish is rendered at build time; the client swaps strings for English on demand.
-const t = (key: keyof typeof es) => es[key];
+type Key = keyof typeof es;
+const t = (key: Key) => es[key];
 const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 const repo = "https://github.com/vstrofago/vigia";
 const blob = `${repo}/blob/main`;
 const shot = (name: string) => `${base}shots/${name}.png`;
+// The feature tour: one dashboard tab per slide.
+const tourSlides = ["live", "uncertain", "highlights", "rules", "settings"] as const;
 // Vigia's mark: a pixel bat, the night lookout. Drawn in currentColor.
 const mark = [
   "X.....X.X.....X",
@@ -76,7 +79,7 @@ const mark = [
 
     <main>
       <section class="hero">
-        <canvas class="field" id="field" aria-hidden="true"></canvas>
+        <div class="grid-bg" id="grid-bg" aria-hidden="true"></div>
         <div class="container hero-grid">
           <div class="hero-copy">
             <p class="eyebrow" data-i18n="hero.eyebrow">{t("hero.eyebrow")}</p>
@@ -97,7 +100,7 @@ const mark = [
                   <span class="who c1">freeviewz</span> <span class="text" data-i18n="mock.m1">{t("mock.m1")}</span>
                   <span class="chip chip-remove" data-i18n="mock.v1">{t("mock.v1")}</span>
                 </li>
-                <li class="row">
+                <li class="row row-picked">
                   <span class="who c2">pixelpaula</span> <span class="text" data-i18n="mock.m2">{t("mock.m2")}</span>
                   <span class="chip chip-allow" data-i18n="mock.v2">{t("mock.v2")}</span>
                 </li>
@@ -118,12 +121,24 @@ const mark = [
                 </li>
               </ul>
             </div>
-            <div class="overlay-card">
-              <span class="overlay-label" data-i18n="mock.overlay">{t("mock.overlay")}</span>
-              <p><b>pixelpaula</b> <span data-i18n="mock.m2">{t("mock.m2")}</span></p>
+            <div class="overlay-layer">
+              <span class="obs-tag" data-i18n="mock.obs">{t("mock.obs")}</span>
+              <div class="overlay-card">
+                <span class="overlay-label"><span class="rec"></span><span data-i18n="mock.overlay">{t("mock.overlay")}</span></span>
+                <p><b>pixelpaula</b> <span data-i18n="mock.m2">{t("mock.m2")}</span></p>
+                <span class="overlay-timer"></span>
+              </div>
             </div>
           </div>
         </div>
+        <dl class="container specs">
+          {([1, 2, 3, 4] as const).map((n) => (
+            <div>
+              <dt data-i18n={`hero.spec.${n}.k`}>{t(`hero.spec.${n}.k`)}</dt>
+              <dd data-i18n={`hero.spec.${n}.v`}>{t(`hero.spec.${n}.v`)}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <section id="features" class="section">
@@ -159,15 +174,28 @@ const mark = [
           </div>
           <div class="section-body">
             <h2 data-i18n="dash.title">{t("dash.title")}</h2>
-            <div class="shots" data-reveal>
-              <figure class="shot shot-main">
-                <img src={shot("dashboard-es-live")} data-src-es={shot("dashboard-es-live")} data-src-en={shot("dashboard-en-live")} width="1280" height="800" loading="lazy" data-i18n-alt="dash.alt.live" alt={t("dash.alt.live")} />
-                <figcaption><span class="label">Fig. 01</span><span data-i18n="dash.live">{t("dash.live")}</span></figcaption>
-              </figure>
-              <figure class="shot shot-side">
-                <img src={shot("dashboard-es-uncertain")} data-src-es={shot("dashboard-es-uncertain")} data-src-en={shot("dashboard-en-uncertain")} width="1280" height="800" loading="lazy" data-i18n-alt="dash.alt.uncertain" alt={t("dash.alt.uncertain")} />
-                <figcaption><span class="label">Fig. 02</span><span data-i18n="dash.uncertain">{t("dash.uncertain")}</span></figcaption>
-              </figure>
+          </div>
+          <div class="tour" data-reveal>
+            <div class="tour-tabs" role="tablist" data-i18n-aria="tour.label" aria-label={t("tour.label")}>
+              {tourSlides.map((slide, i) => (
+                <button type="button" role="tab" id={`tour-tab-${i}`} aria-controls="tour-panel" aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1} data-slide={i}>
+                  <span class="tour-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span class="tour-text">
+                    <b data-i18n={`tour.${i + 1}.title`}>{t(`tour.${i + 1}.title` as Key)}</b>
+                    <span class="tour-body"><span data-i18n={`tour.${i + 1}.body`}>{t(`tour.${i + 1}.body` as Key)}</span></span>
+                  </span>
+                  <span class="tour-progress" aria-hidden="true"></span>
+                </button>
+              ))}
+            </div>
+            <div class="tour-stage" id="tour-panel" role="tabpanel" aria-labelledby="tour-tab-0">
+              <div class="tilt">
+                {tourSlides.map((slide, i) => (
+                  <img class={i === 0 ? "tour-shot on" : "tour-shot"} src={shot(`dashboard-es-${slide}`)} data-src-es={shot(`dashboard-es-${slide}`)} data-src-en={shot(`dashboard-en-${slide}`)} width="1280" height="800" loading={i === 0 ? "eager" : "lazy"} data-i18n-alt={`tour.${i + 1}.alt`} alt={t(`tour.${i + 1}.alt` as Key)} />
+                ))}
+                <span class="tilt-glare" aria-hidden="true"></span>
+              </div>
+              <p class="tour-caption"><span class="label">Fig. <span id="tour-fig">01</span></span> <span class="tour-count">/ {String(tourSlides.length).padStart(2, "0")}</span></p>
             </div>
           </div>
         </div>
@@ -236,6 +264,15 @@ const mark = [
           </div>
           <div class="section-body">
             <h2 data-i18n="install.title">{t("install.title")}</h2>
+            <ol class="grid grid-3 start-steps" data-reveal>
+              {([1, 2, 3] as const).map((n) => (
+                <li class="cell">
+                  <span class="num">{String(n).padStart(2, "0")}</span>
+                  <h3 data-i18n={`start.${n}.title`}>{t(`start.${n}.title`)}</h3>
+                  <p data-i18n={`start.${n}.body`}>{t(`start.${n}.body`)}</p>
+                </li>
+              ))}
+            </ol>
             <article class="card install install-main">
               <div>
                 <span class="badge" data-i18n="install.recommended">{t("install.recommended")}</span>
